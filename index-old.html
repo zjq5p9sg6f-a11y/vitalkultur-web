@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARLON — Breathe Beyond | Vitalkultur</title>
+  <meta name="description" content="Dein Nervensystem kennt den Ausweg. CARLON bringt dich dorthin. In 4 Minuten. Apple Watch Haptic Breathwork.">
+  <meta property="og:title" content="CARLON — Breathe Beyond">
+  <meta property="og:description" content="Dein Nervensystem kennt den Ausweg. 16 evidenzbasierte Atem-Protokolle. Kein Tracking.">
+  <meta property="og:image" content="https://vitalkultur.com/app-icon.png">
+  <link rel="icon" href="app-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#050505;--g:#d4a253;--g2:#e8c17a;--g3:#b8843e;--t:#f2efe8;--d:rgba(242,239,232,.3);--gl:rgba(255,255,255,.025);--gb:rgba(212,162,83,.08);--mx:820px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--t);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:var(--g);text-decoration:none}
+    body::after{content:'';position:fixed;inset:0;opacity:.015;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+    .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}.rv.v{opacity:1;transform:none}.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
+
+    /* ═══ HERO ═══ */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 45%,rgba(212,162,83,.05),transparent),radial-gradient(ellipse 40% 60% at 30% 40%,rgba(120,80,200,.025),transparent);animation:mesh 25s ease-in-out infinite alternate}
+    @keyframes mesh{to{transform:scale(1.08) rotate(1.5deg)}}
+    .orb{position:absolute;border-radius:50%;filter:blur(90px);animation:ob 14s ease-in-out infinite}
+    .o1{width:500px;height:500px;background:rgba(212,162,83,.06);top:-5%;left:25%}
+    .o2{width:280px;height:280px;background:rgba(130,90,210,.04);bottom:15%;right:12%;animation-delay:-7s}
+    @keyframes ob{0%,100%{transform:translate(0,0)}33%{transform:translate(25px,-15px)}66%{transform:translate(-15px,10px)}}
+
+    /* Breath Circle — the product LIVE on the page */
+    .breath-wrap{position:relative;z-index:2;width:200px;height:200px;margin-bottom:48px}
+    .breath-circle{width:200px;height:200px;border-radius:50%;border:1px solid rgba(212,162,83,.3);display:flex;align-items:center;justify-content:center;animation:breathAnim 19s ease-in-out infinite;position:relative}
+    .breath-circle::before{content:'';position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(circle,rgba(212,162,83,.08),transparent 70%);animation:breathAnim 19s ease-in-out infinite}
+    .breath-circle::after{content:'';position:absolute;inset:8px;border-radius:50%;border:.5px solid rgba(212,162,83,.12);animation:breathAnim 19s ease-in-out infinite .3s}
+    .breath-text{font-size:.78rem;font-weight:300;letter-spacing:.15em;text-transform:uppercase;color:var(--g);opacity:.7;animation:breathText 19s ease-in-out infinite;z-index:1}
+
+    /* 4-7-8: 4s inhale + 7s hold + 8s exhale = 19s total */
+    @keyframes breathAnim{
+      0%{transform:scale(.75);border-color:rgba(212,162,83,.2)}
+      21%{transform:scale(1.15);border-color:rgba(212,162,83,.5)} /* 4s inhale */
+      21.1%{transform:scale(1.15)}
+      57.9%{transform:scale(1.12);border-color:rgba(212,162,83,.35)} /* 7s hold */
+      58%{transform:scale(1.12)}
+      100%{transform:scale(.75);border-color:rgba(212,162,83,.15)} /* 8s exhale */
+    }
+    @keyframes breathText{
+      0%{content:'einatmen'}
+      21%{opacity:1}
+      21.1%{opacity:.4}
+      57.9%{opacity:.4}
+      58%{opacity:1}
+      100%{opacity:.6}
+    }
+
+    .hero h1{font-size:2rem;font-weight:300;letter-spacing:.01em;line-height:1.4;text-align:center;max-width:440px;z-index:2;position:relative;color:rgba(242,239,232,.85)}
+    .hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--g2),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero .micro{font-size:.72rem;font-weight:300;color:var(--d);letter-spacing:.06em;margin-top:20px;z-index:2;position:relative}
+    .hero .cta-row{margin-top:32px;display:flex;gap:16px;z-index:2;position:relative;flex-wrap:wrap;justify-content:center}
+    .btn{padding:14px 32px;background:linear-gradient(135deg,var(--g2),var(--g),var(--g3));color:var(--bg);font-weight:600;font-size:.85rem;letter-spacing:.03em;border-radius:12px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:transform .2s,box-shadow .3s;box-shadow:0 4px 28px rgba(212,162,83,.2);text-decoration:none;display:inline-block}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 48px rgba(212,162,83,.3)}
+    .btn-ghost{padding:14px 32px;border:1px solid rgba(212,162,83,.25);color:var(--g);font-size:.85rem;font-weight:400;border-radius:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:border-color .3s;text-decoration:none;display:inline-block;background:transparent}
+    .btn-ghost:hover{border-color:var(--g)}
+
+    .scroll-down{position:absolute;bottom:36px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;animation:fl 3s ease-in-out infinite}
+    .scroll-down span{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.1)}
+    .scroll-line{width:1px;height:28px;background:linear-gradient(to bottom,rgba(212,162,83,.3),transparent)}
+    @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+    /* ═══ TRUST BAR ═══ */
+    .trust{display:flex;justify-content:center;gap:40px;padding:28px 24px;flex-wrap:wrap}
+    .trust span{font-size:.6rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--g);opacity:.4}
+
+    /* ═══ SECTIONS ═══ */
+    section{max-width:var(--mx);margin:0 auto;padding:100px 32px}
+    .sl{font-size:.55rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--g);opacity:.35;margin-bottom:20px}
+    section h2{font-size:2.2rem;font-weight:200;line-height:1.3;margin-bottom:18px}
+    section h2 em{font-style:normal;background:linear-gradient(135deg,var(--g2),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .lead{font-size:.95rem;font-weight:300;color:var(--d);line-height:1.9;max-width:500px;margin-bottom:48px}
+    .div{width:48px;height:.5px;background:linear-gradient(90deg,transparent,var(--g),transparent);opacity:.15;margin:0 auto}
+
+    /* ═══ CARDS ═══ */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+    .c{background:var(--gl);border:.5px solid var(--gb);border-radius:20px;padding:32px 24px;transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+    .c::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 0%,rgba(212,162,83,.03),transparent 50%);opacity:0;transition:opacity .5s}
+    .c:hover{border-color:rgba(212,162,83,.18);transform:translateY(-5px)}.c:hover::before{opacity:1}
+    .c h3{font-size:.9rem;font-weight:500;margin-bottom:10px}
+    .c p{font-size:.8rem;color:var(--d);line-height:1.7;font-weight:300}
+    .badge{display:inline-block;font-size:.5rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:linear-gradient(135deg,var(--g2),var(--g));color:var(--bg);padding:4px 11px;border-radius:4px;margin-bottom:14px}
+
+    /* ═══ SCIENCE STORY ═══ */
+    .science-story{background:var(--gl);border:.5px solid var(--gb);border-radius:24px;padding:48px 40px;margin-top:48px;position:relative;overflow:hidden}
+    .science-story::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(to bottom,var(--g),transparent);border-radius:4px;opacity:.4}
+    .science-story blockquote{font-size:1.1rem;font-weight:300;color:rgba(242,239,232,.6);line-height:2;font-style:italic;margin-bottom:20px;padding-left:20px}
+    .science-story .source{font-size:.65rem;color:var(--d);letter-spacing:.04em;padding-left:20px}
+
+    /* ═══ OUTCOMES ═══ */
+    .outcomes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+    .outcome{display:flex;align-items:flex-start;gap:12px;padding:16px;border-radius:12px;background:rgba(212,162,83,.02);border:.5px solid rgba(212,162,83,.05)}
+    .outcome .check{color:var(--g);font-weight:600;font-size:.85rem;flex-shrink:0;margin-top:1px}
+    .outcome p{font-size:.82rem;font-weight:300;color:rgba(242,239,232,.55);line-height:1.5}
+
+    /* ═══ PRICING ═══ */
+    .pricing{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+    .pc{background:var(--gl);border:.5px solid var(--gb);border-radius:24px;padding:36px 24px;text-align:center;transition:all .5s cubic-bezier(.16,1,.3,1)}
+    .pc:hover{border-color:rgba(212,162,83,.18);transform:translateY(-5px)}
+    .pc.feat{border-color:rgba(212,162,83,.22);background:rgba(212,162,83,.025)}
+    .pc.feat::before{content:'BELIEBT';position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:.48rem;font-weight:700;letter-spacing:.15em;background:linear-gradient(135deg,var(--g2),var(--g));color:var(--bg);padding:3px 14px;border-radius:20px}
+    .pc{position:relative}
+    .pc h3{font-size:.95rem;font-weight:500;margin-bottom:4px}
+    .pc .price{font-size:2.2rem;font-weight:200;color:var(--g);margin:14px 0 2px}
+    .pc .price span{font-size:.8rem;font-weight:300;color:var(--d)}
+    .pc .sub-price{font-size:.7rem;color:var(--d);margin-bottom:18px}
+    .pc ul{list-style:none;text-align:left;padding:0}
+    .pc li{font-size:.76rem;color:var(--d);padding:5px 0;border-bottom:.5px solid rgba(255,255,255,.02);font-weight:300}
+    .pc li::before{content:'✓ ';color:var(--g);font-weight:600}
+    .pc li.no::before{content:'— ';color:rgba(255,255,255,.08)}.pc li.no{color:rgba(255,255,255,.1)}
+
+    /* ═══ LEAD MAGNET ═══ */
+    .magnet{position:relative;border-radius:28px;padding:56px 44px;text-align:center;max-width:520px;margin:0 auto;background:var(--gl);overflow:hidden}
+    .magnet::before{content:'';position:absolute;inset:-1px;border-radius:28px;padding:1px;background:linear-gradient(135deg,rgba(212,162,83,.15),transparent 50%,rgba(212,162,83,.06));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+    .magnet h2{text-align:center;font-size:1.4rem}
+    .magnet .lead{text-align:center;margin:0 auto 32px;font-size:.85rem}
+    .magnet form{display:flex;flex-direction:column;gap:11px;max-width:340px;margin:0 auto}
+    .magnet input,.magnet select{padding:13px 16px;background:rgba(0,0,0,.6);border:.5px solid var(--gb);border-radius:11px;color:var(--t);font-size:.85rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .3s,box-shadow .3s}
+    .magnet input:focus,.magnet select:focus{border-color:var(--g);box-shadow:0 0 14px rgba(212,162,83,.08)}
+    .magnet input::placeholder{color:rgba(255,255,255,.12)}
+    .magnet select{appearance:none;cursor:pointer}
+    .fine{font-size:.58rem;color:rgba(255,255,255,.1);margin-top:14px}
+
+    /* ═══ CORPORATE TABLE ═══ */
+    .ct{width:100%;border-collapse:collapse;margin-top:28px}
+    .ct th{font-size:.55rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--g);opacity:.45;text-align:left;padding:10px 14px;border-bottom:.5px solid var(--gb)}
+    .ct td{font-size:.8rem;color:var(--d);font-weight:300;padding:12px 14px;border-bottom:.5px solid rgba(255,255,255,.02)}
+    .ct tr:hover td{color:var(--t)}
+    .ct .pc-col{color:var(--g);font-weight:500}
+
+    /* ═══ LOGO + FOOTER ═══ */
+    .logo-s{text-align:center;padding:48px 24px}
+    .logo-s img{height:28px;opacity:.3;transition:opacity .3s}.logo-s img:hover{opacity:.5}
+    .logo-s p{font-size:.58rem;color:rgba(255,255,255,.08);margin-top:10px;letter-spacing:.05em}
+    footer{text-align:center;padding:48px 24px;border-top:.5px solid var(--gb);margin-top:64px}
+    footer .brand{font-size:.85rem;font-weight:300;letter-spacing:.2em;background:linear-gradient(135deg,var(--g2),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:.35;margin-bottom:14px}
+    footer p{font-size:.65rem;color:rgba(255,255,255,.1);font-weight:300}
+    footer nav{margin-top:16px}
+    footer nav a{color:rgba(255,255,255,.12);font-size:.65rem;margin:0 16px;font-weight:300;transition:color .2s}
+    footer nav a:hover{color:var(--g)}
+
+    @media(max-width:640px){
+      .hero h1{font-size:1.5rem;max-width:320px}
+      .breath-wrap{width:150px;height:150px;margin-bottom:36px}
+      .breath-circle{width:150px;height:150px}
+      section{padding:72px 20px}
+      section h2{font-size:1.5rem}
+      .g2,.g3,.pricing,.outcomes{grid-template-columns:1fr}
+      .trust{gap:20px}
+      .magnet{padding:36px 20px;margin:0 12px}
+      .cta-row{flex-direction:column;align-items:center}
+      .science-story{padding:32px 24px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HERO: Der Besucher ATMET bevor er entscheidet ═══ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="orb o1"></div><div class="orb o2"></div>
+
+  <div class="breath-wrap">
+    <div class="breath-circle">
+      <span class="breath-text" id="btext">Einatmen</span>
+    </div>
+  </div>
+
+  <h1>Dein Nervensystem kennt den Ausweg.<br><em>CARLON bringt dich dorthin.</em></h1>
+  <p class="micro">Keine Abo-Falle · Keine Daten · Kein Bullshit</p>
+
+  <div class="cta-row">
+    <a href="#reset" class="btn">7-Tage Atem-Reset — kostenlos</a>
+    <a href="#pricing" class="btn-ghost">Preise ansehen</a>
+  </div>
+
+  <div class="scroll-down"><span>Entdecken</span><div class="scroll-line"></div></div>
+</div>
+
+<!-- ═══ TRUST BAR ═══ -->
+<div class="trust rv">
+  <span>Peer-Reviewed</span>
+  <span>Apple Watch Native</span>
+  <span>Made in Germany</span>
+  <span>Kein Tracking</span>
+  <span>DSGVO by Design</span>
+</div>
+
+<!-- ═══ SCIENCE — Trust BEFORE price ═══ -->
+<section>
+  <p class="sl rv">Was wirklich passiert</p>
+  <h2 class="rv">Kontrollierter Atem beeinflusst<br><em>messbar dein Nervensystem</em></h2>
+  <p class="lead rv">Nicht metaphorisch. In Studien mit Biomarkern und fMRI-Scans untersucht. Jedes CARLON-Preset basiert auf Peer-Reviewed-Forschung.</p>
+
+  <div class="science-story rv">
+    <blockquote>"Circular Breathwork induziert veraenderte Bewusstseinszustaende die mit Psychedelika-Erfahrungen vergleichbar sind — und zeigt Zusammenhaenge mit verbesserter Stimmung eine Woche nach der Session."</blockquote>
+    <p class="source">Ernst Strüngmann Institut Frankfurt, 2025 · Communications Psychology · Peer-Reviewed</p>
+  </div>
+
+  <div class="g2" style="margin-top:32px">
+    <div class="c rv"><span class="badge">PNAS 2014</span><h3>Tummo</h3><p>Kox et al.: Zusammenhaenge zwischen Atemtechniken und Immunmarkern. n=24, RCT. Das Protokoll das Atemarbeit in die Wissenschaft brachte.</p></div>
+    <div class="c rv d1"><span class="badge">Stanford RCT 2023</span><h3>Doppelzug</h3><p>Balban et al.: Cyclic Sighing > Meditation für Stimmung. n=108. Die stärkste Studie im Breathwork-Bereich.</p></div>
+    <div class="c rv d2"><span class="badge">Frontiers 2014</span><h3>Kohärenz</h3><p>Lehrer & Gevirtz: Bei 5.5/min synchronisieren sich Herz, Atem und Blutdruck. HRV-Maximum.</p></div>
+    <div class="c rv d3"><span class="badge">PMC 2025 RCT</span><h3>n=126</h3><p>Breathwork reduziert Anxiety signifikant (p<.001) und verbessert kognitive Performance. Trail Making Test.</p></div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ OUTCOMES — nicht Features ═══ -->
+<section>
+  <p class="sl rv">Was sich ändert</p>
+  <h2 class="rv">Keine Features.<br><em>Ergebnisse.</em></h2>
+
+  <div class="outcomes rv">
+    <div class="outcome"><span class="check">✓</span><p>Einschlafen in unter 10 Minuten — 4-7-8 Protokoll</p></div>
+    <div class="outcome"><span class="check">✓</span><p>Stress in 4 Minuten regulieren — Box Breathing + HRV</p></div>
+    <div class="outcome"><span class="check">✓</span><p>Fokus vor wichtigen Meetings — Tummo Kurzprotokoll</p></div>
+    <div class="outcome"><span class="check">✓</span><p>CO₂-Toleranz trainieren — Retention-Progression</p></div>
+    <div class="outcome"><span class="check">✓</span><p>HRV verbessern — Kohärenz bei Resonanzfrequenz</p></div>
+    <div class="outcome"><span class="check">✓</span><p>Dein Programm teilen — Coach-Presets mit Deep Link</p></div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section>
+  <p class="sl rv">Wie es funktioniert</p>
+  <h2 class="rv">Apple Watch.<br><em>Haptik. Flower of Life.</em></h2>
+  <p class="lead rv">47 Millionen simulierte Haptic-Patterns. 4-Layer Soundscapes. Sacred Geometry Visualisierung. Du brauchst nur dein Handgelenk.</p>
+
+  <div class="g2">
+    <div class="c rv"><h3>Haptik die führt</h3><p>Apple Achtsamkeit reverse-engineered und übertroffen. 4 Intensitätsstufen. Du weißt blind in welcher Phase du bist.</p></div>
+    <div class="c rv d1"><h3>Sound der trägt</h3><p>Schumann-Drone · Klangschale mit Chorus-Reverb · Atemtextur · Phasen-Marker. Jeder Layer einzeln steuerbar.</p></div>
+    <div class="c rv d2"><h3>Geometrie die atmet</h3><p>Flower of Life expandiert und kontrahiert mit deinem Atem. Fibonacci × Schumann-Resonanz. Solfeggio-Farben.</p></div>
+    <div class="c rv d3"><h3>Null Daten raus</h3><p>Keine Accounts. Keine Analyse. Kein Server. Kein Tracking. Alles bleibt auf deinem Gerät. Versprochen.</p></div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ PRICING ═══ -->
+<section id="pricing">
+  <p class="sl rv">Preise</p>
+  <h2 class="rv">Einmal kaufen. <em>Fuer immer atmen.</em></h2>
+  <p class="lead rv">Kein Abo. Kein Trick. Ein Preis. Alles drin. Fuer immer.</p>
+
+  <div class="pricing">
+    <div class="pc feat rv">
+      <h3>CARLON</h3>
+      <div class="price">€9,99</div>
+      <div class="sub-price">Einmalig · fuer immer · kein Abo</div>
+      <ul>
+        <li>Alle 16 evidenzbasierten Atemtechniken</li>
+        <li>Weltklasse Apple Watch Haptik</li>
+        <li>Flower of Life + Sound Engine</li>
+        <li>Breath Composer — eigene Presets</li>
+        <li>Analytics, HRV-Insights, Export</li>
+        <li>Alle Farbthemen + zukuenftige Updates</li>
+      </ul>
+    </div>
+    <div class="pc rv d2">
+      <h3>Coach</h3>
+      <div class="price">€9,99<span>/Monat</span></div>
+      <div class="sub-price">oder €79,99/Jahr</div>
+      <ul>
+        <li>Alles aus CARLON</li>
+        <li>Presets mit deinem Branding</li>
+        <li>Deep Links zum Teilen</li>
+        <li>Coach-Profilkarte</li>
+        <li>Marketplace Listing</li>
+        <li>Priority Support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ COACHES ═══ -->
+<section>
+  <p class="sl rv">Fuer Coaches</p>
+  <h2 class="rv">Dein Atem. <em>Deine Marke.</em></h2>
+  <p class="lead rv">Erstelle Presets. Brande sie. Teile sie per Deep Link mit deinen Schuelern. Ein Tap — dein Programm auf ihrer Watch.</p>
+  <div class="g3">
+    <div class="c rv" style="text-align:center"><h3>Erstellen</h3><p>Breath Composer: Beliebige Phasen, Timing, Runden. Dein Programm, dein Name, dein Logo.</p></div>
+    <div class="c rv d1" style="text-align:center"><h3>Teilen</h3><p>Ein Deep Link. 3 Sekunden. Dein Preset landet auf der Watch deiner Schueler.</p></div>
+    <div class="c rv d2" style="text-align:center"><span class="badge">Coming 2026</span><h3>Verdienen</h3><p>Marketplace: Tausende Breathworker entdecken dein Programm. Du verdienst an jedem Verkauf.</p></div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ CORPORATE ═══ -->
+<section>
+  <p class="sl rv">Business</p>
+  <h2 class="rv">Vitalkultur für<br><em>dein Unternehmen</em></h2>
+  <p class="lead rv">Evidenzbasierte Atemübungen für Teams. DSGVO-konform. Kein Tracking. Keine IT-Integration nötig — Link senden, fertig.</p>
+  <table class="ct rv">
+    <tr><th>Paket</th><th>Team</th><th>Preis/Jahr</th><th>Inkludiert</th></tr>
+    <tr><td>Starter</td><td>bis 50</td><td class="pc-col">€3.500</td><td>App-Zugänge · Onboarding · Monatlicher Report</td></tr>
+    <tr><td>Standard</td><td>bis 200</td><td class="pc-col">€9.900</td><td>+ Branded Onboarding · Live-Sessions · HR-Dashboard</td></tr>
+    <tr><td>Enterprise</td><td>200+</td><td class="pc-col">ab €19.900</td><td>+ White-Label · Dedizierter Coach-Pool · API</td></tr>
+  </table>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ LEAD MAGNET ═══ -->
+<section id="reset">
+  <div class="magnet rv">
+    <p class="sl">Kostenlos</p>
+    <h2>7-Tage Atem-Reset</h2>
+    <p class="lead">7 Tage · 7 Techniken · je 4 Minuten. Von Tummo bis 4-7-8. Dein Nervensystem sagt danach Danke.</p>
+    <form action="https://formspree.io/f/DEIN_FORM_ID" method="POST">
+      <input type="email" name="email" placeholder="deine@email.de" required>
+      <select name="interest">
+        <option value="user">Ich will den Atem-Reset</option>
+        <option value="coach">Ich bin Breathwork Coach</option>
+        <option value="studio">Ich betreibe ein Studio</option>
+        <option value="corporate">Corporate Wellness</option>
+      </select>
+      <button type="submit" class="btn" style="width:100%">Atem-Reset starten →</button>
+    </form>
+    <p class="fine">Kein Spam. Kein Tracking. Nur Atemübungen. Jederzeit abmelden.</p>
+  </div>
+</section>
+
+<!-- ═══ LOGO ═══ -->
+<div class="logo-s">
+  <img src="vitalkultur-logo.png" alt="Vitalkultur — eingetragene Marke (DPMA)">
+  <p>DPMA eingetragene Wort-Bild-Marke · Made in Germany</p>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <img src="vitalkultur-logo.png" alt="Vitalkultur" style="height:28px;opacity:.5;margin-bottom:8px" loading="lazy">
+  <p style="font-size:.7rem;letter-spacing:.25em;opacity:.35;margin-bottom:12px">BODY · SOUL · FOOD</p>
+  <p>Made in Germany · Keine Daten · Kein Tracking · Kein Bullshit</p>
+  <p style="margin-top:12px;font-size:.7rem;opacity:.35;max-width:500px;margin-left:auto;margin-right:auto">CARLON ist ein Wellness-Produkt und kein Medizinprodukt. Die App ersetzt keine aerztliche Beratung und ist nicht zur Diagnose, Behandlung oder Heilung von Krankheiten bestimmt.</p>
+  <nav>
+    <a href="/privacy">Datenschutz</a>
+    <a href="/terms">Nutzungsbedingungen</a>
+    <a href="/support">Support</a>
+    <a href="https://instagram.com/vitalkultur" target="_blank" rel="noopener">Instagram</a>
+    <a href="mailto:jan@vitalkultur.com">Kontakt</a>
+  </nav>
+  <p style="margin-top:20px">&copy; 2026 Jan Rohwedder · Vitalkultur · Gernsbach</p>
+</footer>
+
+<!-- ═══ JS ═══ -->
+<script>
+// Scroll Reveal
+const o=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -32px 0px'});
+document.querySelectorAll('.rv').forEach(e=>o.observe(e));
+
+// Breath Circle Text
+const bt=document.getElementById('btext');
+const phases=[{text:'Einatmen',dur:4000},{text:'Halten',dur:7000},{text:'Ausatmen',dur:8000}];
+let pi=0;
+function tick(){bt.textContent=phases[pi].text;bt.style.opacity=pi===1?'.35':'1';setTimeout(()=>{pi=(pi+1)%3;tick()},phases[pi].dur)}
+tick();
+</script>
+
+</body>
+</html>
