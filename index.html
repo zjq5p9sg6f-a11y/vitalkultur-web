@@ -423,22 +423,35 @@
      * Starts muted — user activates consciously.
      * Schumann-timed fade-in (127.71ms × F(8) = 2.68s).
      */
+    /*
+     * ═══ TOP BAR — Vitalkultur brand + Audio player ═══
+     * Fixed top. Dachmarke links, Player rechts.
+     * Glassmorphism — dezent, nie im Weg.
+     */
+    .top-bar{
+      position:fixed;top:0;left:0;right:0;z-index:89; /* F(11) */
+      display:flex;align-items:center;justify-content:space-between;
+      padding:8px 21px; /* F(6), F(8) */
+      background:rgba(2,2,2,.75);
+      backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px); /* F(7) */
+      border-bottom:1px solid rgba(178,148,76,.06);
+    }
+    .top-bar-brand{
+      font-size:10px;color:var(--gold);opacity:.45;
+      letter-spacing:.2em;text-transform:uppercase;
+      text-decoration:none;transition:opacity .382s;
+    }
+    .top-bar-brand:hover{opacity:.8;color:var(--gold)}
     .audio-ctrl{
-      position:fixed;bottom:21px;right:21px;z-index:89; /* F(8), F(11) */
       display:flex;align-items:center;gap:8px; /* F(6) */
-      background:rgba(5,5,5,.85);
-      backdrop-filter:blur(13px); /* F(7) */
-      border:1px solid rgba(178,148,76,.12);
-      border-radius:21px; /* F(8) */
-      padding:8px 13px; /* F(6), F(7) */
       cursor:pointer;
       transition:all .382s ease; /* φ⁻¹ */
       opacity:.55;
-      max-width:calc(100vw - 42px); /* prevent overflow on mobile */
+      border:none;background:none;padding:3px 0;
     }
-    .audio-ctrl:hover{opacity:1;border-color:rgba(178,148,76,.3);box-shadow:0 0 21px rgba(178,148,76,.08)}
-    .audio-ctrl.playing{opacity:.8;border-color:rgba(85,185,130,.25)}
-    .audio-ctrl svg{width:21px;height:21px;flex-shrink:0} /* F(8) */
+    .audio-ctrl:hover{opacity:1}
+    .audio-ctrl.playing{opacity:.8}
+    .audio-ctrl svg{width:16px;height:16px;flex-shrink:0}
     .audio-ctrl .bars{display:flex;align-items:end;gap:2px;height:13px} /* F(3), F(7) */
     .audio-ctrl .bars span{width:2px;background:var(--gold);border-radius:1px;transition:height .382s ease} /* F(3) */
     .audio-ctrl .bars span:nth-child(1){height:5px} /* F(5) */
@@ -464,7 +477,7 @@
       .flower-ci{width:auto}
       .flower-ci .ci-name{font-size:26px} /* φ¹ on small screens */
       .audio-label{display:none} /* no hover on touch — hide label */
-      .audio-ctrl{right:13px;bottom:13px} /* F(7) — tighter on mobile */
+      .top-bar{padding:5px 13px} /* F(5), F(7) — tighter on mobile */
       .sect{padding:55px 21px}
       .sci-grid{grid-template-columns:1fr}
       .feat-list{columns:1}
@@ -509,6 +522,18 @@
   ║                                                               ║
   ╚═══════════════════════════════════════════════════════════════╝
 -->
+
+<!-- ═══ TOP BAR — Vitalkultur + Audio ═══ -->
+<div class="top-bar">
+  <a href="/" class="top-bar-brand">Vitalkultur</a>
+  <div class="audio-ctrl" id="audioCtrl" role="button" aria-label="Toggle ambient music" tabindex="0">
+    <div class="bars"><span></span><span></span><span></span><span></span><span></span></div>
+    <span class="audio-label" id="audioLabel">World Peace in Us · Soulonaut</span>
+    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polygon id="audioIcon" points="6,4 12,8 6,12" fill="rgba(178,148,76,.6)"/>
+    </svg>
+  </div>
+</div>
 
 <!-- ═══ SACRED GEOMETRY BACKGROUND FIELD ═══
      6 patterns: Seed of Life, Metatron's Cube, Vesica Piscis, Flower of Life, Chladni, Golden Spiral
@@ -787,15 +812,6 @@
   <p class="disclaimer">CARLON is a wellness product, not a medical device. It is not intended to diagnose, treat, cure, or prevent any disease. Not a substitute for medical advice.</p>
 </footer>
 
-<!-- ═══ AUDIO PLAYER ═══ -->
-<div class="audio-ctrl" id="audioCtrl" role="button" aria-label="Toggle ambient music" tabindex="0">
-  <svg viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <circle cx="10.5" cy="10.5" r="9.5" stroke="rgba(178,148,76,.4)" stroke-width=".8" fill="none"/>
-    <polygon id="audioIcon" points="8,6 15,10.5 8,15" fill="rgba(178,148,76,.7)"/>
-  </svg>
-  <div class="bars"><span></span><span></span><span></span><span></span><span></span></div>
-  <span class="audio-label" id="audioLabel">World Peace in Us · Soulonaut</span>
-</div>
 <audio id="ambientAudio0" src="world-peace-in-us.mp3" preload="none"></audio>
 <audio id="ambientAudio1" src="beyond-the-sun.mp3" preload="none"></audio>
 
