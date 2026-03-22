@@ -46,11 +46,11 @@
     @keyframes ambientPulse{0%,100%{opacity:.4;transform:translateX(-50%) scale(.9)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}}
 
     /* Flower of Life — Canvas rendered */
-    .flower-container{position:relative;width:240px;height:240px;margin-bottom:34px}
+    .flower-container{position:relative;width:280px;height:280px;margin-bottom:34px}
     #flowerCanvas{width:100%;height:100%}
-    .flower-brand{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
-    .flower-brand .name{font-size:18px;font-weight:300;letter-spacing:.35em;color:var(--t);opacity:.9}
-    .flower-brand .claim{font-size:9px;font-weight:300;letter-spacing:.2em;color:var(--g);opacity:.5;margin-top:2px;text-transform:uppercase}
+    .flower-brand{position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;width:300px}
+    .flower-brand .name{font-size:28px;font-weight:200;letter-spacing:.4em;color:var(--t);opacity:.9}
+    .flower-brand .claim{font-size:11px;font-weight:300;letter-spacing:.2em;color:var(--g);opacity:.45;margin-top:3px;text-transform:uppercase}
 
     .hero h1{font-size:28px;font-weight:200;text-align:center;letter-spacing:.02em;line-height:1.5;max-width:420px;margin-top:13px}
     .hero h1 em{font-style:normal;color:var(--g)}
@@ -92,7 +92,7 @@
     .coach-box p{font-size:14px;color:var(--t2);margin-top:8px;max-width:380px;margin-left:auto;margin-right:auto}
 
     footer{text-align:center;padding:89px 21px 55px}
-    footer img{height:34px;opacity:.55;margin-bottom:5px}
+    footer img{height:48px;opacity:.6;margin-bottom:8px}
     footer .claim{font-size:10px;letter-spacing:.3em;opacity:.2;text-transform:uppercase;margin-bottom:28px}
     footer nav{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:21px}
     footer nav a{font-size:11px;color:var(--t3);padding:4px 0}
@@ -101,8 +101,8 @@
     .impressum{font-size:10px;opacity:.12;margin-top:13px;line-height:1.6}
 
     @media(max-width:430px){
-      .flower-container{width:200px;height:200px}
-      .flower-brand .name{font-size:15px}
+      .flower-container{width:220px;height:220px}
+      .flower-brand .name{font-size:22px}
       .hero h1{font-size:24px}
       section{padding:55px 21px}
       section h2{font-size:26px}
@@ -114,8 +114,8 @@
       .btn{padding:16px 34px;min-height:48px;font-size:15px}
     }
     @media(max-width:375px){
-      .flower-container{width:170px;height:170px}
-      .flower-brand .name{font-size:13px}
+      .flower-container{width:180px;height:180px}
+      .flower-brand .name{font-size:18px}
       .hero h1{font-size:21px}
       section h2{font-size:22px}
     }
@@ -129,15 +129,15 @@
 <!-- ═══ HERO ═══ -->
 <div class="hero">
   <div class="flower-container">
-    <canvas id="flowerCanvas" width="480" height="480"></canvas>
+    <canvas id="flowerCanvas" width="560" height="560"></canvas>
     <div class="flower-brand">
       <div class="name">CARLON</div>
       <div class="claim">Breathe Beyond</div>
     </div>
   </div>
 
-  <h1>Good to have you <em>here.</em></h1>
-  <p class="sub">16 breathing techniques · Apple Watch · Buy once</p>
+  <h1 style="margin-top:55px">Good to have you <em>here.</em></h1>
+  <p class="sub">16 breathing techniques · Apple Watch · No subscription</p>
 
   <div>
     <a href="#price" class="btn btn-p">Discover</a>
@@ -149,22 +149,22 @@
 <section>
   <p class="label rv">How it started</p>
   <h2 class="rv">An app that began as<br><em>a private experiment.</em></h2>
-  <p class="lead rv">CARLON was never meant to be a product. It started as a personal experiment — because we couldn't find a breathing app that truly convinced us. It was born during the most intense time of our lives: when our son came into the world. Our midwife showed us dozens of breathing techniques for the birth. We were fascinated. We wanted them on our Watch. Eyes closed, just feel.</p>
-  <p class="lead rv" style="margin-top:13px">The experiment became a passion project. Friends tried the app and said: <em>You need to share this.</em> So here we are.</p>
-  <p class="lead rv" style="margin-top:13px;opacity:.35;font-size:14px">The name? Our son is called Carlon — the free, beloved man. Carl means "the free one", and we see a freedom particle in every syllable. A name for a person who taught us how to breathe again.</p>
+  <p class="lead rv">CARLON was never meant to be a product. We're breathing enthusiasts who couldn't find an app that felt right — so we built one ourselves. What started as a private experiment quickly became a passion project. When friends tried it, they said: <em>You need to share this.</em></p>
+  <p class="lead rv" style="margin-top:13px">So here we are. A small team, a big idea, and an app named after our son.</p>
+  <p class="lead rv" style="margin-top:13px;opacity:.35;font-size:14px">Carlon — from Germanic <em>Karl</em>, meaning "the free man." A name that carries freedom in every syllable.</p>
 
   <div class="cards">
     <div class="card rv d1">
       <h3>Close your eyes</h3>
-      <p>Your wrist guides you. Inhale feels like rising, exhale like descending. You don't need to look — just feel. That's how we imagined it.</p>
+      <p>Your wrist does the guiding. Inhale rises, exhale descends. No screen needed — just close your eyes and breathe.</p>
     </div>
     <div class="card rv d2">
       <h3>Flower of Life</h3>
       <p>Sacred geometry breathes with you. Golden proportions, natural timing. If an app is meant to calm you down, it should be beautiful too.</p>
     </div>
     <div class="card rv d3">
-      <h3>Your data stays with you</h3>
-      <p>No account. No tracking. No server. Made in Germany. We make money with a good app — not with your data. Simple as that.</p>
+      <h3>Your data stays yours</h3>
+      <p>No account. No tracking. No server. We make money with a good app — not with your data.</p>
     </div>
   </div>
 </section>
@@ -174,7 +174,7 @@
 <section>
   <p class="label rv">Foundation</p>
   <h2 class="rv">Science,<br><em>not guesswork.</em></h2>
-  <p class="lead rv">Each of our 16 techniques has a scientific foundation. We don't promise miracles — we give you tools that work.</p>
+  <p class="lead rv">Every technique in CARLON is rooted in peer-reviewed research. No miracles promised — just tools that work.</p>
 
   <div class="studies">
     <div class="study rv d1">
@@ -232,10 +232,10 @@
 <section>
   <p class="label rv">Behind the scenes</p>
   <h2 class="rv">Built with<br><em>obsession.</em></h2>
-  <p class="lead rv">When Apple introduced the new haptic capabilities of the Watch, we knew: this has to feel like breathing. We spent months deep in the haptic engine — every inhale impulse rises, every exhale descends. The double-tap gesture on Apple Watch Ultra ends a breath hold without looking. Everything intentional, everything felt.</p>
-  <p class="lead rv" style="margin-top:13px">We deliberately built in many ways to customize — your own presets, color themes, soundscapes, haptic levels. Maybe not everything is perfect yet. But we're working continuously to make every detail better. We're especially curious about your haptic feedback — tell us how it feels.</p>
-  <p class="lead rv" style="margin-top:13px">And this is just the beginning. New techniques, deeper analytics, coach marketplace, things we can't reveal yet. The quality of the app shows you how serious we are.</p>
-  <p class="lead rv" style="margin-top:13px">We're excited about collaborations with inspiring people — coaches, therapists, yogis, athletes. Got an idea? <a href="mailto:jan@vitalkultur.com">jan@vitalkultur.com</a></p>
+  <p class="lead rv">The new haptic capabilities of the Apple Watch blew us away. We knew immediately: this has to feel like breathing. So we dove deep — every inhale impulse rises through your wrist, every exhale descends. Double-tap on the Ultra ends a breath hold without looking. It just works.</p>
+  <p class="lead rv" style="margin-top:13px">We built in lots of room to make it yours — custom presets, color themes, soundscapes, haptic intensity. Not everything is perfect yet, and we know that. But we're improving every detail, and we'd love to hear how the haptics feel for you.</p>
+  <p class="lead rv" style="margin-top:13px">This is just the beginning. There's much more coming — and the quality of what's already here shows you how serious we are about this.</p>
+  <p class="lead rv" style="margin-top:13px">We love meeting inspiring people — coaches, therapists, yogis, athletes. If you have an idea, let's talk: <a href="mailto:jan@vitalkultur.com">jan@vitalkultur.com</a></p>
 </section>
 
 <!-- ═══ COMMUNITY ═══ -->
@@ -243,7 +243,7 @@
 <section style="text-align:center">
   <p class="label rv">Together</p>
   <h2 class="rv">We're building CARLON<br><em>with you.</em></h2>
-  <p class="lead rv" style="margin:0 auto">This isn't a finished product behind glass. CARLON grows — and your feedback shapes the direction. Every feature idea, every bug report, every message makes us better. If you love CARLON, share it. Together we can build something special.</p>
+  <p class="lead rv" style="margin:0 auto">This isn't a finished product behind glass. CARLON grows — and your feedback shapes where we go next. If you love it, share it. Together we'll build something extraordinary.</p>
   <div style="margin-top:34px">
     <a href="mailto:jan@vitalkultur.com" class="btn btn-g">Write to us</a>
   </div>
@@ -260,9 +260,16 @@
     <a href="/support.html">Support</a>
     <a href="mailto:jan@vitalkultur.com">Contact</a>
   </nav>
-  <p>&copy; 2026 Vitalkultur · Jan Rohwedder · Made in Germany</p>
+  <p>&copy; 2026 Vitalkultur · Jan Rohwedder</p>
   <p class="disclaimer">CARLON is a wellness product, not a medical device. It is not intended to diagnose, treat, cure, or prevent any disease. Not a substitute for medical advice.</p>
-  <p class="impressum">Jan Rohwedder · Kapellenstra&szlig;e 9 · 76473 Iffezheim · Germany</p>
+  <details style="margin-top:21px;font-size:10px;opacity:.2;cursor:pointer">
+    <summary style="list-style:none;text-align:center">Legal Notice (Impressum gem. &sect; 5 DDG)</summary>
+    <div style="margin-top:8px;text-align:center;line-height:1.8">
+      <p>Jan Rohwedder<br>Kapellenstra&szlig;e 9<br>76473 Iffezheim, Germany</p>
+      <p>Contact: <a href="mailto:jan@vitalkultur.com" style="color:inherit">jan@vitalkultur.com</a></p>
+      <p>EU Online Dispute Resolution: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener" style="color:inherit">ec.europa.eu/consumers/odr</a></p>
+    </div>
+  </details>
 </footer>
 
 <script>
