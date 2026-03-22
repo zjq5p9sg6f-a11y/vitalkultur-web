@@ -65,7 +65,7 @@
       backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
     }
 
-    .flower-wrap{width:360px;height:360px;position:relative;margin-bottom:55px}
+    .flower-wrap{width:clamp(300px,50vw,420px);height:clamp(300px,50vw,420px);position:relative;margin-bottom:55px}
     #flowerCanvas{width:100%;height:100%}
 
     .hero-title{
@@ -74,9 +74,10 @@
     }
     .hero-title em{font-style:normal;color:var(--gold-bright)}
     .hero-title .brand{
-      display:block;font-size:clamp(12px,2vw,14px);font-weight:400;
-      letter-spacing:.5em;color:var(--gold);opacity:.5;
-      margin-bottom:13px;text-transform:uppercase;
+      display:block;font-size:clamp(22px,4vw,34px);font-weight:200;
+      letter-spacing:.55em;color:var(--gold-bright);opacity:.8;
+      margin-bottom:21px;text-transform:uppercase;
+      text-shadow:0 0 60px rgba(178,148,76,.15);
     }
 
     .hero-sub{
@@ -131,6 +132,21 @@
       mix-blend-mode:screen;animation:orbFloat 20s ease-in-out infinite;
     }
     @keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(15px,-10px)}}
+
+    /* Sacred geometry watermark textures — hidden-in-plain-sight patterns */
+    .sg-watermark{
+      position:absolute;pointer-events:none;opacity:.018;
+      animation:sgDrift 45s ease-in-out infinite;
+    }
+    .sg-watermark svg{width:100%;height:100%}
+    @keyframes sgDrift{0%,100%{transform:rotate(0deg)}50%{transform:rotate(3deg)}}
+
+    /* Fibonacci spiral easter egg — discoverable on hover */
+    .sg-fibonacci{
+      position:absolute;pointer-events:none;opacity:.012;
+      transition:opacity 2s;
+    }
+    .sect:hover .sg-fibonacci{opacity:.03}
 
     /* ═══ CARDS ═══ */
     .cards{display:grid;gap:13px;margin-top:34px}
@@ -287,10 +303,18 @@
 
 <div class="sect" id="experience">
   <div class="atmos"><div class="atmos-orb" style="width:300px;height:300px;top:-50px;right:-100px;background:rgba(178,148,76,.015)"></div></div>
+  <!-- Metatron's Cube watermark — discoverable -->
+  <div class="sg-watermark" style="width:500px;height:500px;top:-80px;right:-160px">
+    <svg viewBox="0 0 400 400" fill="none" stroke="rgba(178,148,76,1)" stroke-width=".4">
+      <circle cx="200" cy="200" r="80"/><circle cx="200" cy="120" r="80"/><circle cx="269" cy="160" r="80"/><circle cx="269" cy="240" r="80"/><circle cx="200" cy="280" r="80"/><circle cx="131" cy="240" r="80"/><circle cx="131" cy="160" r="80"/>
+      <line x1="200" y1="120" x2="269" y2="160"/><line x1="269" y1="160" x2="269" y2="240"/><line x1="269" y1="240" x2="200" y2="280"/><line x1="200" y1="280" x2="131" y2="240"/><line x1="131" y1="240" x2="131" y2="160"/><line x1="131" y1="160" x2="200" y2="120"/>
+      <line x1="200" y1="120" x2="269" y2="240"/><line x1="269" y1="160" x2="131" y2="240"/><line x1="269" y1="240" x2="131" y2="160"/><line x1="200" y1="280" x2="131" y2="160"/><line x1="200" y1="280" x2="269" y2="160"/><line x1="200" y1="120" x2="131" y2="240"/>
+    </svg>
+  </div>
   <p class="label rv">Origin</p>
   <h2 class="rv">Born from<br><em>our breath.</em></h2>
-  <p class="lead rv">When our son Carlon was born on a January night in 2026, everything changed. The name means <em>the free one</em> — and that's exactly what breathwork gives us. As a family, we breathe together. We use our Apple Watches for everything — tracking Carina's yoga, my cold exposure, and lately, counting Carlon's little sighs.</p>
-  <p class="lead rv d1" style="margin-top:13px">We couldn't find an app that felt the way breathing actually feels — sacred, not clinical. So between night feeds and first smiles, we built one. The result felt so different from anything on the market that keeping it private stopped making sense.</p>
+  <p class="lead rv">When our son was born on a January night in 2026, we named him Carlon — <em>the free one</em>. We've always been into breathwork, both of us. Between night feeds and first smiles, we reached for it more than ever. Not as a technique — as a way to stay grounded together.</p>
+  <p class="lead rv d1" style="margin-top:13px">We couldn't find an app that felt the way breathing actually feels — sacred, not clinical. So we built one. What started as a private experiment became something we couldn't keep to ourselves.</p>
   <p class="lead rv d2" style="margin-top:13px;opacity:.25;font-size:14px">80 million haptic simulations. Sacred geometry as operating system. Named after our son — because freedom is in every breath.</p>
 </div>
 
@@ -299,6 +323,13 @@
 
 <div class="sect">
   <div class="atmos"><div class="atmos-orb" style="width:250px;height:250px;bottom:-30px;left:-80px;background:rgba(85,185,130,.012)"></div></div>
+  <!-- Golden Spiral watermark — the hidden φ -->
+  <div class="sg-watermark" style="width:400px;height:400px;bottom:-100px;left:-120px;animation-direction:reverse">
+    <svg viewBox="0 0 400 400" fill="none" stroke="rgba(85,185,130,1)" stroke-width=".3">
+      <path d="M200 200 A80 80 0 0 1 280 200 A130 130 0 0 1 200 330 A210 210 0 0 1 -10 200 A340 340 0 0 1 200 -140"/>
+      <circle cx="200" cy="200" r="80" stroke-width=".2"/>
+    </svg>
+  </div>
   <p class="label rv">Experience</p>
   <h2 class="rv">Close your eyes.<br><em>Your wrist knows.</em></h2>
   <p class="lead rv">CARLON doesn't need your attention. It lives on your wrist. Every inhale rises through haptics. Every exhale descends. Eyes closed, hands free, fully present.</p>
@@ -307,7 +338,7 @@
     <div class="card rv d1">
       <p class="tag">Apple Watch</p>
       <h3>World-class haptics</h3>
-      <p>80 million configurations tested on Apple's Taptic Engine. Every pulse follows the golden ratio. Your nervous system recognizes the pattern before your mind does.</p>
+      <p>80 million haptic configurations tested. Every pulse follows the golden ratio. Your nervous system recognizes the pattern before your mind does.</p>
     </div>
     <div class="card card--green rv d2">
       <p class="tag">Sacred Geometry</p>
@@ -326,6 +357,13 @@
 <div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><circle cx="75" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="105" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="90" cy="20" r="9" stroke="rgba(178,148,76,.35)" stroke-width=".3"/><line x1="10" y1="20" x2="60" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/><line x1="120" y1="20" x2="170" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/></svg></div>
 
 <div class="sect" id="science">
+  <!-- Vesica Piscis watermark — the love geometry -->
+  <div class="sg-watermark" style="width:350px;height:350px;top:-60px;right:-100px;opacity:.015">
+    <svg viewBox="0 0 300 300" fill="none" stroke="rgba(178,148,76,1)" stroke-width=".5">
+      <circle cx="120" cy="150" r="90"/><circle cx="180" cy="150" r="90"/>
+      <ellipse cx="150" cy="150" rx="32" ry="78" stroke-width=".3" opacity=".5"/>
+    </svg>
+  </div>
   <p class="label rv">Foundation</p>
   <h2 class="rv">Every technique is<br><em>peer-reviewed.</em></h2>
   <p class="lead rv">16 protocols. Each grounded in published research. No miracles — just physiology, done right.</p>
@@ -386,6 +424,16 @@
 <div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><circle cx="75" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="105" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="90" cy="20" r="9" stroke="rgba(178,148,76,.35)" stroke-width=".3"/><line x1="10" y1="20" x2="60" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/><line x1="120" y1="20" x2="170" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/></svg></div>
 
 <div class="sect">
+  <!-- Platonic solid hint — icosahedron wireframe -->
+  <div class="sg-watermark" style="width:300px;height:300px;bottom:-80px;right:-80px;opacity:.014">
+    <svg viewBox="0 0 200 200" fill="none" stroke="rgba(178,148,76,1)" stroke-width=".3">
+      <polygon points="100,10 190,75 160,170 40,170 10,75"/>
+      <polygon points="100,10 40,170 190,75"/>
+      <polygon points="100,10 160,170 10,75"/>
+      <polygon points="190,75 40,170 100,190"/>
+      <polygon points="10,75 160,170 100,190"/>
+    </svg>
+  </div>
   <p class="label rv">Craft</p>
   <h2 class="rv">Every detail is<br><em>intentional.</em></h2>
 
@@ -518,12 +566,14 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
     // Fade as user scrolls
     const alpha=Math.max(.008,.025*(1-progress*.6));
 
-    // Draw large partial patterns
+    // Sacred Geometry patterns — layered, varied, discoverable
     const patterns=[
-      {x:W()*.85,y:H()*.15,r:80,rot:scroll*.0002},
-      {x:W()*.1,y:H()*.75,r:65,rot:-scroll*.00015},
-      {x:W()*.7,y:H()*.65,r:50,rot:scroll*.00025},
-      {x:W()*.25,y:H()*.3,r:55,rot:-scroll*.0001},
+      {x:W()*.85,y:H()*.15,r:90,rot:scroll*.0002,type:'seed'},
+      {x:W()*.08,y:H()*.7,r:70,rot:-scroll*.00015,type:'seed'},
+      {x:W()*.72,y:H()*.6,r:55,rot:scroll*.00025,type:'vesica'},
+      {x:W()*.22,y:H()*.25,r:60,rot:-scroll*.0001,type:'metatron'},
+      {x:W()*.5,y:H()*.45,r:40,rot:scroll*.00012,type:'spiral'},
+      {x:W()*.92,y:H()*.85,r:50,rot:-scroll*.0002,type:'seed'},
     ];
 
     patterns.forEach(p=>{
@@ -532,15 +582,47 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
       ctx.rotate(p.rot);
       ctx.strokeStyle=`rgba(178,148,76,${alpha})`;
       ctx.lineWidth=.4;
-      // Seed of Life
-      ctx.beginPath();ctx.arc(0,0,p.r,0,Math.PI*2);ctx.stroke();
-      for(let i=0;i<6;i++){
-        const a=i*60*Math.PI/180;
-        ctx.beginPath();ctx.arc(Math.cos(a)*p.r,Math.sin(a)*p.r,p.r,0,Math.PI*2);ctx.stroke();
+
+      if(p.type==='seed'){
+        // Seed of Life — 7 circles
+        ctx.beginPath();ctx.arc(0,0,p.r,0,Math.PI*2);ctx.stroke();
+        for(let i=0;i<6;i++){
+          const a=i*60*Math.PI/180;
+          ctx.beginPath();ctx.arc(Math.cos(a)*p.r,Math.sin(a)*p.r,p.r,0,Math.PI*2);ctx.stroke();
+        }
+        ctx.strokeStyle=`rgba(178,148,76,${alpha*.3})`;
+        ctx.beginPath();ctx.arc(0,0,p.r*2,0,Math.PI*2);ctx.stroke();
+      } else if(p.type==='vesica'){
+        // Vesica Piscis — two overlapping circles
+        ctx.beginPath();ctx.arc(-p.r*.5,0,p.r,0,Math.PI*2);ctx.stroke();
+        ctx.beginPath();ctx.arc(p.r*.5,0,p.r,0,Math.PI*2);ctx.stroke();
+        ctx.strokeStyle=`rgba(178,148,76,${alpha*.5})`;ctx.lineWidth=.3;
+        ctx.beginPath();ctx.ellipse(0,0,p.r*.29,p.r*.87,0,0,Math.PI*2);ctx.stroke();
+      } else if(p.type==='metatron'){
+        // Metatron's Cube — hexagonal + connecting lines
+        const pts=[];
+        for(let i=0;i<6;i++){
+          const a=i*60*Math.PI/180;
+          pts.push({x:Math.cos(a)*p.r,y:Math.sin(a)*p.r});
+          ctx.beginPath();ctx.arc(Math.cos(a)*p.r,Math.sin(a)*p.r,p.r*.5,0,Math.PI*2);ctx.stroke();
+        }
+        ctx.beginPath();ctx.arc(0,0,p.r*.5,0,Math.PI*2);ctx.stroke();
+        ctx.strokeStyle=`rgba(178,148,76,${alpha*.4})`;ctx.lineWidth=.2;
+        for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+          ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();
+        }
+      } else if(p.type==='spiral'){
+        // Golden Spiral — φ-based arcs (easter egg!)
+        ctx.strokeStyle=`rgba(178,148,76,${alpha*.7})`;ctx.lineWidth=.3;
+        let sr=p.r*.15,sa=0;
+        ctx.beginPath();
+        for(let s=0;s<20;s++){
+          const x=Math.cos(sa)*sr,y=Math.sin(sa)*sr;
+          s===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+          sa+=.3;sr*=1.05;
+        }
+        ctx.stroke();
       }
-      // Bounding
-      ctx.strokeStyle=`rgba(178,148,76,${alpha*.4})`;
-      ctx.beginPath();ctx.arc(0,0,p.r*2,0,Math.PI*2);ctx.stroke();
       ctx.restore();
     });
 
@@ -613,16 +695,17 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
     if(phase>=1){phase=0;expanding=!expanding}
     const t=expanding?phase:1-phase;
     const ease=.5-.5*Math.cos(t*Math.PI);
-    const sp=.35+ease*.65,bv=.25+ease*.75;
+    const sp=.3+ease*.7,bv=.2+ease*.8;
     beam+=dt*.0002;
 
     ctx.clearRect(0,0,W,H);
 
-    // L1: Warm ambient — sage green core fading to gold halo
-    const ag=ctx.createRadialGradient(cx,cy,0,cx,cy,R*4*sp);
-    ag.addColorStop(0,`rgba(85,185,130,${bv*.08})`);
-    ag.addColorStop(.35,`rgba(85,185,130,${bv*.03})`);
-    ag.addColorStop(.6,`rgba(178,148,76,${bv*.015})`);
+    // L1: Rich ambient — layered depth
+    const ag=ctx.createRadialGradient(cx,cy,0,cx,cy,R*4.5*sp);
+    ag.addColorStop(0,`rgba(85,185,130,${bv*.12})`);
+    ag.addColorStop(.25,`rgba(85,185,130,${bv*.05})`);
+    ag.addColorStop(.5,`rgba(120,170,130,${bv*.02})`);
+    ag.addColorStop(.7,`rgba(178,148,76,${bv*.012})`);
     ag.addColorStop(1,'transparent');
     ctx.fillStyle=ag;ctx.fillRect(0,0,W,H);
 
@@ -630,16 +713,17 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
     ctx.save();ctx.globalCompositeOperation='screen';
     for(let b=0;b<3;b++){
       const ba=beam+b*Math.PI*2/3;
-      const bl=R*3.5*sp;
+      const bl=R*4*sp;
       const bg=ctx.createLinearGradient(cx,cy,cx+Math.cos(ba)*bl,cy+Math.sin(ba)*bl);
-      const bi=bv*.015*(.4+.6*Math.sin(el*.3+b*2));
-      bg.addColorStop(0,`rgba(178,148,76,${bi*1.5})`);
-      bg.addColorStop(.15,`rgba(85,185,130,${bi})`);
+      const bi=bv*.02*(.3+.7*Math.sin(el*.25+b*2.1));
+      bg.addColorStop(0,`rgba(178,148,76,${bi*1.8})`);
+      bg.addColorStop(.1,`rgba(85,185,130,${bi*1.2})`);
+      bg.addColorStop(.4,`rgba(85,185,130,${bi*.3})`);
       bg.addColorStop(1,'transparent');
       ctx.fillStyle=bg;ctx.beginPath();
       ctx.moveTo(cx,cy);
-      ctx.lineTo(cx+Math.cos(ba-.04)*bl,cy+Math.sin(ba-.04)*bl);
-      ctx.lineTo(cx+Math.cos(ba+.04)*bl,cy+Math.sin(ba+.04)*bl);
+      ctx.lineTo(cx+Math.cos(ba-.05)*bl,cy+Math.sin(ba-.05)*bl);
+      ctx.lineTo(cx+Math.cos(ba+.05)*bl,cy+Math.sin(ba+.05)*bl);
       ctx.closePath();ctx.fill();
     }
     ctx.restore();ctx.globalCompositeOperation='source-over';
@@ -650,24 +734,25 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
       const px=cx+p.x*sp,py=cy+p.y*sp;
       const dist=Math.sqrt(p.x*p.x+p.y*p.y);
       const fo=Math.max(0,1-dist/(R*3));
-      const sh=.15+.85*Math.pow(Math.max(0,Math.sin(el*s.sp+s.ph)),4);
-      const da=bv*.35*fo*sh;
+      const sh=.1+.9*Math.pow(Math.max(0,Math.sin(el*s.sp+s.ph)),3);
+      const da=bv*.45*fo*sh;
       if(da<.005)return;
-      const ds=s.sz*(.7+sh*.3);
-      const dg=ctx.createRadialGradient(px,py,0,px,py,ds*2);
-      dg.addColorStop(0,`rgba(190,225,200,${da})`);
-      dg.addColorStop(.3,`rgba(85,185,130,${da*.7})`);
+      const ds=s.sz*(.6+sh*.5);
+      const dg=ctx.createRadialGradient(px,py,0,px,py,ds*2.5);
+      dg.addColorStop(0,`rgba(200,240,215,${da*1.2})`);
+      dg.addColorStop(.2,`rgba(85,185,130,${da*.8})`);
+      dg.addColorStop(.5,`rgba(178,148,76,${da*.15})`);
       dg.addColorStop(1,'transparent');
-      ctx.fillStyle=dg;ctx.fillRect(px-ds*2,py-ds*2,ds*4,ds*4);
+      ctx.fillStyle=dg;ctx.fillRect(px-ds*2.5,py-ds*2.5,ds*5,ds*5);
     });
 
     // L4: Circle glow — soft bloom behind strokes
     ctx.globalCompositeOperation='screen';
     circles.forEach(c=>{
       const x=cx+c.x*sp,y=cy+c.y*sp;
-      const a=c.ring===0?.1:c.ring===1?.05:.02;
-      ctx.shadowColor=`rgba(85,185,130,${a*bv*4})`;ctx.shadowBlur=14;
-      ctx.strokeStyle=`rgba(85,185,130,${a*bv*2})`;ctx.lineWidth=1.4;
+      const a=c.ring===0?.15:c.ring===1?.07:.025;
+      ctx.shadowColor=`rgba(85,185,130,${Math.min(1,a*bv*5)})`;ctx.shadowBlur=18;
+      ctx.strokeStyle=`rgba(85,185,130,${a*bv*2.5})`;ctx.lineWidth=1.8;
       ctx.beginPath();ctx.arc(x,y,R,0,Math.PI*2);ctx.stroke();
     });
     ctx.shadowBlur=0;ctx.shadowColor='transparent';
@@ -676,27 +761,27 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
     // L5: Clean geometry outlines
     circles.forEach(c=>{
       const x=cx+c.x*sp,y=cy+c.y*sp;
-      const la=c.ring===0?.45:c.ring===1?.28:.11;
+      const la=c.ring===0?.6:c.ring===1?.4:.16;
       ctx.strokeStyle=`rgba(85,185,130,${la*bv})`;
-      ctx.lineWidth=c.ring===0?1.1:c.ring===1?.75:.4;
+      ctx.lineWidth=c.ring===0?1.4:c.ring===1?1:.5;
       ctx.beginPath();ctx.arc(x,y,R,0,Math.PI*2);ctx.stroke();
     });
 
     // L6: Warm center bloom
     ctx.globalCompositeOperation='screen';
-    const fi=bv*(.6+.4*Math.sin(el*.8));
-    const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,R*.7);
-    cg.addColorStop(0,`rgba(190,225,200,${fi*.1})`);
-    cg.addColorStop(.2,`rgba(85,185,130,${fi*.05})`);
-    cg.addColorStop(.5,`rgba(85,185,130,${fi*.015})`);
+    const fi=bv*(.5+.5*Math.sin(el*.7));
+    const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,R*.8);
+    cg.addColorStop(0,`rgba(200,240,215,${fi*.12})`);
+    cg.addColorStop(.15,`rgba(85,185,130,${fi*.06})`);
+    cg.addColorStop(.4,`rgba(85,185,130,${fi*.02})`);
     cg.addColorStop(1,'transparent');
-    ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,R*.7,0,Math.PI*2);ctx.fill();
-    // Wider warm bloom
-    const bg2=ctx.createRadialGradient(cx,cy,0,cx,cy,R*2);
-    bg2.addColorStop(0,`rgba(85,185,130,${fi*.03})`);
-    bg2.addColorStop(.4,`rgba(178,148,76,${fi*.01})`);
+    ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,R*.8,0,Math.PI*2);ctx.fill();
+    // Wide bloom
+    const bg2=ctx.createRadialGradient(cx,cy,0,cx,cy,R*2.5);
+    bg2.addColorStop(0,`rgba(85,185,130,${fi*.035})`);
+    bg2.addColorStop(.3,`rgba(178,148,76,${fi*.012})`);
     bg2.addColorStop(1,'transparent');
-    ctx.fillStyle=bg2;ctx.beginPath();ctx.arc(cx,cy,R*2,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=bg2;ctx.beginPath();ctx.arc(cx,cy,R*2.5,0,Math.PI*2);ctx.fill();
     ctx.globalCompositeOperation='source-over';
 
     // L7: Petal highlights at Vesica Piscis
@@ -704,20 +789,24 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
       const a1=i*60*Math.PI/180,a2=((i+1)%6)*60*Math.PI/180;
       const pmx=(Math.cos(a1)+Math.cos(a2))*R*.5,pmy=(Math.sin(a1)+Math.sin(a2))*R*.5;
       const ppx=cx+pmx*sp,ppy=cy+pmy*sp;
-      const pg=ctx.createRadialGradient(ppx,ppy,0,ppx,ppy,R*.3);
-      pg.addColorStop(0,`rgba(85,185,130,${bv*.04})`);
+      const shimmer=.6+.4*Math.sin(el*.6+i*1.047);
+      const pg=ctx.createRadialGradient(ppx,ppy,0,ppx,ppy,R*.4);
+      pg.addColorStop(0,`rgba(85,185,130,${bv*.06*shimmer})`);
+      pg.addColorStop(.5,`rgba(85,185,130,${bv*.015*shimmer})`);
       pg.addColorStop(1,'transparent');
       ctx.globalCompositeOperation='screen';ctx.fillStyle=pg;
-      ctx.beginPath();ctx.arc(ppx,ppy,R*.3,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(ppx,ppy,R*.4,0,Math.PI*2);ctx.fill();
     }
     ctx.globalCompositeOperation='source-over';
 
-    // L8: Gold bounding rings
+    // L8: Gold bounding rings — three-ring frame
     const or2=R*3*sp;
-    ctx.strokeStyle=`rgba(178,148,76,${.07*bv})`;ctx.lineWidth=.6;
+    ctx.strokeStyle=`rgba(178,148,76,${.08*bv})`;ctx.lineWidth=.7;
     ctx.beginPath();ctx.arc(cx,cy,or2,0,Math.PI*2);ctx.stroke();
-    ctx.strokeStyle=`rgba(178,148,76,${.035*bv})`;ctx.lineWidth=.4;
+    ctx.strokeStyle=`rgba(178,148,76,${.04*bv})`;ctx.lineWidth=.45;
     ctx.beginPath();ctx.arc(cx,cy,or2*1.12,0,Math.PI*2);ctx.stroke();
+    ctx.strokeStyle=`rgba(178,148,76,${.02*bv})`;ctx.lineWidth=.3;
+    ctx.beginPath();ctx.arc(cx,cy,or2*1.25,0,Math.PI*2);ctx.stroke();
 
     if(!prefersReducedMotion)requestAnimationFrame(draw);
   }
