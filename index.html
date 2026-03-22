@@ -371,16 +371,19 @@
     .feat-list li::before{content:'';position:absolute;left:0;top:14px;width:8px;height:1px;background:var(--gold);opacity:.25}
 
     .coach-card{
-      border:1px solid rgba(135,55,225,.06);
-      background:linear-gradient(180deg,rgba(135,55,225,.025) 0%,transparent 50%);
+      border:1px solid rgba(135,55,225,.2);
+      background:linear-gradient(180deg,rgba(135,55,225,.06) 0%,rgba(135,55,225,.015) 50%,transparent);
+      box-shadow:0 0 55px rgba(135,55,225,.06);
     }
-    .coach-card::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(135,55,225,.12),transparent)}
-    .coach-card h3{font-size:21px;font-weight:200;color:var(--violet)}
-    .coach-card .price-num{font-size:clamp(42px,6vw,55px);color:var(--violet)}
+    .coach-card::before{content:'';position:absolute;top:0;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,rgba(135,55,225,.35),transparent)}
+    .coach-card::after{content:'';position:absolute;top:-55px;left:50%;transform:translateX(-50%);width:233px;height:233px;border-radius:50%;background:radial-gradient(circle,rgba(135,55,225,.06),transparent 70%);pointer-events:none}
+    .coach-card h3{font-size:21px;font-weight:200;color:rgb(175,120,255)}
+    .coach-card .price-num{font-size:clamp(42px,6vw,55px);color:rgb(175,120,255)}
     .coach-card p{font-size:13px;color:var(--t2);margin-top:8px}
     .coach-feat{list-style:none;margin-top:34px;text-align:left}
     .coach-feat li{font-size:13px;color:var(--t2);padding:6px 0 6px 21px;position:relative}
-    .coach-feat li::before{content:'';position:absolute;left:0;top:14px;width:8px;height:1px;background:var(--violet);opacity:.25}
+    .coach-feat li{color:var(--t)}
+    .coach-feat li::before{content:'';position:absolute;left:0;top:14px;width:8px;height:1px;background:rgb(175,120,255);opacity:.4}
 
     /* ═══ CRAFT ═══ */
     .freq-strip{
