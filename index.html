@@ -4,303 +4,249 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CARLON — Breathe Beyond | Vitalkultur</title>
-  <meta name="description" content="16 evidenzbasierte Atemtechniken. Weltklasse Apple Watch Haptik. Sacred Geometry. Einmal kaufen, fuer immer atmen.">
+  <meta name="description" content="16 evidenzbasierte Atemtechniken. Weltklasse Apple Watch Haptik. Einmal kaufen, für immer atmen.">
   <meta property="og:title" content="CARLON — Breathe Beyond">
-  <meta property="og:description" content="Dein Nervensystem kennt den Ausweg. CARLON bringt dich dorthin.">
+  <meta property="og:description" content="Atme bewusst. Lebe bewusst. 16 Atemtechniken für deine Apple Watch.">
   <meta property="og:image" content="https://vitalkultur.com/app-icon.png">
   <link rel="icon" href="app-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
-    /* ══════════════════════════════════════════════════════════
-       CARLON Design System — Web Edition
-       φ-Typoskala · Fibonacci Spacing · Solfeggio Farben · Sacred Geometry
-       Mapped 1:1 from SacredConstants.swift + ColorTheme.swift
-       ══════════════════════════════════════════════════════════ */
-
     :root {
-      /* Solfeggio Color System (from ColorTheme.swift) */
-      --stille: rgb(50,215,120);     /* 528 Hz → λ516nm Green */
-      --stille-dim: rgba(50,215,120,.08);
-      --stille-glow: rgba(80,220,140,.15);
-      --quelle: rgb(255,150,30);     /* 432 Hz → λ631nm Amber */
-      --glut: rgb(210,45,45);        /* 396 Hz → λ689nm Red */
-      --tiefe: rgb(135,55,225);      /* 639 Hz → λ427nm Violet */
-
-      /* Sacred Constants */
-      --phi: 1.618;
+      --g: rgb(50,215,120);       /* 528 Hz Stille — Grün */
+      --g2: rgba(50,215,120,.08);
+      --glow: rgba(80,220,140,.12);
+      --gold: rgb(255,180,40);    /* 432 Hz Quelle — Amber/Gold */
+      --violet: rgb(135,55,225);  /* 639 Hz Tiefe — Violet */
       --bg: #030303;
       --t: #f0ede6;
-      --t2: rgba(240,237,230,.55);
-      --t3: rgba(240,237,230,.3);
-
-      /* φ-Modular Typoskala (from Sacred.PhoneTypo) */
-      --display: 72px;   /* φ³ × 17 */
-      --title: 42px;     /* φ² × 17 */
-      --headline: 28px;  /* φ × 17 */
-      --body: 17px;      /* Base */
-      --footnote: 14px;  /* 17/φ */
-      --caption: 11px;   /* 17/φ² */
-
-      /* Fibonacci Spacing */
-      --sp-3: 3px; --sp-5: 5px; --sp-8: 8px; --sp-13: 13px;
-      --sp-21: 21px; --sp-34: 34px; --sp-55: 55px; --sp-89: 89px;
+      --t2: rgba(240,237,230,.5);
+      --t3: rgba(240,237,230,.25);
     }
-
     * { margin:0; padding:0; box-sizing:border-box }
     html { scroll-behavior:smooth; font-size:17px }
-    body { background:var(--bg); color:var(--t); font-family:'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; line-height:1.618 /* φ */ }
-    a { color:var(--stille); text-decoration:none }
+    body { background:var(--bg); color:var(--t); font-family:'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; line-height:1.618 }
+    a { color:var(--g); text-decoration:none; transition:opacity .3s }
+    a:hover { opacity:.7 }
 
-    /* Film grain — subtlety */
-    body::after { content:''; position:fixed; inset:0; opacity:.012; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999 }
+    /* Grain */
+    body::after { content:''; position:fixed; inset:0; opacity:.01; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999 }
 
-    /* ── Reveal Animation ── */
-    .rv { opacity:0; transform:translateY(34px); transition: opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1) }
+    /* Reveal */
+    .rv { opacity:0; transform:translateY(21px); transition: opacity 1.2s cubic-bezier(.16,1,.3,1), transform 1.2s cubic-bezier(.16,1,.3,1) }
     .rv.v { opacity:1; transform:none }
-    .d1{transition-delay:.13s}.d2{transition-delay:.21s}.d3{transition-delay:.34s}.d4{transition-delay:.55s}
+    .d1{transition-delay:.13s}.d2{transition-delay:.21s}.d3{transition-delay:.34s}
 
-    /* ══ HERO — Der Besucher ATMET bevor er denkt ══ */
-    .hero { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden }
-
-    /* Sacred Geometry Background — 19 overlapping circles (Flower of Life) */
-    .flower-bg { position:absolute; width:600px; height:600px; opacity:.03; animation:flowerRotate 89s linear infinite /* Fibonacci 89 */ }
-    .flower-bg circle { fill:none; stroke:var(--stille); stroke-width:.5 }
-    @keyframes flowerRotate { to { transform:rotate(360deg) } }
-
-    /* Living Breath Circle — 4-7-8 cycle = 19s, matching the app */
-    .breath { position:relative; z-index:2; width:233px; height:233px; margin-bottom:var(--sp-55) } /* 233 = Fibonacci */
-    .breath-ring { width:100%; height:100%; border-radius:50%; border:1px solid rgba(50,215,120,.25); display:flex; align-items:center; justify-content:center; animation:breathe 19s ease-in-out infinite; position:relative }
-    .breath-ring::before { content:''; position:absolute; inset:-21px; border-radius:50%; background:radial-gradient(circle,var(--stille-dim),transparent 70%); animation:breathe 19s ease-in-out infinite }
-    .breath-ring::after { content:''; position:absolute; inset:8px; border-radius:50%; border:.5px solid rgba(50,215,120,.1); animation:breathe 19s ease-in-out infinite .3s }
-    .breath-label { font-size:var(--caption); font-weight:300; letter-spacing:.2em; text-transform:uppercase; color:var(--stille); opacity:.6; z-index:1; animation:breathLabel 19s ease-in-out infinite }
-
-    /* 4-7-8: 21% inhale, 37% hold, 42% exhale (Fibonacci-adjacent) */
-    @keyframes breathe {
-      0%   { transform:scale(.75); border-color:rgba(50,215,120,.15) }
-      21%  { transform:scale(1.18); border-color:rgba(50,215,120,.5) }
-      58%  { transform:scale(1.14); border-color:rgba(50,215,120,.3) }
-      100% { transform:scale(.75); border-color:rgba(50,215,120,.1) }
+    /* ═══ FLOWER OF LIFE WATERMARK ═══ */
+    .flower-watermark {
+      position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:800px; height:800px; opacity:.015; pointer-events:none; z-index:0;
+      animation:flowerSpin 233s linear infinite /* Fibonacci 233 */
     }
-    @keyframes breathLabel { 0%,21%{opacity:.7} 22%,57%{opacity:.25} 58%,100%{opacity:.5} }
+    .flower-watermark circle { fill:none; stroke:var(--g); stroke-width:.4 }
+    @keyframes flowerSpin { to { transform:translate(-50%,-50%) rotate(360deg) } }
 
-    /* Hero typography — φ-proportioned */
-    .hero h1 { font-size:var(--headline); font-weight:200; text-align:center; letter-spacing:.03em; line-height:1.4; max-width:500px; padding:0 var(--sp-21) }
-    .hero h1 em { font-style:normal; color:var(--stille) }
-    .hero .sub { font-size:var(--footnote); color:var(--t3); letter-spacing:.15em; margin-top:var(--sp-13); text-transform:uppercase }
+    /* ═══ HERO ═══ */
+    .hero { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; z-index:1 }
 
-    /* CTA */
-    .cta { display:inline-block; margin-top:var(--sp-34); padding:var(--sp-13) var(--sp-34); border:1px solid var(--stille); border-radius:55px; color:var(--stille); font-size:var(--footnote); font-weight:500; letter-spacing:.08em; transition:all .4s; background:transparent }
-    .cta:hover { background:var(--stille); color:var(--bg) }
+    /* Glow Flower — wie in der App: radial gradients + blending */
+    .flower-hero { position:relative; width:200px; height:200px; margin-bottom:55px }
+    .flower-hero .petal {
+      position:absolute; width:36px; height:36px; border-radius:50%;
+      background:radial-gradient(circle, rgba(50,215,120,.5), rgba(0,165,80,.2) 60%, transparent 100%);
+      mix-blend-mode:screen; filter:blur(1px)
+    }
+    .flower-hero .center-glow {
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:80px; height:80px; border-radius:50%;
+      background:radial-gradient(circle, rgba(50,215,120,.25), transparent 70%);
+      animation:pulse 7.02s ease-in-out infinite /* Schumann×55 */
+    }
+    @keyframes pulse { 0%,100%{transform:translate(-50%,-50%) scale(.8);opacity:.4} 50%{transform:translate(-50%,-50%) scale(1.3);opacity:1} }
 
-    /* ══ SECTIONS ══ */
-    section { padding:var(--sp-89) var(--sp-21); max-width:800px; margin:0 auto }
-    section h2 { font-size:var(--title); font-weight:200; line-height:1.2; margin-bottom:var(--sp-13) }
-    section h2 em { font-style:normal; color:var(--stille) }
-    .lead { font-size:var(--body); color:var(--t2); line-height:1.8; max-width:600px }
-    .label { font-size:var(--caption); color:var(--stille); letter-spacing:.25em; text-transform:uppercase; margin-bottom:var(--sp-8); opacity:.7 }
+    .hero h1 { font-size:28px; font-weight:200; text-align:center; letter-spacing:.02em; line-height:1.5; max-width:420px; padding:0 21px }
+    .hero h1 em { font-style:normal; color:var(--g) }
+    .hero .quiet { font-size:14px; color:var(--t3); margin-top:13px; letter-spacing:.1em }
 
-    /* Divider — Vesica Piscis inspired */
-    .div { height:1px; max-width:89px; margin:0 auto; background:linear-gradient(90deg,transparent,var(--stille-glow),transparent) }
+    .btn { display:inline-block; margin-top:34px; padding:13px 34px; border-radius:55px; font-size:14px; font-weight:400; letter-spacing:.05em; transition:all .5s ease }
+    .btn-primary { background:var(--g); color:var(--bg); border:none }
+    .btn-primary:hover { opacity:.85; transform:translateY(-2px) }
+    .btn-ghost { border:1px solid rgba(50,215,120,.2); color:var(--g); background:transparent; margin-left:13px }
+    .btn-ghost:hover { border-color:var(--g) }
 
-    /* ══ WHY Section — Sinek Golden Circle ══ */
-    .why-grid { display:grid; gap:var(--sp-34); margin-top:var(--sp-55) }
-    .why-card { padding:var(--sp-34); border-radius:var(--sp-13); background:rgba(50,215,120,.02); border:1px solid rgba(50,215,120,.06); transition:border-color .5s }
-    .why-card:hover { border-color:rgba(50,215,120,.15) }
-    .why-card h3 { font-size:var(--body); font-weight:500; margin-bottom:var(--sp-8); color:var(--t) }
-    .why-card p { font-size:var(--footnote); color:var(--t2); line-height:1.7 }
-    .why-icon { font-size:var(--headline); margin-bottom:var(--sp-13); display:block }
+    /* ═══ SECTIONS ═══ */
+    section { padding:89px 21px; max-width:680px; margin:0 auto; position:relative; z-index:1 }
+    section h2 { font-size:34px; font-weight:200; line-height:1.3; margin-bottom:13px }
+    section h2 em { font-style:normal; color:var(--g) }
+    .lead { font-size:17px; color:var(--t2); line-height:1.8; max-width:520px }
+    .label { font-size:11px; color:var(--g); letter-spacing:.3em; text-transform:uppercase; margin-bottom:8px; opacity:.6 }
+    .div { height:1px; max-width:55px; margin:0 auto; background:linear-gradient(90deg,transparent,rgba(50,215,120,.1),transparent) }
 
-    /* ══ SCIENCE — Trust Bar ══ */
-    .studies { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:var(--sp-21); margin-top:var(--sp-34) }
-    .study { padding:var(--sp-21); border-radius:var(--sp-8); border-left:2px solid var(--stille); background:rgba(50,215,120,.015) }
-    .study .badge { font-size:var(--caption); color:var(--stille); font-weight:500; letter-spacing:.05em }
-    .study h3 { font-size:var(--footnote); font-weight:500; margin:var(--sp-5) 0; color:var(--t) }
-    .study p { font-size:var(--caption); color:var(--t3); line-height:1.6 }
+    /* Cards */
+    .cards { display:grid; gap:21px; margin-top:34px }
+    .card { padding:34px; border-radius:13px; background:rgba(50,215,120,.015); border:1px solid rgba(50,215,120,.04); transition:border-color .6s }
+    .card:hover { border-color:rgba(50,215,120,.12) }
+    .card h3 { font-size:17px; font-weight:400; margin-bottom:5px }
+    .card p { font-size:14px; color:var(--t2); line-height:1.7 }
 
-    /* ══ PRICING ══ */
-    .price-hero { text-align:center; margin-top:var(--sp-55) }
-    .price-amount { font-size:var(--display); font-weight:200; color:var(--stille); line-height:1 }
-    .price-sub { font-size:var(--footnote); color:var(--t3); margin-top:var(--sp-5) }
-    .price-features { list-style:none; margin-top:var(--sp-34); display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-13) var(--sp-34); text-align:left; max-width:500px; margin-left:auto; margin-right:auto }
-    .price-features li { font-size:var(--footnote); color:var(--t2); padding-left:var(--sp-21); position:relative }
-    .price-features li::before { content:'✦'; position:absolute; left:0; color:var(--stille); opacity:.5; font-size:var(--caption) }
+    /* Studies */
+    .studies { display:grid; grid-template-columns:1fr 1fr; gap:13px; margin-top:34px }
+    .study { padding:21px; border-radius:8px; border-left:2px solid rgba(50,215,120,.15); background:rgba(50,215,120,.01) }
+    .study .src { font-size:11px; color:var(--g); opacity:.5; margin-bottom:3px }
+    .study p { font-size:13px; color:var(--t3); line-height:1.5 }
 
-    /* Coach Card */
-    .coach-card { margin-top:var(--sp-55); padding:var(--sp-34); border-radius:var(--sp-13); border:1px solid rgba(135,55,225,.15); background:rgba(135,55,225,.03); text-align:center }
-    .coach-card h3 { font-size:var(--headline); font-weight:300; color:var(--tiefe) }
-    .coach-card .price-amount { color:var(--tiefe); font-size:var(--title) }
-    .coach-card p { font-size:var(--footnote); color:var(--t2); margin-top:var(--sp-8); max-width:450px; margin-left:auto; margin-right:auto }
+    /* Pricing */
+    .price-box { text-align:center; margin-top:55px; padding:55px 34px; border-radius:21px; background:radial-gradient(ellipse at 50% 0%,rgba(50,215,120,.04),transparent 70%); border:1px solid rgba(50,215,120,.06) }
+    .price-num { font-size:72px; font-weight:200; color:var(--g); line-height:1 }
+    .price-label { font-size:14px; color:var(--t3); margin-top:5px }
+    .features { list-style:none; margin-top:34px; columns:2; gap:21px; text-align:left; max-width:440px; margin-left:auto; margin-right:auto }
+    .features li { font-size:14px; color:var(--t2); padding:5px 0; break-inside:avoid }
 
-    /* ══ FOOTER ══ */
-    footer { text-align:center; padding:var(--sp-89) var(--sp-21) var(--sp-55); border-top:1px solid rgba(50,215,120,.04) }
-    footer img { height:21px; opacity:.4; margin-bottom:var(--sp-5) }
-    footer .claim { font-size:10px; letter-spacing:.3em; opacity:.2; text-transform:uppercase; margin-bottom:var(--sp-21) }
-    footer p { font-size:var(--caption); color:var(--t3) }
-    footer nav { margin:var(--sp-21) 0; display:flex; justify-content:center; gap:var(--sp-21); flex-wrap:wrap }
-    footer nav a { font-size:var(--caption); color:var(--t3); transition:color .3s }
-    footer nav a:hover { color:var(--stille) }
-    .disclaimer { font-size:10px; opacity:.2; max-width:500px; margin:var(--sp-21) auto 0; line-height:1.6 }
+    .coach-box { margin-top:34px; padding:34px; border-radius:13px; border:1px solid rgba(135,55,225,.1); background:rgba(135,55,225,.02); text-align:center }
+    .coach-box h3 { font-size:21px; font-weight:300; color:var(--violet) }
+    .coach-box .price-num { font-size:42px; color:var(--violet) }
+    .coach-box p { font-size:14px; color:var(--t2); margin-top:8px; max-width:400px; margin-left:auto; margin-right:auto }
 
-    /* ══ RESPONSIVE ══ */
+    /* Footer */
+    footer { text-align:center; padding:89px 21px 55px; position:relative; z-index:1 }
+    footer img { height:34px; opacity:.6; margin-bottom:5px }
+    footer .claim { font-size:11px; letter-spacing:.3em; opacity:.25; text-transform:uppercase; margin-bottom:34px }
+    footer nav { display:flex; justify-content:center; gap:21px; flex-wrap:wrap; margin-bottom:21px }
+    footer nav a { font-size:11px; color:var(--t3) }
+    footer p { font-size:11px; color:var(--t3); opacity:.5 }
+    .disclaimer { font-size:10px; opacity:.2; max-width:440px; margin:21px auto 0; line-height:1.6 }
+    .impressum { font-size:10px; opacity:.15; margin-top:13px; line-height:1.6 }
+
     @media(max-width:640px) {
-      html { font-size:15px }
-      .hero h1 { font-size:var(--headline) }
-      .breath { width:180px; height:180px }
-      section { padding:var(--sp-55) var(--sp-21) }
-      .price-features { grid-template-columns:1fr }
+      .hero h1 { font-size:24px }
+      .flower-hero { width:150px; height:150px }
+      section h2 { font-size:28px }
+      section { padding:55px 21px }
       .studies { grid-template-columns:1fr }
+      .features { columns:1 }
+      .flower-watermark { width:500px; height:500px }
     }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════════════
-     ACT 1: THE BREATH (Hero — der Besucher FUEHLT bevor er DENKT)
-     Norman Viszeral: Sofort hochwertig. Pricken Inszenierung: Zeremonie.
-     Peak-End: Der Atem-Kreis IST der Peak.
-     ══════════════════════════════════════════════════════════ -->
-<div class="hero">
-  <!-- Flower of Life Background — 19 circles, authentic geometry -->
-  <svg class="flower-bg" viewBox="-60 -60 120 120">
-    <circle cx="0" cy="0" r="18"/>
-    <circle cx="18" cy="0" r="18"/><circle cx="-18" cy="0" r="18"/>
-    <circle cx="9" cy="15.6" r="18"/><circle cx="-9" cy="15.6" r="18"/>
-    <circle cx="9" cy="-15.6" r="18"/><circle cx="-9" cy="-15.6" r="18"/>
-    <circle cx="36" cy="0" r="18"/><circle cx="-36" cy="0" r="18"/>
-    <circle cx="27" cy="15.6" r="18"/><circle cx="-27" cy="15.6" r="18"/>
-    <circle cx="27" cy="-15.6" r="18"/><circle cx="-27" cy="-15.6" r="18"/>
-    <circle cx="18" cy="31.2" r="18"/><circle cx="-18" cy="31.2" r="18"/>
-    <circle cx="18" cy="-31.2" r="18"/><circle cx="-18" cy="-31.2" r="18"/>
-    <circle cx="0" cy="31.2" r="18"/><circle cx="0" cy="-31.2" r="18"/>
-    <!-- Bounding circles -->
-    <circle cx="0" cy="0" r="36" opacity=".3"/><circle cx="0" cy="0" r="54" opacity=".15"/>
-  </svg>
+<!-- Flower of Life Watermark — festes Hintergrundelement wie in der App -->
+<svg class="flower-watermark" viewBox="-60 -60 120 120">
+  <circle cx="0" cy="0" r="18"/>
+  <circle cx="18" cy="0" r="18"/><circle cx="-18" cy="0" r="18"/>
+  <circle cx="9" cy="15.6" r="18"/><circle cx="-9" cy="15.6" r="18"/>
+  <circle cx="9" cy="-15.6" r="18"/><circle cx="-9" cy="-15.6" r="18"/>
+  <circle cx="36" cy="0" r="18"/><circle cx="-36" cy="0" r="18"/>
+  <circle cx="27" cy="15.6" r="18"/><circle cx="-27" cy="15.6" r="18"/>
+  <circle cx="27" cy="-15.6" r="18"/><circle cx="-27" cy="-15.6" r="18"/>
+  <circle cx="18" cy="31.2" r="18"/><circle cx="-18" cy="31.2" r="18"/>
+  <circle cx="18" cy="-31.2" r="18"/><circle cx="-18" cy="-31.2" r="18"/>
+  <circle cx="0" cy="31.2" r="18"/><circle cx="0" cy="-31.2" r="18"/>
+  <circle cx="0" cy="0" r="36" opacity=".3"/><circle cx="0" cy="0" r="54" opacity=".15"/>
+</svg>
 
-  <div class="breath">
-    <div class="breath-ring">
-      <span class="breath-label" id="btext">Einatmen</span>
-    </div>
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <!-- Flower of Life — Glow-Petals wie in der App -->
+  <div class="flower-hero" id="flower">
+    <div class="center-glow"></div>
   </div>
 
-  <h1>Dein Nervensystem<br>kennt den Ausweg.<br><em>CARLON bringt dich dorthin.</em></h1>
-  <p class="sub">Einmal kaufen · Fuer immer atmen</p>
-  <a href="#preis" class="cta">€9,99 — Fuer immer</a>
+  <h1>Atme.<br>Der Rest <em>folgt.</em></h1>
+  <p class="quiet">16 Atemtechniken · Apple Watch · Einmal kaufen</p>
+
+  <div>
+    <a href="#preis" class="btn btn-primary">Entdecken</a>
+  </div>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════
-     ACT 2: THE WHY (Sinek Golden Circle — Why before What)
-     Pricken Entstehung: Origin Story, Handwerk, Geheimformel
-     Limbic Balance: Vertrauen, Wissenschaft, Sicherheit
-     ══════════════════════════════════════════════════════════ -->
+<!-- ═══ STILLE — Was CARLON ist ═══ -->
 <div class="div"></div>
 
 <section>
-  <p class="label rv">Warum CARLON existiert</p>
-  <h2 class="rv">Nicht noch eine<br><em>Meditations-App.</em></h2>
-  <p class="lead rv">CARLON wurde nicht im Silicon Valley geboren. Sondern aus 47 Millionen Haptic-Simulationen, 80 Millionen Parameter-Berechnungen und einer einfachen Frage: Was waere, wenn dein Handgelenk dich atmen lehrt — ohne dass du hinschauen musst?</p>
+  <p class="label rv">Was ist CARLON</p>
+  <h2 class="rv">Dein Atem.<br><em>Dein Rhythmus.</em></h2>
+  <p class="lead rv">16 Atemtechniken — von Tummo über Box Breathing bis zur Wechselatmung. Jede einzelne mit wissenschaftlicher Grundlage. Jede fühlbar durch dein Handgelenk. Keine Stimme die dir sagt was du tun sollst. Nur du, dein Atem und die Flower of Life.</p>
 
-  <div class="why-grid">
-    <div class="why-card rv d1">
-      <span class="why-icon">◯</span>
-      <h3>Sacred Geometry</h3>
-      <p>Die Flower of Life atmet mit dir. 19 Kreise, φ-Proportionen, Fibonacci-Timing. Kein generischer Fortschrittsbalken — Geometrie die seit 5000 Jahren fasziniert.</p>
+  <div class="cards">
+    <div class="card rv d1">
+      <h3>Schließ die Augen</h3>
+      <p>Die Apple Watch Haptik führt dich blind durch jede Phase. Einatmen spürst du aufsteigend, Ausatmen absteigend. Du brauchst keinen Bildschirm — nur dein Handgelenk.</p>
     </div>
-    <div class="why-card rv d2">
-      <span class="why-icon">⟡</span>
-      <h3>Weltklasse-Haptik</h3>
-      <p>Schliesse die Augen. Dein Handgelenk fuehrt dich durch jede Phase — Einatmen, Halten, Ausatmen. 4 Intensitaetsstufen. Apple Haptic Engine, reverse-engineered und uebertroffen.</p>
+    <div class="card rv d2">
+      <h3>Heilige Geometrie</h3>
+      <p>Die Flower of Life expandiert und kontrahiert mit deinem Atem. φ-Proportionen, Fibonacci-Timing, Schumann-Resonanz. Mathematik die seit 5000 Jahren fasziniert — jetzt auf deinem Handgelenk.</p>
     </div>
-    <div class="why-card rv d3">
-      <span class="why-icon">◉</span>
-      <h3>Made in Germany</h3>
-      <p>Keine Daten verlassen dein Geraet. Kein Account. Kein Tracking. Kein Server. DSGVO by Design — nicht by Disclaimer. Dein Atem gehoert dir.</p>
+    <div class="card rv d3">
+      <h3>Null Daten raus</h3>
+      <p>Kein Account. Kein Tracking. Kein Server. Alles bleibt auf deinem Gerät. Made in Germany, DSGVO by Design. Dein Atem gehört dir.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     ACT 3: TRUST (Cialdini Autoritaet + Social Proof)
-     Pricken Transfer: Apple-Branding, Stanford, PNAS
-     Limbic Balance: Sicherheit durch Wissenschaft
-     ══════════════════════════════════════════════════════════ -->
+<!-- ═══ VERTRAUEN ═══ -->
 <div class="div"></div>
 
 <section>
-  <p class="label rv">Evidenz</p>
-  <h2 class="rv">Jede Technik hat<br><em>eine Studie.</em></h2>
-  <p class="lead rv">16 Atemtechniken. Jede basiert auf Peer-Reviewed-Forschung. Keine Esoterik, keine Versprechen — messbare Zusammenhaenge.</p>
+  <p class="label rv">Forschung</p>
+  <h2 class="rv">Nicht wir sagen es.<br><em>Die Studien.</em></h2>
+  <p class="lead rv">Jede Technik basiert auf Peer-Reviewed-Forschung. Wir interpretieren nicht — wir implementieren.</p>
 
   <div class="studies">
     <div class="study rv d1">
-      <span class="badge">Stanford 2023</span>
-      <h3>Cyclic Sighing</h3>
-      <p>Balban et al., Cell Reports Medicine. RCT, n=108. Stimmungsverbesserung staerker als Meditation.</p>
+      <div class="src">Stanford · Cell Reports Medicine · 2023</div>
+      <p>Cyclic Sighing verbessert die Stimmung stärker als Meditation. RCT, n=108.</p>
     </div>
     <div class="study rv d2">
-      <span class="badge">PNAS 2014</span>
-      <h3>Tummo</h3>
-      <p>Kox et al. RCT, n=24. Zusammenhaenge zwischen Atemtechniken und Immunmarkern untersucht.</p>
+      <div class="src">PNAS · Kox et al. · 2014</div>
+      <p>Tummo-Protokoll und Immunmarker. RCT, n=24. Das Experiment das Breathwork in die Wissenschaft brachte.</p>
     </div>
     <div class="study rv d3">
-      <span class="badge">Frontiers 2014</span>
-      <h3>Kohaerenz</h3>
-      <p>Lehrer & Gevirtz. Bei 5.5/min synchronisieren sich Herz, Atem und Blutdruck. HRV-Maximum.</p>
+      <div class="src">Frontiers · Lehrer & Gevirtz · 2014</div>
+      <p>Kohärenzatmung bei 5.5/min. Herz, Atem und Blutdruck synchronisieren sich. HRV-Maximum.</p>
     </div>
-    <div class="study rv d4">
-      <span class="badge">Physiol. Reports 2022</span>
-      <h3>4-7-8</h3>
-      <p>Vierra et al. n=43. Effekte auf Herzfrequenz und HRV-Parameter untersucht.</p>
+    <div class="study rv">
+      <div class="src">Physiological Reports · Vierra et al. · 2022</div>
+      <p>4-7-8 Atemtechnik nach Dr. Andrew Weil. Effekte auf Herzfrequenz und autonome Balance. n=43.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     ACT 4: THE PRICE (Pricken Verfuegbarkeit + Occam)
-     Peak-End: Der Preis IST der Delighter (Kano Begeisterung)
-     "€9,99 fuer immer" = emotionaler Hoehepunkt
-     ══════════════════════════════════════════════════════════ -->
+<!-- ═══ PREIS ═══ -->
 <div class="div"></div>
 
 <section id="preis">
-  <p class="label rv">Ein Preis</p>
-  <h2 class="rv" style="text-align:center">Kein Abo.<br><em>Fuer immer.</em></h2>
+  <p class="label rv" style="text-align:center">Kein Abo</p>
+  <h2 class="rv" style="text-align:center">Einmal. <em>Für immer.</em></h2>
 
-  <div class="price-hero rv">
-    <div class="price-amount">€9,99</div>
-    <div class="price-sub">Einmalig · Alle 16 Techniken · Alle Updates · Fuer immer</div>
+  <div class="price-box rv">
+    <div class="price-num">€9,99</div>
+    <div class="price-label">Einmalig · Alles drin · Für immer deins</div>
 
-    <ul class="price-features">
-      <li>16 evidenzbasierte Atemtechniken</li>
-      <li>Weltklasse Apple Watch Haptik</li>
-      <li>Flower of Life Visualisierung</li>
-      <li>Breath Composer — eigene Presets</li>
-      <li>Sound Engine (4-Layer Soundscapes)</li>
-      <li>Analytics, HRV-Insights, Export</li>
-      <li>Alle Farbthemen (Solfeggio-basiert)</li>
-      <li>Alle zukuenftigen Updates inklusive</li>
+    <ul class="features">
+      <li>16 Atemtechniken</li>
+      <li>Apple Watch Haptik</li>
+      <li>Flower of Life</li>
+      <li>Breath Composer</li>
+      <li>Sound Engine</li>
+      <li>HRV-Insights</li>
+      <li>Alle Farbthemen</li>
+      <li>Alle Updates inklusive</li>
     </ul>
 
-    <a href="#" class="cta" style="margin-top:var(--sp-34)">Im App Store laden</a>
+    <a href="#" class="btn btn-primary" style="margin-top:34px">Im App Store laden</a>
   </div>
 
-  <!-- Coach — separate Welt, Tiefe-Farbsystem (Violet) -->
-  <div class="coach-card rv">
-    <p class="label" style="color:var(--tiefe)">Fuer Profis</p>
-    <h3>Coach</h3>
-    <div class="price-amount">€9,99<span style="font-size:var(--body);opacity:.5">/Monat</span></div>
-    <div class="price-sub">oder €79,99/Jahr</div>
-    <p>Presets mit deinem Branding · Deep Links zum Teilen · Coach-Profilkarte · Marketplace Listing · Priority Support</p>
+  <div class="coach-box rv">
+    <p class="label" style="color:var(--violet)">Für Coaches</p>
+    <h3>Deine Presets. Dein Branding.</h3>
+    <div class="price-num">€9,99<span style="font-size:17px;opacity:.4">/Monat</span></div>
+    <div class="price-label">oder €79,99/Jahr</div>
+    <p>Erstelle eigene Atemprotokolle, brande sie mit deinem Namen und teile sie per Deep Link mit deiner Community.</p>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     ACT 5: THE END (Peak-End Rule — warm + ermutigend)
-     Norman Reflektiv: "Was sagt es ueber mich?"
-     Antwort: "Ich atme bewusst. Ich investiere in mich."
-     ══════════════════════════════════════════════════════════ -->
-<div class="div"></div>
-
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <img src="vitalkultur-logo.png" alt="Vitalkultur" loading="lazy">
   <p class="claim">Body · Soul · Food</p>
@@ -308,25 +254,49 @@
     <a href="/privacy.html">Datenschutz</a>
     <a href="/terms.html">Nutzungsbedingungen</a>
     <a href="/support.html">Support</a>
-    <a href="https://instagram.com/vitalkultur" target="_blank" rel="noopener">Instagram</a>
     <a href="mailto:jan@vitalkultur.com">Kontakt</a>
   </nav>
-  <p>&copy; 2026 Vitalkultur · Jan Rohwedder · Gernsbach</p>
-  <p class="disclaimer">CARLON ist ein Wellness-Produkt und kein Medizinprodukt. Die App ersetzt keine aerztliche Beratung und ist nicht zur Diagnose, Behandlung oder Heilung von Krankheiten bestimmt.</p>
+  <p>&copy; 2026 Vitalkultur · Jan Rohwedder</p>
+  <p class="disclaimer">CARLON ist ein Wellness-Produkt und kein Medizinprodukt. Die App ersetzt keine ärztliche Beratung und ist nicht zur Diagnose, Behandlung oder Heilung von Krankheiten bestimmt.</p>
+  <p class="impressum">Jan Rohwedder · Kapellenstraße 9 · 76473 Iffezheim · Deutschland</p>
 </footer>
 
-<!-- ══ JS — Minimal ══ -->
 <script>
-// Scroll Reveal (Intersection Observer)
+// Reveal
 const o=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -34px 0px'});
 document.querySelectorAll('.rv').forEach(e=>o.observe(e));
 
-// Breath Circle — 4-7-8 cycle (19s total, matching the app)
-const bt=document.getElementById('btext');
-const ph=[{t:'Einatmen',d:4000},{t:'Halten',d:7000},{t:'Ausatmen',d:8000}];
-let pi=0;
-function tick(){bt.textContent=ph[pi].t;bt.style.opacity=pi===1?'.25':'1';setTimeout(()=>{pi=(pi+1)%3;tick()},ph[pi].d)}
-tick();
+// Flower of Life — 19 Glow-Petals (wie FlowerView.swift)
+(function(){
+  const f=document.getElementById('flower');
+  const R=18, cx=100, cy=100;
+  // 19 circle positions: center + ring1(6) + ring2(12) — from FlowerView.swift
+  const pos=[[0,0]];
+  for(let i=0;i<6;i++){const a=i*60*Math.PI/180;pos.push([Math.cos(a)*R,Math.sin(a)*R])}
+  for(let i=0;i<6;i++){const a=i*60*Math.PI/180;pos.push([Math.cos(a)*2*R,Math.sin(a)*2*R])}
+  for(let i=0;i<6;i++){const a=(i*60+30)*Math.PI/180;pos.push([Math.cos(a)*1.732*R,Math.sin(a)*1.732*R])}
+
+  pos.forEach(([x,y],i)=>{
+    const d=document.createElement('div');
+    d.className='petal';
+    const s=36;
+    d.style.left=(cx+x-s/2)+'px';
+    d.style.top=(cy+y-s/2)+'px';
+    d.style.opacity=i===0?'.7':i<7?'.45':'.25';
+    f.appendChild(d);
+  });
+
+  // Breathing animation
+  let expanded=true;
+  function breathe(){
+    const scale=expanded?1.15:.65;
+    f.style.transition='transform 4.34s ease-in-out'; // Schumann×34
+    f.style.transform=`scale(${scale})`;
+    expanded=!expanded;
+    setTimeout(breathe,4342); // Schumann×34 ms
+  }
+  breathe();
+})();
 </script>
 
 </body>
