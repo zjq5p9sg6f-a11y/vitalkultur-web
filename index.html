@@ -51,8 +51,8 @@
 
       --bg:#020202;
       --t:rgb(235,230,220);
-      --t2:rgba(235,230,220,.6);      /* Body text                    */
-      --t3:rgba(235,230,220,.45);     /* Secondary text               */
+      --t2:rgba(235,230,220,.75);     /* Body text — OLED readable     */
+      --t3:rgba(235,230,220,.55);     /* Secondary text — OLED readable */
 
       /*
        * ── φ-MODULAR TYPOGRAPHY ────────────────────────────────────
@@ -156,7 +156,7 @@
       width:clamp(300px,50vw,377px);
       height:clamp(300px,50vw,377px);
       position:relative;
-      margin-bottom:55px; /* F(10) */
+      margin-bottom:89px; /* F(11) — room for CI below flower */
     }
     #flowerCanvas{width:100%;height:100%}
 
@@ -168,15 +168,26 @@
       max-width:610px;  /* ≈ 16px × φ⁵ (= 609.5) */
     }
     .hero-title em{font-style:normal;color:var(--gold-bright)}
-    .hero-title .brand{
-      display:block;
-      font-size:clamp(21px,4vw,34px); /* F(8) → F(9) */
+
+    /* CI: CARLON + Claim directly below Flower — matches Watch app */
+    .flower-ci{
+      position:absolute;bottom:-55px;left:50%;transform:translateX(-50%); /* F(10) */
+      text-align:center;pointer-events:none;width:377px; /* F(14) */
+    }
+    .flower-ci .ci-name{
+      font-size:clamp(26px,5vw,42px); /* φ¹ → φ² */
       font-weight:200;
-      letter-spacing:.618em;  /* φ⁻¹ — the golden letter-spacing */
-      color:var(--gold-bright);opacity:.8;
-      margin-bottom:21px;     /* F(8) */
+      letter-spacing:.618em; /* φ⁻¹ */
+      color:var(--gold-bright);
+      text-shadow:0 0 55px rgba(178,148,76,.13); /* F(10) */
+    }
+    .flower-ci .ci-claim{
+      font-size:10px; /* φ⁻¹ scale */
+      font-weight:300;
+      letter-spacing:.382em; /* φ⁻² */
+      color:var(--gold);opacity:.5;
+      margin-top:5px; /* F(5) */
       text-transform:uppercase;
-      text-shadow:0 0 55px rgba(178,148,76,.15); /* F(10) glow radius */
     }
 
     .hero-sub{
@@ -263,7 +274,7 @@
       letter-spacing:.382em; /* φ⁻² */
       text-transform:uppercase;
       margin-bottom:8px; /* F(6) */
-      opacity:.45;
+      opacity:.6;
     }
 
     /* Section glow backgrounds */
@@ -401,7 +412,9 @@
 
     /* ═══ RESPONSIVE ═══ */
     @media(max-width:610px){
-      .flower-wrap{width:233px;height:233px}
+      .flower-wrap{width:233px;height:233px;margin-bottom:55px}
+      .flower-ci{width:233px}
+      .flower-ci .ci-name{font-size:21px}
       .sect{padding:55px 21px}
       .sci-grid{grid-template-columns:1fr}
       .feat-list{columns:1}
@@ -490,14 +503,17 @@
 
 <!-- ═══ HERO — The first breath ═══ -->
 <div class="hero">
-  <div class="hero-badge">432 Hz · Sacred Geometry · Apple Watch</div>
+  <div class="hero-badge">Sacred Geometry · Apple Watch · No Subscription</div>
 
   <div class="flower-wrap">
     <canvas id="flowerCanvas" role="img" aria-label="Flower of Life sacred geometry animation"></canvas>
+    <div class="flower-ci">
+      <div class="ci-name">CARLON</div>
+      <div class="ci-claim">Breathe Beyond</div>
+    </div>
   </div>
 
-  <h1 class="hero-title">
-    <span class="brand">CARLON</span>
+  <h1 class="hero-title" style="margin-top:13px">
     Breathing patterns derived<br>from <em>sacred geometry.</em>
   </h1>
   <p class="hero-sub">16 science-backed techniques <span>·</span> World-class haptics <span>·</span> No subscription</p>
