@@ -47,7 +47,7 @@
 
     /* Flower of Life — Canvas rendered */
     .flower-container{position:relative;width:280px;height:280px;margin-bottom:34px}
-    #flowerCanvas{width:100%;height:100%}
+    #flowerCanvas{width:100%;height:100%;image-rendering:auto}
     .flower-brand{position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;width:300px}
     .flower-brand .name{font-size:28px;font-weight:200;letter-spacing:.4em;color:var(--t);opacity:.9}
     .flower-brand .claim{font-size:11px;font-weight:300;letter-spacing:.2em;color:var(--g);opacity:.45;margin-top:3px;text-transform:uppercase}
@@ -129,7 +129,7 @@
 <!-- ═══ HERO ═══ -->
 <div class="hero">
   <div class="flower-container">
-    <canvas id="flowerCanvas" width="560" height="560"></canvas>
+    <canvas id="flowerCanvas"></canvas>
     <div class="flower-brand">
       <div class="name">CARLON</div>
       <div class="claim">Breathe Beyond</div>
@@ -232,7 +232,7 @@
 <section>
   <p class="label rv">Behind the scenes</p>
   <h2 class="rv">Built with<br><em>obsession.</em></h2>
-  <p class="lead rv">The new haptic capabilities of the Apple Watch blew us away. We knew immediately: this has to feel like breathing. So we dove deep — every inhale impulse rises through your wrist, every exhale descends. Double-tap on the Ultra ends a breath hold without looking. It just works.</p>
+  <p class="lead rv">The haptic capabilities of the Apple Watch blew us away. We knew immediately: this has to feel like breathing. So we dove deep — every inhale impulse rises through your wrist, every exhale descends. Double-tap ends a breath hold without looking. It just works.</p>
   <p class="lead rv" style="margin-top:13px">We built in lots of room to make it yours — custom presets, color themes, soundscapes, haptic intensity. Not everything is perfect yet, and we know that. But we're improving every detail, and we'd love to hear how the haptics feel for you.</p>
   <p class="lead rv" style="margin-top:13px">This is just the beginning. There's much more coming — and the quality of what's already here shows you how serious we are about this.</p>
   <p class="lead rv" style="margin-top:13px">We love meeting inspiring people — coaches, therapists, yogis, athletes. If you have an idea, let's talk: <a href="mailto:jan@vitalkultur.com">jan@vitalkultur.com</a></p>
@@ -281,8 +281,14 @@ document.querySelectorAll('.rv').forEach(e=>obs.observe(e));
 (function(){
   const canvas=document.getElementById('flowerCanvas');
   const ctx=canvas.getContext('2d');
-  const W=canvas.width, H=canvas.height, cx=W/2, cy=H/2;
-  const R=W*0.08; // circle radius = center-to-center distance
+  // Retina: scale canvas to devicePixelRatio for crisp rendering
+  const dpr=window.devicePixelRatio||1;
+  const rect=canvas.getBoundingClientRect();
+  canvas.width=rect.width*dpr;
+  canvas.height=rect.height*dpr;
+  ctx.scale(dpr,dpr);
+  const W=rect.width, H=rect.height, cx=W/2, cy=H/2;
+  const R=W*0.08;
 
   // 19 circle positions: center(1) + ring1(6) + ring2a(6) + ring2b(6)
   const circles=[];
@@ -308,7 +314,7 @@ document.querySelectorAll('.rv').forEach(e=>obs.observe(e));
     const spread=0.3+ease*0.7; // 0.3 → 1.0
     const glowIntensity=0.15+ease*0.35;
 
-    ctx.clearRect(0,0,W,H);
+    ctx.clearRect(0,0,W*dpr,H*dpr);
 
     // Outer glow
     const outerGrad=ctx.createRadialGradient(cx,cy,10,cx,cy,R*3*spread);
