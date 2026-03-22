@@ -173,13 +173,16 @@
 
     /* CI: CARLON + Claim directly below Flower — matches Watch app */
     .flower-ci{
-      position:absolute;bottom:-55px;left:50%;transform:translateX(-50%); /* F(10) */
-      text-align:center;pointer-events:none;width:377px; /* F(14) */
+      position:absolute;bottom:-55px;
+      left:50%;transform:translateX(-50%); /* center relative to parent */
+      display:flex;flex-direction:column;align-items:center; /* flexbox centering ignores trailing letter-spacing */
+      pointer-events:none;white-space:nowrap;
     }
     .flower-ci .ci-name{
       font-size:clamp(34px,7vw,68px); /* F(9) → 16×φ³ — DOMINANT brand element */
       font-weight:200;
       letter-spacing:.618em; /* φ⁻¹ */
+      margin-right:-.618em; /* negate trailing letter-spacing */
       color:var(--gold-bright);
       text-shadow:0 0 55px rgba(178,148,76,.13); /* F(10) */
     }
@@ -187,6 +190,7 @@
       font-size:10px; /* φ⁻¹ scale */
       font-weight:300;
       letter-spacing:.382em; /* φ⁻² */
+      margin-right:-.382em; /* negate trailing letter-spacing */
       color:var(--gold);opacity:.5;
       margin-top:5px; /* F(5) */
       text-transform:uppercase;
@@ -412,10 +416,50 @@
     footer p{font-size:10px;color:var(--t3);opacity:.3}
     .disclaimer{font-size:8px;opacity:.1;max-width:377px;margin:21px auto 0;line-height:1.8}
 
+    /*
+     * ═══ AUDIO PLAYER ═══════════════════════════════════════════
+     * Fixed bottom-right. Fibonacci dimensions.
+     * Starts muted — user activates consciously.
+     * Schumann-timed fade-in (127.71ms × F(8) = 2.68s).
+     */
+    .audio-ctrl{
+      position:fixed;bottom:21px;right:21px;z-index:89; /* F(8), F(11) */
+      display:flex;align-items:center;gap:8px; /* F(6) */
+      background:rgba(5,5,5,.85);
+      backdrop-filter:blur(13px); /* F(7) */
+      border:1px solid rgba(178,148,76,.12);
+      border-radius:21px; /* F(8) */
+      padding:8px 13px; /* F(6), F(7) */
+      cursor:pointer;
+      transition:all .382s ease; /* φ⁻¹ */
+      opacity:.55;
+    }
+    .audio-ctrl:hover{opacity:1;border-color:rgba(178,148,76,.3);box-shadow:0 0 21px rgba(178,148,76,.08)}
+    .audio-ctrl.playing{opacity:.8;border-color:rgba(85,185,130,.25)}
+    .audio-ctrl svg{width:21px;height:21px;flex-shrink:0} /* F(8) */
+    .audio-ctrl .bars{display:flex;align-items:end;gap:2px;height:13px} /* F(3), F(7) */
+    .audio-ctrl .bars span{width:2px;background:var(--gold);border-radius:1px;transition:height .382s ease} /* F(3) */
+    .audio-ctrl .bars span:nth-child(1){height:5px} /* F(5) */
+    .audio-ctrl .bars span:nth-child(2){height:8px} /* F(6) */
+    .audio-ctrl .bars span:nth-child(3){height:13px} /* F(7) */
+    .audio-ctrl .bars span:nth-child(4){height:8px} /* F(6) */
+    .audio-ctrl .bars span:nth-child(5){height:3px} /* F(4) */
+    .audio-ctrl.playing .bars span{animation:bar-bounce .618s ease-in-out infinite alternate} /* φ⁻¹ */
+    .audio-ctrl.playing .bars span:nth-child(2){animation-delay:.1s}
+    .audio-ctrl.playing .bars span:nth-child(3){animation-delay:.2s}
+    .audio-ctrl.playing .bars span:nth-child(4){animation-delay:.3s}
+    .audio-ctrl.playing .bars span:nth-child(5){animation-delay:.4s}
+    @keyframes bar-bounce{
+      0%{height:3px}
+      100%{height:13px} /* F(4) → F(7) */
+    }
+    .audio-label{font-size:10px;color:var(--t3);letter-spacing:.05em;white-space:nowrap;overflow:hidden;transition:opacity .382s ease;opacity:.35}
+    .audio-ctrl:hover .audio-label{opacity:1}
+
     /* ═══ RESPONSIVE ═══ */
     @media(max-width:610px){
       .flower-wrap{width:233px;height:233px;margin-bottom:55px}
-      .flower-ci{width:233px}
+      .flower-ci{width:auto}
       .flower-ci .ci-name{font-size:26px} /* φ¹ on small screens */
       .sect{padding:55px 21px}
       .sci-grid{grid-template-columns:1fr}
@@ -505,7 +549,7 @@
 
 <!-- ═══ HERO — The first breath ═══ -->
 <div class="hero">
-  <div class="hero-badge">Sacred Geometry · Apple Watch · No Subscription</div>
+  <div class="hero-badge">Haptic-guided Breathwork · Apple Watch · Eyes Closed</div>
 
   <div class="flower-wrap">
     <canvas id="flowerCanvas" role="img" aria-label="Flower of Life sacred geometry animation"></canvas>
@@ -516,13 +560,14 @@
   </div>
 
   <h1 class="hero-title" style="margin-top:13px">
-    Breathing patterns derived<br>from <em>sacred geometry.</em>
+    Close your eyes.<br><em>Your wrist guides every breath.</em>
   </h1>
-  <p class="hero-sub">16 science-backed techniques <span>·</span> World-class haptics <span>·</span> No subscription</p>
+  <p class="hero-sub">3 minutes to reset <span>·</span> Haptic guidance <span>·</span> 16 techniques <span>·</span> No subscription — ever</p>
+  <p class="hero-sub rv" style="margin-top:8px;font-size:10px;opacity:.45;letter-spacing:.08em">Every technique backed by peer-reviewed research — Stanford, PNAS, Frontiers</p>
 
   <div class="hero-cta">
-    <a href="#pricing" class="btn btn-gold">Discover CARLON</a>
-    <a href="#experience" class="btn btn-ghost">How it works</a>
+    <a href="#experience" class="btn btn-gold">How it feels</a>
+    <a href="#pricing" class="btn btn-ghost">€9.99 once — breathe forever</a>
   </div>
 
   <div class="scroll-line"></div>
@@ -557,24 +602,42 @@
     </svg>
   </div>
   <p class="label rv">Experience</p>
-  <h2 class="rv">Close your eyes.<br><em>Your wrist knows.</em></h2>
-  <p class="lead rv">CARLON doesn't need your attention. It lives on your wrist. Every inhale rises through haptics. Every exhale descends. Eyes closed, hands free, fully present.</p>
+  <h2 class="rv">The watch<br><em>breathes with you.</em></h2>
+  <p class="lead rv">Every inhale rises through your wrist. Every exhale descends. Navigate with Double Tap — no screen, no distraction. 3 minutes between meetings. 5 minutes before sleep. Eyes closed, fully present.</p>
 
   <div class="cards">
     <div class="card rv d1">
       <p class="tag">Apple Watch</p>
-      <h3>World-class haptics</h3>
-      <p>80 million haptic configurations tested. Every pulse follows the golden ratio. Your nervous system recognizes the pattern before your mind does.</p>
+      <h3>Haptic guidance</h3>
+      <p>Close your eyes. Feel the inhale rise through your wrist. Feel the exhale descend. 80 million configurations tested — your nervous system recognizes the rhythm before your mind does.</p>
     </div>
-    <div class="card card--green rv d2">
+    <div class="card rv d2">
+      <p class="tag">Zero distraction</p>
+      <h3>Double Tap</h3>
+      <p>Start, pause, skip — without looking. Double Tap on Apple Watch lets you navigate CARLON with your eyes closed. Nothing breaks your flow.</p>
+    </div>
+    <div class="card card--green rv d3">
+      <p class="tag">16 techniques</p>
+      <h3>From calm to fire</h3>
+      <p>Tummo for activation. Box Breathing for focus. 4-7-8 for sleep. Coherence for HRV. One app, every method — each backed by published research.</p>
+    </div>
+  </div>
+
+  <div class="cards" style="margin-top:21px">
+    <div class="card rv d1">
+      <p class="tag">HealthKit</p>
+      <h3>HRV Insights</h3>
+      <p>Feel how breathing changes your body — then see the data. Heart rate variability trends linked to your sessions. Dive reflex detection during Tummo. Your progress, measured.</p>
+    </div>
+    <div class="card rv d2">
+      <p class="tag">Create</p>
+      <h3>Breath Composer</h3>
+      <p>Build your own technique. Set inhale, hold, exhale, recovery — save it, name it, share it. No other Watch app lets you compose your own breath.</p>
+    </div>
+    <div class="card card--green rv d3">
       <p class="tag">Sacred Geometry</p>
       <h3>Flower of Life</h3>
-      <p>Not decoration — an operating system. Breath timing from Earth's resonance at 7.83 Hz. Proportions from φ. Your session breathes in nature's own rhythm.</p>
-    </div>
-    <div class="card rv d3">
-      <p class="tag">Privacy</p>
-      <h3>No account. No tracking.</h3>
-      <p>Everything stays on your device. No servers, no analytics, no data leaving your wrist. We build a good product — not a data pipeline.</p>
+      <p>The Flower of Life blooms and contracts with your breath. Timing from Earth's resonance. Proportions from φ. Beauty as biofeedback.</p>
     </div>
   </div>
 </div>
@@ -611,38 +674,6 @@
   </div>
 </div>
 
-<!-- ═══ PRICING ═══ -->
-<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(178,148,76,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
-
-<div class="sect" id="pricing">
-  <p class="label rv" style="text-align:center">One price</p>
-  <h2 class="rv" style="text-align:center">No subscription<br><em>required.</em></h2>
-
-  <div class="price-card rv">
-    <div class="price-num">€9.99</div>
-    <div class="price-sub">One purchase · Everything included · All future updates</div>
-    <ul class="feat-list">
-      <li>16 breathing techniques</li>
-      <li>Apple Watch haptic guidance</li>
-      <li>Flower of Life visualization</li>
-      <li>Breath Composer</li>
-      <li>4-layer Sound Engine</li>
-      <li>HRV & heart rate insights</li>
-      <li>Solfeggio color themes</li>
-      <li>9 languages</li>
-    </ul>
-    <span class="btn btn-gold" style="margin-top:34px;opacity:.5;cursor:default">Coming to the App Store</span>
-  </div>
-
-  <div class="coach-card rv">
-    <p class="label" style="color:var(--violet)">For coaches & therapists</p>
-    <h3>Your protocols. Your brand.</h3>
-    <div class="price-num">€9.99<span style="font-size:16px;opacity:.3">/mo</span></div>
-    <div class="price-sub">or €79.99/year</div>
-    <p>Create breathing protocols, brand them, share via deep link. Your community breathes your way.</p>
-  </div>
-</div>
-
 <!-- ═══ CRAFT ═══ -->
 <div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><circle cx="75" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="105" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="90" cy="20" r="9" stroke="rgba(178,148,76,.35)" stroke-width=".3"/><line x1="10" y1="20" x2="60" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/><line x1="120" y1="20" x2="170" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/></svg></div>
 
@@ -661,6 +692,39 @@
   <p class="lead rv d1" style="margin-top:13px">You don't need to know any of this. Your nervous system already does. That's why it feels right before you understand why.</p>
   <p class="lead rv d2" style="margin-top:21px;font-size:13px;color:var(--t3);font-style:italic">It's better to just eat the apple than to know that it's healthy.</p>
   <p class="lead rv d3" style="margin-top:34px">We love meeting people who care about craft — coaches, therapists, yogis, athletes. If you breathe with intention, <a href="mailto:jan@vitalkultur.com">we'd love to hear from you</a>.</p>
+</div>
+
+<!-- ═══ PRICING ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(178,148,76,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
+
+<div class="sect" id="pricing">
+  <p class="label rv" style="text-align:center">One price</p>
+  <h2 class="rv" style="text-align:center">No subscription.<br><em>Not now. Not ever.</em></h2>
+  <p class="lead rv" style="text-align:center;max-width:610px;margin:0 auto 34px">In a world of $69/year breathing apps, CARLON is yours for €9.99. One purchase. All 16 techniques. All future updates. Because breathing shouldn't come with a monthly bill.</p>
+
+  <div class="price-card rv">
+    <div class="price-num">€9.99</div>
+    <div class="price-sub">One purchase · Everything included · All future updates</div>
+    <ul class="feat-list">
+      <li>Apple Watch haptic guidance</li>
+      <li>Double Tap — eyes-closed navigation</li>
+      <li>16 breathing techniques</li>
+      <li>HRV & heart rate insights</li>
+      <li>Breath Composer — build your own</li>
+      <li>Flower of Life visualization</li>
+      <li>4-layer Sound Engine</li>
+      <li>9 languages</li>
+    </ul>
+    <span class="btn btn-gold" style="margin-top:34px;opacity:.5;cursor:default">Coming to the App Store</span>
+  </div>
+
+  <div class="coach-card rv">
+    <p class="label" style="color:var(--violet)">For coaches & therapists</p>
+    <h3>Your protocols. Your brand.</h3>
+    <div class="price-num">€9.99<span style="font-size:16px;opacity:.3">/mo</span></div>
+    <div class="price-sub">or €79.99/year</div>
+    <p>Create breathing protocols, brand them, share via deep link. Your community breathes your way.</p>
+  </div>
 </div>
 
 <!-- ═══ ENTERPRISE ═══ -->
@@ -718,6 +782,18 @@
   <p>&copy; 2026 Vitalkultur · Jan Rohwedder · Made in Germany</p>
   <p class="disclaimer">CARLON is a wellness product, not a medical device. It is not intended to diagnose, treat, cure, or prevent any disease. Not a substitute for medical advice.</p>
 </footer>
+
+<!-- ═══ AUDIO PLAYER ═══ -->
+<div class="audio-ctrl" id="audioCtrl" role="button" aria-label="Toggle ambient music" tabindex="0">
+  <svg viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="10.5" cy="10.5" r="9.5" stroke="rgba(178,148,76,.4)" stroke-width=".8" fill="none"/>
+    <polygon id="audioIcon" points="8,6 15,10.5 8,15" fill="rgba(178,148,76,.7)"/>
+  </svg>
+  <div class="bars"><span></span><span></span><span></span><span></span><span></span></div>
+  <span class="audio-label" id="audioLabel">World Peace in Us · Soulonaut</span>
+</div>
+<audio id="ambientAudio0" src="world-peace-in-us.mp3" preload="none"></audio>
+<audio id="ambientAudio1" src="beyond-the-sun.mp3" preload="none"></audio>
 
 </div><!-- /page -->
 
@@ -1039,6 +1115,125 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
     if(!prefersReducedMotion)requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
+})();
+
+// ═══ AMBIENT AUDIO ═══
+// Two songs, alternating. Fade-out before end, crossfade to next.
+// Schumann-timed fades: 2.68s (127.71ms × F(8)=21).
+// Autoplay on load, fallback on first interaction.
+(function(){
+  const ctrl=document.getElementById('audioCtrl');
+  const icon=document.getElementById('audioIcon');
+  const label=document.getElementById('audioLabel');
+  const tracks=[
+    {el:document.getElementById('ambientAudio0'),title:'World Peace in Us · Soulonaut'},
+    {el:document.getElementById('ambientAudio1'),title:'Beyond the Sun · Soulonaut'}
+  ];
+  if(!ctrl||!tracks[0].el||!tracks[1].el)return;
+
+  let playing=false;
+  let current=Math.random()<.5?0:1; // random start
+  const fadeDuration=2680; // Schumann × F(8)
+  const fadeSteps=34; // F(9)
+  const targetVolume=0.382; // φ⁻¹
+  const earlyFade=13; // seconds before end to start fade-out (F(7))
+  let fadeInterval=null;
+  let endCheckInterval=null;
+
+  function updateLabel(){label.textContent=tracks[current].title}
+
+  function fadeIn(){
+    var audio=tracks[current].el;
+    audio.currentTime=0;
+    audio.volume=0;
+    updateLabel();
+    audio.play().then(function(){
+      playing=true;
+      ctrl.classList.add('playing');
+      icon.setAttribute('points','6,5 9,5 9,16 6,16 12,5 15,5 15,16 12,16');
+      var step=0;
+      clearInterval(fadeInterval);
+      fadeInterval=setInterval(function(){
+        step++;
+        audio.volume=Math.min(targetVolume,targetVolume*(step/fadeSteps));
+        if(step>=fadeSteps)clearInterval(fadeInterval);
+      },fadeDuration/fadeSteps);
+      startEndCheck();
+    }).catch(function(){});
+  }
+
+  function fadeOutAndNext(){
+    var audio=tracks[current].el;
+    var vol=audio.volume;
+    var step=0;
+    clearInterval(fadeInterval);
+    clearInterval(endCheckInterval);
+    fadeInterval=setInterval(function(){
+      step++;
+      audio.volume=Math.max(0,vol*(1-step/fadeSteps));
+      if(step>=fadeSteps){
+        clearInterval(fadeInterval);
+        audio.pause();
+        audio.currentTime=0;
+        // switch to next track
+        current=(current+1)%tracks.length;
+        fadeIn();
+      }
+    },fadeDuration/fadeSteps);
+  }
+
+  function fadeOutAndStop(){
+    var audio=tracks[current].el;
+    var vol=audio.volume;
+    var step=0;
+    clearInterval(fadeInterval);
+    clearInterval(endCheckInterval);
+    fadeInterval=setInterval(function(){
+      step++;
+      audio.volume=Math.max(0,vol*(1-step/fadeSteps));
+      if(step>=fadeSteps){
+        clearInterval(fadeInterval);
+        audio.pause();
+        audio.currentTime=0;
+        playing=false;
+        ctrl.classList.remove('playing');
+        icon.setAttribute('points','8,6 15,10.5 8,15');
+      }
+    },fadeDuration/fadeSteps);
+  }
+
+  // Check if approaching end of track → crossfade to next
+  function startEndCheck(){
+    clearInterval(endCheckInterval);
+    endCheckInterval=setInterval(function(){
+      var audio=tracks[current].el;
+      if(audio.duration&&audio.currentTime>=audio.duration-earlyFade){
+        fadeOutAndNext();
+      }
+    },500);
+  }
+
+  function toggle(){
+    if(playing){fadeOutAndStop()}else{fadeIn()}
+  }
+
+  // Autoplay on load (works on desktop)
+  fadeIn();
+
+  // iOS/mobile: browsers block autoplay without user gesture.
+  // Start on ANY first interaction — touch, click, scroll, keypress.
+  function onFirstInteraction(){
+    if(!playing){fadeIn()}
+    ['click','touchstart','touchend','scroll','keydown'].forEach(function(evt){
+      document.removeEventListener(evt,onFirstInteraction);
+    });
+  }
+  ['click','touchstart','touchend','scroll','keydown'].forEach(function(evt){
+    document.addEventListener(evt,onFirstInteraction,{once:true,passive:true});
+  });
+
+  ctrl.addEventListener('click',function(e){e.stopPropagation();toggle()});
+  ctrl.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
 })();
 </script>
 
