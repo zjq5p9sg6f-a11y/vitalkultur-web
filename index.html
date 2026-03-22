@@ -2,7 +2,10 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#030303">
   <title>CARLON — Breathe Beyond | Vitalkultur</title>
   <meta name="description" content="16 evidenzbasierte Atemtechniken. Weltklasse Apple Watch Haptik. Einmal kaufen, für immer atmen.">
   <meta property="og:title" content="CARLON — Breathe Beyond">
@@ -117,15 +120,63 @@
     .disclaimer { font-size:10px; opacity:.2; max-width:440px; margin:21px auto 0; line-height:1.6 }
     .impressum { font-size:10px; opacity:.15; margin-top:13px; line-height:1.6 }
 
-    @media(max-width:640px) {
-      .hero h1 { font-size:24px }
-      .flower-hero { width:150px; height:150px }
-      section h2 { font-size:28px }
+    /* ═══ iPhone (primary target) ═══ */
+    @media(max-width:430px) {
+      html { font-size:16px }
+      .hero { min-height:100svh; padding:0 21px; padding-top:env(safe-area-inset-top) }
+      .hero h1 { font-size:26px; max-width:340px }
+      .flower-hero { width:160px; height:160px; margin-bottom:34px }
+      .quiet { font-size:13px }
       section { padding:55px 21px }
-      .studies { grid-template-columns:1fr }
+      section h2 { font-size:26px }
+      .lead { font-size:16px }
+      .cards { gap:13px }
+      .card { padding:21px }
+      .card p { font-size:13px }
+      .studies { grid-template-columns:1fr; gap:8px }
+      .study { padding:13px }
       .features { columns:1 }
-      .flower-watermark { width:500px; height:500px }
+      .price-num { font-size:55px }
+      .price-box { padding:34px 21px }
+      .btn { padding:16px 34px; min-height:48px; font-size:15px } /* Apple HIG: 44px+ touch */
+      .coach-box { padding:21px }
+      .coach-box .price-num { font-size:34px }
+      footer nav { gap:13px }
+      footer nav a { font-size:12px; padding:5px 0 } /* Bigger touch targets */
+      .flower-watermark { width:400px; height:400px }
     }
+
+    /* ═══ Small iPhones (SE, Mini) ═══ */
+    @media(max-width:375px) {
+      .hero h1 { font-size:22px }
+      .flower-hero { width:130px; height:130px }
+      section h2 { font-size:22px }
+      .price-num { font-size:48px }
+    }
+
+    /* ═══ iPad ═══ */
+    @media(min-width:768px) and (max-width:1024px) {
+      section { max-width:600px }
+      .studies { grid-template-columns:1fr 1fr }
+      .cards { grid-template-columns:1fr 1fr; gap:21px }
+      .cards .card:last-child { grid-column:1 / -1 } /* "Null Daten raus" full width */
+    }
+
+    /* ═══ Desktop ═══ */
+    @media(min-width:1025px) {
+      .cards { grid-template-columns:1fr 1fr 1fr }
+    }
+
+    /* iOS safe areas */
+    @supports(padding:env(safe-area-inset-bottom)) {
+      footer { padding-bottom:calc(55px + env(safe-area-inset-bottom)) }
+    }
+
+    /* Prevent iOS zoom on input focus */
+    input, select, textarea { font-size:16px !important }
+
+    /* Smooth momentum scrolling iOS */
+    html { -webkit-overflow-scrolling:touch }
   </style>
 </head>
 <body>
@@ -266,11 +317,12 @@
 const o=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -34px 0px'});
 document.querySelectorAll('.rv').forEach(e=>o.observe(e));
 
-// Flower of Life — 19 Glow-Petals (wie FlowerView.swift)
+// Flower of Life — 19 Glow-Petals (wie FlowerView.swift), responsive
 (function(){
   const f=document.getElementById('flower');
-  const R=18, cx=100, cy=100;
-  // 19 circle positions: center + ring1(6) + ring2(12) — from FlowerView.swift
+  const w=f.offsetWidth;
+  const R=w*0.09, cx=w/2, cy=w/2, s=w*0.18;
+
   const pos=[[0,0]];
   for(let i=0;i<6;i++){const a=i*60*Math.PI/180;pos.push([Math.cos(a)*R,Math.sin(a)*R])}
   for(let i=0;i<6;i++){const a=i*60*Math.PI/180;pos.push([Math.cos(a)*2*R,Math.sin(a)*2*R])}
@@ -279,21 +331,20 @@ document.querySelectorAll('.rv').forEach(e=>o.observe(e));
   pos.forEach(([x,y],i)=>{
     const d=document.createElement('div');
     d.className='petal';
-    const s=36;
+    d.style.width=s+'px'; d.style.height=s+'px';
     d.style.left=(cx+x-s/2)+'px';
     d.style.top=(cy+y-s/2)+'px';
     d.style.opacity=i===0?'.7':i<7?'.45':'.25';
     f.appendChild(d);
   });
 
-  // Breathing animation
+  // Breathing animation — Schumann×34 = 4.34s
   let expanded=true;
   function breathe(){
-    const scale=expanded?1.15:.65;
-    f.style.transition='transform 4.34s ease-in-out'; // Schumann×34
-    f.style.transform=`scale(${scale})`;
+    f.style.transition='transform 4.34s ease-in-out';
+    f.style.transform=`scale(${expanded?1.15:.65})`;
     expanded=!expanded;
-    setTimeout(breathe,4342); // Schumann×34 ms
+    setTimeout(breathe,4342);
   }
   breathe();
 })();
