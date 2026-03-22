@@ -12,6 +12,11 @@
   <meta property="og:description" content="Born from a family's breath. 16 techniques. Apple Watch. No subscription.">
   <meta property="og:image" content="https://vitalkultur.com/app-icon.png">
   <link rel="icon" href="app-icon.png">
+  <link rel="canonical" href="https://vitalkultur.com/">
+  <meta property="og:url" content="https://vitalkultur.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <noscript><style>.rv{opacity:1;transform:none}</style></noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -24,8 +29,8 @@
       --red:rgb(200,60,50);         /* 396 Hz Liberation — energy */
       --bg:#020202;
       --t:rgb(235,230,220);
-      --t2:rgba(235,230,220,.5);
-      --t3:rgba(235,230,220,.22);
+      --t2:rgba(235,230,220,.6);
+      --t3:rgba(235,230,220,.45);
     }
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth;font-size:16px}
@@ -242,12 +247,14 @@
     @media(min-width:768px){.cards{grid-template-columns:1fr 1fr}}
     @media(min-width:1025px){.cards{grid-template-columns:1fr 1fr 1fr}}
     @supports(padding:env(safe-area-inset-bottom)){footer{padding-bottom:calc(55px + env(safe-area-inset-bottom))}}
+    .btn:focus-visible,a:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px}
+    @media(prefers-reduced-motion:reduce){.rv{transition:none;opacity:1;transform:none}.scroll-line,.atmos-orb{animation:none}}
   </style>
 </head>
 <body>
 
 <!-- Fixed parallax Flower of Life background -->
-<canvas id="bgFlower"></canvas>
+<canvas id="bgFlower" role="img" aria-label="Sacred geometry background pattern"></canvas>
 
 <div class="page">
 
@@ -258,12 +265,12 @@
   <div class="hero-badge">432 Hz · Sacred Geometry · Apple Watch</div>
 
   <div class="flower-wrap">
-    <canvas id="flowerCanvas"></canvas>
+    <canvas id="flowerCanvas" role="img" aria-label="Flower of Life sacred geometry animation"></canvas>
   </div>
 
   <h1 class="hero-title">
     <span class="brand">CARLON</span>
-    The breath you've been<br>looking <em>for.</em>
+    Breathing patterns derived<br>from <em>sacred geometry.</em>
   </h1>
   <p class="hero-sub">16 science-backed techniques <span>·</span> World-class haptics <span>·</span> No subscription</p>
 
@@ -283,7 +290,7 @@
   <p class="label rv">Origin</p>
   <h2 class="rv">Born from<br><em>our breath.</em></h2>
   <p class="lead rv">When our son Carlon was born on a January night in 2026, everything changed. The name means <em>the free one</em> — and that's exactly what breathwork gives us. As a family, we breathe together. We use our Apple Watches for everything — tracking Carina's yoga, my cold exposure, and lately, counting Carlon's little sighs.</p>
-  <p class="lead rv d1" style="margin-top:13px">We couldn't find an app that felt the way breathing actually feels — sacred, not clinical. So between night feeds and first smiles, we built one. Friends tried it and said: <em>Share this.</em></p>
+  <p class="lead rv d1" style="margin-top:13px">We couldn't find an app that felt the way breathing actually feels — sacred, not clinical. So between night feeds and first smiles, we built one. The result felt so different from anything on the market that keeping it private stopped making sense.</p>
   <p class="lead rv d2" style="margin-top:13px;opacity:.25;font-size:14px">80 million haptic simulations. Sacred geometry as operating system. Named after our son — because freedom is in every breath.</p>
 </div>
 
@@ -300,7 +307,7 @@
     <div class="card rv d1">
       <p class="tag">Apple Watch</p>
       <h3>World-class haptics</h3>
-      <p>80 million configurations tested. Every pulse follows the golden ratio. Your nervous system recognizes the pattern before your mind does.</p>
+      <p>80 million configurations tested on Apple's Taptic Engine. Every pulse follows the golden ratio. Your nervous system recognizes the pattern before your mind does.</p>
     </div>
     <div class="card card--green rv d2">
       <p class="tag">Sacred Geometry</p>
@@ -348,7 +355,7 @@
 
 <div class="sect" id="pricing">
   <p class="label rv" style="text-align:center">One price</p>
-  <h2 class="rv" style="text-align:center">No subscription.<br><em>Ever.</em></h2>
+  <h2 class="rv" style="text-align:center">No subscription<br><em>required.</em></h2>
 
   <div class="price-card rv">
     <div class="price-num">€9.99</div>
@@ -363,7 +370,7 @@
       <li>Solfeggio color themes</li>
       <li>9 languages</li>
     </ul>
-    <a href="#" class="btn btn-gold" style="margin-top:34px">Get on the App Store</a>
+    <span class="btn btn-gold" style="margin-top:34px;opacity:.5;cursor:default">Coming to the App Store</span>
   </div>
 
   <div class="coach-card rv">
@@ -398,7 +405,7 @@
   <div class="ent-box rv">
     <p class="label" style="color:var(--t3);opacity:.3">Beyond the app</p>
     <h2>You have a vision?<br><em>Let's talk.</em></h2>
-    <p class="lead" style="margin:0 auto 34px;text-align:center;max-width:480px;font-size:15px">We obsess over detail — from haptic waveforms to sacred geometry to breathing science. If you're working on something where that craft matters, we'd love to hear about it.</p>
+    <p class="lead" style="margin:0 auto 34px;text-align:center;max-width:480px;font-size:15px">Your team resets in 3 minutes between meetings. Custom breathing protocols, branded for your organization, measurable through Apple Health. Built by people who've tested 80 million haptic configurations to get one pulse right.</p>
 
     <div class="ent-grid">
       <div class="ent-item rv d1">
@@ -434,25 +441,26 @@
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
-  <img src="vitalkultur-logo.png" alt="Vitalkultur" class="logo" loading="lazy">
+  <img src="vitalkultur-logo.png" alt="Vitalkultur — Body Soul Food" class="logo" loading="lazy">
   <p class="claim">Body · Soul · Food</p>
   <nav>
     <a href="/privacy.html">Privacy Policy</a>
     <a href="/terms.html">Terms of Use</a>
     <a href="/support.html">Support</a>
     <a href="mailto:jan@vitalkultur.com">Contact</a>
+    <a href="#impressum">Impressum</a>
   </nav>
   <p>&copy; 2026 Vitalkultur · Jan Rohwedder · Made in Germany</p>
   <p class="disclaimer">CARLON is a wellness product, not a medical device. It is not intended to diagnose, treat, cure, or prevent any disease. Not a substitute for medical advice.</p>
-  <details style="margin-top:21px;font-size:9px;opacity:.15;cursor:pointer">
-    <summary style="list-style:none;text-align:center">Legal Notice (Impressum gem. &sect; 5 DDG)</summary>
-    <div style="margin-top:8px;text-align:center;line-height:1.8">
+  <div id="impressum" style="margin-top:21px;font-size:11px;opacity:.4">
+    <p style="text-align:center;font-weight:500;margin-bottom:8px">Legal Notice (Impressum gem. &sect; 5 DDG)</p>
+    <div style="text-align:center;line-height:1.8">
       <p>Jan Rohwedder<br>Kapellenstra&szlig;e 9<br>76473 Iffezheim, Germany</p>
       <p>Email: <a href="mailto:jan@vitalkultur.com" style="color:inherit">jan@vitalkultur.com</a></p>
       <p>EU Online Dispute Resolution: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener" style="color:inherit">ec.europa.eu/consumers/odr</a></p>
       <p style="margin-top:8px">Responsible for content acc. to &sect; 18(2) MStV:<br>Jan Rohwedder, address as above.</p>
     </div>
-  </details>
+  </div>
 </footer>
 
 </div><!-- /page -->
@@ -461,6 +469,7 @@
 // Scroll Reveal
 const obs=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('v')})},{threshold:.05,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(e=>obs.observe(e));
+const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ═══ SOLFEGGIO FREQUENCY STRIP ═══
 (function(){
@@ -495,7 +504,7 @@ document.querySelectorAll('.rv').forEach(e=>obs.observe(e));
     const dpr=window.devicePixelRatio||1;
     c.width=window.innerWidth*dpr;c.height=window.innerHeight*dpr;
     c.style.width=window.innerWidth+'px';c.style.height=window.innerHeight+'px';
-    ctx.scale(dpr,dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
   }
   resize();window.addEventListener('resize',resize);
   const W=()=>window.innerWidth,H=()=>window.innerHeight;
@@ -535,7 +544,7 @@ document.querySelectorAll('.rv').forEach(e=>obs.observe(e));
       ctx.restore();
     });
 
-    requestAnimationFrame(drawBg);
+    if(!prefersReducedMotion)requestAnimationFrame(drawBg);
   }
   drawBg();
 })();
@@ -544,12 +553,21 @@ document.querySelectorAll('.rv').forEach(e=>obs.observe(e));
 (function(){
   const canvas=document.getElementById('flowerCanvas');
   const ctx=canvas.getContext('2d');
-  const dpr=window.devicePixelRatio||1;
-  const rect=canvas.getBoundingClientRect();
+  let dpr=window.devicePixelRatio||1;
+  let rect=canvas.getBoundingClientRect();
   canvas.width=rect.width*dpr;canvas.height=rect.height*dpr;
-  ctx.scale(dpr,dpr);
-  const W=rect.width,H=rect.height,cx=W/2,cy=H/2;
-  const R=W*.112;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  let W=rect.width,H=rect.height,cx=W/2,cy=H/2;
+  let R=W*.112;
+  function resizeHero(){
+    dpr=window.devicePixelRatio||1;
+    rect=canvas.getBoundingClientRect();
+    canvas.width=rect.width*dpr;canvas.height=rect.height*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    W=rect.width;H=rect.height;cx=W/2;cy=H/2;R=W*.112;
+  }
+  window.addEventListener('resize',resizeHero);
+  window.addEventListener('orientationchange',resizeHero);
 
   // 19 circles
   const circles=[];
@@ -573,8 +591,6 @@ document.querySelectorAll('.rv').forEach(e=>obs.observe(e));
       if(!seen.has(k)){seen.add(k);ix.push(p)}
     });
   }
-  const sparkles=ix.map(()=>({ph:Math.random()*Math.PI*2,sp:.5+Math.random()*2,sz:1+Math.random()*2.5}));
-
   // Mouse interaction
   let mx=cx,my=cy;
   canvas.style.pointerEvents='auto';
@@ -703,7 +719,7 @@ document.querySelectorAll('.rv').forEach(e=>obs.observe(e));
     ctx.strokeStyle=`rgba(178,148,76,${.035*bv})`;ctx.lineWidth=.4;
     ctx.beginPath();ctx.arc(cx,cy,or2*1.12,0,Math.PI*2);ctx.stroke();
 
-    requestAnimationFrame(draw);
+    if(!prefersReducedMotion)requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
 })();
