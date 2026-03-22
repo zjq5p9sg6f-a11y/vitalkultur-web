@@ -113,7 +113,7 @@
       display:flex;align-items:center;justify-content:center;
       padding:34px 0;position:relative;
     }
-    .sacred-div svg{width:180px;height:40px;opacity:.06}
+    .sacred-div svg{width:180px;height:40px;opacity:.12}
 
     /* ═══ SECTION ATMOSPHERES — Solfeggio color shifts ═══ */
     .sect{padding:89px 24px;max-width:680px;margin:0 auto;position:relative}
@@ -135,7 +135,7 @@
 
     /* Sacred geometry watermark textures — hidden-in-plain-sight patterns */
     .sg-watermark{
-      position:absolute;pointer-events:none;opacity:.018;
+      position:absolute;pointer-events:none;opacity:.04;
       animation:sgDrift 45s ease-in-out infinite;
     }
     .sg-watermark svg{width:100%;height:100%}
@@ -143,10 +143,10 @@
 
     /* Fibonacci spiral easter egg — discoverable on hover */
     .sg-fibonacci{
-      position:absolute;pointer-events:none;opacity:.012;
+      position:absolute;pointer-events:none;opacity:.025;
       transition:opacity 2s;
     }
-    .sect:hover .sg-fibonacci{opacity:.03}
+    .sect:hover .sg-fibonacci{opacity:.06}
 
     /* ═══ CARDS ═══ */
     .cards{display:grid;gap:13px;margin-top:34px}
@@ -358,7 +358,7 @@
 
 <div class="sect" id="science">
   <!-- Vesica Piscis watermark — the love geometry -->
-  <div class="sg-watermark" style="width:350px;height:350px;top:-60px;right:-100px;opacity:.015">
+  <div class="sg-watermark" style="width:350px;height:350px;top:-60px;right:-100px;opacity:.04">
     <svg viewBox="0 0 300 300" fill="none" stroke="rgba(178,148,76,1)" stroke-width=".5">
       <circle cx="120" cy="150" r="90"/><circle cx="180" cy="150" r="90"/>
       <ellipse cx="150" cy="150" rx="32" ry="78" stroke-width=".3" opacity=".5"/>
@@ -425,7 +425,7 @@
 
 <div class="sect">
   <!-- Platonic solid hint — icosahedron wireframe -->
-  <div class="sg-watermark" style="width:300px;height:300px;bottom:-80px;right:-80px;opacity:.014">
+  <div class="sg-watermark" style="width:300px;height:300px;bottom:-80px;right:-80px;opacity:.04">
     <svg viewBox="0 0 200 200" fill="none" stroke="rgba(178,148,76,1)" stroke-width=".3">
       <polygon points="100,10 190,75 160,170 40,170 10,75"/>
       <polygon points="100,10 40,170 190,75"/>
@@ -564,7 +564,7 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
     const progress=Math.min(1,scroll/Math.max(1,maxScroll));
 
     // Fade as user scrolls
-    const alpha=Math.max(.008,.025*(1-progress*.6));
+    const alpha=Math.max(.02,.06*(1-progress*.5));
 
     // Sacred Geometry patterns — layered, varied, discoverable
     const patterns=[
