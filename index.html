@@ -95,7 +95,7 @@
 
     /* ── RESET + BASE (φ line-height) ── */
     *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth;font-size:16px /* φ-scale base */}
+    html{scroll-behavior:smooth;font-size:16px; /* φ-scale base */ overflow-x:hidden}
     body{
       background:var(--bg);color:var(--t);
       font-family:'Inter',-apple-system,system-ui,sans-serif;
@@ -433,6 +433,7 @@
       cursor:pointer;
       transition:all .382s ease; /* φ⁻¹ */
       opacity:.55;
+      max-width:calc(100vw - 42px); /* prevent overflow on mobile */
     }
     .audio-ctrl:hover{opacity:1;border-color:rgba(178,148,76,.3);box-shadow:0 0 21px rgba(178,148,76,.08)}
     .audio-ctrl.playing{opacity:.8;border-color:rgba(85,185,130,.25)}
@@ -461,6 +462,8 @@
       .flower-wrap{width:233px;height:233px;margin-bottom:55px}
       .flower-ci{width:auto}
       .flower-ci .ci-name{font-size:26px} /* φ¹ on small screens */
+      .audio-label{display:none} /* no hover on touch — hide label */
+      .audio-ctrl{right:13px;bottom:13px} /* F(7) — tighter on mobile */
       .sect{padding:55px 21px}
       .sci-grid{grid-template-columns:1fr}
       .feat-list{columns:1}
