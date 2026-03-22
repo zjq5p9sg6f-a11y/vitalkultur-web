@@ -47,12 +47,7 @@
     .d1{transition-delay:.13s}.d2{transition-delay:.25s}.d3{transition-delay:.38s}.d4{transition-delay:.5s}
 
     /* ═══ NAV — minimal, floating ═══ */
-    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;mix-blend-mode:difference}
-    .nav img{height:28px;opacity:.5;transition:opacity .3s}
-    .nav img:hover{opacity:.8}
-    .nav-links{display:flex;gap:21px}
-    .nav-links a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);mix-blend-mode:normal}
-    .nav-links a:hover{color:rgba(255,255,255,.8)}
+    .nav{display:none}
 
     /* ═══ HERO ═══ */
     .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;text-align:center;padding:0 24px}
@@ -256,16 +251,7 @@
 
 <div class="page">
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="/"><img src="vitalkultur-logo.png" alt="Vitalkultur"></a>
-  <div class="nav-links">
-    <a href="#experience">Experience</a>
-    <a href="#science">Science</a>
-    <a href="#pricing">Pricing</a>
-    <a href="mailto:jan@vitalkultur.com">Contact</a>
-  </div>
-</nav>
+<!-- Logo only in footer -->
 
 <!-- ═══ HERO ═══ -->
 <div class="hero">
