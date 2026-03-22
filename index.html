@@ -19,7 +19,7 @@
       /* Solfeggio → Light: each frequency = a color of consciousness */
       --gold:rgb(178,148,76);       /* 432 Hz Harmony — UI chrome */
       --gold-bright:rgb(205,175,95);
-      --green:rgb(50,215,120);      /* 528 Hz Transformation — Flower of Life */
+      --green:rgb(85,185,130);        /* 528 Hz Transformation — deep sage emerald */
       --violet:rgb(135,55,225);     /* 639 Hz Connection — Coach, depth */
       --red:rgb(200,60,50);         /* 396 Hz Liberation — energy */
       --bg:#020202;
@@ -142,9 +142,9 @@
     .card p{font-size:15px;color:var(--t2);line-height:1.7}
 
     /* Green-tinted card for Flower of Life */
-    .card--green{background:rgba(50,215,120,.015);border-color:rgba(50,215,120,.06)}
-    .card--green::before{background:linear-gradient(90deg,transparent,rgba(50,215,120,.08),transparent)}
-    .card--green:hover{border-color:rgba(50,215,120,.14)}
+    .card--green{background:rgba(85,185,130,.015);border-color:rgba(85,185,130,.06)}
+    .card--green::before{background:linear-gradient(90deg,transparent,rgba(85,185,130,.08),transparent)}
+    .card--green:hover{border-color:rgba(85,185,130,.14)}
     .card--green .tag{color:var(--green)}
 
     /* ═══ SCIENCE ═══ */
@@ -282,16 +282,16 @@
   <div class="atmos"><div class="atmos-orb" style="width:300px;height:300px;top:-50px;right:-100px;background:rgba(178,148,76,.015)"></div></div>
   <p class="label rv">Origin</p>
   <h2 class="rv">Born from<br><em>our breath.</em></h2>
-  <p class="lead rv">Our son was born on a January night in 2026. We named him Carlon — <em>the free one</em>. As a family, we've always shared a love for breathwork and for pushing our Apple Watch to its limits. When we couldn't find an app that felt the way breathing feels, we built one ourselves.</p>
-  <p class="lead rv d1" style="margin-top:13px">Friends tried it and said: <em>You need to share this.</em></p>
-  <p class="lead rv d2" style="margin-top:13px;opacity:.25;font-size:14px">80 million haptic simulations. Sacred geometry as operating system. One obsession: make technology disappear.</p>
+  <p class="lead rv">When our son Carlon was born on a January night in 2026, everything changed. The name means <em>the free one</em> — and that's exactly what breathwork gives us. As a family, we breathe together. We use our Apple Watches for everything — tracking Carina's yoga, my cold exposure, and lately, counting Carlon's little sighs.</p>
+  <p class="lead rv d1" style="margin-top:13px">We couldn't find an app that felt the way breathing actually feels — sacred, not clinical. So between night feeds and first smiles, we built one. Friends tried it and said: <em>Share this.</em></p>
+  <p class="lead rv d2" style="margin-top:13px;opacity:.25;font-size:14px">80 million haptic simulations. Sacred geometry as operating system. Named after our son — because freedom is in every breath.</p>
 </div>
 
 <!-- ═══ EXPERIENCE ═══ -->
 <div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(178,148,76,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
 
 <div class="sect">
-  <div class="atmos"><div class="atmos-orb" style="width:250px;height:250px;bottom:-30px;left:-80px;background:rgba(50,215,120,.012)"></div></div>
+  <div class="atmos"><div class="atmos-orb" style="width:250px;height:250px;bottom:-30px;left:-80px;background:rgba(85,185,130,.012)"></div></div>
   <p class="label rv">Experience</p>
   <h2 class="rv">Close your eyes.<br><em>Your wrist knows.</em></h2>
   <p class="lead rv">CARLON doesn't need your attention. It lives on your wrist. Every inhale rises through haptics. Every exhale descends. Eyes closed, hands free, fully present.</p>
@@ -385,9 +385,10 @@
   <!-- Solfeggio frequency visualization -->
   <div class="freq-strip rv" aria-hidden="true" id="freqStrip"></div>
 
-  <p class="lead rv">Colors map to Solfeggio frequencies — 396 Hz liberation, 432 Hz harmony, 528 Hz transformation, 639 Hz connection — each shifted 40 octaves into visible light. Typography follows φ. Spacing follows Fibonacci. Breath timing derives from the Schumann Resonance — Earth's electromagnetic heartbeat at 7.83 Hz.</p>
-  <p class="lead rv d1" style="margin-top:13px">You don't need to know any of this. Your body recognizes it.</p>
+  <p class="lead rv">The color you see right now? It's 528 Hz — the frequency of transformation — shifted 40 octaves into visible light. The gold around it? 432 Hz, the frequency of harmony. Every breath timing in CARLON is a Fibonacci pair multiplied by Earth's heartbeat at 7.83 Hz. Your inhale and exhale always sum to the next Fibonacci number.</p>
+  <p class="lead rv d1" style="margin-top:13px">You don't need to know any of this. Your nervous system already does. That's why it feels right before you understand why.</p>
   <p class="lead rv d2" style="margin-top:21px;font-size:14px;color:var(--t3);font-style:italic">It's better to just eat the apple than to know that it's healthy.</p>
+  <p class="lead rv d3" style="margin-top:34px">We love meeting people who care about craft — coaches, therapists, yogis, athletes. If you breathe with intention, <a href="mailto:jan@vitalkultur.com">we'd love to hear from you</a>.</p>
 </div>
 
 <!-- ═══ ENTERPRISE ═══ -->
@@ -583,6 +584,8 @@ document.querySelectorAll('.rv').forEach(e=>obs.observe(e));
   });
   canvas.addEventListener('mouseleave',()=>{mx=cx;my=cy});
 
+  // Sparkle phases for intersections
+  const sparkles=ix.map(()=>({ph:Math.random()*Math.PI*2,sp:.4+Math.random()*1.5,sz:1+Math.random()*2}));
   let phase=0,expanding=true,beam=0;
   const breathDur=4342;
   let lastT=performance.now();const t0=lastT;
@@ -593,132 +596,112 @@ document.querySelectorAll('.rv').forEach(e=>obs.observe(e));
     phase+=dt/breathDur;
     if(phase>=1){phase=0;expanding=!expanding}
     const t=expanding?phase:1-phase;
-    const ease=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
-    const sp=.4+ease*.6,bv=.3+ease*.7;
-    beam+=dt*.00025;
-
-    // Mouse influence (subtle distortion)
-    const mdx=(mx-cx)/(W*.5),mdy=(my-cy)/(H*.5);
+    const ease=.5-.5*Math.cos(t*Math.PI);
+    const sp=.35+ease*.65,bv=.25+ease*.75;
+    beam+=dt*.0002;
 
     ctx.clearRect(0,0,W,H);
 
-    // L1: Ambient — gold corona + green core
-    const ag=ctx.createRadialGradient(cx+mdx*8,cy+mdy*8,0,cx,cy,R*4.2*sp);
-    ag.addColorStop(0,`rgba(50,215,120,${bv*.1})`);
-    ag.addColorStop(.3,`rgba(50,215,120,${bv*.04})`);
-    ag.addColorStop(.55,`rgba(178,148,76,${bv*.025})`);
-    ag.addColorStop(.8,`rgba(178,148,76,${bv*.008})`);
+    // L1: Warm ambient — sage green core fading to gold halo
+    const ag=ctx.createRadialGradient(cx,cy,0,cx,cy,R*4*sp);
+    ag.addColorStop(0,`rgba(85,185,130,${bv*.08})`);
+    ag.addColorStop(.35,`rgba(85,185,130,${bv*.03})`);
+    ag.addColorStop(.6,`rgba(178,148,76,${bv*.015})`);
     ag.addColorStop(1,'transparent');
     ctx.fillStyle=ag;ctx.fillRect(0,0,W,H);
 
-    // L2: Godrays
+    // L2: Slow rotating godrays — very subtle, warm
     ctx.save();ctx.globalCompositeOperation='screen';
     for(let b=0;b<3;b++){
       const ba=beam+b*Math.PI*2/3;
-      const bl=R*3.8*sp;
+      const bl=R*3.5*sp;
       const bg=ctx.createLinearGradient(cx,cy,cx+Math.cos(ba)*bl,cy+Math.sin(ba)*bl);
-      const ba2=bv*.022*(.5+.5*Math.sin(el*.35+b*2));
-      bg.addColorStop(0,`rgba(178,148,76,${ba2*2})`);
-      bg.addColorStop(.2,`rgba(50,215,120,${ba2})`);
+      const bi=bv*.015*(.4+.6*Math.sin(el*.3+b*2));
+      bg.addColorStop(0,`rgba(178,148,76,${bi*1.5})`);
+      bg.addColorStop(.15,`rgba(85,185,130,${bi})`);
       bg.addColorStop(1,'transparent');
       ctx.fillStyle=bg;ctx.beginPath();
-      const hw=.05;
       ctx.moveTo(cx,cy);
-      ctx.lineTo(cx+Math.cos(ba-hw)*bl,cy+Math.sin(ba-hw)*bl);
-      ctx.lineTo(cx+Math.cos(ba+hw)*bl,cy+Math.sin(ba+hw)*bl);
+      ctx.lineTo(cx+Math.cos(ba-.04)*bl,cy+Math.sin(ba-.04)*bl);
+      ctx.lineTo(cx+Math.cos(ba+.04)*bl,cy+Math.sin(ba+.04)*bl);
       ctx.closePath();ctx.fill();
     }
     ctx.restore();ctx.globalCompositeOperation='source-over';
 
-    // L3: Sparkles with mouse reactivity
+    // L3: Intersection sparkles — gentle twinkling
     ix.forEach((p,i)=>{
       const s=sparkles[i];
       const px=cx+p.x*sp,py=cy+p.y*sp;
-      // Mouse proximity boost
-      const mdist=Math.sqrt((px-mx)**2+(py-my)**2);
-      const mboost=Math.max(0,1-mdist/(R*2))*.4;
       const dist=Math.sqrt(p.x*p.x+p.y*p.y);
       const fo=Math.max(0,1-dist/(R*3));
-      const sh=.2+.8*Math.pow(Math.max(0,Math.sin(el*s.sp+s.ph)),3);
-      const da=bv*(.5+mboost)*fo*(sh+mboost);
-      if(da<.008)return;
-      const ds=s.sz*(.8+sh*.4+mboost);
-      const dg=ctx.createRadialGradient(px,py,0,px,py,ds*2.8);
-      dg.addColorStop(0,`rgba(220,255,235,${da*1.2})`);
-      dg.addColorStop(.2,`rgba(50,215,120,${da})`);
-      dg.addColorStop(.6,`rgba(178,148,76,${da*.3})`);
+      const sh=.15+.85*Math.pow(Math.max(0,Math.sin(el*s.sp+s.ph)),4);
+      const da=bv*.35*fo*sh;
+      if(da<.005)return;
+      const ds=s.sz*(.7+sh*.3);
+      const dg=ctx.createRadialGradient(px,py,0,px,py,ds*2);
+      dg.addColorStop(0,`rgba(190,225,200,${da})`);
+      dg.addColorStop(.3,`rgba(85,185,130,${da*.7})`);
       dg.addColorStop(1,'transparent');
-      ctx.fillStyle=dg;ctx.fillRect(px-ds*3,py-ds*3,ds*6,ds*6);
+      ctx.fillStyle=dg;ctx.fillRect(px-ds*2,py-ds*2,ds*4,ds*4);
     });
 
-    // L4: Circle glow
+    // L4: Circle glow — soft bloom behind strokes
     ctx.globalCompositeOperation='screen';
     circles.forEach(c=>{
-      const x=cx+c.x*sp+mdx*(c.ring*1.5),y=cy+c.y*sp+mdy*(c.ring*1.5);
-      const ra=c.ring===0?.14:c.ring===1?.08:.035;
-      ctx.shadowColor=`rgba(50,215,120,${Math.min(1,ra*bv*6)})`;ctx.shadowBlur=16;
-      ctx.strokeStyle=`rgba(50,215,120,${ra*bv*2})`;ctx.lineWidth=1.8;
+      const x=cx+c.x*sp,y=cy+c.y*sp;
+      const a=c.ring===0?.1:c.ring===1?.05:.02;
+      ctx.shadowColor=`rgba(85,185,130,${a*bv*4})`;ctx.shadowBlur=14;
+      ctx.strokeStyle=`rgba(85,185,130,${a*bv*2})`;ctx.lineWidth=1.4;
       ctx.beginPath();ctx.arc(x,y,R,0,Math.PI*2);ctx.stroke();
     });
     ctx.shadowBlur=0;ctx.shadowColor='transparent';
     ctx.globalCompositeOperation='source-over';
 
-    // L5: Crisp outlines
+    // L5: Clean geometry outlines
     circles.forEach(c=>{
-      const x=cx+c.x*sp+mdx*(c.ring*1.5),y=cy+c.y*sp+mdy*(c.ring*1.5);
-      const la=c.ring===0?.55:c.ring===1?.35:.14;
-      ctx.strokeStyle=`rgba(50,215,120,${la*bv})`;
-      ctx.lineWidth=c.ring===0?1.3:c.ring===1?.9:.5;
+      const x=cx+c.x*sp,y=cy+c.y*sp;
+      const la=c.ring===0?.45:c.ring===1?.28:.11;
+      ctx.strokeStyle=`rgba(85,185,130,${la*bv})`;
+      ctx.lineWidth=c.ring===0?1.1:c.ring===1?.75:.4;
       ctx.beginPath();ctx.arc(x,y,R,0,Math.PI*2);ctx.stroke();
     });
 
-    // L6: Gold bounding rings
-    const or2=R*3*sp;
-    ctx.strokeStyle=`rgba(178,148,76,${.09*bv})`;ctx.lineWidth=.8;
-    ctx.beginPath();ctx.arc(cx,cy,or2,0,Math.PI*2);ctx.stroke();
-    ctx.strokeStyle=`rgba(178,148,76,${.05*bv})`;ctx.lineWidth=.5;
-    ctx.beginPath();ctx.arc(cx,cy,or2*1.1,0,Math.PI*2);ctx.stroke();
-    ctx.strokeStyle=`rgba(178,148,76,${.025*bv})`;ctx.lineWidth=.3;
-    ctx.beginPath();ctx.arc(cx,cy,or2*1.22,0,Math.PI*2);ctx.stroke();
-
-    // L7: Lens flare
+    // L6: Warm center bloom
     ctx.globalCompositeOperation='screen';
-    const fi=bv*(.65+.35*Math.sin(el*1.05));
-    const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,R*.55);
-    cg.addColorStop(0,`rgba(220,255,235,${fi*.2})`);
-    cg.addColorStop(.1,`rgba(100,240,160,${fi*.1})`);
-    cg.addColorStop(.45,`rgba(50,215,120,${fi*.03})`);
+    const fi=bv*(.6+.4*Math.sin(el*.8));
+    const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,R*.7);
+    cg.addColorStop(0,`rgba(190,225,200,${fi*.1})`);
+    cg.addColorStop(.2,`rgba(85,185,130,${fi*.05})`);
+    cg.addColorStop(.5,`rgba(85,185,130,${fi*.015})`);
     cg.addColorStop(1,'transparent');
-    ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,R*.55,0,Math.PI*2);ctx.fill();
-    // Bloom
-    const bg2=ctx.createRadialGradient(cx,cy,0,cx,cy,R*1.8);
-    bg2.addColorStop(0,`rgba(50,215,120,${fi*.06})`);
-    bg2.addColorStop(.3,`rgba(178,148,76,${fi*.02})`);
+    ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,R*.7,0,Math.PI*2);ctx.fill();
+    // Wider warm bloom
+    const bg2=ctx.createRadialGradient(cx,cy,0,cx,cy,R*2);
+    bg2.addColorStop(0,`rgba(85,185,130,${fi*.03})`);
+    bg2.addColorStop(.4,`rgba(178,148,76,${fi*.01})`);
     bg2.addColorStop(1,'transparent');
-    ctx.fillStyle=bg2;ctx.beginPath();ctx.arc(cx,cy,R*1.8,0,Math.PI*2);ctx.fill();
-    // Lens streak
-    const sl=R*2.5*bv;
-    const sg=ctx.createLinearGradient(cx-sl,cy,cx+sl,cy);
-    sg.addColorStop(0,'transparent');
-    sg.addColorStop(.3,`rgba(178,148,76,${fi*.03})`);
-    sg.addColorStop(.5,`rgba(220,255,235,${fi*.06})`);
-    sg.addColorStop(.7,`rgba(178,148,76,${fi*.03})`);
-    sg.addColorStop(1,'transparent');
-    ctx.fillStyle=sg;ctx.fillRect(cx-sl,cy-1.5,sl*2,3);
+    ctx.fillStyle=bg2;ctx.beginPath();ctx.arc(cx,cy,R*2,0,Math.PI*2);ctx.fill();
     ctx.globalCompositeOperation='source-over';
 
-    // L8: Petals
+    // L7: Petal highlights at Vesica Piscis
     for(let i=0;i<6;i++){
       const a1=i*60*Math.PI/180,a2=((i+1)%6)*60*Math.PI/180;
       const pmx=(Math.cos(a1)+Math.cos(a2))*R*.5,pmy=(Math.sin(a1)+Math.sin(a2))*R*.5;
-      const px=cx+pmx*sp,py=cy+pmy*sp;
-      const pg=ctx.createRadialGradient(px,py,0,px,py,R*.35);
-      pg.addColorStop(0,`rgba(50,215,120,${bv*.05})`);
+      const ppx=cx+pmx*sp,ppy=cy+pmy*sp;
+      const pg=ctx.createRadialGradient(ppx,ppy,0,ppx,ppy,R*.3);
+      pg.addColorStop(0,`rgba(85,185,130,${bv*.04})`);
       pg.addColorStop(1,'transparent');
       ctx.globalCompositeOperation='screen';ctx.fillStyle=pg;
-      ctx.beginPath();ctx.arc(px,py,R*.35,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(ppx,ppy,R*.3,0,Math.PI*2);ctx.fill();
     }
     ctx.globalCompositeOperation='source-over';
+
+    // L8: Gold bounding rings
+    const or2=R*3*sp;
+    ctx.strokeStyle=`rgba(178,148,76,${.07*bv})`;ctx.lineWidth=.6;
+    ctx.beginPath();ctx.arc(cx,cy,or2,0,Math.PI*2);ctx.stroke();
+    ctx.strokeStyle=`rgba(178,148,76,${.035*bv})`;ctx.lineWidth=.4;
+    ctx.beginPath();ctx.arc(cx,cy,or2*1.12,0,Math.PI*2);ctx.stroke();
 
     requestAnimationFrame(draw);
   }
