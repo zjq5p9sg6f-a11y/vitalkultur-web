@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -7,320 +7,245 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#030303">
   <title>CARLON — Breathe Beyond | Vitalkultur</title>
-  <meta name="description" content="16 evidenzbasierte Atemtechniken. Weltklasse Apple Watch Haptik. Einmal kaufen, für immer atmen.">
+  <meta name="description" content="16 science-backed breathing techniques. World-class Apple Watch haptics. Buy once, breathe forever.">
   <meta property="og:title" content="CARLON — Breathe Beyond">
-  <meta property="og:description" content="Atme bewusst. Lebe bewusst. 16 Atemtechniken für deine Apple Watch.">
+  <meta property="og:description" content="Born from a father's breath. 16 techniques. Your Apple Watch. No subscription.">
   <meta property="og:image" content="https://vitalkultur.com/app-icon.png">
   <link rel="icon" href="app-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --g: rgb(50,215,120);       /* 528 Hz Stille — Grün */
-      --g2: rgba(50,215,120,.08);
-      --glow: rgba(80,220,140,.12);
-      --gold: rgb(255,180,40);    /* 432 Hz Quelle — Amber/Gold */
-      --violet: rgb(135,55,225);  /* 639 Hz Tiefe — Violet */
+      --g: rgb(50,215,120);
+      --g2: rgba(50,215,120,.06);
+      --glow: rgba(80,220,140,.15);
+      --violet: rgb(135,55,225);
       --bg: #030303;
       --t: #f0ede6;
       --t2: rgba(240,237,230,.5);
       --t3: rgba(240,237,230,.25);
     }
-    * { margin:0; padding:0; box-sizing:border-box }
-    html { scroll-behavior:smooth; font-size:17px }
-    body { background:var(--bg); color:var(--t); font-family:'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; line-height:1.618 }
-    a { color:var(--g); text-decoration:none; transition:opacity .3s }
-    a:hover { opacity:.7 }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;font-size:17px}
+    body{background:var(--bg);color:var(--t);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.618}
+    a{color:var(--g);text-decoration:none;transition:opacity .3s}
+    a:hover{opacity:.7}
 
     /* Grain */
-    body::after { content:''; position:fixed; inset:0; opacity:.01; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999 }
+    body::after{content:'';position:fixed;inset:0;opacity:.008;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
 
-    /* Reveal */
-    .rv { opacity:0; transform:translateY(21px); transition: opacity 1.2s cubic-bezier(.16,1,.3,1), transform 1.2s cubic-bezier(.16,1,.3,1) }
-    .rv.v { opacity:1; transform:none }
+    .rv{opacity:0;transform:translateY(21px);transition:opacity 1.2s cubic-bezier(.16,1,.3,1),transform 1.2s cubic-bezier(.16,1,.3,1)}
+    .rv.v{opacity:1;transform:none}
     .d1{transition-delay:.13s}.d2{transition-delay:.21s}.d3{transition-delay:.34s}
 
-    /* ═══ FLOWER OF LIFE WATERMARK ═══ */
-    .flower-watermark {
-      position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-      width:800px; height:800px; opacity:.015; pointer-events:none; z-index:0;
-      animation:flowerSpin 233s linear infinite /* Fibonacci 233 */
-    }
-    .flower-watermark circle { fill:none; stroke:var(--g); stroke-width:.4 }
-    @keyframes flowerSpin { to { transform:translate(-50%,-50%) rotate(360deg) } }
-
     /* ═══ HERO ═══ */
-    .hero { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; z-index:1 }
+    .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:0 21px}
 
-    /* Glow Flower — wie in der App: radial gradients + blending */
-    .flower-hero { position:relative; width:200px; height:200px; margin-bottom:55px }
-    .flower-hero .petal {
-      position:absolute; width:36px; height:36px; border-radius:50%;
-      background:radial-gradient(circle, rgba(50,215,120,.5), rgba(0,165,80,.2) 60%, transparent 100%);
-      mix-blend-mode:screen; filter:blur(1px)
-    }
-    .flower-hero .center-glow {
-      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-      width:80px; height:80px; border-radius:50%;
-      background:radial-gradient(circle, rgba(50,215,120,.25), transparent 70%);
-      animation:pulse 7.02s ease-in-out infinite /* Schumann×55 */
-    }
-    @keyframes pulse { 0%,100%{transform:translate(-50%,-50%) scale(.8);opacity:.4} 50%{transform:translate(-50%,-50%) scale(1.3);opacity:1} }
+    /* Ambient glow */
+    .hero::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(50,215,120,.06),transparent 70%);top:15%;left:50%;transform:translateX(-50%);pointer-events:none;animation:ambientPulse 8s ease-in-out infinite}
+    @keyframes ambientPulse{0%,100%{opacity:.4;transform:translateX(-50%) scale(.9)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}}
 
-    .hero h1 { font-size:28px; font-weight:200; text-align:center; letter-spacing:.02em; line-height:1.5; max-width:420px; padding:0 21px }
-    .hero h1 em { font-style:normal; color:var(--g) }
-    .hero .quiet { font-size:14px; color:var(--t3); margin-top:13px; letter-spacing:.1em }
+    /* Flower of Life — Canvas rendered */
+    .flower-container{position:relative;width:240px;height:240px;margin-bottom:34px}
+    #flowerCanvas{width:100%;height:100%}
+    .flower-brand{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+    .flower-brand .name{font-size:18px;font-weight:300;letter-spacing:.35em;color:var(--t);opacity:.9}
+    .flower-brand .claim{font-size:9px;font-weight:300;letter-spacing:.2em;color:var(--g);opacity:.5;margin-top:2px;text-transform:uppercase}
 
-    .btn { display:inline-block; margin-top:34px; padding:13px 34px; border-radius:55px; font-size:14px; font-weight:400; letter-spacing:.05em; transition:all .5s ease }
-    .btn-primary { background:var(--g); color:var(--bg); border:none }
-    .btn-primary:hover { opacity:.85; transform:translateY(-2px) }
-    .btn-ghost { border:1px solid rgba(50,215,120,.2); color:var(--g); background:transparent; margin-left:13px }
-    .btn-ghost:hover { border-color:var(--g) }
+    .hero h1{font-size:28px;font-weight:200;text-align:center;letter-spacing:.02em;line-height:1.5;max-width:420px;margin-top:13px}
+    .hero h1 em{font-style:normal;color:var(--g)}
+    .hero .sub{font-size:13px;color:var(--t3);margin-top:8px;letter-spacing:.08em}
+    .btn{display:inline-block;margin-top:34px;padding:14px 34px;border-radius:55px;font-size:14px;font-weight:400;letter-spacing:.05em;transition:all .5s}
+    .btn-p{background:var(--g);color:var(--bg);border:none}
+    .btn-p:hover{opacity:.85;transform:translateY(-2px)}
+    .btn-g{border:1px solid rgba(50,215,120,.2);color:var(--g);background:transparent;margin-left:8px}
+    .btn-g:hover{border-color:var(--g)}
 
     /* ═══ SECTIONS ═══ */
-    section { padding:89px 21px; max-width:680px; margin:0 auto; position:relative; z-index:1 }
-    section h2 { font-size:34px; font-weight:200; line-height:1.3; margin-bottom:13px }
-    section h2 em { font-style:normal; color:var(--g) }
-    .lead { font-size:17px; color:var(--t2); line-height:1.8; max-width:520px }
-    .label { font-size:11px; color:var(--g); letter-spacing:.3em; text-transform:uppercase; margin-bottom:8px; opacity:.6 }
-    .div { height:1px; max-width:55px; margin:0 auto; background:linear-gradient(90deg,transparent,rgba(50,215,120,.1),transparent) }
+    section{padding:89px 21px;max-width:640px;margin:0 auto;position:relative}
+    section h2{font-size:32px;font-weight:200;line-height:1.3;margin-bottom:13px}
+    section h2 em{font-style:normal;color:var(--g)}
+    .lead{font-size:17px;color:var(--t2);line-height:1.8;max-width:520px}
+    .label{font-size:10px;color:var(--g);letter-spacing:.3em;text-transform:uppercase;margin-bottom:8px;opacity:.5}
+    .div{height:1px;max-width:55px;margin:0 auto;background:linear-gradient(90deg,transparent,rgba(50,215,120,.08),transparent)}
 
-    /* Cards */
-    .cards { display:grid; gap:21px; margin-top:34px }
-    .card { padding:34px; border-radius:13px; background:rgba(50,215,120,.015); border:1px solid rgba(50,215,120,.04); transition:border-color .6s }
-    .card:hover { border-color:rgba(50,215,120,.12) }
-    .card h3 { font-size:17px; font-weight:400; margin-bottom:5px }
-    .card p { font-size:14px; color:var(--t2); line-height:1.7 }
+    .cards{display:grid;gap:13px;margin-top:34px}
+    .card{padding:28px;border-radius:13px;background:var(--g2);border:1px solid rgba(50,215,120,.03);transition:border-color .6s}
+    .card:hover{border-color:rgba(50,215,120,.1)}
+    .card h3{font-size:16px;font-weight:400;margin-bottom:5px}
+    .card p{font-size:14px;color:var(--t2);line-height:1.7}
 
-    /* Studies */
-    .studies { display:grid; grid-template-columns:1fr 1fr; gap:13px; margin-top:34px }
-    .study { padding:21px; border-radius:8px; border-left:2px solid rgba(50,215,120,.15); background:rgba(50,215,120,.01) }
-    .study .src { font-size:11px; color:var(--g); opacity:.5; margin-bottom:3px }
-    .study p { font-size:13px; color:var(--t3); line-height:1.5 }
+    .studies{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:34px}
+    .study{padding:18px;border-radius:8px;border-left:2px solid rgba(50,215,120,.12);background:rgba(50,215,120,.01)}
+    .study .src{font-size:10px;color:var(--g);opacity:.45;margin-bottom:3px}
+    .study p{font-size:12px;color:var(--t3);line-height:1.5}
 
-    /* Pricing */
-    .price-box { text-align:center; margin-top:55px; padding:55px 34px; border-radius:21px; background:radial-gradient(ellipse at 50% 0%,rgba(50,215,120,.04),transparent 70%); border:1px solid rgba(50,215,120,.06) }
-    .price-num { font-size:72px; font-weight:200; color:var(--g); line-height:1 }
-    .price-label { font-size:14px; color:var(--t3); margin-top:5px }
-    .features { list-style:none; margin-top:34px; columns:2; gap:21px; text-align:left; max-width:440px; margin-left:auto; margin-right:auto }
-    .features li { font-size:14px; color:var(--t2); padding:5px 0; break-inside:avoid }
+    .price-box{text-align:center;margin-top:55px;padding:55px 28px;border-radius:21px;background:radial-gradient(ellipse at 50% 0%,rgba(50,215,120,.04),transparent 70%);border:1px solid rgba(50,215,120,.05)}
+    .price-num{font-size:64px;font-weight:200;color:var(--g);line-height:1}
+    .price-sub{font-size:14px;color:var(--t3);margin-top:5px}
+    .features{list-style:none;margin-top:34px;columns:2;gap:21px;text-align:left;max-width:420px;margin-left:auto;margin-right:auto}
+    .features li{font-size:14px;color:var(--t2);padding:4px 0;break-inside:avoid}
 
-    .coach-box { margin-top:34px; padding:34px; border-radius:13px; border:1px solid rgba(135,55,225,.1); background:rgba(135,55,225,.02); text-align:center }
-    .coach-box h3 { font-size:21px; font-weight:300; color:var(--violet) }
-    .coach-box .price-num { font-size:42px; color:var(--violet) }
-    .coach-box p { font-size:14px; color:var(--t2); margin-top:8px; max-width:400px; margin-left:auto; margin-right:auto }
+    .coach-box{margin-top:28px;padding:28px;border-radius:13px;border:1px solid rgba(135,55,225,.08);background:rgba(135,55,225,.015);text-align:center}
+    .coach-box h3{font-size:20px;font-weight:300;color:var(--violet)}
+    .coach-box .price-num{font-size:38px;color:var(--violet)}
+    .coach-box p{font-size:14px;color:var(--t2);margin-top:8px;max-width:380px;margin-left:auto;margin-right:auto}
 
-    /* Footer */
-    footer { text-align:center; padding:89px 21px 55px; position:relative; z-index:1 }
-    footer img { height:34px; opacity:.6; margin-bottom:5px }
-    footer .claim { font-size:11px; letter-spacing:.3em; opacity:.25; text-transform:uppercase; margin-bottom:34px }
-    footer nav { display:flex; justify-content:center; gap:21px; flex-wrap:wrap; margin-bottom:21px }
-    footer nav a { font-size:11px; color:var(--t3) }
-    footer p { font-size:11px; color:var(--t3); opacity:.5 }
-    .disclaimer { font-size:10px; opacity:.2; max-width:440px; margin:21px auto 0; line-height:1.6 }
-    .impressum { font-size:10px; opacity:.15; margin-top:13px; line-height:1.6 }
+    footer{text-align:center;padding:89px 21px 55px}
+    footer img{height:34px;opacity:.55;margin-bottom:5px}
+    footer .claim{font-size:10px;letter-spacing:.3em;opacity:.2;text-transform:uppercase;margin-bottom:28px}
+    footer nav{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:21px}
+    footer nav a{font-size:11px;color:var(--t3);padding:4px 0}
+    footer p{font-size:11px;color:var(--t3);opacity:.4}
+    .disclaimer{font-size:10px;opacity:.15;max-width:420px;margin:21px auto 0;line-height:1.6}
+    .impressum{font-size:10px;opacity:.12;margin-top:13px;line-height:1.6}
 
-    /* ═══ iPhone (primary target) ═══ */
-    @media(max-width:430px) {
-      html { font-size:16px }
-      .hero { min-height:100svh; padding:0 21px; padding-top:env(safe-area-inset-top) }
-      .hero h1 { font-size:26px; max-width:340px }
-      .flower-hero { width:160px; height:160px; margin-bottom:34px }
-      .quiet { font-size:13px }
-      section { padding:55px 21px }
-      section h2 { font-size:26px }
-      .lead { font-size:16px }
-      .cards { gap:13px }
-      .card { padding:21px }
-      .card p { font-size:13px }
-      .studies { grid-template-columns:1fr; gap:8px }
-      .study { padding:13px }
-      .features { columns:1 }
-      .price-num { font-size:55px }
-      .price-box { padding:34px 21px }
-      .btn { padding:16px 34px; min-height:48px; font-size:15px } /* Apple HIG: 44px+ touch */
-      .coach-box { padding:21px }
-      .coach-box .price-num { font-size:34px }
-      footer nav { gap:13px }
-      footer nav a { font-size:12px; padding:5px 0 } /* Bigger touch targets */
-      .flower-watermark { width:400px; height:400px }
+    @media(max-width:430px){
+      .flower-container{width:200px;height:200px}
+      .flower-brand .name{font-size:15px}
+      .hero h1{font-size:24px}
+      section{padding:55px 21px}
+      section h2{font-size:26px}
+      .lead{font-size:16px}
+      .studies{grid-template-columns:1fr}
+      .features{columns:1}
+      .price-num{font-size:48px}
+      .price-box{padding:34px 21px}
+      .btn{padding:16px 34px;min-height:48px;font-size:15px}
     }
-
-    /* ═══ Small iPhones (SE, Mini) ═══ */
-    @media(max-width:375px) {
-      .hero h1 { font-size:22px }
-      .flower-hero { width:130px; height:130px }
-      section h2 { font-size:22px }
-      .price-num { font-size:48px }
+    @media(max-width:375px){
+      .flower-container{width:170px;height:170px}
+      .flower-brand .name{font-size:13px}
+      .hero h1{font-size:21px}
+      section h2{font-size:22px}
     }
-
-    /* ═══ iPad ═══ */
-    @media(min-width:768px) and (max-width:1024px) {
-      section { max-width:600px }
-      .studies { grid-template-columns:1fr 1fr }
-      .cards { grid-template-columns:1fr 1fr; gap:21px }
-      .cards .card:last-child { grid-column:1 / -1 } /* "Null Daten raus" full width */
-    }
-
-    /* ═══ Desktop ═══ */
-    @media(min-width:1025px) {
-      .cards { grid-template-columns:1fr 1fr 1fr }
-    }
-
-    /* iOS safe areas */
-    @supports(padding:env(safe-area-inset-bottom)) {
-      footer { padding-bottom:calc(55px + env(safe-area-inset-bottom)) }
-    }
-
-    /* Prevent iOS zoom on input focus */
-    input, select, textarea { font-size:16px !important }
-
-    /* Smooth momentum scrolling iOS */
-    html { -webkit-overflow-scrolling:touch }
+    @media(min-width:768px){.cards{grid-template-columns:1fr 1fr}.cards .card:last-child{grid-column:1/-1}}
+    @media(min-width:1025px){.cards{grid-template-columns:1fr 1fr 1fr}.cards .card:last-child{grid-column:auto}}
+    @supports(padding:env(safe-area-inset-bottom)){footer{padding-bottom:calc(55px + env(safe-area-inset-bottom))}}
   </style>
 </head>
 <body>
 
-<!-- Flower of Life Watermark — festes Hintergrundelement wie in der App -->
-<svg class="flower-watermark" viewBox="-60 -60 120 120">
-  <circle cx="0" cy="0" r="18"/>
-  <circle cx="18" cy="0" r="18"/><circle cx="-18" cy="0" r="18"/>
-  <circle cx="9" cy="15.6" r="18"/><circle cx="-9" cy="15.6" r="18"/>
-  <circle cx="9" cy="-15.6" r="18"/><circle cx="-9" cy="-15.6" r="18"/>
-  <circle cx="36" cy="0" r="18"/><circle cx="-36" cy="0" r="18"/>
-  <circle cx="27" cy="15.6" r="18"/><circle cx="-27" cy="15.6" r="18"/>
-  <circle cx="27" cy="-15.6" r="18"/><circle cx="-27" cy="-15.6" r="18"/>
-  <circle cx="18" cy="31.2" r="18"/><circle cx="-18" cy="31.2" r="18"/>
-  <circle cx="18" cy="-31.2" r="18"/><circle cx="-18" cy="-31.2" r="18"/>
-  <circle cx="0" cy="31.2" r="18"/><circle cx="0" cy="-31.2" r="18"/>
-  <circle cx="0" cy="0" r="36" opacity=".3"/><circle cx="0" cy="0" r="54" opacity=".15"/>
-</svg>
-
 <!-- ═══ HERO ═══ -->
 <div class="hero">
-  <!-- Flower of Life — Glow-Petals wie in der App -->
-  <div class="flower-hero" id="flower">
-    <div class="center-glow"></div>
+  <div class="flower-container">
+    <canvas id="flowerCanvas" width="480" height="480"></canvas>
+    <div class="flower-brand">
+      <div class="name">CARLON</div>
+      <div class="claim">Breathe Beyond</div>
+    </div>
   </div>
 
-  <h1>Schön, dass du<br><em>hier bist.</em></h1>
-  <p class="quiet">Atme mit uns. 16 Techniken. Deine Apple Watch.</p>
+  <h1>Good to have you <em>here.</em></h1>
+  <p class="sub">16 breathing techniques · Apple Watch · Buy once</p>
 
   <div>
-    <a href="#preis" class="btn btn-primary">Mehr erfahren</a>
+    <a href="#price" class="btn btn-p">Discover</a>
   </div>
 </div>
 
-<!-- ═══ STILLE — Was CARLON ist ═══ -->
+<!-- ═══ ORIGIN ═══ -->
 <div class="div"></div>
-
 <section>
-  <p class="label rv">Wie alles begann</p>
-  <h2 class="rv">Eine App, die als<br><em>Privatsache begann.</em></h2>
-  <p class="lead rv">CARLON war nie als Produkt geplant. Es war ein Experiment — eine kleine App für mich selbst, weil ich keine Atem-App fand die mich überzeugt hat. Entstanden in der intensivsten Zeit unseres Lebens: als unser Sohn auf die Welt kam. Unsere Hebamme zeigte uns dutzende Atemtechniken für die Geburt. Ich war fasziniert. Ich wollte sie auf meiner Watch haben. Augen zu, nur fühlen.</p>
-  <p class="lead rv" style="margin-top:13px">Aus dem Experiment wurde ein Herzensprojekt. Freunde haben die App ausprobiert und gesagt: <em>Das musst du teilen.</em> Also sind wir hier.</p>
-  <p class="lead rv" style="margin-top:13px;opacity:.4;font-size:14px">Der Name? Unser Sohn heißt Carlon — der freie, geliebte Mann. Carl bedeutet „der Freie", und wir sehen in jeder Silbe ein Freiheitspartikel. Ein Name für einen Menschen, der uns das Atmen neu beigebracht hat.</p>
+  <p class="label rv">How it started</p>
+  <h2 class="rv">An app that began as<br><em>a private experiment.</em></h2>
+  <p class="lead rv">CARLON was never meant to be a product. It started as a personal experiment — because we couldn't find a breathing app that truly convinced us. It was born during the most intense time of our lives: when our son came into the world. Our midwife showed us dozens of breathing techniques for the birth. We were fascinated. We wanted them on our Watch. Eyes closed, just feel.</p>
+  <p class="lead rv" style="margin-top:13px">The experiment became a passion project. Friends tried the app and said: <em>You need to share this.</em> So here we are.</p>
+  <p class="lead rv" style="margin-top:13px;opacity:.35;font-size:14px">The name? Our son is called Carlon — the free, beloved man. Carl means "the free one", and we see a freedom particle in every syllable. A name for a person who taught us how to breathe again.</p>
 
   <div class="cards">
     <div class="card rv d1">
-      <h3>Schließ die Augen</h3>
-      <p>Dein Handgelenk führt dich. Einatmen spürst du aufsteigend, Ausatmen absteigend. Du brauchst nicht hinschauen — nur fühlen. So haben wir uns das vorgestellt.</p>
+      <h3>Close your eyes</h3>
+      <p>Your wrist guides you. Inhale feels like rising, exhale like descending. You don't need to look — just feel. That's how we imagined it.</p>
     </div>
     <div class="card rv d2">
       <h3>Flower of Life</h3>
-      <p>Die Blume des Lebens atmet mit dir. Heilige Geometrie, goldene Proportionen, natürliches Timing. Wenn eine App dich zur Ruhe bringen soll, darf sie auch schön sein.</p>
+      <p>Sacred geometry breathes with you. Golden proportions, natural timing. If an app is meant to calm you down, it should be beautiful too.</p>
     </div>
     <div class="card rv d3">
-      <h3>Deine Daten bleiben bei dir</h3>
-      <p>Kein Account. Kein Tracking. Kein Server. Made in Germany. Wir verdienen Geld mit einer guten App — nicht mit deinen Daten. So einfach ist das.</p>
+      <h3>Your data stays with you</h3>
+      <p>No account. No tracking. No server. Made in Germany. We make money with a good app — not with your data. Simple as that.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ VERTRAUEN ═══ -->
+<!-- ═══ SCIENCE ═══ -->
 <div class="div"></div>
-
 <section>
-  <p class="label rv">Fundament</p>
-  <h2 class="rv">Wissenschaft,<br><em>kein Bauchgefühl.</em></h2>
-  <p class="lead rv">Jede unserer 16 Techniken hat eine wissenschaftliche Grundlage. Wir versprechen keine Wunder — wir geben dir Werkzeuge die funktionieren.</p>
+  <p class="label rv">Foundation</p>
+  <h2 class="rv">Science,<br><em>not guesswork.</em></h2>
+  <p class="lead rv">Each of our 16 techniques has a scientific foundation. We don't promise miracles — we give you tools that work.</p>
 
   <div class="studies">
     <div class="study rv d1">
       <div class="src">Stanford · Cell Reports Medicine · 2023</div>
-      <p>Cyclic Sighing verbessert die Stimmung stärker als Meditation. RCT, n=108.</p>
+      <p>Cyclic sighing improves mood more than meditation. RCT, n=108.</p>
     </div>
     <div class="study rv d2">
       <div class="src">PNAS · Kox et al. · 2014</div>
-      <p>Tummo-Protokoll und Immunmarker. RCT, n=24. Das Experiment das Breathwork in die Wissenschaft brachte.</p>
+      <p>Tummo protocol and immune markers. RCT, n=24. The experiment that brought breathwork into science.</p>
     </div>
     <div class="study rv d3">
       <div class="src">Frontiers · Lehrer & Gevirtz · 2014</div>
-      <p>Kohärenzatmung bei 5.5/min. Herz, Atem und Blutdruck synchronisieren sich. HRV-Maximum.</p>
+      <p>Coherence breathing at 5.5/min. Heart, breath and blood pressure synchronize. Peak HRV.</p>
     </div>
     <div class="study rv">
       <div class="src">Physiological Reports · Vierra et al. · 2022</div>
-      <p>4-7-8 Atemtechnik nach Dr. Andrew Weil. Effekte auf Herzfrequenz und autonome Balance. n=43.</p>
+      <p>4-7-8 breathing technique by Dr. Andrew Weil. Effects on heart rate and autonomic balance. n=43.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ PREIS ═══ -->
+<!-- ═══ PRICE ═══ -->
 <div class="div"></div>
-
-<section id="preis">
-  <p class="label rv" style="text-align:center">Fair und einfach</p>
-  <h2 class="rv" style="text-align:center">Einmal. <em>Für immer.</em></h2>
+<section id="price">
+  <p class="label rv" style="text-align:center">Fair and simple</p>
+  <h2 class="rv" style="text-align:center">Once. <em>Forever.</em></h2>
 
   <div class="price-box rv">
-    <div class="price-num">€9,99</div>
-    <div class="price-label">Einmalig · Alles drin · Alle Updates · Für immer</div>
-
+    <div class="price-num">€9.99</div>
+    <div class="price-sub">One-time · Everything included · All updates · Forever yours</div>
     <ul class="features">
-      <li>16 Atemtechniken</li>
-      <li>Apple Watch Haptik</li>
+      <li>16 breathing techniques</li>
+      <li>Apple Watch haptics</li>
       <li>Flower of Life</li>
       <li>Breath Composer</li>
       <li>Sound Engine</li>
-      <li>HRV-Insights</li>
-      <li>Alle Farbthemen</li>
-      <li>Alle Updates inklusive</li>
+      <li>HRV Insights</li>
+      <li>All color themes</li>
+      <li>All future updates</li>
     </ul>
-
-    <a href="#" class="btn btn-primary" style="margin-top:34px">Im App Store laden</a>
+    <a href="#" class="btn btn-p" style="margin-top:34px">Get on the App Store</a>
   </div>
 
   <div class="coach-box rv">
-    <p class="label" style="color:var(--violet)">Für Coaches</p>
-    <h3>Deine Presets. Dein Branding.</h3>
-    <div class="price-num">€9,99<span style="font-size:17px;opacity:.4">/Monat</span></div>
-    <div class="price-label">oder €79,99/Jahr</div>
-    <p>Erstelle eigene Atemprotokolle, brande sie mit deinem Namen und teile sie per Deep Link mit deiner Community.</p>
+    <p class="label" style="color:var(--violet)">For coaches</p>
+    <h3>Your presets. Your brand.</h3>
+    <div class="price-num">€9.99<span style="font-size:16px;opacity:.4">/month</span></div>
+    <div class="price-sub">or €79.99/year</div>
+    <p>Create your own breathing protocols, brand them with your name, and share them with your community via deep link.</p>
   </div>
 </section>
 
 <!-- ═══ BEHIND THE SCENES ═══ -->
 <div class="div"></div>
-
 <section>
-  <p class="label rv">Hinter den Kulissen</p>
-  <h2 class="rv">Technik aus<br><em>Begeisterung.</em></h2>
-  <p class="lead rv">Als Apple die neuen Haptic-Möglichkeiten der Watch vorstellte, wussten wir: Das muss sich beim Atmen anfühlen können. Wir haben uns monatelang in die Haptik-Engine gefuchst — jeder Einatemimpuls steigt auf, jeder Ausatemimpuls sinkt ab. Die Doppeltap-Geste der Apple Watch Ultra beendet das Halten ohne hinzuschauen. Alles durchdacht, alles fühlbar.</p>
-  <p class="lead rv" style="margin-top:13px">Wir haben bewusst viele individuelle Anpassungen eingebaut — eigene Presets, Farbthemen, Soundscapes, Haptik-Stufen. Vielleicht ist noch nicht alles perfekt. Aber wir arbeiten kontinuierlich daran, jedes Detail besser zu machen. Euer Feedback zu den Haptiks interessiert uns besonders — schreibt uns, wie es sich für euch anfühlt.</p>
-  <p class="lead rv" style="margin-top:13px">Und das ist erst der Anfang. Wir haben noch einiges vor — neue Techniken, tiefere Analytics, Coach-Marketplace, Dinge die wir noch nicht verraten. Die Qualität der App zeigt euch, wie ernst wir das meinen.</p>
-  <p class="lead rv" style="margin-top:13px">Wir freuen uns auf spannende Kooperationen mit inspirierenden Menschen — Coaches, Therapeuten, Yogis, Athleten. Wenn du eine Idee hast: <a href="mailto:jan@vitalkultur.com">jan@vitalkultur.com</a></p>
+  <p class="label rv">Behind the scenes</p>
+  <h2 class="rv">Built with<br><em>obsession.</em></h2>
+  <p class="lead rv">When Apple introduced the new haptic capabilities of the Watch, we knew: this has to feel like breathing. We spent months deep in the haptic engine — every inhale impulse rises, every exhale descends. The double-tap gesture on Apple Watch Ultra ends a breath hold without looking. Everything intentional, everything felt.</p>
+  <p class="lead rv" style="margin-top:13px">We deliberately built in many ways to customize — your own presets, color themes, soundscapes, haptic levels. Maybe not everything is perfect yet. But we're working continuously to make every detail better. We're especially curious about your haptic feedback — tell us how it feels.</p>
+  <p class="lead rv" style="margin-top:13px">And this is just the beginning. New techniques, deeper analytics, coach marketplace, things we can't reveal yet. The quality of the app shows you how serious we are.</p>
+  <p class="lead rv" style="margin-top:13px">We're excited about collaborations with inspiring people — coaches, therapists, yogis, athletes. Got an idea? <a href="mailto:jan@vitalkultur.com">jan@vitalkultur.com</a></p>
 </section>
 
 <!-- ═══ COMMUNITY ═══ -->
 <div class="div"></div>
-
 <section style="text-align:center">
-  <p class="label rv">Gemeinsam</p>
-  <h2 class="rv">Wir bauen CARLON<br><em>mit dir.</em></h2>
-  <p class="lead rv" style="margin:0 auto">Das hier ist kein fertiges Produkt hinter einer Glasscheibe. CARLON wächst — und dein Feedback bestimmt die Richtung. Jede Feature-Idee, jeder Bug-Report, jede Nachricht macht uns besser. Wenn dir CARLON gefällt, teil es weiter. Gemeinsam können wir etwas Besonderes bauen.</p>
-
+  <p class="label rv">Together</p>
+  <h2 class="rv">We're building CARLON<br><em>with you.</em></h2>
+  <p class="lead rv" style="margin:0 auto">This isn't a finished product behind glass. CARLON grows — and your feedback shapes the direction. Every feature idea, every bug report, every message makes us better. If you love CARLON, share it. Together we can build something special.</p>
   <div style="margin-top:34px">
-    <a href="mailto:jan@vitalkultur.com" class="btn btn-ghost">Schreib uns</a>
+    <a href="mailto:jan@vitalkultur.com" class="btn btn-g">Write to us</a>
   </div>
 </section>
 
@@ -329,51 +254,110 @@
   <img src="vitalkultur-logo.png" alt="Vitalkultur" loading="lazy">
   <p class="claim">Body · Soul · Food</p>
   <nav>
-    <a href="/privacy.html">Datenschutz</a>
-    <a href="/terms.html">Nutzungsbedingungen</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/privacy-en.html">Privacy (EN)</a>
+    <a href="/terms.html">Terms</a>
     <a href="/support.html">Support</a>
-    <a href="mailto:jan@vitalkultur.com">Kontakt</a>
+    <a href="mailto:jan@vitalkultur.com">Contact</a>
   </nav>
-  <p>&copy; 2026 Vitalkultur · Jan Rohwedder</p>
-  <p class="disclaimer">CARLON ist ein Wellness-Produkt und kein Medizinprodukt. Die App ersetzt keine ärztliche Beratung und ist nicht zur Diagnose, Behandlung oder Heilung von Krankheiten bestimmt.</p>
-  <p class="impressum">Jan Rohwedder · Kapellenstraße 9 · 76473 Iffezheim · Deutschland</p>
+  <p>&copy; 2026 Vitalkultur · Jan Rohwedder · Made in Germany</p>
+  <p class="disclaimer">CARLON is a wellness product, not a medical device. It is not intended to diagnose, treat, cure, or prevent any disease. Not a substitute for medical advice.</p>
+  <p class="impressum">Jan Rohwedder · Kapellenstra&szlig;e 9 · 76473 Iffezheim · Germany</p>
 </footer>
 
 <script>
-// Reveal
-const o=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -34px 0px'});
-document.querySelectorAll('.rv').forEach(e=>o.observe(e));
+// Scroll Reveal
+const obs=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -34px 0px'});
+document.querySelectorAll('.rv').forEach(e=>obs.observe(e));
 
-// Flower of Life — 19 Glow-Petals (wie FlowerView.swift), responsive
+// ═══ FLOWER OF LIFE — Canvas, 19 circles, breathing, glowing ═══
 (function(){
-  const f=document.getElementById('flower');
-  const w=f.offsetWidth;
-  const R=w*0.09, cx=w/2, cy=w/2, s=w*0.18;
+  const canvas=document.getElementById('flowerCanvas');
+  const ctx=canvas.getContext('2d');
+  const W=canvas.width, H=canvas.height, cx=W/2, cy=H/2;
+  const R=W*0.08; // circle radius = center-to-center distance
 
-  const pos=[[0,0]];
-  for(let i=0;i<6;i++){const a=i*60*Math.PI/180;pos.push([Math.cos(a)*R,Math.sin(a)*R])}
-  for(let i=0;i<6;i++){const a=i*60*Math.PI/180;pos.push([Math.cos(a)*2*R,Math.sin(a)*2*R])}
-  for(let i=0;i<6;i++){const a=(i*60+30)*Math.PI/180;pos.push([Math.cos(a)*1.732*R,Math.sin(a)*1.732*R])}
+  // 19 circle positions: center(1) + ring1(6) + ring2a(6) + ring2b(6)
+  const circles=[];
+  circles.push({x:0,y:0,ring:0});
+  for(let i=0;i<6;i++){const a=i*60*Math.PI/180;circles.push({x:Math.cos(a)*R,y:Math.sin(a)*R,ring:1})}
+  for(let i=0;i<6;i++){const a=i*60*Math.PI/180;circles.push({x:Math.cos(a)*2*R,y:Math.sin(a)*2*R,ring:2})}
+  for(let i=0;i<6;i++){const a=(i*60+30)*Math.PI/180;circles.push({x:Math.cos(a)*1.732*R,y:Math.sin(a)*1.732*R,ring:2})}
 
-  pos.forEach(([x,y],i)=>{
-    const d=document.createElement('div');
-    d.className='petal';
-    d.style.width=s+'px'; d.style.height=s+'px';
-    d.style.left=(cx+x-s/2)+'px';
-    d.style.top=(cy+y-s/2)+'px';
-    d.style.opacity=i===0?'.7':i<7?'.45':'.25';
-    f.appendChild(d);
-  });
+  let phase=0; // 0-1 breathing phase
+  let expanding=true;
+  const breathDuration=4342; // Schumann×34 ms
+  let lastTime=performance.now();
 
-  // Breathing animation — Schumann×34 = 4.34s
-  let expanded=true;
-  function breathe(){
-    f.style.transition='transform 4.34s ease-in-out';
-    f.style.transform=`scale(${expanded?1.15:.65})`;
-    expanded=!expanded;
-    setTimeout(breathe,4342);
+  function draw(now){
+    const dt=now-lastTime;
+    lastTime=now;
+
+    // Update phase
+    phase+=dt/breathDuration;
+    if(phase>=1){phase=0;expanding=!expanding}
+    const t=expanding?phase:1-phase;
+    const ease=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2; // easeInOutQuad
+    const spread=0.3+ease*0.7; // 0.3 → 1.0
+    const glowIntensity=0.15+ease*0.35;
+
+    ctx.clearRect(0,0,W,H);
+
+    // Outer glow
+    const outerGrad=ctx.createRadialGradient(cx,cy,10,cx,cy,R*3*spread);
+    outerGrad.addColorStop(0,`rgba(50,215,120,${glowIntensity*0.3})`);
+    outerGrad.addColorStop(1,'transparent');
+    ctx.fillStyle=outerGrad;
+    ctx.fillRect(0,0,W,H);
+
+    // Draw 19 circles with additive glow
+    ctx.globalCompositeOperation='screen';
+    circles.forEach(c=>{
+      const x=cx+c.x*spread;
+      const y=cy+c.y*spread;
+      const opacity=c.ring===0?0.6:c.ring===1?0.35:0.18;
+      const grad=ctx.createRadialGradient(x,y,0,x,y,R);
+      grad.addColorStop(0,`rgba(50,215,120,${opacity*glowIntensity*3})`);
+      grad.addColorStop(0.5,`rgba(0,165,80,${opacity*glowIntensity*1.5})`);
+      grad.addColorStop(1,'transparent');
+      ctx.fillStyle=grad;
+      ctx.beginPath();
+      ctx.arc(x,y,R,0,Math.PI*2);
+      ctx.fill();
+    });
+
+    // Geometry lines (circle outlines)
+    ctx.globalCompositeOperation='source-over';
+    circles.forEach(c=>{
+      const x=cx+c.x*spread;
+      const y=cy+c.y*spread;
+      const lineOpacity=c.ring===0?0.15:c.ring===1?0.08:0.04;
+      ctx.strokeStyle=`rgba(50,215,120,${lineOpacity*glowIntensity*4})`;
+      ctx.lineWidth=0.5;
+      ctx.beginPath();
+      ctx.arc(x,y,R,0,Math.PI*2);
+      ctx.stroke();
+    });
+
+    // Bounding circles
+    const outerR=R*3*spread;
+    ctx.strokeStyle=`rgba(50,215,120,${0.04*glowIntensity*3})`;
+    ctx.lineWidth=0.5;
+    ctx.beginPath();ctx.arc(cx,cy,outerR,0,Math.PI*2);ctx.stroke();
+    ctx.beginPath();ctx.arc(cx,cy,outerR*1.08,0,Math.PI*2);ctx.stroke();
+
+    // Center bright core
+    const coreGrad=ctx.createRadialGradient(cx,cy,0,cx,cy,R*0.6);
+    coreGrad.addColorStop(0,`rgba(50,215,120,${glowIntensity*0.5})`);
+    coreGrad.addColorStop(1,'transparent');
+    ctx.globalCompositeOperation='screen';
+    ctx.fillStyle=coreGrad;
+    ctx.fillRect(cx-R,cy-R,R*2,R*2);
+
+    ctx.globalCompositeOperation='source-over';
+    requestAnimationFrame(draw);
   }
-  breathe();
+  requestAnimationFrame(draw);
 })();
 </script>
 
