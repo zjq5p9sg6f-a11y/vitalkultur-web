@@ -487,6 +487,28 @@ footer nav a:hover { color: var(--accent); }
 /* LEGAL PAGES                             */
 /* ═══════════════════════════════════════ */
 
+.legal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 24px 24px 0;
+}
+.legal-header a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.legal-header a:hover { color: var(--accent); }
+.legal-header img { height: 28px; opacity: 0.5; }
+
 .container {
   max-width: var(--max-w);
   margin: 0 auto;
