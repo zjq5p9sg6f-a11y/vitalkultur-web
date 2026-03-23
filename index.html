@@ -544,7 +544,7 @@
       <div class="bars"><span></span><span></span><span></span><span></span><span></span></div>
       <span class="audio-label" id="audioLabel">World Peace in Us · Soulonaut</span>
       <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <polygon id="audioIcon" points="6,4 12,8 6,12" fill="rgba(178,148,76,.6)"/>
+        <polygon id="audioIcon" points="5,3 13,8 5,13" fill="rgba(178,148,76,.6)"/>
       </svg>
     </div>
     <div class="audio-ctrl" id="audioSkip" role="button" aria-label="Next track" tabindex="0" style="padding:5px 8px;min-width:0">
@@ -1204,13 +1204,23 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
   if(!ctrl||!tracks[0].el||!tracks[1].el)return;
 
   let playing=false;
-  let current=Math.random()<.5?0:1; // random start
+  let current=Math.random()<.5?0:1;
   const fadeDuration=2680; // Schumann × F(8)
   const fadeSteps=34; // F(9)
   const targetVolume=0.382; // φ⁻¹
-  const earlyFade=13; // seconds before end to start fade-out (F(7))
+  const earlyFade=13; // F(7) seconds before end → crossfade
   let fadeInterval=null;
   let endCheckInterval=null;
+
+  // Consistent icon points (viewBox 0 0 16 16)
+  const ICON_PLAY='5,3 13,8 5,13'; // ▶ triangle
+  const ICON_PAUSE='4,3 7,3 7,13 4,13 9,3 12,3 12,13 9,13'; // ❚❚ two bars
+
+  function setPlaying(state){
+    playing=state;
+    if(state){ctrl.classList.add('playing');icon.setAttribute('points',ICON_PAUSE)}
+    else{ctrl.classList.remove('playing');icon.setAttribute('points',ICON_PLAY)}
+  }
 
   function updateLabel(){label.textContent=tracks[current].title}
 
@@ -1220,9 +1230,7 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
     audio.volume=0;
     updateLabel();
     audio.play().then(function(){
-      playing=true;
-      ctrl.classList.add('playing');
-      icon.setAttribute('points','6,5 9,5 9,16 6,16 12,5 15,5 15,16 12,16');
+      setPlaying(true);
       var step=0;
       clearInterval(fadeInterval);
       fadeInterval=setInterval(function(){
@@ -1231,12 +1239,12 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
         if(step>=fadeSteps)clearInterval(fadeInterval);
       },fadeDuration/fadeSteps);
       startEndCheck();
-    }).catch(function(){});
+    }).catch(function(){/* autoplay blocked — stay in play state */});
   }
 
   function fadeOutAndNext(){
     var audio=tracks[current].el;
-    var vol=audio.volume;
+    var vol=audio.volume||targetVolume;
     var step=0;
     clearInterval(fadeInterval);
     clearInterval(endCheckInterval);
@@ -1247,7 +1255,6 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
         clearInterval(fadeInterval);
         audio.pause();
         audio.currentTime=0;
-        // switch to next track
         current=(current+1)%tracks.length;
         fadeIn();
       }
@@ -1256,7 +1263,7 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
 
   function fadeOutAndStop(){
     var audio=tracks[current].el;
-    var vol=audio.volume;
+    var vol=audio.volume||targetVolume;
     var step=0;
     clearInterval(fadeInterval);
     clearInterval(endCheckInterval);
@@ -1267,14 +1274,11 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
         clearInterval(fadeInterval);
         audio.pause();
         audio.currentTime=0;
-        playing=false;
-        ctrl.classList.remove('playing');
-        icon.setAttribute('points','8,6 15,10.5 8,15');
+        setPlaying(false);
       }
     },fadeDuration/fadeSteps);
   }
 
-  // Check if approaching end of track → crossfade to next
   function startEndCheck(){
     clearInterval(endCheckInterval);
     endCheckInterval=setInterval(function(){
@@ -1300,7 +1304,7 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
     skipBtn.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();skip()}});
   }
 
-  // Autoplay on load (works on desktop)
+  // Autoplay on load (desktop)
   fadeIn();
 
   // iOS/mobile: browsers block autoplay without user gesture.
