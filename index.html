@@ -539,12 +539,20 @@
 <!-- ═══ TOP BAR — Vitalkultur + Audio ═══ -->
 <div class="top-bar">
   <a href="/" class="top-bar-brand"><img src="vitalkultur-logo.png" alt="Vitalkultur" style="height:34px;vertical-align:middle"></a>
-  <div class="audio-ctrl" id="audioCtrl" role="button" aria-label="Toggle ambient music" tabindex="0">
-    <div class="bars"><span></span><span></span><span></span><span></span><span></span></div>
-    <span class="audio-label" id="audioLabel">World Peace in Us · Soulonaut</span>
-    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <polygon id="audioIcon" points="6,4 12,8 6,12" fill="rgba(178,148,76,.6)"/>
-    </svg>
+  <div style="display:flex;align-items:center;gap:3px">
+    <div class="audio-ctrl" id="audioCtrl" role="button" aria-label="Play or pause music" tabindex="0">
+      <div class="bars"><span></span><span></span><span></span><span></span><span></span></div>
+      <span class="audio-label" id="audioLabel">World Peace in Us · Soulonaut</span>
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon id="audioIcon" points="6,4 12,8 6,12" fill="rgba(178,148,76,.6)"/>
+      </svg>
+    </div>
+    <div class="audio-ctrl" id="audioSkip" role="button" aria-label="Next track" tabindex="0" style="padding:5px 8px;min-width:0">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px" aria-hidden="true">
+        <polygon points="3,4 9,8 3,12" fill="rgba(178,148,76,.5)"/>
+        <rect x="10" y="4" width="2" height="8" rx="0.5" fill="rgba(178,148,76,.5)"/>
+      </svg>
+    </div>
   </div>
 </div>
 
@@ -1279,6 +1287,17 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
 
   function toggle(){
     if(playing){fadeOutAndStop()}else{fadeIn()}
+  }
+
+  function skip(){
+    if(playing){fadeOutAndNext()}else{current=(current+1)%tracks.length;updateLabel()}
+  }
+
+  // Skip button
+  var skipBtn=document.getElementById('audioSkip');
+  if(skipBtn){
+    skipBtn.addEventListener('click',function(e){e.stopPropagation();skip()});
+    skipBtn.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();skip()}});
   }
 
   // Autoplay on load (works on desktop)
