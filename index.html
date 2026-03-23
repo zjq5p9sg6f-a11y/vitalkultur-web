@@ -116,12 +116,12 @@
     .sg-bg-pattern{position:absolute;opacity:.05;animation:sgBgDrift 55s ease-in-out infinite}
     .sg-bg-pattern svg{width:100%;height:100%}
     /* Viewport-relative sizing — scales from phone to desktop */
-    .sg-bg-pattern:nth-child(1){width:clamp(377px,55vw,987px);height:clamp(377px,55vw,987px);top:-8%;right:-13%;opacity:.09;animation-duration:55s}
-    .sg-bg-pattern:nth-child(2){width:clamp(233px,34vw,610px);height:clamp(233px,34vw,610px);bottom:-5%;left:-8%;opacity:.07;animation-duration:89s;animation-direction:reverse}
-    .sg-bg-pattern:nth-child(3){width:clamp(144px,21vw,377px);height:clamp(144px,21vw,377px);top:55%;right:-3%;opacity:.055;animation-duration:42s}
-    .sg-bg-pattern:nth-child(4){width:clamp(233px,34vw,610px);height:clamp(233px,34vw,610px);top:34%;left:-8%;opacity:.06;animation-duration:68s;animation-direction:reverse}
-    .sg-bg-pattern:nth-child(5){width:clamp(144px,21vw,377px);height:clamp(144px,21vw,377px);bottom:21%;right:13%;opacity:.045;animation-duration:55s}
-    .sg-bg-pattern:nth-child(6){width:clamp(89px,13vw,233px);height:clamp(89px,13vw,233px);top:13%;left:21%;opacity:.06;animation-duration:34s}
+    .sg-bg-pattern:nth-child(1){width:clamp(377px,55vw,987px);height:clamp(377px,55vw,987px);top:-8%;right:-13%;opacity:.11;animation-duration:55s}
+    .sg-bg-pattern:nth-child(2){width:clamp(233px,34vw,610px);height:clamp(233px,34vw,610px);bottom:-5%;left:-8%;opacity:.08;animation-duration:89s;animation-direction:reverse}
+    .sg-bg-pattern:nth-child(3){width:clamp(144px,21vw,377px);height:clamp(144px,21vw,377px);top:55%;right:-3%;opacity:.065;animation-duration:42s}
+    .sg-bg-pattern:nth-child(4){width:clamp(233px,34vw,610px);height:clamp(233px,34vw,610px);top:34%;left:-8%;opacity:.07;animation-duration:68s;animation-direction:reverse}
+    .sg-bg-pattern:nth-child(5){width:clamp(144px,21vw,377px);height:clamp(144px,21vw,377px);bottom:21%;right:13%;opacity:.055;animation-duration:55s}
+    .sg-bg-pattern:nth-child(6){width:clamp(89px,13vw,233px);height:clamp(89px,13vw,233px);top:13%;left:21%;opacity:.07;animation-duration:34s}
     @keyframes sgBgDrift{0%,100%{transform:rotate(0deg) scale(1)}50%{transform:rotate(5deg) scale(1.03)}}
 
     .page{position:relative;z-index:1}
@@ -144,7 +144,7 @@
 
     .hero-badge{
       display:inline-block;
-      padding:5px 21px;       /* F(5), F(8) */
+      padding:8px 21px 5px;   /* F(6) top > F(5) bottom = optisch zentriert (Kopfraum > Fußraum) */
       border:1px solid rgba(178,148,76,.15);
       border-radius:55px;     /* F(10) */
       font-size:10px;         /* φ⁻¹ scale */
@@ -152,6 +152,7 @@
       color:var(--gold);opacity:.618; /* φ⁻¹ opacity */
       margin-bottom:34px;     /* F(9) */
       backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px); /* F(6) blur */
+      white-space:nowrap; /* Prevent ugly line breaks inside badge */
     }
 
     .flower-wrap{
@@ -294,7 +295,7 @@
 
     /* Sacred geometry watermark textures — hidden-in-plain-sight patterns */
     .sg-watermark{
-      position:absolute;pointer-events:none;opacity:.07;
+      position:absolute;pointer-events:none;opacity:.09;
       animation:sgDrift 45s ease-in-out infinite;
     }
     .sg-watermark svg{width:100%;height:100%}
@@ -590,7 +591,7 @@
 
 <!-- ═══ HERO — The first breath ═══ -->
 <div class="hero">
-  <div class="hero-badge">Apple Watch · Haptic-guided Breathwork · Personal &amp; Coach Mode</div>
+  <div class="hero-badge">Apple Watch · Sacred Geometry · Haptic Guidance</div>
 
   <div class="flower-wrap">
     <canvas id="flowerCanvas" role="img" aria-label="Flower of Life sacred geometry animation"></canvas>
@@ -603,12 +604,12 @@
   <h1 class="hero-title" style="margin-top:13px">
     Close your eyes.<br><em>Your wrist guides every breath.</em>
   </h1>
-  <p class="hero-sub">Personal: €9.99 once — no subscription <span>·</span> Coach Mode: subscription for professionals</p>
+  <p class="hero-sub">16 techniques <span>·</span> €9.99 once <span>·</span> No subscription</p>
   <p class="hero-sub rv" style="margin-top:8px;font-size:10px;opacity:.45;letter-spacing:.08em">Every technique backed by peer-reviewed research — Stanford, PNAS, Frontiers</p>
 
   <div class="hero-cta">
     <a href="#experience" class="btn btn-gold">How it feels</a>
-    <a href="#pricing" class="btn btn-ghost">Personal €9.99 · Coach €9.99/mo</a>
+    <a href="#pricing" class="btn btn-ghost">See pricing</a>
   </div>
 
   <div class="scroll-line"></div>
@@ -759,7 +760,7 @@
 <div class="sect" id="pricing">
   <p class="label rv" style="text-align:center">Pricing</p>
   <h2 class="rv" style="text-align:center">Breathe for yourself.<br><em>Or guide others.</em></h2>
-  <p class="lead rv" style="text-align:center;max-width:610px;margin:0 auto 34px">Personal: €9.99 once. No subscription, no strings. All 16 techniques, all future updates — yours forever. Coach Mode: put your own breathing protocols on your clients' wrists. The only subscription, and only if you teach.</p>
+  <p class="lead rv" style="text-align:center;max-width:610px;margin:0 auto 34px">Buy once, breathe forever. Or build a practice and guide others.</p>
 
   <div class="pricing-grid">
     <div class="price-card rv">
