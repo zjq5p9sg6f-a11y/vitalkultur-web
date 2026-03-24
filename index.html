@@ -578,61 +578,6 @@
     }
     .trust-badge svg{width:13px;height:13px;flex-shrink:0}
 
-    /* ═══ INLINE BREATH DEMO ═══ */
-    .breath-demo{
-      text-align:center;padding:55px 21px;
-      max-width:680px;margin:0 auto;position:relative;
-    }
-    .breath-orb-wrap{
-      width:144px;height:144px;margin:21px auto;position:relative;
-    }
-    .breath-orb{
-      width:100%;height:100%;border-radius:50%;
-      background:radial-gradient(circle,rgba(85,185,130,.15),rgba(85,185,130,.02));
-      border:1px solid rgba(85,185,130,.15);
-      transition:transform 4.342s cubic-bezier(.37,0,.63,1);
-    }
-    .breath-orb.inhale{transform:scale(1.4)}
-    .breath-orb.exhale{transform:scale(.7)}
-    .breath-orb-label{
-      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-      font-size:16px;font-weight:200;color:var(--green);
-      pointer-events:none;transition:opacity .6s;
-    }
-    .breath-timer{
-      font-size:42px;font-weight:200;color:var(--gold-bright);
-      margin-top:13px;font-variant-numeric:tabular-nums;
-    }
-    .breath-demo-cta{margin-top:21px}
-    .btn-green{
-      background:linear-gradient(135deg,var(--green),rgb(60,155,100));
-      color:var(--bg);border:none;
-    }
-    .btn-green:hover{transform:translateY(-2px);box-shadow:0 8px 55px rgba(85,185,130,.25);color:var(--bg)}
-
-    /* ═══ COMPARISON TABLE ═══ */
-    .compare-table{
-      width:100%;border-collapse:collapse;margin-top:34px;
-      font-size:13px;
-    }
-    .compare-table th{
-      padding:8px 13px;text-align:left;
-      font-weight:400;font-size:10px;
-      letter-spacing:.1em;text-transform:uppercase;
-      color:var(--gold);opacity:.5;
-      border-bottom:1px solid rgba(178,148,76,.08);
-    }
-    .compare-table th:first-child{color:var(--t3)}
-    .compare-table td{
-      padding:8px 13px;
-      border-bottom:1px solid rgba(255,255,255,.02);
-      color:var(--t2);
-    }
-    .compare-table td:first-child{color:var(--t3);font-size:12px}
-    .compare-table .check{color:var(--green)}
-    .compare-table .partial{color:var(--gold);opacity:.5}
-    .compare-table .miss{color:var(--glut);opacity:.3}
-    .compare-table .highlight{background:rgba(85,185,130,.02)}
 
     /* ═══ FAQ ═══ */
     .faq-list{margin-top:34px}
@@ -880,7 +825,6 @@
 <!-- ═══ FLOATING NAV PILL ═══ -->
 <nav class="nav" id="floatingNav">
   <a href="#experience">Experience</a>
-  <a href="#breathDemo">Try it</a>
   <a href="#science">Science</a>
   <a href="#pricing">Pricing</a>
   <a href="#faq">FAQ</a>
@@ -918,7 +862,7 @@
     </div>
     <div id="needResult" style="display:none;text-align:center;margin-top:8px;animation:fadeIn .6s ease">
       <p style="font-size:13px;color:var(--green)" id="needText"></p>
-      <a href="#breathDemo" class="btn btn-gold" style="margin-top:13px;font-size:11px">Try it now — free</a>
+      <a href="#pricing" class="btn btn-gold" style="margin-top:13px;font-size:11px">Get CARLON</a>
     </div>
   </div>
 
@@ -1031,55 +975,6 @@
       <h3>No account. No tracking.</h3>
       <p>Everything stays on your device. No servers, no analytics, no data leaving your wrist. We build a product — not a pipeline.</p>
     </div>
-  </div>
-</div>
-
-<!-- ═══ TRY IT NOW — 60-Second Breath Demo ═══ -->
-<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(85,185,130,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
-
-<div class="breath-demo rv" id="breathDemo">
-  <p class="label" style="color:var(--green)">Try it now</p>
-  <h2 style="font-size:clamp(21px,4vw,34px);font-weight:200;line-height:1.236">Feel it<br><em style="color:var(--green)">before you buy.</em></h2>
-  <p class="lead" style="margin:13px auto 0;text-align:center;max-width:377px;font-size:13px;color:var(--t3)">60 seconds of coherence breathing. No download. No signup. Just breathe.</p>
-
-  <div class="breath-orb-wrap">
-    <div class="breath-orb" id="breathOrb"></div>
-    <div class="breath-orb-label" id="breathLabel">Start</div>
-  </div>
-  <div class="breath-timer" id="breathTimer">1:00</div>
-  <div class="breath-demo-cta">
-    <button class="btn btn-green" id="breathStart" onclick="startBreathDemo()">Begin breathing</button>
-  </div>
-  <p style="margin-top:13px;font-size:10px;color:var(--t3);opacity:.35">Coherence pattern: 5.5s inhale · 5.5s exhale · Peak HRV frequency</p>
-</div>
-
-<!-- ═══ COMPARISON ═══ -->
-<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><circle cx="75" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="105" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="90" cy="20" r="9" stroke="rgba(178,148,76,.35)" stroke-width=".3"/><line x1="10" y1="20" x2="60" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/><line x1="120" y1="20" x2="170" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/></svg></div>
-
-<div class="sect rv" id="compare">
-  <p class="label">Comparison</p>
-  <h2>Why <em>CARLON?</em></h2>
-  <p class="lead" style="font-size:13px;color:var(--t3)">We built what we couldn't find. Here's how it compares.</p>
-
-  <div style="overflow-x:auto">
-  <table class="compare-table">
-    <thead>
-      <tr><th>Feature</th><th>CARLON</th><th>Calm</th><th>Headspace</th><th>Oak</th></tr>
-    </thead>
-    <tbody>
-      <tr class="highlight"><td>Native Apple Watch app</td><td class="check">Full app</td><td class="miss">Companion</td><td class="miss">Companion</td><td class="partial">Basic</td></tr>
-      <tr><td>Haptic breath guidance</td><td class="check">3 modes</td><td class="miss">No</td><td class="miss">No</td><td class="partial">Basic</td></tr>
-      <tr class="highlight"><td>Double Tap (eyes closed)</td><td class="check">Yes</td><td class="miss">No</td><td class="miss">No</td><td class="miss">No</td></tr>
-      <tr><td>Breathing techniques</td><td class="check">16</td><td class="partial">3</td><td class="partial">4</td><td class="partial">4</td></tr>
-      <tr class="highlight"><td>Custom Breath Composer</td><td class="check">Yes</td><td class="miss">No</td><td class="miss">No</td><td class="partial">Limited</td></tr>
-      <tr><td>HRV insights + trends</td><td class="check">Full</td><td class="miss">No</td><td class="miss">No</td><td class="miss">No</td></tr>
-      <tr class="highlight"><td>Sacred Geometry visuals</td><td class="check">Flower of Life</td><td class="miss">No</td><td class="miss">No</td><td class="miss">No</td></tr>
-      <tr><td>Coach Mode</td><td class="check">Yes</td><td class="miss">No</td><td class="miss">No</td><td class="miss">No</td></tr>
-      <tr class="highlight"><td>Apple Shortcuts</td><td class="check">7 intents</td><td class="partial">Basic</td><td class="partial">Basic</td><td class="miss">No</td></tr>
-      <tr><td>Pricing model</td><td class="check">€9.99 once</td><td class="miss">€70/year</td><td class="miss">€70/year</td><td class="check">Free</td></tr>
-      <tr class="highlight"><td>Privacy (no account)</td><td class="check">Zero data</td><td class="miss">Account req.</td><td class="miss">Account req.</td><td class="check">Local</td></tr>
-    </tbody>
-  </table>
   </div>
 </div>
 
@@ -1403,9 +1298,9 @@
   <div class="exit-box">
     <button class="exit-close" onclick="document.getElementById('exitOverlay').classList.remove('show')">&times;</button>
     <p style="font-size:10px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;opacity:.5;margin-bottom:8px">Before you go</p>
-    <h3 style="font-size:21px;font-weight:200;line-height:1.4">Try one breath<br><em style="color:var(--green)">on us.</em></h3>
-    <p style="font-size:13px;color:var(--t2);margin-top:13px;line-height:1.6">60 seconds of coherence breathing — right here in your browser. No download. No signup. Just see how it feels.</p>
-    <a href="#breathDemo" class="btn btn-green" style="margin-top:21px" onclick="document.getElementById('exitOverlay').classList.remove('show')">Try 60 seconds free</a>
+    <h3 style="font-size:21px;font-weight:200;line-height:1.4">Your wrist knows<br><em style="color:var(--green)">when to breathe.</em></h3>
+    <p style="font-size:13px;color:var(--t2);margin-top:13px;line-height:1.6">CARLON guides every breath through Apple Watch haptics. Eyes closed. No screen. Your nervous system follows before your mind does.</p>
+    <a href="mailto:jan@vitalkultur.com?subject=CARLON%20Launch%20Notify" class="btn btn-gold" style="margin-top:21px" onclick="document.getElementById('exitOverlay').classList.remove('show')">Notify me at launch</a>
     <p style="font-size:10px;color:var(--t3);opacity:.3;margin-top:13px">€9.99 once · no subscription · Apple Watch</p>
   </div>
 </div>
@@ -1896,61 +1791,6 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
   window.addEventListener('scroll',checkNav,{passive:true});
 })();
 
-// ═══ 60-SECOND BREATH DEMO ═══
-let breathDemoActive=false,breathDemoTimer=null;
-function startBreathDemo(){
-  if(breathDemoActive)return;
-  breathDemoActive=true;
-  const orb=document.getElementById('breathOrb');
-  const label=document.getElementById('breathLabel');
-  const timer=document.getElementById('breathTimer');
-  const btn=document.getElementById('breathStart');
-  if(!orb||!label||!timer)return;
-  btn.textContent='Breathing...';btn.style.opacity='.4';btn.style.pointerEvents='none';
-
-  let seconds=60,inhaling=true;
-  const cycleDur=5500; // 5.5s per phase = coherence frequency
-
-  function updateTimer(){
-    const m=Math.floor(seconds/60);
-    const s=seconds%60;
-    timer.textContent=m+':'+(s<10?'0':'')+s;
-    if(seconds<=0){stopBreathDemo();return}
-    seconds--;
-  }
-  function breathCycle(){
-    if(!breathDemoActive)return;
-    if(inhaling){
-      orb.classList.remove('exhale');orb.classList.add('inhale');
-      label.textContent='Inhale';label.style.color='var(--green)';
-    }else{
-      orb.classList.remove('inhale');orb.classList.add('exhale');
-      label.textContent='Exhale';label.style.color='var(--gold)';
-    }
-    inhaling=!inhaling;
-    if(breathDemoActive)setTimeout(breathCycle,cycleDur);
-  }
-  breathCycle();
-  updateTimer();
-  breathDemoTimer=setInterval(updateTimer,1000);
-}
-function stopBreathDemo(){
-  breathDemoActive=false;
-  clearInterval(breathDemoTimer);
-  const orb=document.getElementById('breathOrb');
-  const label=document.getElementById('breathLabel');
-  const timer=document.getElementById('breathTimer');
-  const btn=document.getElementById('breathStart');
-  orb.classList.remove('inhale','exhale');
-  label.textContent='Done';label.style.color='var(--gold-bright)';
-  timer.textContent='Namaste';timer.style.fontSize='26px';
-  btn.textContent='Try again';btn.style.opacity='1';btn.style.pointerEvents='auto';
-  btn.onclick=function(){
-    timer.style.fontSize='';
-    startBreathDemo();
-  };
-}
-
 // ═══ STICKY MOBILE CTA ═══
 (function(){
   const sticky=document.getElementById('stickyCta');
@@ -2008,8 +1848,9 @@ function showNeed(type){
   let shown=false;
   function onMouseLeave(e){
     if(e.clientY>5||shown)return;
-    // Don't show if user already interacted with email or breath demo
-    if(breathDemoActive||document.getElementById('emailSuccess').style.display==='block')return;
+    // Don't show if user already submitted email
+    var emailDone=document.getElementById('emailSuccess');
+    if(emailDone&&emailDone.style.display==='block')return;
     shown=true;
     document.getElementById('exitOverlay').classList.add('show');
     document.removeEventListener('mouseout',onMouseLeave);
