@@ -851,22 +851,7 @@
   <p class="hero-sub" style="margin-top:3px;color:var(--violet);opacity:.5">Coach Mode: €9.99/mo — for professionals</p>
   <p class="hero-sub rv" style="margin-top:8px;font-size:10px;opacity:.45;letter-spacing:.08em">Based on peer-reviewed studies from <a href="#science" style="color:var(--gold);opacity:1">Stanford</a>, <a href="#science" style="color:var(--gold);opacity:1">PNAS</a>, <a href="#science" style="color:var(--gold);opacity:1">Frontiers in Psychology</a></p>
 
-  <!-- "What do you need?" — Personalized CTA quiz -->
-  <div class="rv" style="margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:8px">
-    <p style="font-size:10px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;opacity:.4">What do you need right now?</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center" id="needPicker">
-      <button class="btn btn-ghost" style="font-size:11px;padding:8px 21px" onclick="showNeed('stress')">Reduce stress</button>
-      <button class="btn btn-ghost" style="font-size:11px;padding:8px 21px" onclick="showNeed('focus')">Sharpen focus</button>
-      <button class="btn btn-ghost" style="font-size:11px;padding:8px 21px" onclick="showNeed('sleep')">Sleep deeper</button>
-      <button class="btn btn-ghost" style="font-size:11px;padding:8px 21px" onclick="showNeed('energy')">More energy</button>
-    </div>
-    <div id="needResult" style="display:none;text-align:center;margin-top:8px;animation:fadeIn .6s ease">
-      <p style="font-size:13px;color:var(--green)" id="needText"></p>
-      <a href="#pricing" class="btn btn-gold" style="margin-top:13px;font-size:11px">Get CARLON</a>
-    </div>
-  </div>
-
-  <div class="hero-cta" style="margin-top:21px">
+  <div class="hero-cta">
     <a href="#experience" class="btn btn-gold">How it feels</a>
     <a href="#pricing" class="btn btn-ghost">See pricing</a>
   </div>
@@ -1820,27 +1805,6 @@ function handleEmailSubmit(e){
   // Also open mailto so Jan gets the email
   window.location.href='mailto:jan@vitalkultur.com?subject=CARLON%20Launch%20Notification&body=Please%20notify%20me%20at%20'+encodeURIComponent(email)+'%20when%20CARLON%20launches.';
   return false;
-}
-
-// ═══ NEED PICKER (Hero personalization) ═══
-function showNeed(type){
-  const texts={
-    stress:'Coherence Breathing at 5.5 breaths/min — proven to reduce cortisol by 23%. Your Apple Watch guides every breath.',
-    focus:'Box Breathing (4-4-4-4) — used by Navy SEALs before missions. CARLON counts the holds for you through haptics.',
-    sleep:'4-7-8 Breathing — clinically shown to shift your nervous system into parasympathetic mode within 90 seconds.',
-    energy:'Tummo / Wim Hof protocol — rapid breathing + breath holds. Adrenaline, endorphins, cold tolerance. Eyes closed, wrist guided.'
-  };
-  const picker=document.getElementById('needPicker');
-  const result=document.getElementById('needResult');
-  const text=document.getElementById('needText');
-  picker.querySelectorAll('button').forEach(b=>{
-    b.style.opacity='.3';b.style.pointerEvents='none';
-  });
-  text.textContent=texts[type]||'';
-  result.style.display='block';
-  result.style.animation='none';
-  result.offsetHeight; // reflow
-  result.style.animation='fadeIn .6s ease';
 }
 
 // ═══ EXIT INTENT (Desktop only) ═══
