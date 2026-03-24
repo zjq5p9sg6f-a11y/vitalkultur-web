@@ -762,6 +762,32 @@
     }
     .free-card .price-num{font-size:clamp(34px,5vw,42px);color:var(--t3);opacity:.5}
     .free-card .label{color:var(--t3)}
+
+    /* ═══ ANIMATIONS ═══ */
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+    /* ═══ EXIT INTENT POPUP ═══ */
+    .exit-overlay{
+      position:fixed;inset:0;z-index:999;
+      background:rgba(0,0,0,.85);
+      backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+      display:flex;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;transition:opacity .382s;
+    }
+    .exit-overlay.show{opacity:1;pointer-events:auto}
+    .exit-box{
+      max-width:400px;padding:55px 34px;text-align:center;
+      border-radius:21px;
+      border:1px solid rgba(178,148,76,.1);
+      background:rgba(10,10,10,.95);
+      position:relative;
+    }
+    .exit-close{
+      position:absolute;top:13px;right:13px;
+      background:none;border:none;color:var(--t3);font-size:21px;
+      cursor:pointer;opacity:.3;transition:opacity .3s;padding:5px;
+    }
+    .exit-close:hover{opacity:1}
   </style>
 </head>
 <body>
@@ -881,7 +907,22 @@
   <p class="hero-sub" style="margin-top:3px;color:var(--violet);opacity:.5">Coach Mode: €9.99/mo — for professionals</p>
   <p class="hero-sub rv" style="margin-top:8px;font-size:10px;opacity:.45;letter-spacing:.08em">Based on peer-reviewed studies from <a href="#science" style="color:var(--gold);opacity:1">Stanford</a>, <a href="#science" style="color:var(--gold);opacity:1">PNAS</a>, <a href="#science" style="color:var(--gold);opacity:1">Frontiers in Psychology</a></p>
 
-  <div class="hero-cta">
+  <!-- "What do you need?" — Personalized CTA quiz -->
+  <div class="rv" style="margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:8px">
+    <p style="font-size:10px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;opacity:.4">What do you need right now?</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center" id="needPicker">
+      <button class="btn btn-ghost" style="font-size:11px;padding:8px 21px" onclick="showNeed('stress')">Reduce stress</button>
+      <button class="btn btn-ghost" style="font-size:11px;padding:8px 21px" onclick="showNeed('focus')">Sharpen focus</button>
+      <button class="btn btn-ghost" style="font-size:11px;padding:8px 21px" onclick="showNeed('sleep')">Sleep deeper</button>
+      <button class="btn btn-ghost" style="font-size:11px;padding:8px 21px" onclick="showNeed('energy')">More energy</button>
+    </div>
+    <div id="needResult" style="display:none;text-align:center;margin-top:8px;animation:fadeIn .6s ease">
+      <p style="font-size:13px;color:var(--green)" id="needText"></p>
+      <a href="#breathDemo" class="btn btn-gold" style="margin-top:13px;font-size:11px">Try it now — free</a>
+    </div>
+  </div>
+
+  <div class="hero-cta" style="margin-top:21px">
     <a href="#experience" class="btn btn-gold">How it feels</a>
     <a href="#pricing" class="btn btn-ghost">See pricing</a>
   </div>
@@ -909,9 +950,17 @@
   </div>
   <p class="label rv">Origin</p>
   <h2 class="rv">Born from<br><em>our breath.</em></h2>
-  <p class="lead rv">When our son was born on a January night in 2026, we named him Carlon — <em>the free one</em>. We've always been into breathwork, both of us. Between night feeds and first smiles, we reached for it more than ever. Not as a technique — as a way to stay grounded together.</p>
+
+  <!-- Photo placeholder — shows when founder photo is added -->
+  <div class="rv" id="founderPhoto" style="width:144px;height:144px;border-radius:50%;margin:21px auto;border:1px solid rgba(178,148,76,.1);background:rgba(178,148,76,.02);display:flex;align-items:center;justify-content:center;overflow:hidden">
+    <svg viewBox="0 0 48 48" fill="none" style="width:34px;height:34px;opacity:.15"><circle cx="24" cy="18" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M8 42c0-8.8 7.2-16 16-16s16 7.2 16 16" stroke="currentColor" stroke-width="1.5"/></svg>
+  </div>
+
+  <p class="lead rv" style="text-align:center;font-style:italic;color:var(--gold);opacity:.5;font-size:13px">Jan & Carina · Founders of Vitalkultur</p>
+
+  <p class="lead rv" style="margin-top:21px">When our son was born on a January night in 2026, we named him Carlon — <em>the free one</em>. We've always been into breathwork, both of us. Between night feeds and first smiles, we reached for it more than ever. Not as a technique — as a way to stay grounded together.</p>
   <p class="lead rv d1" style="margin-top:13px">We couldn't find an app that felt the way breathing actually feels — sacred, not clinical. So we built one. What started as a private experiment became something we couldn't keep to ourselves.</p>
-  <p class="lead rv d2" style="margin-top:13px;opacity:.25;font-size:13px">80 million haptic simulations. Sacred geometry as operating system. Named after our son — because freedom is in every breath.</p>
+  <p class="lead rv d2" style="margin-top:13px;opacity:.3;font-size:13px">80 million haptic simulations. Sacred geometry as operating system. Named after our son — because freedom is in every breath.</p>
 </div>
 
 <!-- ═══ EXPERIENCE ═══ -->
@@ -1348,6 +1397,18 @@
 
 <audio id="ambientAudio0" src="world-peace-in-us.mp3" preload="none"></audio>
 <audio id="ambientAudio1" src="beyond-the-sun.mp3" preload="none"></audio>
+
+<!-- ═══ EXIT INTENT POPUP ═══ -->
+<div class="exit-overlay" id="exitOverlay">
+  <div class="exit-box">
+    <button class="exit-close" onclick="document.getElementById('exitOverlay').classList.remove('show')">&times;</button>
+    <p style="font-size:10px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;opacity:.5;margin-bottom:8px">Before you go</p>
+    <h3 style="font-size:21px;font-weight:200;line-height:1.4">Try one breath<br><em style="color:var(--green)">on us.</em></h3>
+    <p style="font-size:13px;color:var(--t2);margin-top:13px;line-height:1.6">60 seconds of coherence breathing — right here in your browser. No download. No signup. Just see how it feels.</p>
+    <a href="#breathDemo" class="btn btn-green" style="margin-top:21px" onclick="document.getElementById('exitOverlay').classList.remove('show')">Try 60 seconds free</a>
+    <p style="font-size:10px;color:var(--t3);opacity:.3;margin-top:13px">€9.99 once · no subscription · Apple Watch</p>
+  </div>
+</div>
 
 <!-- ═══ STICKY MOBILE CTA ═══ -->
 <div class="sticky-cta" id="stickyCta">
@@ -1920,6 +1981,46 @@ function handleEmailSubmit(e){
   window.location.href='mailto:jan@vitalkultur.com?subject=CARLON%20Launch%20Notification&body=Please%20notify%20me%20at%20'+encodeURIComponent(email)+'%20when%20CARLON%20launches.';
   return false;
 }
+
+// ═══ NEED PICKER (Hero personalization) ═══
+function showNeed(type){
+  const texts={
+    stress:'Coherence Breathing at 5.5 breaths/min — proven to reduce cortisol by 23%. Your Apple Watch guides every breath.',
+    focus:'Box Breathing (4-4-4-4) — used by Navy SEALs before missions. CARLON counts the holds for you through haptics.',
+    sleep:'4-7-8 Breathing — clinically shown to shift your nervous system into parasympathetic mode within 90 seconds.',
+    energy:'Tummo / Wim Hof protocol — rapid breathing + breath holds. Adrenaline, endorphins, cold tolerance. Eyes closed, wrist guided.'
+  };
+  const picker=document.getElementById('needPicker');
+  const result=document.getElementById('needResult');
+  const text=document.getElementById('needText');
+  picker.querySelectorAll('button').forEach(b=>{
+    b.style.opacity='.3';b.style.pointerEvents='none';
+  });
+  text.textContent=texts[type]||'';
+  result.style.display='block';
+  result.style.animation='none';
+  result.offsetHeight; // reflow
+  result.style.animation='fadeIn .6s ease';
+}
+
+// ═══ EXIT INTENT (Desktop only) ═══
+(function(){
+  let shown=false;
+  function onMouseLeave(e){
+    if(e.clientY>5||shown)return;
+    // Don't show if user already interacted with email or breath demo
+    if(breathDemoActive||document.getElementById('emailSuccess').style.display==='block')return;
+    shown=true;
+    document.getElementById('exitOverlay').classList.add('show');
+    document.removeEventListener('mouseout',onMouseLeave);
+  }
+  // Only on desktop, after 10 seconds on page
+  if(window.innerWidth>610){
+    setTimeout(function(){
+      document.addEventListener('mouseout',onMouseLeave);
+    },10000);
+  }
+})();
 </script>
 
 </body>
