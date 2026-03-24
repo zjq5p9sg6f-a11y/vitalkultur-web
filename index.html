@@ -16,6 +16,42 @@
   <meta property="og:url" content="https://vitalkultur.com/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CARLON — Breathe Beyond",
+    "operatingSystem": "watchOS, iOS",
+    "applicationCategory": "HealthApplication",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Private Mode",
+        "price": "9.99",
+        "priceCurrency": "EUR",
+        "description": "Buy once, breathe forever. All 16 techniques, haptic guidance, no subscription."
+      },
+      {
+        "@type": "Offer",
+        "name": "Coach Mode",
+        "price": "9.99",
+        "priceCurrency": "EUR",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "billingDuration": "P1M"
+        },
+        "description": "For professionals. Share custom protocols with clients."
+      }
+    ],
+    "description": "16 science-backed breathing techniques with Apple Watch haptic guidance and Sacred Geometry visualization.",
+    "creator": {
+      "@type": "Organization",
+      "name": "Vitalkultur",
+      "url": "https://vitalkultur.com"
+    },
+    "featureList": "Haptic Guidance, Double Tap, 16 Breathing Techniques, HRV Insights, Breath Composer, Flower of Life, Apple Shortcuts, Session Export"
+  }
+  </script>
   <noscript><style>.rv{opacity:1;transform:none}</style></noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -506,6 +542,130 @@
     @supports(padding:env(safe-area-inset-bottom)){footer{padding-bottom:calc(55px + env(safe-area-inset-bottom))}}
     .btn:focus-visible,a:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px}
     @media(prefers-reduced-motion:reduce){.rv{transition:none;opacity:1;transform:none}.scroll-line,.atmos-orb{animation:none}}
+
+    /* ═══ TRUST BADGES ═══ */
+    .trust-strip{
+      display:flex;align-items:center;justify-content:center;
+      gap:21px;flex-wrap:wrap;
+      padding:13px 21px;
+      opacity:.35;
+    }
+    .trust-badge{
+      display:flex;align-items:center;gap:5px;
+      font-size:10px;letter-spacing:.04em;color:var(--t3);
+      white-space:nowrap;
+    }
+    .trust-badge svg{width:13px;height:13px;flex-shrink:0}
+
+    /* ═══ INLINE BREATH DEMO ═══ */
+    .breath-demo{
+      text-align:center;padding:55px 21px;
+      max-width:680px;margin:0 auto;position:relative;
+    }
+    .breath-orb-wrap{
+      width:144px;height:144px;margin:21px auto;position:relative;
+    }
+    .breath-orb{
+      width:100%;height:100%;border-radius:50%;
+      background:radial-gradient(circle,rgba(85,185,130,.15),rgba(85,185,130,.02));
+      border:1px solid rgba(85,185,130,.15);
+      transition:transform 4.342s cubic-bezier(.37,0,.63,1);
+    }
+    .breath-orb.inhale{transform:scale(1.4)}
+    .breath-orb.exhale{transform:scale(.7)}
+    .breath-orb-label{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      font-size:16px;font-weight:200;color:var(--green);
+      pointer-events:none;transition:opacity .6s;
+    }
+    .breath-timer{
+      font-size:42px;font-weight:200;color:var(--gold-bright);
+      margin-top:13px;font-variant-numeric:tabular-nums;
+    }
+    .breath-demo-cta{margin-top:21px}
+    .btn-green{
+      background:linear-gradient(135deg,var(--green),rgb(60,155,100));
+      color:var(--bg);border:none;
+    }
+    .btn-green:hover{transform:translateY(-2px);box-shadow:0 8px 55px rgba(85,185,130,.25);color:var(--bg)}
+
+    /* ═══ COMPARISON TABLE ═══ */
+    .compare-table{
+      width:100%;border-collapse:collapse;margin-top:34px;
+      font-size:13px;
+    }
+    .compare-table th{
+      padding:8px 13px;text-align:left;
+      font-weight:400;font-size:10px;
+      letter-spacing:.1em;text-transform:uppercase;
+      color:var(--gold);opacity:.5;
+      border-bottom:1px solid rgba(178,148,76,.08);
+    }
+    .compare-table th:first-child{color:var(--t3)}
+    .compare-table td{
+      padding:8px 13px;
+      border-bottom:1px solid rgba(255,255,255,.02);
+      color:var(--t2);
+    }
+    .compare-table td:first-child{color:var(--t3);font-size:12px}
+    .compare-table .check{color:var(--green)}
+    .compare-table .partial{color:var(--gold);opacity:.5}
+    .compare-table .miss{color:var(--glut);opacity:.3}
+    .compare-table .highlight{background:rgba(85,185,130,.02)}
+
+    /* ═══ FAQ ═══ */
+    .faq-list{margin-top:34px}
+    .faq-item{
+      border-bottom:1px solid rgba(178,148,76,.06);
+      padding:21px 0;
+    }
+    .faq-q{
+      font-size:16px;font-weight:400;color:var(--t);
+      cursor:pointer;display:flex;justify-content:space-between;
+      align-items:center;gap:13px;
+    }
+    .faq-q::after{
+      content:'+';font-size:21px;font-weight:200;color:var(--gold);
+      transition:transform .382s;flex-shrink:0;
+    }
+    .faq-item.open .faq-q::after{transform:rotate(45deg)}
+    .faq-a{
+      max-height:0;overflow:hidden;transition:max-height .382s ease,padding .382s ease;
+      font-size:13px;color:var(--t2);line-height:1.7;
+    }
+    .faq-item.open .faq-a{max-height:300px;padding-top:13px}
+
+    /* ═══ EMAIL CAPTURE ═══ */
+    .email-box{
+      max-width:500px;margin:34px auto 0;
+      display:flex;gap:8px;
+    }
+    .email-box input{
+      flex:1;padding:13px 21px;
+      border-radius:55px;border:1px solid rgba(178,148,76,.12);
+      background:rgba(178,148,76,.03);
+      color:var(--t);font-size:13px;font-family:inherit;
+      outline:none;transition:border-color .382s;
+    }
+    .email-box input:focus{border-color:rgba(178,148,76,.35)}
+    .email-box input::placeholder{color:var(--t3);opacity:.5}
+
+    /* ═══ STICKY MOBILE CTA ═══ */
+    .sticky-cta{
+      position:fixed;bottom:0;left:0;right:0;z-index:88;
+      padding:8px 21px;
+      background:rgba(2,2,2,.92);
+      backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);
+      border-top:1px solid rgba(178,148,76,.06);
+      display:flex;align-items:center;justify-content:space-between;
+      gap:13px;
+      transform:translateY(100%);transition:transform .382s ease;
+    }
+    .sticky-cta.show{transform:translateY(0)}
+    .sticky-cta-text{font-size:12px;color:var(--t2)}
+    .sticky-cta-text strong{color:var(--gold-bright);font-weight:500}
+    .sticky-cta .btn{padding:8px 21px;font-size:11px}
+    @media(min-width:610px){.sticky-cta{display:none}}
   </style>
 </head>
 <body>
@@ -624,6 +784,15 @@
   <div class="scroll-line"></div>
 </div>
 
+<!-- ═══ TRUST BADGES ═══ -->
+<div class="trust-strip rv">
+  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1L2 4v4c0 3.5 2.5 6.4 6 7.5 3.5-1.1 6-4 6-7.5V4L8 1z" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 8l2 2 3.5-3.5" stroke="currentColor" stroke-width="1.2"/></svg>No tracking</span>
+  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M5 7h6M5 9.5h4" stroke="currentColor" stroke-width="1" opacity=".6"/></svg>GDPR compliant</span>
+  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M8 5v3.5l2.5 1.5" stroke="currentColor" stroke-width="1"/></svg>Apple Watch native</span>
+  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2l1.8 3.6 4 .6-2.9 2.8.7 4L8 11.2 4.4 13l.7-4-2.9-2.8 4-.6L8 2z" stroke="currentColor" stroke-width="1.2"/></svg>HealthKit integrated</span>
+  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2v12" stroke="currentColor" stroke-width="1.2" opacity=".3"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.2"/></svg>No data sold</span>
+</div>
+
 <!-- ═══ ORIGIN ═══ -->
 <div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><circle cx="75" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="105" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="90" cy="20" r="9" stroke="rgba(178,148,76,.35)" stroke-width=".3"/><line x1="10" y1="20" x2="60" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/><line x1="120" y1="20" x2="170" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/></svg></div>
 
@@ -708,6 +877,55 @@
       <h3>No account. No tracking.</h3>
       <p>Everything stays on your device. No servers, no analytics, no data leaving your wrist. We build a product — not a pipeline.</p>
     </div>
+  </div>
+</div>
+
+<!-- ═══ TRY IT NOW — 60-Second Breath Demo ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(85,185,130,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
+
+<div class="breath-demo rv" id="breathDemo">
+  <p class="label" style="color:var(--green)">Try it now</p>
+  <h2 style="font-size:clamp(21px,4vw,34px);font-weight:200;line-height:1.236">Feel it<br><em style="color:var(--green)">before you buy.</em></h2>
+  <p class="lead" style="margin:13px auto 0;text-align:center;max-width:377px;font-size:13px;color:var(--t3)">60 seconds of coherence breathing. No download. No signup. Just breathe.</p>
+
+  <div class="breath-orb-wrap">
+    <div class="breath-orb" id="breathOrb"></div>
+    <div class="breath-orb-label" id="breathLabel">Start</div>
+  </div>
+  <div class="breath-timer" id="breathTimer">1:00</div>
+  <div class="breath-demo-cta">
+    <button class="btn btn-green" id="breathStart" onclick="startBreathDemo()">Begin breathing</button>
+  </div>
+  <p style="margin-top:13px;font-size:10px;color:var(--t3);opacity:.35">Coherence pattern: 5.5s inhale · 5.5s exhale · Peak HRV frequency</p>
+</div>
+
+<!-- ═══ COMPARISON ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><circle cx="75" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="105" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="90" cy="20" r="9" stroke="rgba(178,148,76,.35)" stroke-width=".3"/><line x1="10" y1="20" x2="60" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/><line x1="120" y1="20" x2="170" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/></svg></div>
+
+<div class="sect rv" id="compare">
+  <p class="label">Comparison</p>
+  <h2>Why <em>CARLON?</em></h2>
+  <p class="lead" style="font-size:13px;color:var(--t3)">We built what we couldn't find. Here's how it compares.</p>
+
+  <div style="overflow-x:auto">
+  <table class="compare-table">
+    <thead>
+      <tr><th>Feature</th><th>CARLON</th><th>Calm</th><th>Headspace</th><th>Oak</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight"><td>Native Apple Watch app</td><td class="check">Full app</td><td class="miss">Companion</td><td class="miss">Companion</td><td class="partial">Basic</td></tr>
+      <tr><td>Haptic breath guidance</td><td class="check">3 modes</td><td class="miss">No</td><td class="miss">No</td><td class="partial">Basic</td></tr>
+      <tr class="highlight"><td>Double Tap (eyes closed)</td><td class="check">Yes</td><td class="miss">No</td><td class="miss">No</td><td class="miss">No</td></tr>
+      <tr><td>Breathing techniques</td><td class="check">16</td><td class="partial">3</td><td class="partial">4</td><td class="partial">4</td></tr>
+      <tr class="highlight"><td>Custom Breath Composer</td><td class="check">Yes</td><td class="miss">No</td><td class="miss">No</td><td class="partial">Limited</td></tr>
+      <tr><td>HRV insights + trends</td><td class="check">Full</td><td class="miss">No</td><td class="miss">No</td><td class="miss">No</td></tr>
+      <tr class="highlight"><td>Sacred Geometry visuals</td><td class="check">Flower of Life</td><td class="miss">No</td><td class="miss">No</td><td class="miss">No</td></tr>
+      <tr><td>Coach Mode</td><td class="check">Yes</td><td class="miss">No</td><td class="miss">No</td><td class="miss">No</td></tr>
+      <tr class="highlight"><td>Apple Shortcuts</td><td class="check">7 intents</td><td class="partial">Basic</td><td class="partial">Basic</td><td class="miss">No</td></tr>
+      <tr><td>Pricing model</td><td class="check">€9.99 once</td><td class="miss">€70/year</td><td class="miss">€70/year</td><td class="check">Free</td></tr>
+      <tr class="highlight"><td>Privacy (no account)</td><td class="check">Zero data</td><td class="miss">Account req.</td><td class="miss">Account req.</td><td class="check">Local</td></tr>
+    </tbody>
+  </table>
   </div>
 </div>
 
@@ -837,14 +1055,69 @@
   </div>
 </div>
 
-<!-- ═══ COMMUNITY ═══ -->
+<!-- ═══ FAQ ═══ -->
 <div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><circle cx="75" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="105" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="90" cy="20" r="9" stroke="rgba(178,148,76,.35)" stroke-width=".3"/><line x1="10" y1="20" x2="60" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/><line x1="120" y1="20" x2="170" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/></svg></div>
+
+<div class="sect rv" id="faq">
+  <p class="label">Questions</p>
+  <h2>Frequently <em>asked.</em></h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need an Apple Watch?</div>
+      <div class="faq-a">CARLON is designed as an Apple Watch-first experience — haptic guidance, Double Tap, and wrist-based HRV tracking all require it. The iPhone companion app provides session history, trends, and the Breath Composer, but the core breathing experience happens on your wrist.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there really no subscription?</div>
+      <div class="faq-a">Private Mode is a one-time purchase of €9.99. All 16 techniques, haptic guidance, HRV insights, Breath Composer — forever. No recurring charges, no "premium" upsells after purchase. Coach Mode is €9.99/month for professionals who want to share custom protocols with clients.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What breathing techniques are included?</div>
+      <div class="faq-a">16 peer-reviewed protocols: Box Breathing (Navy SEALs), 4-7-8 (sleep), Coherence (peak HRV), Tummo/Wim Hof (cold adaptation + immune), Cyclic Sighing (Stanford, mood), Physiological Sigh, Ujjayi, Nadi Shodhana, Kapalbhati, and more. Plus the Breath Composer to create your own.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does haptic guidance work?</div>
+      <div class="faq-a">Your Apple Watch pulses rhythmically during breathing phases. Rising patterns for inhale, descending for exhale, distinct holds and recoveries. Three intensity modes (gentle, standard, intense). You close your eyes and your wrist tells your body when to breathe — no screen needed.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What about privacy and data?</div>
+      <div class="faq-a">Zero data collection. No account, no analytics, no servers, no tracking. All your session data stays on your device. We don't know who you are, what you breathe, or when. Export your data anytime as JSON or CSV — it's yours.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is Coach Mode?</div>
+      <div class="faq-a">Coach Mode lets breathing coaches, therapists, and yoga teachers create custom protocols and share them via deep links. Your clients install CARLON, tap your link, and breathe your technique — haptic-guided on their wrist. Your name appears on every session. Track which techniques your clients use most.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is Sacred Geometry in the app?</div>
+      <div class="faq-a">The Flower of Life — a pattern found in temples worldwide for 6,000 years — blooms and contracts with your breath. Every timing derives from Earth's resonance frequency (7.83 Hz × Fibonacci). Every proportion from φ (1.618). It's not decoration — it's the mathematical structure of natural harmony, made visible.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does it work with Apple Health?</div>
+      <div class="faq-a">Yes. CARLON writes Mindful Minutes to Apple Health and reads heart rate data during sessions. You get HRV trends, heart rate drop analysis, and dive reflex detection during intensive techniques like Tummo. All data stays local — Apple Health is the bridge, not a cloud.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">When is the App Store launch?</div>
+      <div class="faq-a">Soon. Leave your email below to be notified the moment CARLON is available. Early supporters get a special mention in the app credits.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ COMMUNITY + EMAIL CAPTURE ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(178,148,76,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
 
 <div class="sect" style="text-align:center">
   <p class="label rv">Together</p>
-  <h2 class="rv">CARLON grows<br><em>with you.</em></h2>
-  <p class="lead rv" style="margin:0 auto">This isn't a finished product behind glass. Your feedback shapes what comes next.</p>
-  <div style="margin-top:34px">
+  <h2 class="rv">Be the first<br><em>to breathe.</em></h2>
+  <p class="lead rv" style="margin:0 auto">Get notified when CARLON launches. No spam — just one email on launch day.</p>
+
+  <form class="email-box rv" id="emailCapture" onsubmit="return handleEmailSubmit(event)" style="margin-top:34px">
+    <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+    <button type="submit" class="btn btn-gold" style="white-space:nowrap">Notify me</button>
+  </form>
+  <p id="emailSuccess" style="display:none;margin-top:13px;font-size:13px;color:var(--green)">You're on the list. We'll reach out on launch day.</p>
+
+  <p class="lead rv" style="margin:34px auto 0;font-size:13px;color:var(--t3)">Questions, ideas, or just want to say hi?</p>
+  <div style="margin-top:13px">
     <a href="mailto:jan@vitalkultur.com" class="btn btn-ghost rv">jan@vitalkultur.com</a>
   </div>
 </div>
@@ -867,6 +1140,12 @@
 
 <audio id="ambientAudio0" src="world-peace-in-us.mp3" preload="none"></audio>
 <audio id="ambientAudio1" src="beyond-the-sun.mp3" preload="none"></audio>
+
+<!-- ═══ STICKY MOBILE CTA ═══ -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text"><strong>€9.99</strong> · one purchase · no subscription</div>
+  <a href="#pricing" class="btn btn-gold">See pricing</a>
+</div>
 
 </div><!-- /page -->
 
@@ -902,7 +1181,9 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
 })();
 
 // ═══ BACKGROUND FLOWER OF LIFE — Full viewport, parallax ═══
+// Deferred init: yields to main thread first (fixes Desktop TBT)
 (function(){
+  function initBgFlower(){
   const c=document.getElementById('bgFlower');
   const ctx=c.getContext('2d');
   function resize(){
@@ -986,6 +1267,10 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
     if(!prefersReducedMotion)requestAnimationFrame(drawBg);
   }
   drawBg();
+  } // end initBgFlower
+  // Defer: let critical paint happen first, then start canvas
+  if('requestIdleCallback' in window){requestIdleCallback(initBgFlower)}
+  else{setTimeout(initBgFlower,200)}
 })();
 
 /*
@@ -1010,6 +1295,7 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
  * The ratio 0.3:1.0 ≈ φ⁻² (0.382) — close but organic
  */
 (function(){
+  function initFlower(){
   const canvas=document.getElementById('flowerCanvas');
   const ctx=canvas.getContext('2d');
   let dpr=window.devicePixelRatio||1;
@@ -1188,6 +1474,9 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
     if(!prefersReducedMotion)requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
+  } // end initFlower
+  if('requestIdleCallback' in window){requestIdleCallback(initFlower)}
+  else{setTimeout(initFlower,100)}
 })();
 
 // ═══ AMBIENT AUDIO ═══
@@ -1323,6 +1612,92 @@ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)')
   ctrl.addEventListener('click',function(e){e.stopPropagation();toggle()});
   ctrl.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
 })();
+
+// ═══ 60-SECOND BREATH DEMO ═══
+let breathDemoActive=false,breathDemoTimer=null;
+function startBreathDemo(){
+  if(breathDemoActive)return;
+  breathDemoActive=true;
+  const orb=document.getElementById('breathOrb');
+  const label=document.getElementById('breathLabel');
+  const timer=document.getElementById('breathTimer');
+  const btn=document.getElementById('breathStart');
+  if(!orb||!label||!timer)return;
+  btn.textContent='Breathing...';btn.style.opacity='.4';btn.style.pointerEvents='none';
+
+  let seconds=60,inhaling=true;
+  const cycleDur=5500; // 5.5s per phase = coherence frequency
+
+  function updateTimer(){
+    const m=Math.floor(seconds/60);
+    const s=seconds%60;
+    timer.textContent=m+':'+(s<10?'0':'')+s;
+    if(seconds<=0){stopBreathDemo();return}
+    seconds--;
+  }
+  function breathCycle(){
+    if(!breathDemoActive)return;
+    if(inhaling){
+      orb.classList.remove('exhale');orb.classList.add('inhale');
+      label.textContent='Inhale';label.style.color='var(--green)';
+    }else{
+      orb.classList.remove('inhale');orb.classList.add('exhale');
+      label.textContent='Exhale';label.style.color='var(--gold)';
+    }
+    inhaling=!inhaling;
+    if(breathDemoActive)setTimeout(breathCycle,cycleDur);
+  }
+  breathCycle();
+  updateTimer();
+  breathDemoTimer=setInterval(updateTimer,1000);
+}
+function stopBreathDemo(){
+  breathDemoActive=false;
+  clearInterval(breathDemoTimer);
+  const orb=document.getElementById('breathOrb');
+  const label=document.getElementById('breathLabel');
+  const timer=document.getElementById('breathTimer');
+  const btn=document.getElementById('breathStart');
+  orb.classList.remove('inhale','exhale');
+  label.textContent='Done';label.style.color='var(--gold-bright)';
+  timer.textContent='Namaste';timer.style.fontSize='26px';
+  btn.textContent='Try again';btn.style.opacity='1';btn.style.pointerEvents='auto';
+  btn.onclick=function(){
+    timer.style.fontSize='';
+    startBreathDemo();
+  };
+}
+
+// ═══ STICKY MOBILE CTA ═══
+(function(){
+  const sticky=document.getElementById('stickyCta');
+  if(!sticky)return;
+  let shown=false;
+  function checkSticky(){
+    const scrolled=window.scrollY>window.innerHeight*.6;
+    const nearBottom=window.scrollY>document.body.scrollHeight-window.innerHeight*2;
+    if(scrolled&&!nearBottom&&!shown){sticky.classList.add('show');shown=true}
+    else if((!scrolled||nearBottom)&&shown){sticky.classList.remove('show');shown=false}
+  }
+  window.addEventListener('scroll',checkSticky,{passive:true});
+})();
+
+// ═══ EMAIL CAPTURE ═══
+function handleEmailSubmit(e){
+  e.preventDefault();
+  const form=document.getElementById('emailCapture');
+  const success=document.getElementById('emailSuccess');
+  const email=form.querySelector('input[name="email"]').value;
+  // Store locally + mailto fallback (no backend yet)
+  const stored=JSON.parse(localStorage.getItem('carlon_waitlist')||'[]');
+  stored.push({email:email,date:new Date().toISOString()});
+  localStorage.setItem('carlon_waitlist',JSON.stringify(stored));
+  form.style.display='none';
+  success.style.display='block';
+  // Also open mailto so Jan gets the email
+  window.location.href='mailto:jan@vitalkultur.com?subject=CARLON%20Launch%20Notification&body=Please%20notify%20me%20at%20'+encodeURIComponent(email)+'%20when%20CARLON%20launches.';
+  return false;
+}
 </script>
 
 </body>
