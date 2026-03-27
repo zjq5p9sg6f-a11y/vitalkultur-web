@@ -194,7 +194,7 @@
       min-height:100svh;display:flex;flex-direction:column;
       align-items:center;justify-content:center;
       position:relative;text-align:center;
-      padding:55px 21px 0; /* F(10) top for top-bar clearance, F(8) sides */
+      padding:calc(env(safe-area-inset-top, 55px) + 34px) 21px 0; /* safe-area + F(9) extra clearance for Dynamic Island */
     }
 
     .hero-badge{
