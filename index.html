@@ -52,9 +52,10 @@
     "featureList": "Haptic Guidance, Double Tap, 16 Breathing Techniques, HRV Insights, Breath Composer, Flower of Life, Apple Shortcuts, Session Export"
   }
   </script>
-  <!-- Analytics: Umami (open source, no cookies, GDPR compliant, free tier) -->
-  <!-- TODO: Replace WEBSITE_ID after creating account at cloud.umami.is -->
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="PENDING_SETUP"></script>
+  <!-- Analytics: GoatCounter (kostenlos, open source, DSGVO ohne Cookie-Banner)
+       Dashboard: https://vitalkultur.goatcounter.com
+       Signup: https://www.goatcounter.com — Subdomain "vitalkultur" wählen -->
+  <script data-goatcounter="https://vitalkultur.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <noscript><style>.rv{opacity:1;transform:none}</style></noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -804,8 +805,8 @@
   <p class="hero-sub rv" style="margin-top:8px;font-size:10px;opacity:.45;letter-spacing:.08em">Breathing protocols validated in research published in <a href="#science" style="color:var(--gold);opacity:1">PNAS</a>, <a href="#science" style="color:var(--gold);opacity:1">Cell Reports Medicine</a> (Stanford), and <a href="#science" style="color:var(--gold);opacity:1">Frontiers in Psychology</a></p>
 
   <div class="hero-cta">
-    <a href="#emailCapture" class="btn btn-gold data-umami-event="cta-hero-signup"">Join the launch list</a>
-    <a href="#experience" class="btn btn-ghost data-umami-event="cta-hero-experience"">See how it works</a>
+    <a href="#emailCapture" class="btn btn-gold onclick="if(window.goatcounter)goatcounter.count({path:'cta-hero-signup',event:true})"">Join the launch list</a>
+    <a href="#experience" class="btn btn-ghost onclick="if(window.goatcounter)goatcounter.count({path:'cta-hero-experience',event:true})"">See how it works</a>
   </div>
 
   <div class="scroll-line"></div>
@@ -1059,7 +1060,7 @@
         <li>iPhone companion with session history & insights</li>
         <li>Session export (JSON/CSV) for AI analysis</li>
       </ul>
-      <a href="#emailCapture" class="btn btn-gold data-umami-event="cta-pricing-signup"" style="margin-top:34px">Notify me at launch</a>
+      <a href="#emailCapture" class="btn btn-gold onclick="if(window.goatcounter)goatcounter.count({path:'cta-pricing-signup',event:true})"" style="margin-top:34px">Notify me at launch</a>
     </div>
   </div>
 
@@ -1752,9 +1753,9 @@ function handleEmailSubmit(e){
   stored.push(lead);
   localStorage.setItem('carlon_waitlist',JSON.stringify(stored));
 
-  // 2. Umami conversion event with campaign data
-  if(window.umami){
-    umami.track('waitlist-signup',{source:lead.source,medium:lead.medium,campaign:lead.campaign});
+  // 2. GoatCounter conversion event (tracks signup + campaign source)
+  if(window.goatcounter&&window.goatcounter.count){
+    goatcounter.count({path:'waitlist-signup/'+lead.source,title:'Signup: '+lead.campaign,event:true});
   }
 
   // 3. Send to Formspree (free, no backend needed, emails forwarded to jan@vitalkultur.com)
