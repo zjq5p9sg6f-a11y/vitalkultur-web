@@ -202,16 +202,18 @@
     }
 
     .hero-badge{
-      display:inline-block;
-      padding:8px 21px 5px;   /* F(6) top > F(5) bottom = optisch zentriert (Kopfraum > Fußraum) */
+      display:block;
+      max-width:fit-content;
+      margin-left:auto;margin-right:auto;
+      padding:8px 21px 6px;
       border:1px solid rgba(178,148,76,.15);
-      border-radius:21px;     /* rounded but wrappable */
-      font-size:10px;         /* φ⁻¹ scale */
-      letter-spacing:.15em;text-transform:uppercase;
-      color:var(--gold);opacity:.618; /* φ⁻¹ opacity */
-      margin-bottom:34px;     /* F(9) */
-      backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px); /* F(6) blur */
-      max-width:85vw;white-space:normal;overflow:hidden;text-align:center;line-height:1.8;
+      border-radius:13px;
+      font-size:9px;
+      letter-spacing:.12em;text-transform:uppercase;
+      color:var(--gold);opacity:.618;
+      margin-bottom:34px;
+      backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+      text-align:center;line-height:1.7;white-space:normal;word-break:break-word;
       white-space:nowrap; /* Prevent ugly line breaks inside badge */
     }
 
