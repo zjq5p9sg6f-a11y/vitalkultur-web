@@ -52,6 +52,9 @@
     "featureList": "Haptic Guidance, Double Tap, 16 Breathing Techniques, Custom Pattern Creation, Live HR Sparkline, SpO2 Blood Oxygen, Session RMSSD, Dive Reflex Detection, 4 Watch Complications, Siri Shortcuts, Apple Calendar, Coherence Switch, Breath Composer, Flower of Life, Focus Mode, Research Export"
   }
   </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"CARLON","operatingSystem":"watchOS, iOS","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"14.99","priceCurrency":"EUR"},"description":"Haptic-guided breathwork for Apple Watch. 16 techniques. Live biometrics."}
+  </script>
   <!-- Analytics: GoatCounter (kostenlos, open source, DSGVO ohne Cookie-Banner)
        Dashboard: https://vitalkultur.goatcounter.com
        Signup: https://www.goatcounter.com — Subdomain "vitalkultur" wählen -->
@@ -205,12 +208,13 @@
       display:block;
       max-width:fit-content;
       margin-left:auto;margin-right:auto;
+
       padding:8px 21px 6px;
       border:1px solid rgba(178,148,76,.15);
       border-radius:13px;
-      font-size:9px;
-      letter-spacing:.12em;text-transform:uppercase;
-      color:var(--gold);opacity:.618;
+      font-size:11px;
+      letter-spacing:.1em;text-transform:uppercase;
+      color:var(--gold);opacity:.75;
       margin-bottom:34px;
       backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
       text-align:center;line-height:1.7;white-space:normal;word-break:break-word;
@@ -577,7 +581,7 @@
     /* ═══ TRUST BADGES ═══ */
     .trust-strip{
       display:flex;align-items:center;justify-content:center;
-      gap:21px;flex-wrap:wrap;
+      gap:8px;flex-wrap:wrap;
       padding:13px 21px;
       opacity:.35;
     }
@@ -815,7 +819,8 @@
   <p class="hero-sub rv" style="margin-top:8px;font-size:10px;opacity:.45;letter-spacing:.08em">Protocols from <a href="#science" style="color:var(--gold);opacity:1">PNAS</a>, <a href="#science" style="color:var(--gold);opacity:1">Cell Reports Medicine</a> (Stanford) · 52.8 million haptic simulations · 200+ commits · <a href="#science" style="color:var(--gold);opacity:1">16 techniques</a> + custom creation</p>
 
   <div class="hero-cta">
-    <a href="#emailCapture" class="btn btn-gold onclick="if(window.goatcounter)goatcounter.count({path:'cta-hero-signup',event:true})"">Join the launch list</a>
+    <a href="#emailCapture" class="btn btn-gold onclick="if(window.goatcounter)goatcounter.count({path:'cta-hero-signup',event:true})"">Coming to App Store</a>
+    <p style="margin-top:8px;font-size:10px;opacity:.4">Available soon on Apple Watch + iPhone</p>
     <a href="#experience" class="btn btn-ghost onclick="if(window.goatcounter)goatcounter.count({path:'cta-hero-experience',event:true})"">See how it works</a>
   </div>
 
@@ -1175,14 +1180,17 @@
 
   <div class="testimonial-grid">
     <div class="testimonial rv d1">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-left:21px"><span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold)">T</span><span style="font-size:12px;color:var(--gold);letter-spacing:.02em">★★★★★</span></div>
       <p>Board meeting in 5 minutes. Box Breathing on the Watch. 90 seconds. I walked in calm. We closed the deal.</p>
       <div class="t-author">Thomas K. · CEO, Munich</div>
     </div>
     <div class="testimonial rv d2">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-left:21px"><span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold)">L</span><span style="font-size:12px;color:var(--gold);letter-spacing:.02em">★★★★★</span></div>
       <p>My clients text me after their first CARLON session: 'I can feel it in my body.' That's when I knew haptic guidance was the right approach.</p>
       <div class="t-author">Laura M. · Yoga Coach, Berlin</div>
     </div>
     <div class="testimonial rv d3">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-left:21px"><span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold)">S</span><span style="font-size:12px;color:var(--gold);letter-spacing:.02em">★★★★★</span></div>
       <p>I used Calm for years. The first time CARLON guided my breath through haptics with my eyes closed — I understood what I'd been missing.</p>
       <div class="t-author">Sarah J. · UX Designer, London</div>
     </div>
@@ -1190,14 +1198,17 @@
 
   <div class="testimonial-grid" style="margin-top:13px">
     <div class="testimonial rv d1">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-left:21px"><span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold)">M</span><span style="font-size:12px;color:var(--gold);letter-spacing:.02em">★★★★★</span></div>
       <p>Tummo before my morning swim. My cold tolerance went from 2 to 8 minutes in three weeks. The HRV data proves it.</p>
       <div class="t-author">Marcus R. · Triathlete, Hamburg</div>
     </div>
     <div class="testimonial rv d2">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-left:21px"><span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold)">L</span><span style="font-size:12px;color:var(--gold);letter-spacing:.02em">★★★★★</span></div>
       <p>Baby screaming at 3am. CARLON on my wrist, 4-7-8 breathing, lights off. I fell back asleep in under 5 minutes. My wife wants one too.</p>
       <div class="t-author">Lena B. · New parent, Vienna</div>
     </div>
     <div class="testimonial rv d3">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-left:21px"><span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold)">F</span><span style="font-size:12px;color:var(--gold);letter-spacing:.02em">★★★★★</span></div>
       <p>I recommend CARLON to patients with anxiety. The haptic guidance removes the cognitive overhead — they just breathe, and their nervous system does the rest.</p>
       <div class="t-author">Dr. Felix W. · Psychologist, Zurich</div>
     </div>
@@ -1218,10 +1229,8 @@
   <!-- Solfeggio frequency visualization -->
   <div class="freq-strip rv" aria-hidden="true" id="freqStrip"></div>
 
-  <p class="lead rv">The color you see right now? It's 528 Hz — the frequency of transformation — shifted 40 octaves into visible light. The gold around it? 432 Hz, the frequency of harmony. Every breath timing in CARLON is a Fibonacci pair multiplied by Earth's heartbeat at 7.83 Hz. Your inhale and exhale always sum to the next Fibonacci number.</p>
-  <p class="lead rv d1" style="margin-top:13px">You don't need to know any of this. Your nervous system already does. That's why it feels right before you understand why.</p>
-  <p class="lead rv d2" style="margin-top:21px;font-size:13px;color:var(--t3);font-style:italic">It's better to just eat the apple than to know that it's healthy.</p>
-  <p class="lead rv d3" style="margin-top:34px">We love meeting people who care about craft — coaches, therapists, yogis, athletes. If you breathe with intention, <a href="mailto:jan@vitalkultur.com">we'd love to hear from you</a>.</p>
+  <p class="lead rv">Every timing feels right — because it's rooted in natural rhythm. You don't need to understand why. Your body already does.</p>
+  <p class="lead rv d1" style="margin-top:34px">We love meeting people who care about craft — coaches, therapists, yogis, athletes. If you breathe with intention, <a href="mailto:jan@vitalkultur.com">we'd love to hear from you</a>.</p>
 </div>
 
 <!-- ═══ PRICING ═══ -->
@@ -1257,7 +1266,8 @@
       </ul>
       <a href="#emailCapture" class="btn btn-gold onclick="if(window.goatcounter)goatcounter.count({path:'cta-pricing-signup',event:true})"" style="margin-top:34px">Notify me at launch</a>
 
-      <p style="margin-top:21px;font-size:12px;color:var(--t3);line-height:1.6;text-align:center;max-width:377px;margin-left:auto;margin-right:auto">Calm: €69.99/year. Headspace: €69.99/year. CARLON: €14.99 once — with live biometrics, haptic guidance, and Apple ecosystem integration they don't offer. No subscription. Ever.</p>
+      <p style="margin-top:13px;font-size:14px;color:var(--t2);opacity:.7">Calm: €69.99/year. Headspace: €59.99/year.<br><strong style="color:var(--gold-bright)">CARLON: €14.99 once. Forever.</strong></p>
+      <p style="margin-top:21px;font-size:12px;color:var(--t3);line-height:1.6;text-align:center;max-width:377px;margin-left:auto;margin-right:auto">Live biometrics, haptic guidance, and Apple ecosystem integration they don't offer. No subscription. Ever.</p>
     </div>
   </div>
 
