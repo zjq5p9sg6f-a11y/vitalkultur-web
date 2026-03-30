@@ -543,7 +543,8 @@
       .flower-ci{width:auto}
       .flower-ci .ci-name{font-size:26px} /* φ¹ on small screens */
       .audio-label{display:none} /* no hover on touch — hide label */
-      .top-bar{padding:5px 13px} /* F(5), F(7) — tighter on mobile */
+      .top-bar{padding:5px 13px;flex-wrap:nowrap;overflow:hidden} /* F(5), F(7) — tighter on mobile */
+      .top-bar-brand img{height:21px !important} /* smaller logo on mobile */
       .sect{padding:55px 21px}
       .sci-grid{grid-template-columns:1fr}
       .feat-list{columns:1}
