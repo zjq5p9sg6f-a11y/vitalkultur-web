@@ -525,8 +525,38 @@ footer nav a:hover { color: var(--accent); }
 .legal .subtitle { color: var(--muted); font-size: 0.82rem; margin-bottom: 40px; font-weight: 300; }
 .legal h2 { font-size: 1rem; font-weight: 600; margin: 36px 0 12px; color: var(--text); }
 .legal p, .legal li { font-size: 0.88rem; color: rgba(240,236,228,0.6); margin-bottom: 12px; font-weight: 300; }
-.legal ul { padding-left: 20px; }
+.legal h3 { font-size: 0.92rem; font-weight: 500; margin: 24px 0 10px; color: rgba(240,236,228,0.8); }
+.legal ul, .legal ol { padding-left: 20px; }
 .legal li { margin-bottom: 6px; }
+.legal strong { color: rgba(240,236,228,0.85); }
+
+/* Legal tables — clean, professional */
+.legal table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 0.84rem;
+}
+.legal th {
+  text-align: left;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(240,236,228,0.5);
+  border-bottom: 1px solid rgba(212,162,83,0.2);
+  background: rgba(255,255,255,0.02);
+}
+.legal td {
+  padding: 10px 14px;
+  color: rgba(240,236,228,0.6);
+  font-weight: 300;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  vertical-align: top;
+}
+.legal tr:last-child td { border-bottom: none; }
+.legal tr:hover td { background: rgba(255,255,255,0.02); }
 
 /* ═══════════════════════════════════════ */
 /* RESPONSIVE                              */
