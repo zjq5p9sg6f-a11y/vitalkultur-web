@@ -14,18 +14,19 @@
   </div>
   <div class="container legal">
     <h1>Datenschutzerklärung</h1>
-    <p class="subtitle">CARLON — Breathe Beyond · Stand: April 2026 · Version 1.0</p>
+    <p class="subtitle">CARLON — Breathe Beyond · Stand: April 2026 · Version 1.1</p>
 
     <h2>1. Verantwortlicher (Art. 4 Abs. 7 DSGVO)</h2>
-    <p>Vitalkultur<br>
-    Jan Rohwedder<br>
+    <p><strong>Vitalkultur</strong> (Einzelunternehmen)<br>
+    Inhaber: Jan Rohwedder<br>
     Kapellenstra&szlig;e 9<br>
     76473 Iffezheim, Deutschland<br>
     E-Mail: <a href="mailto:jan@vitalkultur.com">jan@vitalkultur.com</a><br>
     Website: <a href="https://vitalkultur.com">https://vitalkultur.com</a></p>
 
     <h2>2. Grundsatz: Kein Tracking, vollständig offline (Art. 5 &amp; 25 DSGVO)</h2>
-    <p>Die CARLON-App wurde nach dem Prinzip <strong>Privacy by Design</strong> und <strong>Privacy by Default</strong> entwickelt (Art. 25 DSGVO). Wir verfolgen einen Minimaldaten-Ansatz: Was wir nicht zwingend brauchen, erheben wir nicht.</p>
+    <p>Die CARLON-App wurde nach dem Prinzip <strong>Privacy by Design</strong> und <strong>Privacy by Default</strong> entwickelt (Art. 25 DSGVO). Wir verfolgen einen Minimaldaten-Ansatz gem. Art. 5 Abs. 1 lit. c DSGVO (Datensparsamkeit): Was wir nicht zwingend brauchen, erheben wir nicht.</p>
+
     <p><strong>Wir erheben NICHT:</strong></p>
     <ul>
       <li>Nutzungsstatistiken oder Analysedaten</li>
@@ -36,6 +37,7 @@
       <li>IP-Adressen im App-Betrieb</li>
       <li>Nutzernamen, E-Mail-Adressen oder Konten</li>
     </ul>
+
     <p><strong>Alle Daten bleiben ausschließlich lokal auf Ihrem Gerät:</strong></p>
     <ul>
       <li>Sitzungsaufzeichnungen (Dauer, Technik, Atemfrequenz)</li>
@@ -44,22 +46,28 @@
       <li>Custom Presets</li>
       <li>Sicherheitshinweis-Bestätigung (Zeitstempel)</li>
     </ul>
+
     <p>Es existieren keine von Vitalkultur betriebenen Server, Datenbanken oder Cloud-Dienste für den Betrieb der App. Es erfolgt keine Übertragung personenbezogener Daten an Vitalkultur oder Dritte.</p>
+
+    <p><em>Hinweis: Sofern iCloud-Backup auf Ihrem Gerät aktiviert ist, können App-Daten (nicht HealthKit-Daten) in Ihrem persönlichen iCloud-Speicher gesichert werden. Apple ist dabei eigenständiger Verantwortlicher.</em></p>
 
     <h2>3. Verarbeitete Datenkategorien und Rechtsgrundlagen</h2>
 
     <h3>3.1 Gesundheitsdaten über Apple HealthKit (Art. 9 DSGVO)</h3>
-    <p>Die CARLON-App kann mit Ihrer <strong>ausdrücklichen Einwilligung</strong> auf folgende Gesundheitsdaten in Apple HealthKit zugreifen:</p>
+    <p>CARLON liest Herzfrequenz, HRV und SpO₂ aus Apple HealthKit und schreibt abgeschlossene Sitzungen als Achtsamkeitsminuten zurück in Apple Health. Der Zugriff erfolgt ausschließlich mit Ihrer <strong>ausdrücklichen Einwilligung</strong>.</p>
+
     <table>
-      <thead><tr><th>Datentyp</th><th>Zweck</th><th>Rechtsgrundlage</th></tr></thead>
+      <thead><tr><th>Datentyp</th><th>Richtung</th><th>Zweck</th><th>Rechtsgrundlage</th></tr></thead>
       <tbody>
-        <tr><td>Herzfrequenz</td><td>Anzeige während und nach Atemübungen</td><td>Art. 9 Abs. 2 lit. a + Art. 6 Abs. 1 lit. a DSGVO</td></tr>
-        <tr><td>Herzfrequenzvariabilität (HRV)</td><td>Fortschrittsverfolgung, Kohärenz-Feedback</td><td>Art. 9 Abs. 2 lit. a + Art. 6 Abs. 1 lit. a DSGVO</td></tr>
-        <tr><td>Sauerstoffsättigung (SpO₂)</td><td>Sicherheitsüberwachung während Retentionsphasen</td><td>Art. 9 Abs. 2 lit. a + Art. 6 Abs. 1 lit. a DSGVO</td></tr>
-        <tr><td>Achtsamkeitsminuten</td><td>Erfassung abgeschlossener Sitzungen</td><td>Art. 9 Abs. 2 lit. a + Art. 6 Abs. 1 lit. a DSGVO</td></tr>
+        <tr><td>Herzfrequenz</td><td>Lesen</td><td>Anzeige während und nach Atemübungen</td><td>Art. 9 Abs. 2 lit. a + Art. 6 Abs. 1 lit. a DSGVO</td></tr>
+        <tr><td>Herzfrequenzvariabilität (HRV)</td><td>Lesen</td><td>Fortschrittsverfolgung, Kohärenz-Feedback</td><td>Art. 9 Abs. 2 lit. a + Art. 6 Abs. 1 lit. a DSGVO</td></tr>
+        <tr><td>Sauerstoffsättigung (SpO₂)</td><td>Lesen</td><td>Sicherheitsüberwachung während Retentionsphasen</td><td>Art. 9 Abs. 2 lit. a + Art. 6 Abs. 1 lit. a DSGVO</td></tr>
+        <tr><td>Achtsamkeitsminuten</td><td>Schreiben</td><td>Erfassung abgeschlossener Sitzungen</td><td>Art. 6 Abs. 1 lit. a DSGVO</td></tr>
       </tbody>
     </table>
-    <p>Der Zugriff auf HealthKit-Daten erfolgt <strong>ausschließlich mit Ihrer aktiven Einwilligung</strong>. Sie können die Berechtigungen jederzeit in den iOS-Einstellungen unter <strong>Einstellungen → Datenschutz &amp; Sicherheit → Gesundheit → CARLON</strong> widerrufen.</p>
+
+    <p>Sie können die HealthKit-Berechtigungen jederzeit widerrufen unter: <strong>Einstellungen → Datenschutz &amp; Sicherheit → Gesundheit → CARLON</strong> (iOS 16+) bzw. <strong>Einstellungen → Gesundheit → Datenzugriff &amp; Geräte → CARLON</strong> (ältere Versionen).</p>
+
     <p>HealthKit-Daten werden <strong>nicht</strong> für Werbung, Marktforschung oder andere Zwecke weitergegeben. Vitalkultur hat keinen Zugriff auf die in Apple Health gespeicherten Daten außerhalb der App-Umgebung.</p>
 
     <h3>3.2 Geräteinterne App-Daten</h3>
@@ -70,38 +78,41 @@
       <li>Sicherheitshinweis-Bestätigung: Zeitstempel, App-Version</li>
       <li>Einstellungen (Sprache, Haptik, Anzeigeoptionen)</li>
     </ul>
+    <p>Diese Einstellungsdaten verlassen das Gerät nicht und werden nicht analysiert.</p>
 
     <h3>3.3 Datenexport — Art. 20 DSGVO (Datenportabilität)</h3>
     <p>CARLON ermöglicht den Export Ihrer Sitzungsdaten als <strong>JSON- oder CSV-Datei</strong> direkt auf Ihr Gerät. Die exportierten Dateien verbleiben ausschließlich unter Ihrer Kontrolle.</p>
+    <p><em>Hinweis: Beim Export von Gesundheitsdaten liegt die Verantwortung für die sichere Aufbewahrung der exportierten Dateien beim Nutzer. Die Dateien sollten nicht unverschlüsselt in Cloud-Diensten abgelegt werden.</em></p>
 
     <h2>4. App Store — Datenverarbeitung durch Apple</h2>
     <p>Der Kauf der CARLON-App erfolgt über den <strong>Apple App Store</strong>. Apple Inc. ist dabei eigenständiger Verantwortlicher. Vitalkultur erhält von Apple <strong>keine Zahlungsdaten</strong> — lediglich anonymisierte Kaufstatistiken.</p>
-    <p>Apple verarbeitet Daten auch in den USA auf Basis von EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO). Datenschutzrichtlinie von Apple: <a href="https://www.apple.com/de/privacy/" target="_blank" rel="noopener">apple.com/de/privacy</a></p>
+    <p>Apple verarbeitet Daten in den USA auf Basis der EU-Standardvertragsklauseln gem. Durchführungsbeschluss (EU) 2021/914 (Art. 46 Abs. 2 lit. c DSGVO). Datenschutzrichtlinie von Apple: <a href="https://www.apple.com/de/privacy/" target="_blank" rel="noopener">apple.com/de/privacy</a></p>
 
     <h2>5. Watch-iPhone-Synchronisation</h2>
-    <p>Sitzungsdaten und Einstellungen synchronisieren sich zwischen Apple Watch und iPhone über Apples WatchConnectivity-Framework — direkt zwischen Ihren Geräten, ohne Server.</p>
+    <p>Sitzungsdaten und Einstellungen synchronisieren sich zwischen Apple Watch und iPhone über Apples WatchConnectivity-Framework. Die Übertragung erfolgt verschlüsselt über Bluetooth oder WLAN direkt zwischen Ihren eigenen Geräten. Es erfolgt keine Übertragung über das Internet oder externe Server.</p>
 
     <h2>6. Kontaktaufnahme per E-Mail</h2>
     <p>Bei Kontakt per E-Mail verarbeiten wir Ihre E-Mail-Adresse und den Nachrichteninhalt zur Bearbeitung Ihrer Anfrage.</p>
     <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b/f DSGVO<br>
-    <strong>Speicherdauer:</strong> Bis zur abschließenden Klärung Ihrer Anfrage, regelmäßig bis zu 3 Jahre zur Abwehr von Haftungsansprüchen (Art. 6 Abs. 1 lit. f DSGVO i.V.m. §§ 195 ff. BGB)</p>
+    <strong>Speicherdauer:</strong> Bis zur abschließenden Klärung Ihrer Anfrage, danach regelmäßig 3 Jahre ab Ende des Jahres, in dem die Anfrage abgeschlossen wurde (§§ 195, 199 BGB).</p>
 
     <h2>7. Website vitalkultur.com</h2>
-    <p>Diese Website wird auf GitHub Pages (GitHub, Inc., USA) gehostet. GitHub kann technische Zugriffsdaten (IP-Adressen, Zugriffszeiten) in Server-Logs erheben. Die Verarbeitung dieser Server-Logs erfolgt in Verantwortung von GitHub. Vitalkultur greift auf diese Logdaten nicht systematisch zu. Details: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>. GitHub ist unter dem EU-US Data Privacy Framework zertifiziert.</p>
+    <p>Diese Website wird auf GitHub Pages (GitHub, Inc., USA) gehostet. GitHub kann technische Zugriffsdaten (IP-Adressen, Zugriffszeiten) in Server-Logs erheben. Die Verarbeitung dieser Server-Logs erfolgt in Verantwortung von GitHub. Vitalkultur greift auf diese Logdaten nicht systematisch zu. GitHub Pages kann Content Delivery Networks (CDN) einsetzen; technische Zugriffsdaten werden dabei stets im Rahmen von GitHubs Datenschutzerklärung verarbeitet.</p>
+    <p>GitHub ist unter dem EU-US Data Privacy Framework (DPF) zertifiziert (Angemessenheitsbeschluss der EU-Kommission vom 10. Juli 2023, Art. 45 DSGVO). Details: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.</p>
     <p>Die Website verwendet <strong>keine Cookies</strong>, kein Google Analytics und keine eingebetteten Drittdienste.</p>
 
     <h2>8. Keine Weitergabe an Dritte</h2>
-    <p>Vitalkultur gibt <strong>keine personenbezogenen Daten an Dritte</strong> weiter, außer an Apple Inc. im Rahmen des App Store Kaufprozesses und bei gesetzlicher Pflicht.</p>
+    <p>Vitalkultur gibt <strong>keine personenbezogenen Daten an Dritte</strong> weiter, außer an Apple Inc. im Rahmen des App Store Kaufprozesses sowie bei gesetzlicher Verpflichtung zur Offenlegung (Art. 6 Abs. 1 lit. c DSGVO, z.B. auf behördliche Anordnung).</p>
 
     <h2>9. Speicherdauer (Art. 5 Abs. 1 lit. e DSGVO)</h2>
     <table>
       <thead><tr><th>Datenkategorie</th><th>Speicherort</th><th>Speicherdauer</th></tr></thead>
       <tbody>
-        <tr><td>HealthKit-Daten</td><td>Lokal (Apple HealthKit)</td><td>Bis zur manuellen Löschung in Gesundheit.app</td></tr>
+        <tr><td>HealthKit-Daten</td><td>Lokal (Apple HealthKit)</td><td>Bis zur manuellen Löschung in der iOS-App „Gesundheit"</td></tr>
         <tr><td>App-Sitzungsdaten</td><td>Lokal (Gerät)</td><td>Bis zur App-Deinstallation</td></tr>
         <tr><td>Custom Presets</td><td>Lokal (Gerät)</td><td>Bis zur Löschung oder Deinstallation</td></tr>
         <tr><td>Sicherheitshinweis</td><td>Lokal (UserDefaults)</td><td>Bis zur App-Deinstallation</td></tr>
-        <tr><td>E-Mail-Korrespondenz</td><td>E-Mail-Postfach</td><td>Regelmäßig bis zu 3 Jahre</td></tr>
+        <tr><td>E-Mail-Korrespondenz</td><td>E-Mail-Postfach</td><td>Regelmäßig bis zu 3 Jahre (§§ 195, 199 BGB)</td></tr>
       </tbody>
     </table>
     <p>Bei Deinstallation der App werden alle lokal gespeicherten Daten automatisch gelöscht.</p>
@@ -113,13 +124,17 @@
       <tbody>
         <tr><td>Auskunft (Art. 15)</td><td>Anfrage per E-Mail an jan@vitalkultur.com</td></tr>
         <tr><td>Berichtigung (Art. 16)</td><td>In der App direkt möglich</td></tr>
-        <tr><td>Löschung (Art. 17)</td><td>App deinstallieren; HealthKit: in Gesundheit.app</td></tr>
+        <tr><td>Löschung (Art. 17)</td><td>App deinstallieren; HealthKit: in der iOS-App „Gesundheit"</td></tr>
+        <tr><td>Einschränkung (Art. 18)</td><td>Da keine serverseitige Verarbeitung erfolgt, faktisch nicht anwendbar. Bei E-Mail-Korrespondenz: Anfrage per E-Mail.</td></tr>
         <tr><td>Datenportabilität (Art. 20)</td><td>JSON/CSV-Export direkt in der App</td></tr>
-        <tr><td>Widerruf der Einwilligung</td><td>iOS-Einstellungen → Gesundheit → CARLON</td></tr>
+        <tr><td>Widerspruch (Art. 21)</td><td>Widerspruch gegen Verarbeitung auf Basis von Art. 6 Abs. 1 lit. f DSGVO jederzeit per E-Mail möglich.</td></tr>
+        <tr><td>Widerruf der Einwilligung (Art. 7 Abs. 3)</td><td>HealthKit: iOS-Einstellungen → Gesundheit → CARLON</td></tr>
       </tbody>
     </table>
-    <p><strong>Aufsichtsbehörde:</strong><br>
-    Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg<br>
+
+    <h3>Beschwerderecht (Art. 77 DSGVO)</h3>
+    <p>Sie haben das Recht, sich bei der zuständigen Datenschutz-Aufsichtsbehörde zu beschweren:</p>
+    <p>Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg<br>
     Königstraße 10a, 70173 Stuttgart<br>
     <a href="https://www.baden-wuerttemberg.datenschutz.de" target="_blank" rel="noopener">www.baden-wuerttemberg.datenschutz.de</a></p>
 
@@ -127,7 +142,7 @@
     <ul>
       <li><strong>Lokale Speicherung:</strong> Alle sensitiven Daten verbleiben auf dem Gerät</li>
       <li><strong>iOS Sandbox:</strong> App-Daten sind vor dem Zugriff anderer Apps geschützt</li>
-      <li><strong>HealthKit Verschlüsselung:</strong> AES-256 auf Geräteebene</li>
+      <li><strong>HealthKit-Verschlüsselung:</strong> Apple HealthKit-Daten sind auf Geräteebene verschlüsselt (Apple iOS Security Guide)</li>
       <li><strong>Keine eigenen Serververbindungen:</strong> Die App baut für ihren Funktionsumfang keine eigenen Netzwerkverbindungen zu Servern von Vitalkultur auf</li>
       <li><strong>Kein Nutzerkonto:</strong> Kein Passwort-Risiko</li>
     </ul>
