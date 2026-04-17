@@ -9,9 +9,10 @@
   <title>CARLON – Haptic Breathwork App · Apple Watch · €14,99 einmalig</title>
   <meta name="description" content="CARLON – 16 Atemtechniken per Haptik auf der Apple Watch. Live-Pulsverlauf. Kein Abo. €14,99 einmalig. Kein Screen. Nur dein Handgelenk.">
   <meta property="og:title" content="CARLON – Haptic Breathwork for Apple Watch">
-  <meta property="og:description" content="CARLON guides you through 16 breathing techniques via haptics on Apple Watch. Live heart rate tracking. No subscription. €14.99 once.">
+  <meta property="og:description" content="CARLON guides you through 16 breathing techniques via haptics on Apple Watch. Live heart rate tracking. No subscription. €14,99.">
   <meta property="og:image" content="https://vitalkultur.com/app-icon.png">
   <link rel="icon" href="app-icon.png">
+  <link rel="apple-touch-icon" href="app-icon.png">
   <link rel="canonical" href="https://vitalkultur.com/">
   <meta property="og:url" content="https://vitalkultur.com/">
   <meta property="og:type" content="website">
@@ -46,8 +47,16 @@
        Signup: https://www.goatcounter.com — Subdomain "vitalkultur" wählen -->
   <script data-goatcounter="https://vitalkultur.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <noscript><style>.rv{opacity:1;transform:none}</style></noscript>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Inter self-hosted (DSGVO-konform, kein IP-Transfer an Google) -->
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 200 600;
+      font-display: swap;
+      src: url('fonts/inter-variable.woff2') format('woff2');
+    }
+  </style>
   <style>
     /*
      * ╔═══════════════════════════════════════════════════════════════╗
@@ -398,7 +407,7 @@
     /*
      * ═══ PRICING ════════════════════════════════════════════════
      * Price card: F(10) padding, F(8) radius
-     * The €14.99 display font: 16 × φ³ ≈ 68px
+     * The €14,99 display font: 16 × φ³ ≈ 68px
      */
     .pricing-grid{
       display:grid;grid-template-columns:1fr 1fr;gap:21px; /* F(8) */
@@ -849,12 +858,12 @@
     Regulate stress. Sharpen focus.<br><em>Your wrist guides every breath — and tracks the shift.</em>
   </h1>
   <p class="hero-sub rv" style="margin-top:13px;font-size:14px;color:var(--t2);max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6">CARLON turns your Apple Watch into a haptic breathing coach with live heart rate tracking. No screen. No counting. No distractions. Just the rhythm your body already knows — and the <strong>data that proves it worked</strong>.</p>
-  <p style="margin-top:8px;font-size:11px;color:var(--t3)"><s>Calm: €69.99/year · Headspace: €59.99/year</s></p>
-  <p class="hero-sub" style="margin-top:13px;font-size:13px;color:var(--gold-bright);opacity:.7">€14.99 once — no subscription needed</p>
+  <p style="margin-top:8px;font-size:11px;color:var(--t3)"><s>Calm: €69,99/year · Headspace: €59,99/year</s></p>
+  <p class="hero-sub" style="margin-top:13px;font-size:13px;color:var(--gold-bright);opacity:.7">€14,99 — no subscription</p>
 
   <div class="hero-cta">
     <a href="#emailCapture" class="btn btn-gold" onclick="if(window.goatcounter)goatcounter.count({path:'cta-hero-signup',event:true})">Get notified at launch</a>
-    <p style="margin-top:8px;font-size:10px;opacity:.4">Coming to App Store — 2026</p>
+    <p style="margin-top:8px;font-size:10px;opacity:.4">Coming to App Store — Spring 2026</p>
     <a href="#how-it-works" class="btn btn-ghost" onclick="if(window.goatcounter)goatcounter.count({path:'cta-hero-experience',event:true})">See how it works ↓</a>
   </div>
 
@@ -1035,20 +1044,26 @@
   <div class="result-strip rv">
     <div class="result-num">
       <div class="big">-23%</div>
-      <div class="desc">cortisol reduction (Box Breathing)</div>
+      <div class="desc">cortisol reduction<sup><a href="#ref-cortisol" style="color:var(--gold);text-decoration:none">1</a></sup></div>
     </div>
     <div class="result-num">
       <div class="big">+34%</div>
-      <div class="desc">HRV increase (Coherence, 21 days)</div>
+      <div class="desc">HRV increase (21 days)<sup><a href="#ref-hrv" style="color:var(--gold);text-decoration:none">2</a></sup></div>
     </div>
     <div class="result-num">
       <div class="big">5.5/min</div>
-      <div class="desc">optimal breath rate for peak HRV</div>
+      <div class="desc">optimal breath rate<sup><a href="#ref-resonance" style="color:var(--gold);text-decoration:none">3</a></sup></div>
     </div>
     <div class="result-num">
       <div class="big">108</div>
-      <div class="desc">participants in Stanford sighing RCT</div>
+      <div class="desc">participants<sup><a href="#ref-stanford" style="color:var(--gold);text-decoration:none">4</a></sup></div>
     </div>
+  </div>
+  <div style="margin-top:21px;font-size:10px;color:var(--t3);max-width:610px;margin-left:auto;margin-right:auto;line-height:1.7;opacity:.6">
+    <span id="ref-cortisol">[1]</span> Ma et al. (2017) "The Effect of Diaphragmatic Breathing on Attention, Negative Affect and Stress" <em>Frontiers in Psychology</em> 8:874.
+    <span id="ref-hrv">[2]</span> Lehrer &amp; Gevirtz (2014) "Heart rate variability biofeedback" <em>Frontiers in Psychology</em> 5:756.
+    <span id="ref-resonance">[3]</span> Russo et al. (2017) "The physiological effects of slow breathing in the healthy human" <em>Breathe</em> 13(4):298-309.
+    <span id="ref-stanford">[4]</span> Huberman et al. (2023) "Brief structured respiration practices enhance mood and reduce physiological arousal" <em>Cell Reports Medicine</em> 4(1):100895.
   </div>
 
   <div class="sci-badges rv">
@@ -1172,53 +1187,10 @@
   <p class="lead rv" style="text-align:center;font-style:italic;color:var(--gold);opacity:.5;font-size:13px">Jan & Carina · Founders of Vitalkultur</p>
 
   <p class="lead rv" style="margin-top:21px">When our son Carlon was born on a January night in 2026, breathwork became more than a technique — it became the way we stayed grounded together. Between night feeds and first smiles, we reached for it more than ever.</p>
-  <p class="lead rv d1" style="margin-top:13px">We couldn't find an app that matched what breathing actually feels like. So we built one during night shifts — 128 million haptic simulations tested to find the perfect rhythm for every breath. Named after our son, because freedom is in every breath.</p>
+  <p class="lead rv d1" style="margin-top:13px">We couldn't find an app that matched what breathing actually feels like. So we built one during night shifts — testing thousands of haptic patterns to find the perfect rhythm for every breath. Named after our son, because freedom is in every breath.</p>
 </div>
 
-<!-- ═══ 11. TESTIMONIALS ═══ -->
-<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(85,185,130,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
-
-<div class="sect rv">
-  <p class="label" style="text-align:center">Voices</p>
-  <h2 style="text-align:center">Saved by<br><em>3 minutes.</em></h2>
-
-  <div class="testimonial-grid">
-    <div class="testimonial rv d1">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-left:21px"><span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold)">T</span><span style="font-size:12px;color:var(--gold);letter-spacing:.02em">★★★★★</span></div>
-      <p>Board meeting in 5 minutes. Box Breathing on the Watch. 90 seconds. I walked in calm. We closed the deal.</p>
-      <div class="t-author">Thomas K. · CEO, Munich</div>
-    </div>
-    <div class="testimonial rv d2">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-left:21px"><span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold)">L</span><span style="font-size:12px;color:var(--gold);letter-spacing:.02em">★★★★★</span></div>
-      <p>My clients text me after their first CARLON session: 'I can feel it in my body.' That's when I knew haptic guidance was the right approach.</p>
-      <div class="t-author">Laura M. · Yoga Coach, Berlin</div>
-    </div>
-    <div class="testimonial rv d3">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-left:21px"><span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold)">S</span><span style="font-size:12px;color:var(--gold);letter-spacing:.02em">★★★★★</span></div>
-      <p>I used Calm for years. The first time CARLON guided my breath through haptics with my eyes closed — I understood what I'd been missing.</p>
-      <div class="t-author">Sarah J. · UX Designer, London</div>
-    </div>
-  </div>
-
-  <div class="testimonial-grid" style="margin-top:13px">
-    <div class="testimonial rv d1">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-left:21px"><span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold)">M</span><span style="font-size:12px;color:var(--gold);letter-spacing:.02em">★★★★★</span></div>
-      <p>Tummo before my morning swim. My cold tolerance went from 2 to 8 minutes in three weeks. The HRV data proves it.</p>
-      <div class="t-author">Marcus R. · Triathlete, Hamburg</div>
-    </div>
-    <div class="testimonial rv d2">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-left:21px"><span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold)">L</span><span style="font-size:12px;color:var(--gold);letter-spacing:.02em">★★★★★</span></div>
-      <p>Baby screaming at 3am. CARLON on my wrist, 4-7-8 breathing, lights off. I fell back asleep in under 5 minutes. My wife wants one too.</p>
-      <div class="t-author">Lena B. · New parent, Vienna</div>
-    </div>
-    <div class="testimonial rv d3">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-left:21px"><span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold)">F</span><span style="font-size:12px;color:var(--gold);letter-spacing:.02em">★★★★★</span></div>
-      <p>I recommend CARLON to patients with anxiety. The haptic guidance removes the distraction — they just breathe, and their nervous system does the rest.</p>
-      <div class="t-author">Dr. Felix W. · Psychologist, Zurich</div>
-    </div>
-  </div>
-</div>
-
+<!-- ═══ 11. TESTIMONIALS — entfernt bis echte Beta-Tester-Stimmen da sind ═══ -->
 <div class="breathe-space"></div>
 
 <!-- ═══ 12. PRICING ═══ -->
@@ -1226,13 +1198,13 @@
 
 <div class="sect sect-warm" id="pricing">
   <p class="label rv" style="text-align:center">Pricing</p>
-  <h2 class="rv" style="text-align:center">Buy once.<br><em>Breathe forever.</em></h2>
-  <p class="lead rv" style="text-align:center;max-width:610px;margin:0 auto 34px">No subscription. No hidden costs. One purchase unlocks everything.</p>
+  <h2 class="rv" style="text-align:center">One app.<br><em>No subscription.</em></h2>
+  <p class="lead rv" style="text-align:center;max-width:610px;margin:0 auto 34px">All 16 techniques included. No hidden costs. No recurring charges.</p>
 
   <div class="pricing-grid">
     <div class="price-card rv">
       <p class="label" style="color:var(--gold)">CARLON</p>
-      <div class="price-num">€14.99</div>
+      <div class="price-num">€14,99</div>
       <div class="price-sub">One purchase · All features · All future updates</div>
       <ul class="feat-list">
         <li>Apple Watch haptic-guided breathing</li>
@@ -1254,37 +1226,23 @@
       </ul>
       <a href="#emailCapture" class="btn btn-gold" onclick="if(window.goatcounter)goatcounter.count({path:'cta-pricing-signup',event:true})" style="margin-top:34px">Notify me at launch</a>
 
-      <p style="margin-top:13px;font-size:14px;color:var(--t2);opacity:.7">Calm: €69.99/year. Headspace: €59.99/year.<br><strong style="color:var(--gold-bright)">CARLON: €14.99 once. Forever.</strong></p>
-
-      <div class="compare-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:34px;text-align:center;font-size:12px;max-width:500px;margin-left:auto;margin-right:auto">
-        <div></div>
-        <div style="color:var(--gold-bright);font-weight:600;font-size:11px">CARLON</div>
-        <div style="color:var(--t3);font-size:11px">Calm / Headspace</div>
-
-        <div style="color:var(--t2);text-align:left">Guidance</div>
-        <div style="color:var(--gold)">Haptic</div>
-        <div style="color:var(--t3)">Screen</div>
-
-        <div style="color:var(--t2);text-align:left">Biometrics</div>
-        <div style="color:var(--gold)">HR + HRV</div>
-        <div style="color:var(--t3)">None</div>
-
-        <div style="color:var(--t2);text-align:left">Techniques</div>
-        <div style="color:var(--gold)">16 + custom</div>
-        <div style="color:var(--t3)">3-5 fixed</div>
-
-        <div style="color:var(--t2);text-align:left">Price</div>
-        <div style="color:var(--gold)">€14.99 once</div>
-        <div style="color:var(--t3)">€69.99/yr</div>
-
-        <div style="color:var(--t2);text-align:left">Watch-native</div>
-        <div style="color:var(--gold)">Built for Watch</div>
-        <div style="color:var(--t3)">iPhone port</div>
-
-        <div style="color:var(--t2);text-align:left">Data export</div>
-        <div style="color:var(--gold)">JSON+CSV</div>
-        <div style="color:var(--t3)">Locked in</div>
-      </div>
+      <table class="compare-table" style="margin:34px auto 0;border-collapse:collapse;max-width:520px;width:100%;font-size:13px" role="comparison">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:8px 13px;color:var(--t3);font-weight:400"></th>
+            <th style="padding:8px 13px;color:var(--gold-bright);font-weight:600">CARLON</th>
+            <th style="padding:8px 13px;color:var(--t3);font-weight:400">Calm / Headspace</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="text-align:left;padding:6px 13px;color:var(--t2)">Guidance</td><td style="padding:6px 13px;color:var(--gold);text-align:center">Haptic</td><td style="padding:6px 13px;color:var(--t3);text-align:center">Screen</td></tr>
+          <tr><td style="text-align:left;padding:6px 13px;color:var(--t2)">Biometrics</td><td style="padding:6px 13px;color:var(--gold);text-align:center">HR + HRV</td><td style="padding:6px 13px;color:var(--t3);text-align:center">None</td></tr>
+          <tr><td style="text-align:left;padding:6px 13px;color:var(--t2)">Techniques</td><td style="padding:6px 13px;color:var(--gold);text-align:center">16 + custom</td><td style="padding:6px 13px;color:var(--t3);text-align:center">3-5 fixed</td></tr>
+          <tr><td style="text-align:left;padding:6px 13px;color:var(--t2)">Price</td><td style="padding:6px 13px;color:var(--gold);text-align:center">€14,99</td><td style="padding:6px 13px;color:var(--t3);text-align:center">€69,99/yr</td></tr>
+          <tr><td style="text-align:left;padding:6px 13px;color:var(--t2)">Watch-native</td><td style="padding:6px 13px;color:var(--gold);text-align:center">Built for Watch</td><td style="padding:6px 13px;color:var(--t3);text-align:center">iPhone port</td></tr>
+          <tr><td style="text-align:left;padding:6px 13px;color:var(--t2)">Data export</td><td style="padding:6px 13px;color:var(--gold);text-align:center">JSON + CSV</td><td style="padding:6px 13px;color:var(--t3);text-align:center">Locked in</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -1339,7 +1297,7 @@
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there really no subscription?</div>
-      <div class="faq-a">€14.99, one-time purchase. All 16 techniques, custom creation, haptic guidance, live biometrics, 4 Watch complications, Siri Shortcuts, Apple Calendar sync, Breath Composer, and all future updates. No recurring charges.</div>
+      <div class="faq-a">€14,99, one-time purchase. All 16 techniques, custom creation, haptic guidance, live biometrics, 4 Watch complications, Siri Shortcuts, Apple Calendar sync, and Breath Composer included. No recurring charges.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What breathing techniques are included?</div>
