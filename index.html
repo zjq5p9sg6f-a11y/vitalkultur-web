@@ -861,7 +861,7 @@
   <p style="margin-top:8px;font-size:11px;color:var(--t3)">€14,99 · No subscription</p>
 
   <!-- Hero Lifestyle Image -->
-  <div class="rv" style="margin:34px auto 0;max-width:900px;border-radius:21px;overflow:hidden">
+  <div class="rv" style="margin:34px auto 0;border-radius:21px;overflow:hidden">
     <img src="hero-outdoor.png" alt="Apple Watch Ultra showing CARLON Tummo session outdoors in cold conditions" style="width:100%;display:block">
   </div>
 
@@ -883,10 +883,12 @@
 
 <!-- Gallery CSS (einmalig, für alle Galerien) -->
 <style>
-.gal-vp{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.gal-vp{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab}
+.gal-vp:active{cursor:grabbing}
 .gal-vp::-webkit-scrollbar{display:none}
-.gal-track{display:flex;gap:21px;padding:0 calc(50% - 140px)}
-.gal-slide{flex:0 0 min(78vw,280px);scroll-snap-align:center;scroll-snap-stop:always;opacity:.3;transform:scale(.91);transition:opacity .35s,transform .35s;text-align:center;padding:13px 0}
+.gal-track{display:flex;gap:21px;padding:0 calc(50% - 160px)}
+.gal-slide{flex:0 0 min(80vw,280px);scroll-snap-align:center;scroll-snap-stop:always;opacity:.3;transform:scale(.91);transition:opacity .35s,transform .35s;text-align:center;padding:13px 0}
+@media(min-width:768px){.gal-slide{flex:0 0 min(45vw,380px)}.gal-track{gap:34px;padding:0 calc(50% - 190px)}}
 .gal-slide.is-active{opacity:1;transform:scale(1)}
 .gal-slide img{width:100%;border-radius:21px;display:block}
 .gal-head{display:flex;justify-content:space-between;align-items:center;padding:0 21px;margin-bottom:8px}
@@ -909,7 +911,7 @@
 <div class="statement rv sect-deep" style="padding-bottom:0">
   <h2>3 minutes.<br>Eyes closed.<br>Everything changes.</h2>
   <p style="margin-top:21px;font-size:14px;color:var(--green);opacity:.7;letter-spacing:.02em">Watch your heart rate drop 20 BPM. Live. On your wrist.</p>
-  <div style="margin:34px auto 0;max-width:500px">
+  <div style="margin:34px auto 0;max-width:700px">
     <img src="hero-haptics.png" alt="Eyes closed, haptic waves guiding every breath from the wrist" style="width:100%;display:block;border-radius:21px">
   </div>
 </div>
@@ -954,7 +956,7 @@
   <section class="gal" id="gal-deep" aria-label="Watch Techniques" style="margin:55px auto 0;max-width:900px">
     <p style="text-align:center;font-size:12px;color:var(--t3);margin-bottom:8px">Go deeper</p>
     <div class="gal-head">
-      <span class="gal-meta" aria-live="polite">1 / 4</span>
+      <span class="gal-meta" aria-live="polite">1 / 3</span>
       <div style="display:flex;gap:6px">
         <button class="gal-btn gal-prev" aria-label="Previous">‹</button>
         <button class="gal-btn gal-next" aria-label="Next">›</button>
@@ -962,11 +964,6 @@
     </div>
     <div class="gal-vp" tabindex="0">
       <div class="gal-track">
-        <article class="gal-slide">
-          <div class="gal-label">Choose</div>
-          <img src="carlon-menu.png" alt="Watch menu — tap Patterns to explore" loading="lazy">
-          <p class="gal-desc">Tap Patterns to explore 16 science-backed breathing techniques.</p>
-        </article>
         <article class="gal-slide">
           <div class="gal-label">16 Techniques</div>
           <img src="carlon-techniques.png" alt="Watch — Tummo, Coherence, Box and more" loading="lazy">
@@ -1066,14 +1063,14 @@
           <p class="gal-desc">Every pattern explained — what it does, why it works, which studies back it.</p>
         </article>
         <article class="gal-slide">
-          <div class="gal-label">Understand Retention</div>
-          <img src="carlon-iphone-retention.png" alt="iPhone — what is retention, personal progress, why it matters" loading="lazy">
-          <p class="gal-desc">Not just a timer. CARLON explains what happens in your body — and why it matters.</p>
-        </article>
-        <article class="gal-slide">
           <div class="gal-label">Your Dashboard</div>
           <img src="carlon-iphone-dashboard.png" alt="iPhone — HRV Today dashboard, 7-day trends, session count" loading="lazy">
-          <p class="gal-desc">HRV Today. 7-day trends. Session count. Your nervous system's report card.</p>
+          <p class="gal-desc">HRV Today. 7-day trends. 20 sessions tracked. Your nervous system's report card.</p>
+        </article>
+        <article class="gal-slide">
+          <div class="gal-label">Understand Retention</div>
+          <img src="carlon-iphone-retention.png" alt="iPhone — what is retention, progress over 30 sessions" loading="lazy">
+          <p class="gal-desc">CARLON doesn't just measure — it teaches. Every metric explained in context.</p>
         </article>
       </div>
     </div>
