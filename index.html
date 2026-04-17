@@ -893,30 +893,53 @@
   <p class="label rv">Three steps</p>
   <h2 class="rv d1" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">How it <em>works.</em></h2>
 
-  <div style="display:grid;grid-template-columns:1fr;gap:55px;margin-top:55px;max-width:550px;margin-left:auto;margin-right:auto">
-
-    <div class="rv d1" style="text-align:center">
-      <div style="font-size:10px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;opacity:.5;margin-bottom:13px">Step 1</div>
-      <h3 style="font-size:21px;font-weight:300;margin-bottom:8px">Choose your technique</h3>
-      <p style="font-size:14px;color:var(--t2);line-height:1.7;max-width:400px;margin:0 auto">16 presets from calm to intense. Coherence for daily HRV training. Tummo for fire. 4-7-8 for sleep. Or build your own with the Breath Composer.</p>
-      <img src="carlon-techniques.png" alt="CARLON Apple Watch — 16 breathing techniques: Tummo, Coherence, Box and more" style="width:100%;max-width:280px;margin:21px auto 0;border-radius:21px;display:block" loading="lazy">
+  <!-- How it Works — Horizontal Swipe Gallery -->
+  <section class="usp-gallery" aria-label="How it works — 3 steps" style="margin:34px auto 0;max-width:900px;position:relative">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:0 21px;margin-bottom:8px">
+      <span class="hiw-meta" style="font-size:11px;color:var(--t3)" aria-live="polite">Step 1 of 3</span>
+      <div style="display:flex;gap:8px">
+        <button class="hiw-prev" aria-label="Previous step" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(178,148,76,.2);background:transparent;color:var(--gold);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center">‹</button>
+        <button class="hiw-next" aria-label="Next step" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(178,148,76,.2);background:transparent;color:var(--gold);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center">›</button>
+      </div>
     </div>
-
-    <div class="rv d2" style="text-align:center">
-      <div style="font-size:10px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;opacity:.5;margin-bottom:13px">Step 2</div>
-      <h3 style="font-size:21px;font-weight:300;margin-bottom:8px">Close your eyes</h3>
-      <p style="font-size:14px;color:var(--t2);line-height:1.7;max-width:400px;margin:0 auto">Haptic pulses guide every breath phase through your wrist. Rising for inhale, descending for exhale. Navigate with Double Tap — no screen needed.</p>
-      <img src="carlon-session.png" alt="CARLON Apple Watch — Flower of Life breathing animation with haptic guidance" style="width:100%;max-width:280px;margin:21px auto 0;border-radius:21px;display:block" loading="lazy">
+    <div class="hiw-viewport" tabindex="0" style="overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+      <div style="display:flex;gap:34px;padding:0 calc(50% - 160px)">
+        <article class="hiw-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:10px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;opacity:.5;margin-bottom:13px">Step 1</div>
+          <h3 style="font-size:21px;font-weight:300;margin-bottom:8px">Choose your technique</h3>
+          <p style="font-size:14px;color:var(--t2);line-height:1.7;max-width:300px;margin:0 auto">16 presets from calm to intense. Coherence for HRV. Tummo for fire. 4-7-8 for sleep.</p>
+          <img src="carlon-techniques.png" alt="16 breathing techniques" style="width:100%;max-width:260px;margin:21px auto 0;border-radius:21px;display:block" loading="lazy">
+        </article>
+        <article class="hiw-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:10px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;opacity:.5;margin-bottom:13px">Step 2</div>
+          <h3 style="font-size:21px;font-weight:300;margin-bottom:8px">Close your eyes</h3>
+          <p style="font-size:14px;color:var(--t2);line-height:1.7;max-width:300px;margin:0 auto">Haptic pulses guide every breath. Rising for inhale, descending for exhale. No screen needed.</p>
+          <img src="carlon-session.png" alt="Haptic breathing session" style="width:100%;max-width:260px;margin:21px auto 0;border-radius:21px;display:block" loading="lazy">
+        </article>
+        <article class="hiw-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:10px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;opacity:.5;margin-bottom:13px">Step 3</div>
+          <h3 style="font-size:21px;font-weight:300;margin-bottom:8px">See what happened</h3>
+          <p style="font-size:14px;color:var(--t2);line-height:1.7;max-width:300px;margin:0 auto">Your iPhone shows HRV trends, heart rate curves, and breath sync — proof your practice works.</p>
+          <img src="carlon-iphone-dashboard.png" alt="iPhone HRV dashboard" style="width:100%;max-width:260px;margin:21px auto 0;border-radius:21px;display:block" loading="lazy">
+        </article>
+      </div>
     </div>
-
-    <div class="rv d3" style="text-align:center">
-      <div style="font-size:10px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;opacity:.5;margin-bottom:13px">Step 3</div>
-      <h3 style="font-size:21px;font-weight:300;margin-bottom:8px">See what happened</h3>
-      <p style="font-size:14px;color:var(--t2);line-height:1.7;max-width:400px;margin:0 auto">HR sparkline and session RMSSD. During Tummo, watch the dive reflex appear — your heart rate drops as your body conserves energy.</p>
-      <img src="carlon-iphone-dashboard.png" alt="CARLON iPhone — HRV dashboard, 7-day trends, session insights" style="width:100%;max-width:280px;margin:21px auto 0;border-radius:21px;display:block" loading="lazy">
-    </div>
-
-  </div>
+    <style>.hiw-viewport::-webkit-scrollbar{display:none}.hiw-slide{opacity:.35;transform:scale(.93)}.hiw-slide.is-active{opacity:1;transform:scale(1)}</style>
+    <script>
+    (function(){
+      const vp=document.querySelector('.hiw-viewport');const slides=[...document.querySelectorAll('.hiw-slide')];
+      const prev=document.querySelector('.hiw-prev');const next=document.querySelector('.hiw-next');const meta=document.querySelector('.hiw-meta');
+      let active=0;const labels=["Step 1 of 3","Step 2 of 3","Step 3 of 3"];
+      const update=i=>{active=i;slides.forEach((s,j)=>s.classList.toggle('is-active',j===i));meta.textContent=labels[i]||`${i+1} / ${slides.length}`};
+      const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.55)update(slides.indexOf(e.target))})},{root:vp,threshold:[.55]});
+      slides.forEach(s=>io.observe(s));
+      prev.addEventListener('click',()=>{const i=Math.max(0,active-1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+      next.addEventListener('click',()=>{const i=Math.min(slides.length-1,active+1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+      vp.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();prev.click()}if(e.key==='ArrowRight'){e.preventDefault();next.click()}});
+      update(0);slides[0].scrollIntoView({inline:'center',block:'nearest'});
+    })();
+    </script>
+  </section>
 </div>
 
 <!-- ═══ 4. USE CASES ═══ -->
@@ -963,21 +986,57 @@
   <h2 class="rv d1" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Your body, <em>live.</em></h2>
   <p class="rv d2" style="margin-top:13px;font-size:14px;color:var(--t2);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.7">Most breathwork apps show you a timer. CARLON shows you what your body is actually doing — heart rate and HRV — visible as a live curve on your wrist. The only breathwork app with real-time HR visualization on Apple Watch.</p>
 
-  <img src="carlon-heartrate.png" alt="CARLON Apple Watch — Live heart rate sparkline during Tummo session showing HR drop" class="rv d3" style="width:100%;max-width:300px;margin:21px auto;border-radius:21px;display:block" loading="lazy">
+  <!-- Biometrics — Horizontal Swipe Gallery -->
+  <section class="usp-gallery" aria-label="Biometrics gallery" style="margin:34px auto 0;max-width:900px;position:relative">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:0 21px;margin-bottom:8px">
+      <span class="bio-meta" style="font-size:11px;color:var(--t3)" aria-live="polite">1 / 4</span>
+      <div style="display:flex;gap:8px">
+        <button class="bio-prev" aria-label="Previous" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(85,185,130,.2);background:transparent;color:var(--green);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center">‹</button>
+        <button class="bio-next" aria-label="Next" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(85,185,130,.2);background:transparent;color:var(--green);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center">›</button>
+      </div>
+    </div>
+    <div class="bio-viewport" tabindex="0" style="overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+      <div style="display:flex;gap:34px;padding:0 calc(50% - 160px)">
+        <article class="bio-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:8px">HR Sparkline</div>
+          <p style="font-size:12px;color:var(--t3);line-height:1.6;max-width:280px;margin:0 auto 13px">Live heart rate on your wrist. See your nervous system shift — not as a number, but as a story.</p>
+          <img src="carlon-heartrate.png" alt="Watch HR sparkline" style="width:100%;max-width:260px;margin:0 auto;border-radius:21px;display:block" loading="lazy">
+        </article>
+        <article class="bio-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:8px">Dive Reflex</div>
+          <p style="font-size:12px;color:var(--t3);line-height:1.6;max-width:280px;margin:0 auto 13px">During Tummo holds, your HR drops as the mammalian dive reflex kicks in. Visible. Live.</p>
+          <img src="carlon-iphone-heartrate.png" alt="iPhone HR detail curve" style="width:100%;max-width:260px;margin:0 auto;border-radius:21px;display:block" loading="lazy">
+        </article>
+        <article class="bio-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:8px">Breath Synchronicity</div>
+          <p style="font-size:12px;color:var(--t3);line-height:1.6;max-width:280px;margin:0 auto 13px">How closely heart and breath move together. The higher, the deeper your coherence.</p>
+          <img src="carlon-iphone-breathsync.png" alt="iPhone breath sync gauges" style="width:100%;max-width:260px;margin:0 auto;border-radius:21px;display:block" loading="lazy">
+        </article>
+        <article class="bio-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:8px">Retention Progress</div>
+          <p style="font-size:12px;color:var(--t3);line-height:1.6;max-width:280px;margin:0 auto 13px">Round by round, you hold longer. CARLON tracks every second and shows the trend.</p>
+          <img src="carlon-retention.png" alt="Watch retention analysis" style="width:100%;max-width:260px;margin:0 auto;border-radius:21px;display:block" loading="lazy">
+        </article>
+      </div>
+    </div>
+    <style>.bio-viewport::-webkit-scrollbar{display:none}.bio-slide{opacity:.35;transform:scale(.93)}.bio-slide.is-active{opacity:1;transform:scale(1)}</style>
+    <script>
+    (function(){
+      const vp=document.querySelector('.bio-viewport');const slides=[...document.querySelectorAll('.bio-slide')];
+      const prev=document.querySelector('.bio-prev');const next=document.querySelector('.bio-next');const meta=document.querySelector('.bio-meta');
+      let active=0;
+      const update=i=>{active=i;slides.forEach((s,j)=>s.classList.toggle('is-active',j===i));meta.textContent=`${i+1} / ${slides.length}`};
+      const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.55)update(slides.indexOf(e.target))})},{root:vp,threshold:[.55]});
+      slides.forEach(s=>io.observe(s));
+      prev.addEventListener('click',()=>{const i=Math.max(0,active-1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+      next.addEventListener('click',()=>{const i=Math.min(slides.length-1,active+1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+      vp.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();prev.click()}if(e.key==='ArrowRight'){e.preventDefault();next.click()}});
+      update(0);slides[0].scrollIntoView({inline:'center',block:'nearest'});
+    })();
+    </script>
+  </section>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:21px;margin-top:34px;max-width:700px;margin-left:auto;margin-right:auto;text-align:left">
-    <div class="rv d1" style="padding:21px;border:1px solid rgba(85,185,130,.1);border-radius:13px;background:rgba(85,185,130,.02)">
-      <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:5px">HR Sparkline</div>
-      <div style="font-size:12px;color:var(--t3);line-height:1.6">Live heart rate curve rendered after every session. See your nervous system shift — not as a number, but as a story your body wrote.</div>
-    </div>
-    <div class="rv d2" style="padding:21px;border:1px solid rgba(85,185,130,.1);border-radius:13px;background:rgba(85,185,130,.02)">
-      <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:5px">Dive Reflex Detection</div>
-      <div style="font-size:12px;color:var(--t3);line-height:1.6">During Tummo breath holds, your heart rate drops as the mammalian dive reflex kicks in. CARLON detects the HR drop and visualizes it — live, on your wrist.</div>
-    </div>
-    <div class="rv d3" style="padding:21px;border:1px solid rgba(85,185,130,.1);border-radius:13px;background:rgba(85,185,130,.02)">
-      <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:5px">Session RMSSD</div>
-      <div style="font-size:12px;color:var(--t3);line-height:1.6">Real HRV calculated from your actual session — not Apple Health background readings. See exactly how each technique affects your autonomic nervous system.</div>
-    </div>
     <div class="rv d1" style="padding:21px;border:1px solid rgba(85,185,130,.1);border-radius:13px;background:rgba(85,185,130,.02)">
       <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:5px">Apple Health Sync</div>
       <div style="font-size:12px;color:var(--t3);line-height:1.6">Mindful Minutes written to Apple Health after every session. Your practice builds a visible streak — and your health data stays yours.</div>
