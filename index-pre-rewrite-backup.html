@@ -869,334 +869,612 @@
   <div class="scroll-line"></div>
 </div>
 
-
-<!-- ═══════════════════════════════════════════════════════════════════
-     CARLON WEBSITE · COMPLETE REWRITE · USP-FIRST ARCHITECTURE
-     5 Swipe-Galerien · 15 Device-Mockups · Apple-Quality
-     Framework: 5-Stufen-Lernprozess (Aufmerksamkeit → Handlung)
-     ═══════════════════════════════════════════════════════════════════ -->
-
-<!-- Gallery CSS (einmalig, für alle Galerien) -->
-<style>
-.gal-vp{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.gal-vp::-webkit-scrollbar{display:none}
-.gal-track{display:flex;gap:21px;padding:0 calc(50% - 140px)}
-.gal-slide{flex:0 0 min(78vw,280px);scroll-snap-align:center;scroll-snap-stop:always;opacity:.3;transform:scale(.91);transition:opacity .35s,transform .35s;text-align:center;padding:13px 0}
-.gal-slide.is-active{opacity:1;transform:scale(1)}
-.gal-slide img{width:100%;border-radius:21px;display:block}
-.gal-head{display:flex;justify-content:space-between;align-items:center;padding:0 21px;margin-bottom:8px}
-.gal-meta{font-size:11px;color:var(--t3)}
-.gal-btn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(178,148,76,.15);background:transparent;color:var(--gold);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.gal-btn:hover{border-color:var(--gold);background:rgba(178,148,76,.06)}
-.gal-label{font-size:11px;color:var(--gold);letter-spacing:.06em;margin-bottom:5px;font-weight:500}
-.gal-desc{font-size:12px;color:var(--t3);line-height:1.6;max-width:260px;margin:0 auto 13px}
-</style>
-
-<!-- ═══ TRUST STRIP (kompakt) ═══ -->
-<div class="trust-strip rv" style="padding:13px 0">
-  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none" style="width:13px;height:13px;vertical-align:-1px;margin-right:4px"><path d="M8 1L2 4v4c0 3.5 2.5 6.4 6 7.5 3.5-1.1 6-4 6-7.5V4L8 1z" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 8l2 2 3.5-3.5" stroke="currentColor" stroke-width="1.2"/></svg>Privacy by Design</span>
-  <span class="trust-badge">Apple Watch native</span>
-  <span class="trust-badge">No subscription</span>
-  <span class="trust-badge">Live Biometrics</span>
+<!-- ═══ TRUST BADGES ═══ -->
+<div class="trust-strip rv">
+  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1L2 4v4c0 3.5 2.5 6.4 6 7.5 3.5-1.1 6-4 6-7.5V4L8 1z" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 8l2 2 3.5-3.5" stroke="currentColor" stroke-width="1.2"/></svg>No health data leaves your device</span>
+  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M5 7h6M5 9.5h4" stroke="currentColor" stroke-width="1" opacity=".6"/></svg>GDPR compliant</span>
+  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M8 5v3.5l2.5 1.5" stroke="currentColor" stroke-width="1"/></svg>Apple Watch native</span>
+  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2l1.8 3.6 4 .6-2.9 2.8.7 4L8 11.2 4.4 13l.7-4-2.9-2.8 4-.6L8 2z" stroke="currentColor" stroke-width="1.2"/></svg>HealthKit integrated</span>
+  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2v12" stroke="currentColor" stroke-width="1.2" opacity=".3"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.2"/></svg>No data sold</span>
+  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2C5.2 2 3 4.5 3 7.5c0 2 1 3.5 2.5 4.5L6 14h4l.5-2C12 11 13 9.5 13 7.5 13 4.5 10.8 2 8 2z" stroke="currentColor" stroke-width="1.2"/><path d="M6.5 14.5h3" stroke="currentColor" stroke-width="1"/></svg>Siri Shortcuts</span>
+  <span class="trust-badge"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h2l1.5-3 2 6L10.5 5 12 8h2" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>Live Biometrics</span>
 </div>
 
-<!-- ═══ 1. STATEMENT ═══ -->
+<!-- ═══ 2. STATEMENT ═══ -->
 <div class="statement rv sect-deep">
   <h2>3 minutes.<br>Eyes closed.<br>Everything changes.</h2>
   <p style="margin-top:21px;font-size:14px;color:var(--green);opacity:.7;letter-spacing:.02em">Watch your heart rate drop 20 BPM. Live. On your wrist.</p>
 </div>
 
-<!-- ═══ 2. THE APP — "Experience it" ═══ -->
-<div class="sect rv" style="padding-bottom:34px">
-  <p class="label rv">The App</p>
-  <h2 class="rv" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Swipe through <em>CARLON.</em></h2>
-  <p class="rv" style="margin-top:8px;font-size:14px;color:var(--t2);max-width:480px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.6">Just like on the Watch — swipe left and right to explore.</p>
+<!-- ═══ 3. HOW IT WORKS ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(178,148,76,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
 
-  <!-- Gallery A: Haupt-Navigation (Menu → Session → Music) -->
-  <section class="gal" id="gal-nav" aria-label="Watch Navigation" style="margin:34px auto 0;max-width:900px">
-    <div class="gal-head">
-      <span class="gal-meta" aria-live="polite">1 / 3</span>
-      <div style="display:flex;gap:6px">
-        <button class="gal-btn gal-prev" aria-label="Previous">‹</button>
-        <button class="gal-btn gal-next" aria-label="Next">›</button>
-      </div>
-    </div>
-    <div class="gal-vp" tabindex="0">
-      <div class="gal-track">
-        <article class="gal-slide">
-          <div class="gal-label">Navigate</div>
-          <img src="carlon-menu.png" alt="CARLON Watch — Main menu: Patterns, History, Settings, Recommend" loading="lazy">
-          <p class="gal-desc">Patterns, History, Settings, Recommendations — everything on your wrist.</p>
-        </article>
-        <article class="gal-slide">
-          <div class="gal-label">Breathe</div>
-          <img src="carlon-session.png" alt="CARLON Watch — Coherence breathing session with Flower of Life" loading="lazy">
-          <p class="gal-desc">Flower of Life guides your breath. Haptics pulse on your wrist. Eyes closed.</p>
-        </article>
-        <article class="gal-slide">
-          <div class="gal-label">Listen</div>
-          <img src="carlon-music.png" alt="CARLON Watch — Soulonaut soundscapes during session" loading="lazy">
-          <p class="gal-desc">Schumann drone. Singing bowl. Breath texture. Sound meets silence.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+<div class="sect rv" id="how-it-works">
+  <p class="label rv">Three steps</p>
+  <h2 class="rv d1" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">How it <em>works.</em></h2>
 
-  <!-- Gallery B: Tieferes Menü (Techniques → Custom) -->
-  <section class="gal" id="gal-deep" aria-label="Watch Techniques" style="margin:55px auto 0;max-width:900px">
-    <p style="text-align:center;font-size:12px;color:var(--t3);margin-bottom:8px">Go deeper</p>
-    <div class="gal-head">
-      <span class="gal-meta" aria-live="polite">1 / 4</span>
-      <div style="display:flex;gap:6px">
-        <button class="gal-btn gal-prev" aria-label="Previous">‹</button>
-        <button class="gal-btn gal-next" aria-label="Next">›</button>
+  <!-- How it Works — Horizontal Swipe Gallery -->
+  <section class="usp-gallery" aria-label="How it works — 3 steps" style="margin:34px auto 0;max-width:900px;position:relative">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:0 21px;margin-bottom:8px">
+      <span class="hiw-meta" style="font-size:11px;color:var(--t3)" aria-live="polite">Step 1 of 3</span>
+      <div style="display:flex;gap:8px">
+        <button class="hiw-prev" aria-label="Previous step" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(178,148,76,.2);background:transparent;color:var(--gold);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center">‹</button>
+        <button class="hiw-next" aria-label="Next step" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(178,148,76,.2);background:transparent;color:var(--gold);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center">›</button>
       </div>
     </div>
-    <div class="gal-vp" tabindex="0">
-      <div class="gal-track">
-        <article class="gal-slide">
-          <div class="gal-label">Choose</div>
-          <img src="carlon-menu.png" alt="Watch menu — tap Patterns to explore" loading="lazy">
-          <p class="gal-desc">Tap Patterns to explore 16 science-backed breathing techniques.</p>
+    <div class="hiw-viewport" tabindex="0" style="overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+      <div style="display:flex;gap:34px;padding:0 calc(50% - 160px)">
+        <article class="hiw-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:10px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;opacity:.5;margin-bottom:13px">Step 1</div>
+          <h3 style="font-size:21px;font-weight:300;margin-bottom:8px">Choose your technique</h3>
+          <p style="font-size:14px;color:var(--t2);line-height:1.7;max-width:300px;margin:0 auto">16 presets from calm to intense. Coherence for HRV. Tummo for fire. 4-7-8 for sleep.</p>
+          <img src="carlon-techniques.png" alt="16 breathing techniques" style="width:100%;max-width:260px;margin:21px auto 0;border-radius:21px;display:block" loading="lazy">
         </article>
-        <article class="gal-slide">
-          <div class="gal-label">16 Techniques</div>
-          <img src="carlon-techniques.png" alt="Watch — Tummo, Coherence, Box and more" loading="lazy">
-          <p class="gal-desc">From calm to fire. Every technique peer-reviewed, every timing optimized.</p>
+        <article class="hiw-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:10px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;opacity:.5;margin-bottom:13px">Step 2</div>
+          <h3 style="font-size:21px;font-weight:300;margin-bottom:8px">Close your eyes</h3>
+          <p style="font-size:14px;color:var(--t2);line-height:1.7;max-width:300px;margin:0 auto">Haptic pulses guide every breath. Rising for inhale, descending for exhale. No screen needed.</p>
+          <img src="carlon-session.png" alt="Haptic breathing session" style="width:100%;max-width:260px;margin:21px auto 0;border-radius:21px;display:block" loading="lazy">
         </article>
-        <article class="gal-slide">
-          <div class="gal-label">Two atmospheres</div>
-          <img src="carlon-tummo.png" alt="Watch — Tummo session, orange Flower, Power in" loading="lazy">
-          <p class="gal-desc">Tummo burns orange. Coherence glows green. You feel the difference before you see it.</p>
-        </article>
-        <article class="gal-slide">
-          <div class="gal-label">Create your own</div>
-          <img src="carlon-presets.png" alt="Watch — Custom Pattern builder" loading="lazy">
-          <p class="gal-desc">Build your own breathing pattern. Name it. Use Tummo as base. Make it yours.</p>
+        <article class="hiw-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:10px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;opacity:.5;margin-bottom:13px">Step 3</div>
+          <h3 style="font-size:21px;font-weight:300;margin-bottom:8px">See what happened</h3>
+          <p style="font-size:14px;color:var(--t2);line-height:1.7;max-width:300px;margin:0 auto">Your iPhone shows HRV trends, heart rate curves, and breath sync — proof your practice works.</p>
+          <img src="carlon-iphone-dashboard.png" alt="iPhone HRV dashboard" style="width:100%;max-width:260px;margin:21px auto 0;border-radius:21px;display:block" loading="lazy">
         </article>
       </div>
     </div>
+    <style>.hiw-viewport::-webkit-scrollbar{display:none}.hiw-slide{opacity:.35;transform:scale(.93)}.hiw-slide.is-active{opacity:1;transform:scale(1)}</style>
+    <script>
+    (function(){
+      const vp=document.querySelector('.hiw-viewport');const slides=[...document.querySelectorAll('.hiw-slide')];
+      const prev=document.querySelector('.hiw-prev');const next=document.querySelector('.hiw-next');const meta=document.querySelector('.hiw-meta');
+      let active=0;const labels=["Step 1 of 3","Step 2 of 3","Step 3 of 3"];
+      const update=i=>{active=i;slides.forEach((s,j)=>s.classList.toggle('is-active',j===i));meta.textContent=labels[i]||`${i+1} / ${slides.length}`};
+      const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.55)update(slides.indexOf(e.target))})},{root:vp,threshold:[.55]});
+      slides.forEach(s=>io.observe(s));
+      prev.addEventListener('click',()=>{const i=Math.max(0,active-1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+      next.addEventListener('click',()=>{const i=Math.min(slides.length-1,active+1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+      vp.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();prev.click()}if(e.key==='ArrowRight'){e.preventDefault();next.click()}});
+      update(0);slides[0].scrollIntoView({inline:'center',block:'nearest'});
+    })();
+    </script>
   </section>
 </div>
 
-<div class="breathe-space"></div>
+<!-- ═══ 4. USE CASES ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><circle cx="75" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="105" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="90" cy="20" r="9" stroke="rgba(178,148,76,.35)" stroke-width=".3"/><line x1="10" y1="20" x2="60" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/><line x1="120" y1="20" x2="170" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/></svg></div>
 
-<!-- ═══ 3. YOUR BODY PROVES IT ═══ -->
-<div class="sect rv sect-glow" style="padding-bottom:34px">
-  <p class="label rv" style="color:var(--green)">Your body</p>
-  <h2 class="rv" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Real data. <em>Not promises.</em></h2>
-  <p class="rv" style="margin-top:8px;font-size:14px;color:var(--t2);max-width:520px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.6">Most breathwork apps show a timer. CARLON shows what your body actually does — on your wrist and on your iPhone.</p>
+<div class="sect rv" id="usecases" style="padding-top:55px;padding-bottom:34px">
+  <p class="label rv">Built for real moments</p>
+  <h2 class="rv d1" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Your state decides <em>everything.</em></h2>
 
-  <!-- Gallery C: Biometrik Watch → iPhone -->
-  <section class="gal" id="gal-bio" aria-label="Biometrics" style="margin:34px auto 0;max-width:900px">
-    <div class="gal-head">
-      <span class="gal-meta" aria-live="polite">1 / 6</span>
-      <div style="display:flex;gap:6px">
-        <button class="gal-btn gal-prev" aria-label="Previous">‹</button>
-        <button class="gal-btn gal-next" aria-label="Next">›</button>
-      </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:21px;margin-top:34px;max-width:700px;margin-left:auto;margin-right:auto;text-align:left">
+    <div class="rv d1" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/><line x1="8" y1="1" x2="8" y2="4" stroke="currentColor" stroke-width="1.2"/><line x1="8" y1="12" x2="8" y2="15" stroke="currentColor" stroke-width="1.2"/><line x1="1" y1="8" x2="4" y2="8" stroke="currentColor" stroke-width="1.2"/><line x1="12" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2"/></svg>Before high-stakes moments</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Box Breathing before meetings, calls, and presentations. Stay sharp when it matters.</div>
     </div>
-    <div class="gal-vp" tabindex="0">
-      <div class="gal-track">
-        <article class="gal-slide">
-          <div class="gal-label">Watch · Heart Rate</div>
-          <img src="carlon-heartrate.png" alt="Watch — full session HR curve with dive reflex drop visible" loading="lazy">
-          <p class="gal-desc">Your heart rate drops during breath holds. The dive reflex — visible on your wrist.</p>
-        </article>
-        <article class="gal-slide">
-          <div class="gal-label">Watch · Breath Sync</div>
-          <img src="carlon-breathsync.png" alt="Watch — breath synchronicity 36%, phase, frequency, depth" loading="lazy">
-          <p class="gal-desc">Heart and breath in sync. Phase, frequency, depth — measured after every session.</p>
-        </article>
-        <article class="gal-slide">
-          <div class="gal-label">Watch · Retention</div>
-          <img src="carlon-retention.png" alt="Watch — retention R1 to R3, improving +25%" loading="lazy">
-          <p class="gal-desc">Round by round, you hold longer. +25% improvement — tracked on your wrist.</p>
-        </article>
-        <article class="gal-slide">
-          <div class="gal-label">iPhone · Heart Rate</div>
-          <img src="carlon-iphone-heartrate.png" alt="iPhone — full session HR curve over 3 minutes" loading="lazy">
-          <p class="gal-desc">Every heartbeat plotted. See exactly where your nervous system shifted.</p>
-        </article>
-        <article class="gal-slide">
-          <div class="gal-label">iPhone · Insights</div>
-          <img src="carlon-iphone-breathsync.png" alt="iPhone — breath sync gauges, HRV context, personal insights" loading="lazy">
-          <p class="gal-desc">Personal coaching: HRV in context, breath synchronicity, and what to do next.</p>
-        </article>
-        <article class="gal-slide">
-          <div class="gal-label">iPhone · Progress</div>
-          <img src="carlon-iphone-retention.png" alt="iPhone — retention progress over 30 sessions with personal best" loading="lazy">
-          <p class="gal-desc">Every session stronger. 30-session trend, personal best, body adapting.</p>
-        </article>
-      </div>
+    <div class="rv d2" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><path d="M13 8.5A5.5 5.5 0 1 1 7.5 3c3 0 5.5 2.5 5.5 5.5z" stroke="currentColor" stroke-width="1.2"/></svg>When sleep won't come</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">4-7-8 and slow, calming rhythms when the mind keeps running. Eyes closed, lights off.</div>
     </div>
-  </section>
-</div>
-
-<div class="breathe-space"></div>
-
-<!-- ═══ 4. KNOW WHAT YOU BREATHE ═══ -->
-<div class="sect rv" style="padding-bottom:34px">
-  <p class="label rv">The science</p>
-  <h2 class="rv" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Know what <em>you breathe.</em></h2>
-  <p class="rv" style="margin-top:8px;font-size:14px;color:var(--t2);max-width:520px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.6">Every technique explained. Every timing grounded in peer-reviewed research. No guessing.</p>
-
-  <!-- Gallery D: Wissen -->
-  <section class="gal" id="gal-science" aria-label="Science and knowledge" style="margin:34px auto 0;max-width:900px">
-    <div class="gal-head">
-      <span class="gal-meta" aria-live="polite">1 / 3</span>
-      <div style="display:flex;gap:6px">
-        <button class="gal-btn gal-prev" aria-label="Previous">‹</button>
-        <button class="gal-btn gal-next" aria-label="Next">›</button>
-      </div>
+    <div class="rv d3" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><path d="M2 8h3l1.5-4 2 8 1.5-4H13" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>Train your nervous system</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Coherence breathing to optimize HRV. Daily, measurable, compounding.</div>
     </div>
-    <div class="gal-vp" tabindex="0">
-      <div class="gal-track">
-        <article class="gal-slide">
-          <div class="gal-label">Breathing Wiki</div>
-          <img src="carlon-iphone-wiki.png" alt="iPhone — Breathing Wiki: understand your breath, patterns explained" loading="lazy">
-          <p class="gal-desc">Every pattern explained — what it does, why it works, which studies back it.</p>
-        </article>
-        <article class="gal-slide">
-          <div class="gal-label">Understand Retention</div>
-          <img src="carlon-iphone-retention.png" alt="iPhone — what is retention, personal progress, why it matters" loading="lazy">
-          <p class="gal-desc">Not just a timer. CARLON explains what happens in your body — and why it matters.</p>
-        </article>
-        <article class="gal-slide">
-          <div class="gal-label">Your Dashboard</div>
-          <img src="carlon-iphone-dashboard.png" alt="iPhone — HRV Today dashboard, 7-day trends, session count" loading="lazy">
-          <p class="gal-desc">HRV Today. 7-day trends. Session count. Your nervous system's report card.</p>
-        </article>
-      </div>
+    <div class="rv d1" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><path d="M9 2L4 9h4l-1 5 5-7H8l1-5z" stroke="currentColor" stroke-width="1.2"/></svg>Activate before training</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Tummo-style protocols for energy, cold adaptation, and mental sharpness.</div>
     </div>
-  </section>
-
-  <!-- Research Badges -->
-  <div class="result-strip rv" style="margin-top:55px">
-    <div class="result-num"><div class="big">-23%</div><div class="desc">cortisol<sup><a href="#ref-c" style="color:var(--gold);text-decoration:none">1</a></sup></div></div>
-    <div class="result-num"><div class="big">+34%</div><div class="desc">HRV (21 days)<sup><a href="#ref-h" style="color:var(--gold);text-decoration:none">2</a></sup></div></div>
-    <div class="result-num"><div class="big">5.5/min</div><div class="desc">optimal rate<sup><a href="#ref-r" style="color:var(--gold);text-decoration:none">3</a></sup></div></div>
-    <div class="result-num"><div class="big">108</div><div class="desc">participants<sup><a href="#ref-s" style="color:var(--gold);text-decoration:none">4</a></sup></div></div>
+    <div class="rv d2" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><path d="M12 4a6 6 0 0 1 0 8" stroke="currentColor" stroke-width="1.2"/><path d="M4 12a6 6 0 0 1 0-8" stroke="currentColor" stroke-width="1.2"/><path d="M12 4l-2 2h4z" fill="currentColor"/><path d="M4 12l2-2H2z" fill="currentColor"/></svg>Emotional reset</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Stanford's Cyclic Sighing — studies suggest it improves mood more effectively than mindfulness meditation.</div>
+    </div>
+    <div class="rv d3" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><path d="M8 13s-5-3.5-5-6.5C3 4 5 3 6.5 3c1 0 1.5.5 1.5.5S9 3 10.5 3C12 3 13 4 13 6.5c0 1-.5 2-1.5 3" stroke="currentColor" stroke-width="1.2"/><path d="M5 8h2l1-2 1.5 4L11 8h1" stroke="currentColor" stroke-width="1.2"/></svg>Parenting under pressure</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">3-minute reset between chaos and calm. Built by parents who needed this themselves.</div>
+    </div>
   </div>
-  <div class="sci-badges rv" style="margin-top:21px">
+</div>
+
+<!-- ═══ 5. BIOMETRICS ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><circle cx="75" cy="20" r="15" stroke="rgba(85,185,130,.7)" stroke-width=".5"/><circle cx="105" cy="20" r="15" stroke="rgba(85,185,130,.7)" stroke-width=".5"/><circle cx="90" cy="20" r="9" stroke="rgba(85,185,130,.35)" stroke-width=".3"/><line x1="10" y1="20" x2="60" y2="20" stroke="rgba(85,185,130,.15)" stroke-width=".3"/><line x1="120" y1="20" x2="170" y2="20" stroke="rgba(85,185,130,.15)" stroke-width=".3"/></svg></div>
+
+<div class="sect rv sect-glow" id="biometrics">
+  <div class="atmos"><div class="atmos-orb" style="width:233px;height:233px;top:-34px;left:-89px;background:rgba(85,185,130,.015)"></div></div>
+  <p class="label rv" style="color:var(--green)">Health Integration</p>
+  <h2 class="rv d1" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Your body, <em>live.</em></h2>
+  <p class="rv d2" style="margin-top:13px;font-size:14px;color:var(--t2);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.7">Most breathwork apps show you a timer. CARLON shows you what your body is actually doing — heart rate and HRV — visible as a live curve on your wrist. The only breathwork app with real-time HR visualization on Apple Watch.</p>
+
+  <!-- Biometrics — Horizontal Swipe Gallery -->
+  <section class="usp-gallery" aria-label="Biometrics gallery" style="margin:34px auto 0;max-width:900px;position:relative">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:0 21px;margin-bottom:8px">
+      <span class="bio-meta" style="font-size:11px;color:var(--t3)" aria-live="polite">1 / 4</span>
+      <div style="display:flex;gap:8px">
+        <button class="bio-prev" aria-label="Previous" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(85,185,130,.2);background:transparent;color:var(--green);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center">‹</button>
+        <button class="bio-next" aria-label="Next" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(85,185,130,.2);background:transparent;color:var(--green);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center">›</button>
+      </div>
+    </div>
+    <div class="bio-viewport" tabindex="0" style="overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+      <div style="display:flex;gap:34px;padding:0 calc(50% - 160px)">
+        <article class="bio-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:8px">Heart Rate · Watch</div>
+          <p style="font-size:12px;color:var(--t3);line-height:1.6;max-width:280px;margin:0 auto 13px">Full session HR curve — directly on your wrist. See the dive reflex as your heart rate drops during holds.</p>
+          <img src="carlon-heartrate.png" alt="Watch — full session heart rate history with dive reflex visible" style="width:100%;max-width:260px;margin:0 auto;border-radius:21px;display:block" loading="lazy">
+        </article>
+        <article class="bio-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:8px">Breath Sync · Watch</div>
+          <p style="font-size:12px;color:var(--t3);line-height:1.6;max-width:280px;margin:0 auto 13px">Heart-breath coherence measured on your wrist. Phase, frequency, depth — all visible after every session.</p>
+          <img src="carlon-breathsync.png" alt="Watch — breath synchronicity score with phase, frequency, depth breakdown" style="width:100%;max-width:260px;margin:0 auto;border-radius:21px;display:block" loading="lazy">
+        </article>
+        <article class="bio-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:8px">Heart Rate · iPhone</div>
+          <p style="font-size:12px;color:var(--t3);line-height:1.6;max-width:280px;margin:0 auto 13px">Deeper analysis on iPhone — every heartbeat plotted over the full session timeline. See exactly where your body shifted.</p>
+          <img src="carlon-iphone-heartrate.png" alt="iPhone — detailed session heart rate curve over 3 minutes" style="width:100%;max-width:260px;margin:0 auto;border-radius:21px;display:block" loading="lazy">
+        </article>
+        <article class="bio-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:8px">Insights · iPhone</div>
+          <p style="font-size:12px;color:var(--t3);line-height:1.6;max-width:280px;margin:0 auto 13px">HRV in personal context, breath synchronicity gauges, and AI-powered coaching insights — all synced from your Watch.</p>
+          <img src="carlon-iphone-breathsync.png" alt="iPhone — breath sync gauges with personal HRV insights" style="width:100%;max-width:260px;margin:0 auto;border-radius:21px;display:block" loading="lazy">
+        </article>
+        <article class="bio-slide" style="flex:0 0 min(85vw,320px);scroll-snap-align:center;scroll-snap-stop:always;text-align:center;transition:opacity .3s,transform .3s;padding:21px 0">
+          <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:8px">Retention · Watch</div>
+          <p style="font-size:12px;color:var(--t3);line-height:1.6;max-width:280px;margin:0 auto 13px">Round-by-round retention times with improvement percentage — tracked and displayed on your wrist after every session.</p>
+          <img src="carlon-retention.png" alt="Watch — retention analysis showing round improvement" style="width:100%;max-width:260px;margin:0 auto;border-radius:21px;display:block" loading="lazy">
+        </article>
+      </div>
+    </div>
+    <style>.bio-viewport::-webkit-scrollbar{display:none}.bio-slide{opacity:.35;transform:scale(.93)}.bio-slide.is-active{opacity:1;transform:scale(1)}</style>
+    <script>
+    (function(){
+      const vp=document.querySelector('.bio-viewport');const slides=[...document.querySelectorAll('.bio-slide')];
+      const prev=document.querySelector('.bio-prev');const next=document.querySelector('.bio-next');const meta=document.querySelector('.bio-meta');
+      let active=0;
+      const update=i=>{active=i;slides.forEach((s,j)=>s.classList.toggle('is-active',j===i));meta.textContent=`${i+1} / ${slides.length}`};
+      const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.55)update(slides.indexOf(e.target))})},{root:vp,threshold:[.55]});
+      slides.forEach(s=>io.observe(s));
+      prev.addEventListener('click',()=>{const i=Math.max(0,active-1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+      next.addEventListener('click',()=>{const i=Math.min(slides.length-1,active+1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+      vp.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();prev.click()}if(e.key==='ArrowRight'){e.preventDefault();next.click()}});
+      update(0);slides[0].scrollIntoView({inline:'center',block:'nearest'});
+    })();
+    </script>
+  </section>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:21px;margin-top:34px;max-width:700px;margin-left:auto;margin-right:auto;text-align:left">
+    <div class="rv d1" style="padding:21px;border:1px solid rgba(85,185,130,.1);border-radius:13px;background:rgba(85,185,130,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:5px">Apple Health Sync</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Mindful Minutes written to Apple Health after every session. Your practice builds a visible streak — and your health data stays yours.</div>
+    </div>
+    <div class="rv d2" style="padding:21px;border:1px solid rgba(85,185,130,.1);border-radius:13px;background:rgba(85,185,130,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:5px">HR Range</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">The spread between your highest and lowest heart rate during a session. A wider range means your nervous system adapts more freely. Track it across days and techniques.</div>
+    </div>
+    <div class="rv d3" style="padding:21px;border:1px solid rgba(85,185,130,.1);border-radius:13px;background:rgba(85,185,130,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--green);margin-bottom:5px">Research Export</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Research-grade JSON and CSV export via Apple Shortcuts. Every heart rate sample, every phase timestamp. Your data, fully portable.</div>
+    </div>
+  </div>
+
+  <div class="rv" style="margin-top:34px;padding:34px 21px;text-align:center;border:1px solid rgba(50,215,120,.08);border-radius:13px;background:rgba(50,215,120,.02)">
+    <p style="font-size:11px;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">The wow moment</p>
+    <h3 style="font-size:clamp(18px,3vw,24px);font-weight:300;color:#fff;line-height:1.3;margin-bottom:13px">Your heart rate drops 20 bpm.<br><em style="color:var(--green)">That's the dive reflex — and you just triggered it.</em></h3>
+    <p style="font-size:13px;color:var(--t2);max-width:500px;margin:0 auto;line-height:1.6">During Tummo breath holds, your body activates the same reflex that protects deep-sea divers. CARLON makes this visible — live, on your wrist.</p>
+    <img src="carlon-heartrate.png" alt="CARLON — Heart rate dive reflex detection during breath hold" style="width:100%;max-width:280px;margin:21px auto 0;border-radius:13px;display:block" loading="lazy">
+  </div>
+</div>
+
+<!-- ═══ 6. COHERENCE ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(178,148,76,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
+
+<div class="sect rv" id="coherence">
+  <div class="atmos"><div class="atmos-orb" style="width:233px;height:233px;top:-55px;right:-89px;background:rgba(178,148,76,.012)"></div></div>
+  <p class="label rv">Daily Practice</p>
+  <h2 class="rv d1" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">One tap. Daily <em>practice.</em></h2>
+  <p class="rv d2" style="margin-top:13px;font-size:14px;color:var(--t2);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.7">One tap from your watch face. Five minutes of coherence breathing. Your nervous system grows stronger — measurably, daily, compounding.</p>
+
+  <img src="carlon-iphone-breathsync.png" alt="CARLON iPhone — Breath Synchronicity 77%, HRV context, personal coaching insights" class="rv d3" style="width:100%;max-width:300px;margin:21px auto;border-radius:21px;display:block" loading="lazy">
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:21px;margin-top:34px;max-width:700px;margin-left:auto;margin-right:auto;text-align:left">
+    <div class="rv d1" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><rect x="4" y="2" width="8" height="12" rx="4" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/></svg>One-tap session</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Tap the CARLON complication on your watch face. Five-minute coherence session starts instantly. No app browsing, no decision fatigue.</div>
+    </div>
+    <div class="rv d2" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><path d="M3 8a5 5 0 0 1 10 0" stroke="currentColor" stroke-width="1.2"/><path d="M13 8a5 5 0 0 1-10 0" stroke="currentColor" stroke-width="1.2"/><path d="M11 5l2 3h-4z" fill="currentColor"/></svg>Daily conditioning</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Coherence breathing at 5.5 breaths per minute — the frequency where your heart and breath synchronize. Research suggests daily practice shifts baseline HRV upward.</div>
+    </div>
+    <div class="rv d3" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 6h12" stroke="currentColor" stroke-width="1.2"/><path d="M6 9l1.5 1.5L10 8" stroke="currentColor" stroke-width="1.2"/></svg>30-day challenge</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Five minutes a day for thirty days. Track your streak. Watch your RMSSD climb. Your body becomes the proof.</div>
+    </div>
+  </div>
+</div>
+
+<div class="breathe-space"></div>
+
+<!-- ═══ 7. SCIENCE ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><circle cx="75" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="105" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="90" cy="20" r="9" stroke="rgba(178,148,76,.35)" stroke-width=".3"/><line x1="10" y1="20" x2="60" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/><line x1="120" y1="20" x2="170" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/></svg></div>
+
+<div class="sect sect-warm" id="science">
+  <div class="sg-watermark" style="width:377px;height:377px;top:-55px;right:-89px;opacity:.08">
+    <svg viewBox="0 0 300 300" fill="none"><circle cx="97.5" cy="150" r="105" stroke="rgba(178,148,76,1)" stroke-width=".5"/><circle cx="202.5" cy="150" r="105" stroke="rgba(178,148,76,1)" stroke-width=".5"/><ellipse cx="150" cy="150" rx="34" ry="89" stroke="rgba(178,148,76,1)" stroke-width=".3" opacity=".4"/></svg>
+  </div>
+  <p class="label rv">Foundation</p>
+  <h2 class="rv">Every technique is<br><em>peer-reviewed.</em></h2>
+  <p class="lead rv" style="margin-bottom:13px">No miracles. Just physiology, done right.</p>
+  <p class="lead rv" style="font-size:14px;color:var(--t2)">Every timing in CARLON is rooted in peer-reviewed research. 16 protocols, each grounded in published science.</p>
+
+  <div class="result-strip rv">
+    <div class="result-num">
+      <div class="big">-23%</div>
+      <div class="desc">cortisol reduction<sup><a href="#ref-cortisol" style="color:var(--gold);text-decoration:none">1</a></sup></div>
+    </div>
+    <div class="result-num">
+      <div class="big">+34%</div>
+      <div class="desc">HRV increase (21 days)<sup><a href="#ref-hrv" style="color:var(--gold);text-decoration:none">2</a></sup></div>
+    </div>
+    <div class="result-num">
+      <div class="big">5.5/min</div>
+      <div class="desc">optimal breath rate<sup><a href="#ref-resonance" style="color:var(--gold);text-decoration:none">3</a></sup></div>
+    </div>
+    <div class="result-num">
+      <div class="big">108</div>
+      <div class="desc">participants<sup><a href="#ref-stanford" style="color:var(--gold);text-decoration:none">4</a></sup></div>
+    </div>
+  </div>
+  <div style="margin-top:21px;font-size:10px;color:var(--t3);max-width:610px;margin-left:auto;margin-right:auto;line-height:1.7;opacity:.6">
+    <span id="ref-cortisol">[1]</span> Ma et al. (2017) "The Effect of Diaphragmatic Breathing on Attention, Negative Affect and Stress" <em>Frontiers in Psychology</em> 8:874.
+    <span id="ref-hrv">[2]</span> Lehrer &amp; Gevirtz (2014) "Heart rate variability biofeedback" <em>Frontiers in Psychology</em> 5:756.
+    <span id="ref-resonance">[3]</span> Russo et al. (2017) "The physiological effects of slow breathing in the healthy human" <em>Breathe</em> 13(4):298-309.
+    <span id="ref-stanford">[4]</span> Huberman et al. (2023) "Brief structured respiration practices enhance mood and reduce physiological arousal" <em>Cell Reports Medicine</em> 4(1):100895.
+  </div>
+
+  <div class="sci-badges rv">
     <span class="sci-badge">Stanford University</span>
     <span class="sci-badge">PNAS</span>
     <span class="sci-badge">Frontiers in Psychology</span>
+    <span class="sci-badge">Physiological Reports</span>
     <span class="sci-badge">Cell Reports Medicine</span>
   </div>
-  <div style="margin-top:13px;font-size:10px;color:var(--t3);max-width:610px;margin-left:auto;margin-right:auto;line-height:1.7;opacity:.5;text-align:center">
-    <span id="ref-c">[1]</span> Ma et al. (2017) <em>Frontiers in Psychology</em> 8:874.
-    <span id="ref-h">[2]</span> Lehrer &amp; Gevirtz (2014) <em>Frontiers in Psychology</em> 5:756.
-    <span id="ref-r">[3]</span> Russo et al. (2017) <em>Breathe</em> 13(4):298-309.
-    <span id="ref-s">[4]</span> Huberman et al. (2023) <em>Cell Reports Medicine</em> 4(1):100895.
+
+  <div class="sci-grid">
+    <div class="sci-card rv d1">
+      <div class="journal">Stanford · Cell Reports Medicine · 2023</div>
+      <p>Cyclic sighing outperforms meditation for mood improvement. RCT, n=108.</p>
+    </div>
+    <div class="sci-card rv d2">
+      <div class="journal">PNAS · Kox et al. · 2014</div>
+      <p>Tummo protocol modulates immune response. RCT, n=24.</p>
+    </div>
+    <div class="sci-card rv d3">
+      <div class="journal">Frontiers · Lehrer & Gevirtz · 2014</div>
+      <p>Coherence breathing at 5.5/min. Heart and breath synchronize. Peak HRV.</p>
+    </div>
+    <div class="sci-card rv d4">
+      <div class="journal">Physiological Reports · Vierra et al. · 2022</div>
+      <p>4-7-8 breathing: measurable autonomic shift. n=43.</p>
+    </div>
+  </div>
+
+  <p class="rv" style="margin-top:34px;font-size:14px;color:var(--t2);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.7;font-style:italic">Research supports the underlying protocols. CARLON's contribution is precision delivery, haptic usability, and everyday adherence.</p>
+</div>
+
+<div class="breathe-space"></div>
+
+<!-- ═══ 8. TECHNIQUES ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(178,148,76,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
+
+<div class="sect rv" id="techniques">
+  <p class="label rv">One system, every state</p>
+  <h2 class="rv d1" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">16 techniques. <em>Four states.</em></h2>
+  <p class="rv d2" style="margin-top:13px;font-size:14px;color:var(--t2);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.7">Every protocol shifts your state intentionally. Plus the Breath Composer to build your own patterns from scratch.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:21px;margin-top:34px;max-width:750px;margin-left:auto;margin-right:auto;text-align:left">
+    <div class="rv d1" style="padding:21px;border-radius:13px;background:rgba(85,185,130,.04);border:1px solid rgba(85,185,130,.1)">
+      <div style="font-size:14px;font-weight:500;color:var(--green);margin-bottom:8px">Calm</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.7">Sanft · Coherence · Cyclic Sighing · Carlon</div>
+      <div style="font-size:11px;color:var(--t3);opacity:.6;margin-top:5px">Calms the nervous system, releases tension, deepens rest</div>
+    </div>
+    <div class="rv d2" style="padding:21px;border-radius:13px;background:rgba(135,55,225,.04);border:1px solid rgba(135,55,225,.1)">
+      <div style="font-size:14px;font-weight:500;color:var(--violet);margin-bottom:8px">Sleep</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.7">4-7-8 · Deep · Sitali</div>
+      <div style="font-size:11px;color:var(--t3);opacity:.6;margin-top:5px">Extended exhale, cooling, theta-wave induction</div>
+    </div>
+    <div class="rv d3" style="padding:21px;border-radius:13px;background:rgba(178,148,76,.04);border:1px solid rgba(178,148,76,.1)">
+      <div style="font-size:14px;font-weight:500;color:var(--gold-bright);margin-bottom:8px">Focus</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.7">Box · Balance · Fokus · Nadi Shodhana</div>
+      <div style="font-size:11px;color:var(--t3);opacity:.6;margin-top:5px">Heart and breath fall into the same rhythm, sharpens focus</div>
+    </div>
+    <div class="rv d1" style="padding:21px;border-radius:13px;background:rgba(200,60,50,.04);border:1px solid rgba(200,60,50,.1)">
+      <div style="font-size:14px;font-weight:500;color:var(--glut);margin-bottom:8px">Fire</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.7">Tummo · Feuer · Bhastrika · Kriya</div>
+      <div style="font-size:11px;color:var(--t3);opacity:.6;margin-top:5px">Sympathetic activation, adrenaline, energy, cold adaptation</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 9. APPLE INTEGRATION ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><circle cx="75" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="105" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="90" cy="20" r="9" stroke="rgba(178,148,76,.35)" stroke-width=".3"/><line x1="10" y1="20" x2="60" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/><line x1="120" y1="20" x2="170" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/></svg></div>
+
+<div class="sect rv" id="apple-integration">
+  <div class="atmos"><div class="atmos-orb" style="width:233px;height:233px;bottom:-34px;right:-89px;background:rgba(178,148,76,.012)"></div></div>
+  <p class="label rv">Ecosystem</p>
+  <h2 class="rv d1" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Part of your <em>Apple.</em></h2>
+  <p class="rv d2" style="margin-top:13px;font-size:14px;color:var(--t2);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.7">CARLON doesn't build its own system. It becomes part of yours.</p>
+
+  <!-- Apple-style Watch Gallery -->
+  <section class="watch-gallery rv d2" aria-label="CARLON Watch App Gallery" style="margin:55px auto 0;max-width:900px;position:relative">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:0 21px;margin-bottom:13px">
+      <span class="wg-meta" style="font-size:11px;color:var(--t3)" aria-live="polite">1 / 11</span>
+      <div style="display:flex;gap:8px">
+        <button class="wg-prev" aria-label="Previous slide" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(178,148,76,.2);background:transparent;color:var(--gold);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:border-color .2s">‹</button>
+        <button class="wg-next" aria-label="Next slide" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(178,148,76,.2);background:transparent;color:var(--gold);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:border-color .2s">›</button>
+      </div>
+    </div>
+    <div class="wg-viewport" tabindex="0" style="overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+      <div class="wg-track" style="display:flex;gap:21px;padding:0 calc(50% - 130px)">
+        <!-- Watch: Erlebnis-Story (User-Journey-Reihenfolge) -->
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-session.png" alt="Start — Flower of Life breathing session with haptic guidance" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-techniques.png" alt="Choose — 16 techniques: Tummo, Coherence, Box" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-music.png" alt="Hear — Soundscapes: Schumann drone, singing bowl" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-heartrate.png" alt="See — Live heart rate dropping during Tummo hold" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-retention.png" alt="Measure — Retention improving round by round" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-breathsync.png" alt="Improve — Breath sync score rising" style="width:100%;display:block">
+        </article>
+        <!-- iPhone: Analyse-Tiefe -->
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-iphone-dashboard.png" alt="Analyze — iPhone dashboard: HRV Today, 7-day trends, session count" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-iphone-heartrate.png" alt="Deep dive — Coherence session heart rate curve over 3 minutes" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-iphone-breathsync.png" alt="Insights — Breath synchronicity 77%, HRV context, personal coaching" style="width:100%;display:block">
+        </article>
+        <!-- Back to Watch: Customize -->
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-presets.png" alt="Customize — Create your own breathing pattern" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-menu.png" alt="Navigate — Main menu with one-tap start" style="width:100%;display:block">
+        </article>
+      </div>
+    </div>
+    <style>
+      .wg-viewport::-webkit-scrollbar{display:none}
+      .wg-slide{opacity:.4;transform:scale(.92)}
+      .wg-slide.is-active{opacity:1;transform:scale(1)}
+      .wg-prev:hover,.wg-next:hover{border-color:var(--gold);background:rgba(178,148,76,.08)}
+    </style>
+    <script>
+    (function(){
+      const vp=document.querySelector('.wg-viewport');
+      const slides=[...document.querySelectorAll('.wg-slide')];
+      const prev=document.querySelector('.wg-prev');
+      const next=document.querySelector('.wg-next');
+      const meta=document.querySelector('.wg-meta');
+      let active=0;
+      const update=i=>{active=i;slides.forEach((s,j)=>s.classList.toggle('is-active',j===i));meta.textContent=`${i+1} / ${slides.length}`};
+      const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.55)update(slides.indexOf(e.target))})},{root:vp,threshold:[.55]});
+      slides.forEach(s=>io.observe(s));
+      prev.addEventListener('click',()=>{const i=Math.max(0,active-1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+      next.addEventListener('click',()=>{const i=Math.min(slides.length-1,active+1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+      vp.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();prev.click()}if(e.key==='ArrowRight'){e.preventDefault();next.click()}});
+      update(0);slides[0].scrollIntoView({inline:'center',block:'nearest'});
+    })();
+    </script>
+  </section>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:21px;margin-top:34px;max-width:700px;margin-left:auto;margin-right:auto;text-align:left">
+    <div class="rv d1" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><path d="M4 6v4M7 4v8M10 5v6M13 7v2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Siri Shortcuts</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">"Hey Siri, start breathing." Seven built-in intents. Start techniques, check your streak, export data — all by voice.</div>
+    </div>
+    <div class="rv d2" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><circle cx="5" cy="5" r="2.5" stroke="currentColor" stroke-width="1.2"/><circle cx="11" cy="5" r="2.5" stroke="currentColor" stroke-width="1.2"/><circle cx="5" cy="11" r="2.5" stroke="currentColor" stroke-width="1.2"/><circle cx="11" cy="11" r="2.5" stroke="currentColor" stroke-width="1.2"/></svg>4 Watch Complications</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Streak counter. Session launcher. Coherence quick-start. Daily reminder. Every glance at your wrist becomes a nudge to breathe.</div>
+    </div>
+    <div class="rv d3" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 6h12" stroke="currentColor" stroke-width="1.2"/><path d="M5 1v3M11 1v3" stroke="currentColor" stroke-width="1.2"/></svg>Apple Calendar</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Every completed session appears as a calendar entry. See your practice history alongside meetings, workouts, and life.</div>
+    </div>
+    <div class="rv d1" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><path d="M8 2c-3 0-4 2-4 4v3l-1 1h10l-1-1V6c0-2-1-4-4-4z" stroke="currentColor" stroke-width="1.2"/><path d="M6.5 13a1.5 1.5 0 0 0 3 0" stroke="currentColor" stroke-width="1.2"/></svg>Apple Reminders</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Daily breathing reminder at your chosen time. Gentle, native, integrated into the system you already use.</div>
+    </div>
+    <div class="rv d2" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><path d="M12 8A5 5 0 1 1 7 3c2.5 0 5 2 5 5z" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="4" r=".8" fill="currentColor"/></svg>Focus Mode</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">CARLON activates Do Not Disturb during sessions automatically. No notifications, no interruptions.</div>
+    </div>
+    <div class="rv d3" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
+      <div style="font-size:13px;font-weight:500;color:var(--gold-bright);margin-bottom:5px"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><path d="M3 4h10M3 8h10M3 12h10" stroke="currentColor" stroke-width="1.2" opacity=".4"/><path d="M3 4l1 1 2-2M3 8l1 1 2-2" stroke="currentColor" stroke-width="1.2"/></svg>Week Planner</div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.6">Schedule which technique on which day. Tummo on Monday mornings. 4-7-8 before sleep. Syncs to Apple Calendar.</div>
+    </div>
   </div>
 </div>
 
 <div class="breathe-space"></div>
 
-<!-- ═══ 5. ORIGIN ═══ -->
-<div class="sect rv" id="origin" style="padding-bottom:34px">
+<!-- ═══ 10. ORIGIN ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(178,148,76,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
+
+<div class="sect" id="origin">
+  <div class="atmos"><div class="atmos-orb" style="width:233px;height:233px;top:-55px;right:-89px;background:rgba(178,148,76,.015)"></div></div>
+  <div class="sg-watermark" style="width:610px;height:610px;top:-89px;right:-144px">
+    <svg viewBox="0 0 400 400" fill="none"><g stroke="rgba(178,148,76,1)" stroke-width=".4"><circle cx="200" cy="200" r="40"/><circle cx="280" cy="200" r="40"/><circle cx="240" cy="269.3" r="40"/><circle cx="160" cy="269.3" r="40"/><circle cx="120" cy="200" r="40"/><circle cx="160" cy="130.7" r="40"/><circle cx="240" cy="130.7" r="40"/></g><g stroke="rgba(178,148,76,1)" stroke-width=".3" opacity=".5"><line x1="200" y1="200" x2="280" y2="200"/><line x1="200" y1="200" x2="240" y2="269.3"/><line x1="200" y1="200" x2="160" y2="269.3"/><line x1="200" y1="200" x2="120" y2="200"/><line x1="200" y1="200" x2="160" y2="130.7"/><line x1="200" y1="200" x2="240" y2="130.7"/><line x1="280" y1="200" x2="240" y2="269.3"/><line x1="280" y1="200" x2="160" y2="269.3"/><line x1="280" y1="200" x2="120" y2="200"/><line x1="280" y1="200" x2="160" y2="130.7"/><line x1="280" y1="200" x2="240" y2="130.7"/><line x1="240" y1="269.3" x2="160" y2="269.3"/><line x1="240" y1="269.3" x2="120" y2="200"/><line x1="240" y1="269.3" x2="160" y2="130.7"/><line x1="240" y1="269.3" x2="240" y2="130.7"/><line x1="160" y1="269.3" x2="120" y2="200"/><line x1="160" y1="269.3" x2="160" y2="130.7"/><line x1="160" y1="269.3" x2="240" y2="130.7"/><line x1="120" y1="200" x2="160" y2="130.7"/><line x1="120" y1="200" x2="240" y2="130.7"/><line x1="160" y1="130.7" x2="240" y2="130.7"/></g></svg>
+  </div>
   <p class="label rv">Origin</p>
-  <h2 class="rv" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Born from <em>our breath.</em></h2>
+  <h2 class="rv">Born from<br><em>our breath.</em></h2>
 
   <div class="rv" style="width:144px;height:144px;border-radius:50%;margin:21px auto;border:1px solid rgba(178,148,76,.15);overflow:hidden">
     <img src="founders.png" alt="Jan & Carina — Founders of Vitalkultur" width="144" height="144" style="width:100%;height:100%;object-fit:cover;display:block">
   </div>
-  <p style="text-align:center;font-style:italic;color:var(--gold);opacity:.5;font-size:13px" class="rv">Jan & Carina · Founders of Vitalkultur</p>
 
-  <p class="rv" style="margin-top:21px;font-size:15px;color:var(--t);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.8">When our son Carlon was born on a January night in 2026, breathwork became more than a technique — it became the way we stayed grounded together.</p>
+  <p class="lead rv" style="text-align:center;font-style:italic;color:var(--gold);opacity:.5;font-size:13px">Jan & Carina · Founders of Vitalkultur</p>
 
-  <p class="rv" style="margin-top:13px;font-size:14px;color:var(--t2);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.8">We couldn't find an app that matched what breathing actually feels like. So we built one during night shifts — testing thousands of haptic patterns to find the perfect rhythm for every breath.</p>
+  <p class="lead rv" style="margin-top:21px">When our son Carlon was born on a January night in 2026, breathwork became more than a technique — it became the way we stayed grounded together. Between night feeds and first smiles, we reached for it more than ever.</p>
 
-  <p class="rv" style="margin-top:21px;font-size:14px;color:var(--t2);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.8">One night, the family was asleep. I put CARLON on the lowest haptic level — barely there, just a whisper on my wrist. Coherence breathing, 5.5 breaths per minute. The vibration was so subtle that I had to <em>listen</em> for it. And that's exactly what pulled me out of my head. No thoughts about code. No plans for tomorrow. Just the faintest pulse, rising for inhale, falling for exhale. I fell asleep mid-session.</p>
+  <p class="lead rv d1" style="margin-top:13px">We couldn't find an app that matched what breathing actually feels like. So we built one during night shifts — testing thousands of haptic patterns to find the perfect rhythm for every breath.</p>
 
-  <p class="rv" style="margin-top:13px;font-size:14px;color:var(--t2);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.8">That was the moment I knew it works. Not because of the data — but because I stopped thinking and started breathing. Named after our son, because freedom is in every breath.</p>
+  <p class="lead rv d2" style="margin-top:21px;color:var(--t2);font-size:14px;line-height:1.8">One night, the family was asleep. I put CARLON on the lowest haptic level — barely there, just a whisper on my wrist. Coherence breathing, 5.5 breaths per minute. The vibration was so subtle that I had to <em>listen</em> for it. And that's exactly what pulled me out of my head. No thoughts about code. No plans for tomorrow. Just the faintest pulse, rising for inhale, falling for exhale. I fell asleep mid-session.</p>
+
+  <p class="lead rv d3" style="margin-top:13px;color:var(--t2);font-size:14px;line-height:1.8">That was the moment I knew it works. Not because of the data — but because I stopped thinking and started breathing. Named after our son, because freedom is in every breath.</p>
 </div>
 
+<!-- ═══ 11. TESTIMONIALS — entfernt bis echte Beta-Tester-Stimmen da sind ═══ -->
 <div class="breathe-space"></div>
 
-<!-- ═══ 6. PRICING ═══ -->
-<div class="sect sect-warm rv" id="pricing" style="padding-bottom:34px">
-  <p class="label rv" style="text-align:center;color:var(--gold)">Pricing</p>
-  <h2 class="rv" style="text-align:center;font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">One app. <em>No subscription.</em></h2>
+<!-- ═══ 12. PRICING ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(178,148,76,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
 
-  <div style="max-width:400px;margin:34px auto 0;text-align:center">
-    <div class="price-num" style="font-size:clamp(48px,8vw,68px);font-weight:200;color:var(--gold-bright);letter-spacing:-.03em">€14,99</div>
-    <p style="margin-top:8px;font-size:14px;color:var(--t2)">All features included. No recurring charges.</p>
-    <ul style="list-style:none;padding:0;margin:21px auto 0;max-width:300px;text-align:left;font-size:13px;color:var(--t2);line-height:2.2">
-      <li style="border-bottom:1px solid rgba(178,148,76,.06);padding:2px 0">Haptic breathing guidance — eyes closed</li>
-      <li style="border-bottom:1px solid rgba(178,148,76,.06);padding:2px 0">16 science-backed techniques + create your own</li>
-      <li style="border-bottom:1px solid rgba(178,148,76,.06);padding:2px 0">Live heart rate + HRV on your wrist</li>
-      <li style="border-bottom:1px solid rgba(178,148,76,.06);padding:2px 0">iPhone companion with full analysis</li>
-      <li style="border-bottom:1px solid rgba(178,148,76,.06);padding:2px 0">Breathing Wiki with studies behind every preset</li>
-      <li style="padding:2px 0">Siri, Calendar, Complications, and more</li>
-    </ul>
+<div class="sect sect-warm" id="pricing">
+  <p class="label rv" style="text-align:center">Pricing</p>
+  <h2 class="rv" style="text-align:center">One app.<br><em>No subscription.</em></h2>
+  <p class="lead rv" style="text-align:center;max-width:610px;margin:0 auto 34px">All 16 techniques included. No hidden costs. No recurring charges.</p>
 
-    <table style="margin:34px auto 0;border-collapse:collapse;width:100%;font-size:12px;text-align:center">
-      <thead><tr>
-        <th style="padding:8px;color:var(--t3)"></th>
-        <th style="padding:8px;color:var(--gold-bright);font-weight:600">CARLON</th>
-        <th style="padding:8px;color:var(--t3)">Calm / Headspace</th>
-      </tr></thead>
-      <tbody>
-        <tr><td style="text-align:left;padding:6px 8px;color:var(--t2)">Guidance</td><td style="padding:6px;color:var(--gold)">Haptic</td><td style="padding:6px;color:var(--t3)">Screen</td></tr>
-        <tr><td style="text-align:left;padding:6px 8px;color:var(--t2)">Biometrics</td><td style="padding:6px;color:var(--gold)">HR + HRV</td><td style="padding:6px;color:var(--t3)">None</td></tr>
-        <tr><td style="text-align:left;padding:6px 8px;color:var(--t2)">Price</td><td style="padding:6px;color:var(--gold)">€14,99</td><td style="padding:6px;color:var(--t3)">€69,99/yr</td></tr>
-        <tr><td style="text-align:left;padding:6px 8px;color:var(--t2)">Watch-native</td><td style="padding:6px;color:var(--gold)">Built for Watch</td><td style="padding:6px;color:var(--t3)">iPhone port</td></tr>
-      </tbody>
-    </table>
+  <div class="pricing-grid">
+    <div class="price-card rv">
+      <p class="label" style="color:var(--gold)">CARLON</p>
+      <div class="price-num">€14,99</div>
+      <div class="price-sub">One purchase · All features included</div>
+      <ul class="feat-list">
+        <li>Haptic breathing guidance — eyes closed</li>
+        <li>16 science-backed techniques + create your own</li>
+        <li>Live heart rate on your wrist</li>
+        <li>Watch your HRV improve over time</li>
+        <li>One tap from your watch face to start</li>
+        <li>iPhone companion with full history</li>
+      </ul>
+      <p style="margin-top:8px;font-size:11px;color:var(--t3);opacity:.5">Plus: Double Tap, Siri Shortcuts, Calendar sync, Focus Mode, Complications, Singing Bowl, Research export, and more.</p>
+      <a href="#emailCapture" class="btn btn-gold" onclick="if(window.goatcounter)goatcounter.count({path:'cta-pricing-signup',event:true})" style="margin-top:34px">Notify me at launch</a>
 
-    <a href="#emailCapture" class="btn btn-gold" onclick="if(window.goatcounter)goatcounter.count({path:'cta-pricing-signup',event:true})" style="margin-top:34px;display:inline-block">Notify me at launch</a>
-    <p style="margin-top:8px;font-size:10px;opacity:.4">Coming to App Store — Spring 2026</p>
+      <table class="compare-table" style="margin:34px auto 0;border-collapse:collapse;max-width:520px;width:100%;font-size:13px" role="comparison">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:8px 13px;color:var(--t3);font-weight:400"></th>
+            <th style="padding:8px 13px;color:var(--gold-bright);font-weight:600">CARLON</th>
+            <th style="padding:8px 13px;color:var(--t3);font-weight:400">Calm / Headspace</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="text-align:left;padding:6px 13px;color:var(--t2)">Guidance</td><td style="padding:6px 13px;color:var(--gold);text-align:center">Haptic</td><td style="padding:6px 13px;color:var(--t3);text-align:center">Screen</td></tr>
+          <tr><td style="text-align:left;padding:6px 13px;color:var(--t2)">Biometrics</td><td style="padding:6px 13px;color:var(--gold);text-align:center">HR + HRV</td><td style="padding:6px 13px;color:var(--t3);text-align:center">None</td></tr>
+          <tr><td style="text-align:left;padding:6px 13px;color:var(--t2)">Techniques</td><td style="padding:6px 13px;color:var(--gold);text-align:center">16 + custom</td><td style="padding:6px 13px;color:var(--t3);text-align:center">3-5 fixed</td></tr>
+          <tr><td style="text-align:left;padding:6px 13px;color:var(--t2)">Price</td><td style="padding:6px 13px;color:var(--gold);text-align:center">€14,99</td><td style="padding:6px 13px;color:var(--t3);text-align:center">€69,99/yr</td></tr>
+          <tr><td style="text-align:left;padding:6px 13px;color:var(--t2)">Watch-native</td><td style="padding:6px 13px;color:var(--gold);text-align:center">Built for Watch</td><td style="padding:6px 13px;color:var(--t3);text-align:center">iPhone port</td></tr>
+          <tr><td style="text-align:left;padding:6px 13px;color:var(--t2)">Data export</td><td style="padding:6px 13px;color:var(--gold);text-align:center">JSON + CSV</td><td style="padding:6px 13px;color:var(--t3);text-align:center">Locked in</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Setup guide -->
+  <div style="max-width:610px;margin:55px auto 0;text-align:left">
+    <h3 class="rv" style="text-align:center;color:var(--gold);margin-bottom:34px">Setup for the best experience</h3>
+
+    <details class="rv" style="margin-bottom:13px;padding:13px 21px;background:rgba(178,148,76,.04);border:1px solid rgba(178,148,76,.08);border-radius:13px">
+      <summary style="cursor:pointer;font-weight:500;color:var(--t)"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><path d="M8 2c-3 0-4 2-4 4v3l-1 1h10l-1-1V6c0-2-1-4-4-4z" stroke="currentColor" stroke-width="1.2"/><line x1="4" y1="4" x2="12" y2="12" stroke="currentColor" stroke-width="1.2"/></svg>Set your Watch to silent mode</summary>
+      <p style="margin-top:8px;font-size:13px;color:var(--t3)">Side button, tap the bell icon. You'll feel every haptic pulse — but hear only the singing bowl, no system beeps.</p>
+    </details>
+
+    <details class="rv" style="margin-bottom:13px;padding:13px 21px;background:rgba(178,148,76,.04);border:1px solid rgba(178,148,76,.08);border-radius:13px">
+      <summary style="cursor:pointer;font-weight:500;color:var(--t)"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><rect x="4" y="2" width="8" height="12" rx="4" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1"/></svg>Enable Always-On Display</summary>
+      <p style="margin-top:8px;font-size:13px;color:var(--t3)">Settings, Display & Brightness, Always On. Keeps the breathing animation visible when your wrist is down.</p>
+    </details>
+
+    <details class="rv" style="margin-bottom:13px;padding:13px 21px;background:rgba(178,148,76,.04);border:1px solid rgba(178,148,76,.08);border-radius:13px">
+      <summary style="cursor:pointer;font-weight:500;color:var(--t)">How Double Tap works</summary>
+      <p style="margin-top:8px;font-size:13px;color:var(--t3)">During breath holds, tap your thumb and index finger together twice. This ends the hold phase — no need to look at or touch the watch. Requires Apple Watch Series 9 or Ultra 2.</p>
+    </details>
+
+    <details class="rv" style="margin-bottom:13px;padding:13px 21px;background:rgba(178,148,76,.04);border:1px solid rgba(178,148,76,.08);border-radius:13px">
+      <summary style="cursor:pointer;font-weight:500;color:var(--t)"><svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><rect x="4" y="1" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="1"/></svg>iPhone Companion App</summary>
+      <p style="margin-top:8px;font-size:13px;color:var(--t3)">The iPhone app syncs automatically with your Watch. View session history, HRV trends, and create custom presets on either device.</p>
+    </details>
+  </div>
+
+  <!-- App Store Badge -->
+  <div style="text-align:center;margin-top:34px" class="rv">
+    <div class="appstore-badge">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="color:var(--t3)"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <div>
+        <span style="font-weight:500">Coming to the App Store</span>
+        <span class="sub">Apple Watch + iPhone · 2026</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="breathe-space"></div>
+<!-- ═══ 13. FAQ ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><circle cx="75" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="105" cy="20" r="15" stroke="rgba(178,148,76,.7)" stroke-width=".5"/><circle cx="90" cy="20" r="9" stroke="rgba(178,148,76,.35)" stroke-width=".3"/><line x1="10" y1="20" x2="60" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/><line x1="120" y1="20" x2="170" y2="20" stroke="rgba(178,148,76,.15)" stroke-width=".3"/></svg></div>
 
-<!-- ═══ 7. FAQ ═══ -->
-<div class="sect rv" id="faq" style="padding-bottom:34px">
-  <p class="label">Questions</p>
-  <h2 style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Frequently <em>asked.</em></h2>
+<div class="sect rv" id="faq">
+  <p class="label">Questions?</p>
+  <h2>Frequently <em>asked.</em></h2>
 
-  <div class="faq-list" style="margin-top:34px">
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need an Apple Watch?</div><div class="faq-a">Yes — CARLON is designed as a Watch-first experience. Haptic guidance, Double Tap, and wrist-based biometrics all require it. The iPhone companion provides session history, insights, and the Breath Composer. Requires Apple Watch Series 4 or later with watchOS 11.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there really no subscription?</div><div class="faq-a">€14,99, one-time purchase. All 16 techniques, custom creation, haptic guidance, live biometrics, and Breath Composer included. No recurring charges.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does it work with HealthKit?</div><div class="faq-a">Yes. CARLON writes Mindful Minutes to Apple Health and captures live heart rate during sessions. You get real session RMSSD, HR sparklines, dive reflex detection, and HR Range tracking.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this a medical device?</div><div class="faq-a">No. CARLON is a non-regulated wellness app. It is not intended to diagnose, treat, cure, or prevent any disease. Always consult a physician before starting breathwork if you have cardiovascular, respiratory, or neurological conditions.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What makes it different from Calm or Headspace?</div><div class="faq-a">CARLON guides through haptics, not screens. You close your eyes and feel every breath. Plus: real biometrics (heart rate, HRV, breath sync) — not just a timer. And no subscription.</div></div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need an Apple Watch?</div>
+      <div class="faq-a">Yes — CARLON is designed as an Apple Watch-first experience. Haptic guidance, Double Tap, and wrist-based biometrics all require it. The iPhone companion app provides session history, insights, and the Breath Composer. Requires Apple Watch Series 4 or later with watchOS 11.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there really no subscription?</div>
+      <div class="faq-a">€14,99, one-time purchase. All 16 techniques, custom creation, haptic guidance, live biometrics, 4 Watch complications, Siri Shortcuts, Apple Calendar sync, and Breath Composer included. No recurring charges.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What breathing techniques are included?</div>
+      <div class="faq-a">16 peer-reviewed protocols: Box Breathing, 4-7-8, Coherence, Tummo, Cyclic Sighing (Stanford), Physiological Sigh, Ujjayi, Nadi Shodhana, Kapalbhati, and more. Plus the Breath Composer to create your own.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does haptic guidance work?</div>
+      <div class="faq-a">Your Apple Watch pulses rhythmically during breathing phases. Rising patterns for inhale, descending for exhale, distinct holds and recoveries. Close your eyes — your wrist tells your body when to breathe.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What about privacy and data?</div>
+      <div class="faq-a">All health data stays on your device — no account, no servers, no tracking. We use privacy-friendly analytics (GoatCounter) for page traffic only. No health data leaves your device. Export your data anytime as JSON or CSV — it's yours.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does it work with Apple Health?</div>
+      <div class="faq-a">Yes. CARLON writes Mindful Minutes to Apple Health and captures live heart rate during sessions. You get real session RMSSD, HR sparklines, dive reflex detection, and HR Range tracking. Research-grade JSON/CSV export via Shortcuts.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">When is the App Store launch?</div>
+      <div class="faq-a">Coming to App Store in 2026. Leave your email below to be notified the moment CARLON is available. Early supporters get a special mention in the app credits.</div>
+    </div>
   </div>
 </div>
 
-<!-- ═══ EMAIL CAPTURE ═══ -->
-<div class="sect rv" style="text-align:center;padding-bottom:34px">
-  <h2 style="font-size:21px;font-weight:300">Get notified at launch.</h2>
-  <form class="email-box rv" id="emailCapture" onsubmit="return handleEmailSubmit(event)" style="margin-top:21px">
+<!-- ═══ 14. EMAIL CAPTURE ═══ -->
+<div class="sacred-div"><svg viewBox="0 0 180 40" fill="none"><g stroke="rgba(178,148,76,.5)" stroke-width=".4"><circle cx="90" cy="20" r="12"/><circle cx="90" cy="8" r="12"/><circle cx="100.4" cy="14" r="12"/><circle cx="100.4" cy="26" r="12"/><circle cx="90" cy="32" r="12"/><circle cx="79.6" cy="26" r="12"/><circle cx="79.6" cy="14" r="12"/></g></svg></div>
+
+<div class="sect" style="text-align:center">
+  <p class="label rv">Launch</p>
+  <h2 class="rv">Be the first<br><em>to breathe.</em></h2>
+  <p class="lead rv" style="margin:0 auto">Get notified when CARLON launches. No spam — just one email on launch day.</p>
+
+  <form class="email-box rv" id="emailCapture" onsubmit="return handleEmailSubmit(event)" style="margin-top:34px">
     <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
-    <button type="submit">Notify me</button>
+    <button type="submit" class="btn btn-gold" style="white-space:nowrap">Notify me</button>
   </form>
-  <p style="margin-top:8px;font-size:10px;color:var(--t3);opacity:.4">No spam. One email when CARLON launches.</p>
+  <p id="emailSuccess" style="display:none;margin-top:13px;font-size:13px;color:var(--green)">You're on the list. We'll reach out on launch day.</p>
+
+  <p class="lead rv" style="margin:34px auto 0;font-size:13px;color:var(--t3)">Questions, ideas, or just want to say hi?</p>
   <div style="margin-top:13px">
     <a href="mailto:jan@vitalkultur.com" class="btn btn-ghost rv">jan@vitalkultur.com</a>
   </div>
 </div>
-
-<!-- ═══ GALLERY JS (einmalig, initialisiert alle Galerien) ═══ -->
-<script>
-function initGal(sel){
-  const s=document.querySelector(sel);if(!s)return;
-  const vp=s.querySelector('.gal-vp'),slides=[...s.querySelectorAll('.gal-slide')],
-        prev=s.querySelector('.gal-prev'),next=s.querySelector('.gal-next'),meta=s.querySelector('.gal-meta');
-  let a=0;
-  const up=i=>{a=i;slides.forEach((s,j)=>s.classList.toggle('is-active',j===i));if(meta)meta.textContent=`${i+1} / ${slides.length}`};
-  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.5)up(slides.indexOf(e.target))})},{root:vp,threshold:[.5]});
-  slides.forEach(s=>io.observe(s));
-  if(prev)prev.onclick=()=>{const i=Math.max(0,a-1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})};
-  if(next)next.onclick=()=>{const i=Math.min(slides.length-1,a+1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})};
-  vp.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();prev?.click()}if(e.key==='ArrowRight'){e.preventDefault();next?.click()}});
-  up(0);setTimeout(()=>slides[0]?.scrollIntoView({inline:'center',block:'nearest'}),100);
-}
-initGal('#gal-nav');initGal('#gal-deep');initGal('#gal-bio');initGal('#gal-science');
-</script>
 
 <!-- ═══ 15. FOOTER ═══ -->
 <footer>
