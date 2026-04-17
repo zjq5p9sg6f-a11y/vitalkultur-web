@@ -1139,20 +1139,67 @@
   <h2 class="rv d1" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Part of your <em>Apple.</em></h2>
   <p class="rv d2" style="margin-top:13px;font-size:14px;color:var(--t2);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.7">CARLON doesn't build its own system. It becomes part of yours.</p>
 
-  <!-- Watch Swipe Carousel -->
-  <div class="rv d2" style="margin:34px auto 0;max-width:700px;position:relative">
-    <p style="text-align:center;font-size:11px;color:var(--t3);margin-bottom:13px">← swipe through the Watch app →</p>
-    <div style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:21px;padding:0 34px 21px;-webkit-overflow-scrolling:touch;scrollbar-width:none">
-      <img src="carlon-session.png" alt="CARLON Watch — Breathing session with Flower of Life" style="scroll-snap-align:center;flex-shrink:0;width:240px;border-radius:21px">
-      <img src="carlon-menu.png" alt="CARLON Watch — Main menu" style="scroll-snap-align:center;flex-shrink:0;width:240px;border-radius:21px">
-      <img src="carlon-techniques.png" alt="CARLON Watch — Technique selection" style="scroll-snap-align:center;flex-shrink:0;width:240px;border-radius:21px">
-      <img src="carlon-presets.png" alt="CARLON Watch — Custom preset creation" style="scroll-snap-align:center;flex-shrink:0;width:240px;border-radius:21px">
-      <img src="carlon-heartrate.png" alt="CARLON Watch — Live heart rate sparkline" style="scroll-snap-align:center;flex-shrink:0;width:240px;border-radius:21px">
-      <img src="carlon-retention.png" alt="CARLON Watch — Retention analysis" style="scroll-snap-align:center;flex-shrink:0;width:240px;border-radius:21px">
-      <img src="carlon-breathsync.png" alt="CARLON Watch — Breath sync score" style="scroll-snap-align:center;flex-shrink:0;width:240px;border-radius:21px">
-      <img src="carlon-music.png" alt="CARLON Watch — Soundscapes player" style="scroll-snap-align:center;flex-shrink:0;width:240px;border-radius:21px">
+  <!-- Apple-style Watch Gallery -->
+  <section class="watch-gallery rv d2" aria-label="CARLON Watch App Gallery" style="margin:55px auto 0;max-width:900px;position:relative">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:0 21px;margin-bottom:13px">
+      <span class="wg-meta" style="font-size:11px;color:var(--t3)" aria-live="polite">1 / 8</span>
+      <div style="display:flex;gap:8px">
+        <button class="wg-prev" aria-label="Previous slide" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(178,148,76,.2);background:transparent;color:var(--gold);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:border-color .2s">‹</button>
+        <button class="wg-next" aria-label="Next slide" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(178,148,76,.2);background:transparent;color:var(--gold);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:border-color .2s">›</button>
+      </div>
     </div>
-  </div>
+    <div class="wg-viewport" tabindex="0" style="overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+      <div class="wg-track" style="display:flex;gap:21px;padding:0 calc(50% - 130px)">
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-session.png" alt="Breathing session — Flower of Life with haptic guidance" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-menu.png" alt="Main menu — one-tap session start" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-techniques.png" alt="16 breathing techniques — Tummo, Coherence, Box" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-presets.png" alt="Custom preset builder — create your own pattern" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-heartrate.png" alt="Live heart rate sparkline during Tummo" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-retention.png" alt="Retention analysis — round by round improvement" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-breathsync.png" alt="Breath sync score — heart-breath coherence" style="width:100%;display:block">
+        </article>
+        <article class="wg-slide" style="flex:0 0 min(72vw,260px);scroll-snap-align:center;scroll-snap-stop:always;border-radius:28px;overflow:hidden;transition:opacity .3s,transform .3s">
+          <img src="carlon-music.png" alt="Soundscapes — Schumann drone, singing bowl, breath texture" style="width:100%;display:block">
+        </article>
+      </div>
+    </div>
+    <style>
+      .wg-viewport::-webkit-scrollbar{display:none}
+      .wg-slide{opacity:.4;transform:scale(.92)}
+      .wg-slide.is-active{opacity:1;transform:scale(1)}
+      .wg-prev:hover,.wg-next:hover{border-color:var(--gold);background:rgba(178,148,76,.08)}
+    </style>
+    <script>
+    (function(){
+      const vp=document.querySelector('.wg-viewport');
+      const slides=[...document.querySelectorAll('.wg-slide')];
+      const prev=document.querySelector('.wg-prev');
+      const next=document.querySelector('.wg-next');
+      const meta=document.querySelector('.wg-meta');
+      let active=0;
+      const update=i=>{active=i;slides.forEach((s,j)=>s.classList.toggle('is-active',j===i));meta.textContent=`${i+1} / ${slides.length}`};
+      const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.55)update(slides.indexOf(e.target))})},{root:vp,threshold:[.55]});
+      slides.forEach(s=>io.observe(s));
+      prev.addEventListener('click',()=>{const i=Math.max(0,active-1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+      next.addEventListener('click',()=>{const i=Math.min(slides.length-1,active+1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+      vp.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();prev.click()}if(e.key==='ArrowRight'){e.preventDefault();next.click()}});
+      update(0);slides[0].scrollIntoView({inline:'center',block:'nearest'});
+    })();
+    </script>
+  </section>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:21px;margin-top:34px;max-width:700px;margin-left:auto;margin-right:auto;text-align:left">
     <div class="rv d1" style="padding:21px;border:1px solid rgba(178,148,76,.08);border-radius:13px;background:rgba(178,148,76,.02)">
