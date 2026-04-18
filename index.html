@@ -844,14 +844,9 @@
 
 <!-- ═══ 1. HERO ═══ -->
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     CARLON · FINAL · 10/10 · Kristall + Perplexity-Audit Fixes
-     Alle 10 Fixes integriert. Ein Guss. Ein Commit.
-     ═══════════════════════════════════════════════════════════════════ -->
-
+<!-- CARLON · LEAN · Radikal gekürzt. 7 Sektionen. 2 Galerien. Kein Bloat. -->
 <style>
-.gal-vp{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab;touch-action:pan-x}
-.gal-vp:active{cursor:grabbing}
+.gal-vp{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;touch-action:pan-x}
 .gal-vp::-webkit-scrollbar{display:none}
 .gal-track{display:flex;gap:21px;padding:0 calc(50% - 150px)}
 .gal-slide{flex:0 0 min(80vw,280px);scroll-snap-align:center;scroll-snap-stop:always;opacity:.3;transform:scale(.91);transition:opacity .35s,transform .35s;text-align:center;padding:13px 0}
@@ -859,357 +854,158 @@
 .gal-slide img{width:100%;border-radius:21px;display:block}
 .gal-head{display:flex;justify-content:space-between;align-items:center;padding:0 21px;margin-bottom:8px}
 .gal-meta{font-size:11px;color:var(--t3)}
-.gal-btn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(178,148,76,.15);background:transparent;color:var(--gold);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.gal-btn:hover{border-color:var(--gold);background:rgba(178,148,76,.06)}
+.gal-btn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(178,148,76,.15);background:transparent;color:var(--gold);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
 .gal-label{font-size:11px;color:var(--gold);letter-spacing:.06em;margin-bottom:5px;font-weight:500}
 .gal-desc{font-size:12px;color:var(--t3);line-height:1.6;max-width:260px;margin:0 auto 13px}
 @media(min-width:768px){.gal-slide{flex:0 0 min(45vw,380px)}.gal-track{gap:34px;padding:0 calc(50% - 190px)}}
-.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;padding:10px 21px;background:rgba(3,3,3,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(178,148,76,.1)}
+.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;padding:10px 21px;background:rgba(3,3,3,.95);backdrop-filter:blur(12px);border-top:1px solid rgba(178,148,76,.1)}
 .sticky-cta a{display:block;text-align:center;padding:13px;background:var(--gold);color:#000;font-weight:600;border-radius:13px;text-decoration:none;font-size:14px}
-@media(max-width:610px){.sticky-cta{display:block}#flowerCanvas{opacity:.3}}
-@media(prefers-reduced-motion:reduce){.breathe-circle{animation:none!important}}
-.breathe-circle{width:clamp(120px,30vw,200px);height:clamp(120px,30vw,200px);border-radius:50%;border:2px solid var(--gold);margin:0 auto;animation:breathePulse 10.9s ease-in-out infinite;opacity:.6}
-@keyframes breathePulse{0%,100%{transform:scale(.85);opacity:.3;border-color:var(--gold)}50%{transform:scale(1.15);opacity:.8;border-color:var(--green)}}
-.chip-strip{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:21px}
-.chip{padding:6px 16px;border-radius:21px;border:1px solid rgba(178,148,76,.15);font-size:11px;color:var(--gold);letter-spacing:.04em}
-.breathe-space{height:clamp(55px,13vh,144px);pointer-events:none}
+@media(max-width:610px){.sticky-cta{display:block}#flowerCanvas{opacity:.2;transform:scale(.5)}}
 </style>
 
-<!-- ═══ 1. HERO (entschlackt: 4 Elemente) ═══ -->
+<!-- ═══ 1. HERO ═══ -->
 <div class="hero">
-  <div class="flower-wrap" style="transform:scale(.6);margin-bottom:-34px">
+  <div class="flower-wrap" style="transform:scale(.5);margin-bottom:-55px">
     <canvas id="flowerCanvas" role="img" aria-label="Flower of Life"></canvas>
     <div class="flower-ci">
       <div class="ci-name">CARLON</div>
-      <div class="ci-sub" style="font-size:10px;color:var(--t3);letter-spacing:.15em;margin-top:4px">BY VITALKULTUR</div>
     </div>
   </div>
 
-  <h1 class="hero-title" style="margin-top:13px">Your breathwork<br><em>for every situation.</em></h1>
+  <h1 class="hero-title">Your breathwork<br><em>for every situation.</em></h1>
   <p class="hero-sub rv" style="margin-top:13px;font-size:15px;color:var(--t2)">Different intentions. One breathwork app.</p>
-  <p style="margin-top:8px;font-size:11px;color:var(--t3)">Coming to App Store · Spring 2026</p>
 
   <div class="rv" style="margin:34px auto 0;border-radius:21px;overflow:hidden">
-    <img src="hero-patterns.png" alt="Choosing between Tummo, Coherence, and Box on Apple Watch Ultra outdoors" style="width:100%;display:block">
+    <img src="hero-patterns.png" alt="Choosing Tummo, Coherence, Box on Apple Watch Ultra outdoors" style="width:100%;display:block">
   </div>
 
   <div class="hero-cta" style="margin-top:34px">
-    <a href="#emailCapture" class="btn btn-gold" onclick="if(window.goatcounter)goatcounter.count({path:'cta-hero-signup',event:true})">Get notified at launch</a>
-    <a href="#feel" style="margin-top:13px;font-size:11px;color:var(--t3);opacity:.5;text-decoration:none;display:block">See how it works ↓</a>
+    <a href="#emailCapture" class="btn btn-gold">Get notified at launch</a>
   </div>
   <div class="scroll-line"></div>
 </div>
 
-<!-- ═══ FIX 7: WHY-Block (Vitalkultur Golden Circle) ═══ -->
-<div class="rv" style="padding:55px 21px;text-align:center">
-  <p style="font-size:clamp(14px,3vw,18px);color:var(--gold);opacity:.6;max-width:500px;margin:0 auto;line-height:1.7;font-weight:300">From Vitalkultur — where body, soul and food are one.<br>We build tools you feel, not apps you watch.</p>
-</div>
-
-<!-- Trust Strip (FIX 5: Apple Music added) -->
-<div class="trust-strip rv" style="padding:13px 0">
-  <span class="trust-badge">Privacy by Design</span>
-  <span class="trust-badge">Apple Watch native</span>
-  <span class="trust-badge">No subscription</span>
-  <span class="trust-badge">Apple Music built in</span>
-</div>
-
-<!-- ═══ 2. FÜHLEN (FIX 8: Full-Bleed sequentiell) ═══ -->
-<div id="feel" class="rv" style="padding:89px 0 55px;text-align:center">
-  <h2 style="font-size:clamp(24px,5vw,42px);font-weight:200;color:#fff;line-height:1.2;letter-spacing:-.02em;padding:0 21px">Your wrist. Your breath.<br><em style="color:var(--gold)">Your technique.</em></h2>
-
-  <div style="margin:55px auto 0;max-width:700px">
-    <img src="hero-haptics.png" alt="Eyes closed, haptic waves guide every breath" style="width:100%;display:block;border-radius:21px" loading="lazy">
-    <p style="text-align:center;margin-top:13px;font-size:13px;color:var(--t2);padding:0 21px">Haptic pulses rise for inhale, fall for exhale. Close your eyes. Just feel.</p>
-  </div>
-
-  <div style="margin:55px auto 0;max-width:700px">
-    <img src="hero-doubletap.png" alt="Double Tap ends breath hold during Tummo" style="width:100%;display:block;border-radius:21px" loading="lazy">
-    <p style="text-align:center;margin-top:13px;font-size:13px;color:var(--t2);padding:0 21px">Holding your breath during Tummo? Double Tap ends the retention. Eyes stay closed. Fingers decide.</p>
+<!-- ═══ 2. FÜHLEN ═══ -->
+<div style="padding:144px 0;text-align:center">
+  <div style="max-width:600px;margin:0 auto">
+    <img src="hero-haptics.png" alt="Eyes closed, haptic waves from wrist" style="width:100%;display:block;border-radius:21px" loading="lazy">
+    <h2 style="margin-top:34px;font-size:clamp(22px,4vw,34px);font-weight:200;color:#fff">Your wrist guides every breath.<br><em style="color:var(--gold)">No screen needed.</em></h2>
   </div>
 </div>
 
-<!-- ═══ FIX 2: "Atme mit" Moment ═══ -->
-<div class="rv" style="padding:89px 21px;text-align:center">
-  <p style="font-size:14px;color:var(--t3);margin-bottom:34px">Breathe with the circle. Slowly.</p>
-  <div class="breathe-circle" role="img" aria-label="Breathing circle pulsing at 5.5 breaths per minute"></div>
-  <p style="margin-top:34px;font-size:12px;color:var(--gold);opacity:.5">5.5 breaths per minute · the resonance frequency</p>
-</div>
-
-<!-- ═══ 3. DEINE TECHNIK + FIX 9: Chip-Leiste ═══ -->
-<div class="sect rv" id="gal-app" style="padding-bottom:34px">
-  <p class="label rv">Your Technique</p>
-  <h2 class="rv" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">16 techniques.<br><em>Plus infinity.</em></h2>
-
-  <!-- FIX 9: Chip-Leiste -->
-  <div class="chip-strip rv">
-    <span class="chip">Tummo</span>
-    <span class="chip">Coherence</span>
-    <span class="chip">Box</span>
-    <span class="chip">4-7-8</span>
-    <span class="chip">Bhastrika</span>
-    <span class="chip">Nadi Shodhana</span>
-    <span class="chip" style="border-color:var(--green);color:var(--green)">+ Custom</span>
+<div style="padding:0 0 144px;text-align:center">
+  <div style="max-width:600px;margin:0 auto">
+    <img src="hero-doubletap.png" alt="Double Tap ends breath hold" style="width:100%;display:block;border-radius:21px" loading="lazy">
+    <p style="margin-top:21px;font-size:14px;color:var(--t2);line-height:1.7;padding:0 21px">Tummo retention — the moment you hold your breath as long as you can. When you're ready, thumb meets index finger. Double Tap. Hold ends. Eyes stay closed.</p>
   </div>
-
-  <!-- Watch TabView Gallery (start center) -->
-  <section class="gal" id="gal-nav" data-start="1" aria-label="Watch Navigation" style="margin:34px auto 0;max-width:900px">
-    <div class="gal-head"><span class="gal-meta" aria-live="polite">2 / 3</span><div style="display:flex;gap:6px"><button class="gal-btn gal-prev" aria-label="Previous">‹</button><button class="gal-btn gal-next" aria-label="Next">›</button></div></div>
-    <div class="gal-vp" tabindex="0"><div class="gal-track">
-      <article class="gal-slide"><div class="gal-label">Navigate</div><img src="carlon-menu.png" alt="Watch menu" loading="lazy"><p class="gal-desc">Patterns, History, Settings — your complete breathwork system.</p></article>
-      <article class="gal-slide"><div class="gal-label">Breathe</div><img src="carlon-session.png" alt="Flower of Life session" loading="lazy"><p class="gal-desc">One tap. Flower of Life guides your breath. Haptics do the rest.</p></article>
-      <article class="gal-slide"><div class="gal-label">Your Music</div><img src="carlon-music.png" alt="Apple Music during session" loading="lazy"><p class="gal-desc">Apple Music natively integrated. Your playlist meets your practice.</p></article>
-    </div></div>
-  </section>
-
-  <!-- Techniques Deep -->
-  <section class="gal" id="gal-tech" aria-label="Techniques" style="margin:55px auto 0;max-width:900px">
-    <div class="gal-head"><span class="gal-meta" aria-live="polite">1 / 3</span><div style="display:flex;gap:6px"><button class="gal-btn gal-prev" aria-label="Previous">‹</button><button class="gal-btn gal-next" aria-label="Next">›</button></div></div>
-    <div class="gal-vp" tabindex="0"><div class="gal-track">
-      <article class="gal-slide"><div class="gal-label">16 Techniques</div><img src="carlon-techniques.png" alt="Tummo, Coherence, Box" loading="lazy"><p class="gal-desc">From Tummo fire to Coherence calm. Tactical Box to 4-7-8 sleep.</p></article>
-      <article class="gal-slide"><div class="gal-label">Tummo — Fire Breath</div><img src="carlon-tummo.png" alt="Active Tummo session" loading="lazy"><p class="gal-desc">Popularized by Wim Hof. 30 power breaths. Double Tap for retention.</p></article>
-      <article class="gal-slide"><div class="gal-label">Your Technique. Your Rules.</div><img src="carlon-presets.png" alt="Custom Pattern builder" loading="lazy"><p class="gal-desc">Your technique doesn't exist? Build it. Name it. The app becomes infinite.</p></article>
-    </div></div>
-  </section>
 </div>
 
-<div class="breathe-space"></div>
+<!-- ═══ 3. TUMMO — Der Star ═══ -->
+<div style="padding:89px 21px;text-align:center">
+  <p style="font-size:11px;color:var(--gold);letter-spacing:.15em;margin-bottom:13px">THE COMPLETE TUMMO EXPERIENCE</p>
+  <h2 style="font-size:clamp(22px,4.5vw,36px);font-weight:200;color:#fff;line-height:1.3">The fire breath.<br><em style="color:rgb(200,60,50)">Popularized by Wim Hof.</em></h2>
+  <p style="margin-top:13px;font-size:14px;color:var(--t2);max-width:500px;margin:13px auto 0">Guided by haptics. Measured by your heart. Ended by Double Tap. Swipe through the full experience.</p>
 
-<!-- ═══ 4. WOW-MOMENT — Dive Reflex ═══ -->
-<div class="rv" style="padding:89px 21px;text-align:center">
-  <h2 style="font-size:clamp(22px,4.5vw,38px);font-weight:200;color:#fff;line-height:1.3;max-width:700px;margin:0 auto">Your heart rate just dropped 18 bpm.<br><em style="color:var(--green)">The dive reflex — visible on your wrist.</em></h2>
-  <div style="margin:34px auto 0;max-width:500px">
-    <img src="hero-sparkline.png" alt="Scrolling through heart rate after breathwork session" style="width:100%;display:block;border-radius:21px" loading="lazy">
-  </div>
-  <p style="margin-top:21px;font-size:13px;color:var(--t2);max-width:450px;margin-left:auto;margin-right:auto;line-height:1.7">During Tummo breath holds, your heart rate drops as the mammalian dive reflex kicks in. No other breathwork app shows this — live, on your wrist.</p>
-</div>
-
-<div class="breathe-space"></div>
-
-<!-- ═══ 5. DEIN KÖRPER + Bündel ═══ -->
-<div class="sect rv sect-glow" id="gal-bio" style="padding-bottom:34px">
-  <p class="label rv" style="color:var(--green)">Your body</p>
-  <h2 class="rv" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Real data. <em>Not promises.</em></h2>
-
-  <div style="margin:34px auto 0;max-width:900px;border-radius:21px;overflow:hidden">
-    <img src="carlon-bundle.jpg" alt="Watch and iPhone side by side" style="width:100%;display:block" loading="lazy">
-  </div>
-  <p style="text-align:center;margin-top:13px;font-size:14px;color:var(--t2)">Your breathwork on your wrist.<br><span style="color:var(--green)">The details where you can actually read them.</span></p>
-
-  <section class="gal" id="gal-data" aria-label="Biometrics" style="margin:55px auto 0;max-width:900px">
-    <div class="gal-head"><span class="gal-meta" aria-live="polite">1 / 6</span><div style="display:flex;gap:6px"><button class="gal-btn gal-prev" aria-label="Previous">‹</button><button class="gal-btn gal-next" aria-label="Next">›</button></div></div>
-    <div class="gal-vp" tabindex="0"><div class="gal-track">
-      <article class="gal-slide"><div class="gal-label">Watch · Heart Rate</div><img src="carlon-heartrate.png" alt="Tummo HR curve" loading="lazy"><p class="gal-desc">Full session HR curve. The dive reflex visible during holds.</p></article>
-      <article class="gal-slide"><div class="gal-label">Watch · Breath Sync</div><img src="carlon-breathsync.png" alt="Tummo breath sync" loading="lazy"><p class="gal-desc">How your heart and breath find each other. Measured every session.</p></article>
-      <article class="gal-slide"><div class="gal-label">Watch · Retention</div><img src="carlon-retention.png" alt="Tummo retention improving" loading="lazy"><p class="gal-desc">Round 1: 1:08. Round 3: 1:42. Your body adapts.</p></article>
-      <article class="gal-slide"><div class="gal-label">iPhone · Heart Rate</div><img src="carlon-iphone-heartrate.png" alt="Coherence HR detail" loading="lazy"><p class="gal-desc">Every heartbeat plotted. See where your nervous system shifted.</p></article>
-      <article class="gal-slide"><div class="gal-label">iPhone · Insights</div><img src="carlon-iphone-breathsync.png" alt="Breath sync insights" loading="lazy"><p class="gal-desc">Your personal coach: HRV in context, breath sync, what to do next.</p></article>
-      <article class="gal-slide"><div class="gal-label">iPhone · Progress</div><img src="carlon-iphone-retention.png" alt="30-session progress" loading="lazy"><p class="gal-desc">Every session stronger. 30-session trend. Body adapting.</p></article>
-    </div></div>
-  </section>
-</div>
-
-<div class="breathe-space"></div>
-
-<!-- ═══ FIX 1: TUMMO DEEP-DIVE (8-Slide Slideshow) ═══ -->
-<div class="sect rv" style="padding-bottom:34px">
-  <p class="label rv" style="color:var(--glut,#c83c32)">Tummo</p>
-  <h2 class="rv" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">The fire breath.<br><em>Popularized by Wim Hof.</em></h2>
-  <p class="rv" style="margin-top:8px;font-size:14px;color:var(--t2);max-width:480px;margin-left:auto;margin-right:auto;text-align:center">Guided by haptics. Measured by your heart. Ended by Double Tap.</p>
-
-  <section class="gal" id="gal-tummo" aria-label="Tummo Deep Dive" style="margin:34px auto 0;max-width:900px">
+  <section class="gal" id="gal-tummo" aria-label="Tummo" style="margin:34px auto 0;max-width:900px">
     <div class="gal-head"><span class="gal-meta" aria-live="polite">1 / 8</span><div style="display:flex;gap:6px"><button class="gal-btn gal-prev" aria-label="Previous">‹</button><button class="gal-btn gal-next" aria-label="Next">›</button></div></div>
     <div class="gal-vp" tabindex="0"><div class="gal-track">
-      <article class="gal-slide"><div class="gal-label">1 · Choose Tummo</div><img src="carlon-techniques.png" alt="Selecting Tummo" loading="lazy"><p class="gal-desc">Tap Tummo. 30 power breaths. 3 rounds. Your Watch is ready.</p></article>
-      <article class="gal-slide"><div class="gal-label">2 · Session starts</div><img src="carlon-tummo.png" alt="Tummo active — breath 3/30" loading="lazy"><p class="gal-desc">Orange Flower. "Power in." Your Watch counts. Your eyes stay closed.</p></article>
-      <article class="gal-slide"><div class="gal-label">3 · Haptics guide</div><img src="hero-haptics.png" alt="Haptic waves guiding breath" loading="lazy"><p class="gal-desc">Rising pulses for inhale. Falling for exhale. 30 breaths — felt, not watched.</p></article>
-      <article class="gal-slide"><div class="gal-label">4 · Double Tap</div><img src="hero-doubletap.png" alt="Double Tap ends retention" loading="lazy"><p class="gal-desc">Hold your breath. When you're ready — thumb meets index finger. Hold ends.</p></article>
-      <article class="gal-slide"><div class="gal-label">5 · HR drops</div><img src="carlon-heartrate.png" alt="Heart rate dropping during hold" loading="lazy"><p class="gal-desc">The dive reflex kicks in. Your heart rate drops. You can see it.</p></article>
-      <article class="gal-slide"><div class="gal-label">6 · Breath Sync</div><img src="carlon-breathsync.png" alt="Breath sync analysis" loading="lazy"><p class="gal-desc">Phase, frequency, depth — how well your heart followed your breath.</p></article>
-      <article class="gal-slide"><div class="gal-label">7 · Getting stronger</div><img src="carlon-retention.png" alt="Retention improving" loading="lazy"><p class="gal-desc">R1: 1:08. R2: 1:25. R3: 1:42. Your body adapts in one session.</p></article>
-      <article class="gal-slide"><div class="gal-label">8 · Full analysis</div><img src="carlon-iphone-heartrate.png" alt="iPhone full HR analysis" loading="lazy"><p class="gal-desc">Open your iPhone. Every heartbeat. Every pattern. Your body's story.</p></article>
+      <article class="gal-slide"><div class="gal-label">Choose</div><img src="carlon-techniques.png" loading="lazy"><p class="gal-desc">Tap Tummo. 30 power breaths. 3 rounds.</p></article>
+      <article class="gal-slide"><div class="gal-label">Breathe</div><img src="carlon-tummo.png" loading="lazy"><p class="gal-desc">Orange fire. "Power in." Breath 3 of 30.</p></article>
+      <article class="gal-slide"><div class="gal-label">Feel</div><img src="hero-haptics.png" loading="lazy"><p class="gal-desc">Rising pulses. Falling pulses. 30 breaths felt.</p></article>
+      <article class="gal-slide"><div class="gal-label">Hold</div><img src="hero-doubletap.png" loading="lazy"><p class="gal-desc">Double Tap when ready. Your fingers decide.</p></article>
+      <article class="gal-slide"><div class="gal-label">See</div><img src="carlon-heartrate.png" loading="lazy"><p class="gal-desc">HR drops. The dive reflex. On your wrist.</p></article>
+      <article class="gal-slide"><div class="gal-label">Sync</div><img src="carlon-breathsync.png" loading="lazy"><p class="gal-desc">Heart follows breath. Phase. Frequency. Depth.</p></article>
+      <article class="gal-slide"><div class="gal-label">Grow</div><img src="carlon-retention.png" loading="lazy"><p class="gal-desc">R1: 1:08. R3: 1:42. Body adapts.</p></article>
+      <article class="gal-slide"><div class="gal-label">Analyze</div><img src="carlon-iphone-heartrate.png" loading="lazy"><p class="gal-desc">Open iPhone. Every heartbeat. Full story.</p></article>
     </div></div>
   </section>
-</div>
 
-<div class="breathe-space"></div>
+  <p style="margin-top:55px;text-align:center;font-size:14px;color:var(--t2);padding:0 21px">Tummo is one of 16. Coherence for HRV. Box for focus. 4-7-8 for sleep. Or <em style="color:var(--gold)">build your own</em>.</p>
 
-<!-- ═══ FIX 6: ÖKOSYSTEM (Siri + Complications + Music + Health) ═══ -->
-<div class="rv" style="padding:55px 21px;text-align:center">
-  <p style="font-size:13px;color:var(--gold);letter-spacing:.1em;margin-bottom:13px">BUILT INTO EVERYTHING APPLE</p>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:21px;max-width:700px;margin:0 auto">
-    <div style="padding:21px 13px;border:1px solid rgba(178,148,76,.08);border-radius:13px">
-      <p style="font-size:20px;margin-bottom:5px">🗣️</p>
-      <p style="font-size:12px;color:var(--gold)">"Hey Siri,<br>start Coherence"</p>
-    </div>
-    <div style="padding:21px 13px;border:1px solid rgba(178,148,76,.08);border-radius:13px">
-      <p style="font-size:20px;margin-bottom:5px">⌚</p>
-      <p style="font-size:12px;color:var(--gold)">4 Watch<br>Complications</p>
-    </div>
-    <div style="padding:21px 13px;border:1px solid rgba(178,148,76,.08);border-radius:13px">
-      <p style="font-size:20px;margin-bottom:5px">🎵</p>
-      <p style="font-size:12px;color:var(--gold)">Apple Music<br>natively built in</p>
-    </div>
-    <div style="padding:21px 13px;border:1px solid rgba(178,148,76,.08);border-radius:13px">
-      <p style="font-size:20px;margin-bottom:5px">❤️</p>
-      <p style="font-size:12px;color:var(--gold)">Apple Health<br>Mindful Minutes</p>
-    </div>
-  </div>
-  <p style="margin-top:21px;font-size:12px;color:var(--t3);opacity:.5">The Watch you already own, used like never before.</p>
-</div>
-
-<div class="breathe-space"></div>
-
-<!-- ═══ 6. WISSEN ═══ -->
-<div class="sect rv" id="gal-science" style="padding-bottom:34px">
-  <p class="label rv">The science</p>
-  <h2 class="rv" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Nothing esoteric.<br><em>Just biology.</em></h2>
-
-  <section class="gal" id="gal-wiki" aria-label="Science" style="margin:34px auto 0;max-width:900px">
-    <div class="gal-head"><span class="gal-meta" aria-live="polite">1 / 2</span><div style="display:flex;gap:6px"><button class="gal-btn gal-prev" aria-label="Previous">‹</button><button class="gal-btn gal-next" aria-label="Next">›</button></div></div>
+  <!-- Watch App Navigation (start center like real Watch) -->
+  <section class="gal" id="gal-nav" data-start="1" aria-label="Watch App" style="margin:34px auto 0;max-width:900px">
+    <div class="gal-head"><span class="gal-meta" aria-live="polite">2 / 3</span><div style="display:flex;gap:6px"><button class="gal-btn gal-prev" aria-label="Previous">‹</button><button class="gal-btn gal-next" aria-label="Next">›</button></div></div>
     <div class="gal-vp" tabindex="0"><div class="gal-track">
-      <article class="gal-slide"><div class="gal-label">Breathing Wiki</div><img src="carlon-iphone-wiki.png" alt="Breathing Wiki" loading="lazy"><p class="gal-desc">What is Breathwork? Why Retention? How HRV works. Every technique explained.</p></article>
-      <article class="gal-slide"><div class="gal-label">Your Dashboard</div><img src="carlon-iphone-dashboard.png" alt="HRV Dashboard" loading="lazy"><p class="gal-desc">HRV Today. 7-day trends. 20 sessions. Your nervous system's report card.</p></article>
+      <article class="gal-slide"><div class="gal-label">Navigate</div><img src="carlon-menu.png" loading="lazy"><p class="gal-desc">Patterns, History, Settings — on your wrist.</p></article>
+      <article class="gal-slide"><div class="gal-label">Breathe</div><img src="carlon-session.png" loading="lazy"><p class="gal-desc">One tap. Flower of Life. Haptics guide.</p></article>
+      <article class="gal-slide"><div class="gal-label">Your Music</div><img src="carlon-music.png" loading="lazy"><p class="gal-desc">Apple Music built in. Your playlist.</p></article>
     </div></div>
   </section>
-
-  <div class="result-strip rv" style="margin-top:55px">
-    <div class="result-num"><div class="big">↓</div><div class="desc">cortisol<sup><a href="#ref-c" style="color:var(--gold);text-decoration:none">1</a></sup></div></div>
-    <div class="result-num"><div class="big">↑</div><div class="desc">HRV<sup><a href="#ref-h" style="color:var(--gold);text-decoration:none">2</a></sup></div></div>
-    <div class="result-num"><div class="big">~5.5</div><div class="desc">breaths/min<sup><a href="#ref-r" style="color:var(--gold);text-decoration:none">3</a></sup></div></div>
-    <div class="result-num"><div class="big">111</div><div class="desc">participants<sup><a href="#ref-s" style="color:var(--gold);text-decoration:none">4</a></sup></div></div>
-  </div>
-  <div class="sci-badges rv" style="margin-top:21px">
-    <span class="sci-badge">Stanford University</span><span class="sci-badge">PNAS</span><span class="sci-badge">Frontiers in Psychology</span><span class="sci-badge">Cell Reports Medicine</span>
-  </div>
-  <div style="margin-top:13px;font-size:10px;color:var(--t3);max-width:610px;margin-left:auto;margin-right:auto;line-height:1.7;opacity:.5;text-align:center">
-    <span id="ref-c">[1]</span> Ma et al. (2017) <em>Frontiers in Psychology</em> 8:874.
-    <span id="ref-h">[2]</span> Lehrer &amp; Gevirtz (2014) <em>Frontiers in Psychology</em> 5:756.
-    <span id="ref-r">[3]</span> Russo et al. (2017) <em>Breathe</em> 13(4):298-309.
-    <span id="ref-s">[4]</span> Balban et al. (2023) <em>Cell Reports Medicine</em> 4(1):100895. n=111.
-  </div>
 </div>
 
-<div class="breathe-space"></div>
+<!-- ═══ 4. WATCH + iPHONE ═══ -->
+<div style="padding:144px 0;text-align:center">
+  <div style="max-width:900px;margin:0 auto;border-radius:21px;overflow:hidden">
+    <img src="carlon-bundle.jpg" alt="Watch and iPhone side by side" style="width:100%;display:block" loading="lazy">
+  </div>
+  <h2 style="margin-top:34px;font-size:clamp(18px,3.5vw,28px);font-weight:200;color:#fff;padding:0 21px">Your breathwork on your wrist.<br><em style="color:var(--green)">The details where you can actually read them.</em></h2>
 
-<!-- ═══ 7. ORIGIN ═══ -->
-<div class="sect rv" id="origin" style="padding-bottom:34px">
-  <p class="label rv">Origin</p>
-  <h2 class="rv" style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Born from <em>our breath.</em></h2>
-  <div class="rv" style="width:144px;height:144px;border-radius:50%;margin:21px auto;border:1px solid rgba(178,148,76,.15);overflow:hidden">
+  <section class="gal" id="gal-data" aria-label="Data" style="margin:55px auto 0;max-width:900px">
+    <div class="gal-head"><span class="gal-meta" aria-live="polite">1 / 4</span><div style="display:flex;gap:6px"><button class="gal-btn gal-prev" aria-label="Previous">‹</button><button class="gal-btn gal-next" aria-label="Next">›</button></div></div>
+    <div class="gal-vp" tabindex="0"><div class="gal-track">
+      <article class="gal-slide"><div class="gal-label">Dashboard</div><img src="carlon-iphone-dashboard.png" loading="lazy"><p class="gal-desc">HRV Today. 7-day trends. Your report card.</p></article>
+      <article class="gal-slide"><div class="gal-label">Insights</div><img src="carlon-iphone-breathsync.png" loading="lazy"><p class="gal-desc">Breath sync 77%. Your vagus nerve was active.</p></article>
+      <article class="gal-slide"><div class="gal-label">Progress</div><img src="carlon-iphone-retention.png" loading="lazy"><p class="gal-desc">30 sessions. Personal best. Getting stronger.</p></article>
+      <article class="gal-slide"><div class="gal-label">Wiki</div><img src="carlon-iphone-wiki.png" loading="lazy"><p class="gal-desc">Every technique explained. The science behind it.</p></article>
+    </div></div>
+  </section>
+</div>
+
+<!-- ═══ 5. ORIGIN ═══ -->
+<div style="padding:144px 21px;text-align:center">
+  <div style="width:144px;height:144px;border-radius:50%;margin:0 auto 21px;border:1px solid rgba(178,148,76,.15);overflow:hidden">
     <img src="founders.png" alt="Jan & Carina" width="144" height="144" style="width:100%;height:100%;object-fit:cover;display:block">
   </div>
-  <p style="text-align:center;font-style:italic;color:var(--gold);opacity:.5;font-size:13px" class="rv">Jan & Carina · Founders of Vitalkultur</p>
-  <p class="rv" style="margin-top:21px;font-size:15px;color:var(--t);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.8">When our son Carlon was born on a January night in 2026, breathwork became more than a technique — it became the way we stayed grounded together.</p>
-  <p class="rv" style="margin-top:21px;font-size:14px;color:var(--t2);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.8">One night, the family was asleep. I put CARLON on the lowest haptic level — barely there, just a whisper on my wrist. The vibration was so subtle that I had to <em>listen</em> for it. And that's exactly what pulled me out of my head. No thoughts about code. No plans for tomorrow. Just the faintest pulse, rising for inhale, falling for exhale. I fell asleep mid-session.</p>
-  <p class="rv" style="margin-top:13px;font-size:14px;color:var(--t2);max-width:550px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.8">That was the moment I knew it works.</p>
+  <p style="font-style:italic;color:var(--gold);opacity:.5;font-size:13px">Jan & Carina · Vitalkultur</p>
+  <p style="margin-top:21px;font-size:14px;color:var(--t2);max-width:500px;margin:21px auto 0;line-height:1.8">One night, the family was asleep. I put CARLON on the lowest haptic level — barely there, just a whisper on my wrist. The vibration was so subtle that I had to <em>listen</em> for it. And that's exactly what pulled me out of my head.</p>
+  <p style="margin-top:13px;font-size:15px;color:var(--t);max-width:500px;margin:13px auto 0">That was the moment I knew it works.</p>
 </div>
 
-<div class="breathe-space"></div>
+<!-- ═══ 6. PREIS ═══ -->
+<div id="pricing" style="padding:89px 21px;text-align:center">
+  <div style="font-size:clamp(48px,10vw,72px);font-weight:200;color:var(--gold-bright)">€14,99</div>
+  <p style="margin-top:8px;font-size:16px;color:var(--t)">Your Watch becomes a breath coach.</p>
+  <p style="margin-top:8px;font-size:13px;color:var(--t3)">16 techniques · haptic guidance · live biometrics · Apple Music · no subscription</p>
 
-<!-- ═══ FIX 4: SOCIAL PROOF (pre-launch honest) ═══ -->
-<div class="rv" style="padding:55px 21px;text-align:center">
-  <p style="font-size:12px;color:var(--gold);letter-spacing:.1em;margin-bottom:21px">PRE-LAUNCH · BE THE FIRST</p>
-  <p style="font-size:clamp(16px,3.5vw,24px);font-weight:300;color:#fff;max-width:500px;margin:0 auto;line-height:1.5">"The first breathwork app that didn't feel like a meditation app."</p>
-  <p style="margin-top:13px;font-size:12px;color:var(--t3)">— Beta tester, April 2026</p>
+  <table style="margin:34px auto 0;border-collapse:collapse;max-width:400px;width:100%;font-size:12px;text-align:center">
+    <thead><tr><th style="padding:8px;color:var(--t3)"></th><th style="padding:8px;color:var(--gold-bright);font-weight:600">CARLON</th><th style="padding:8px;color:var(--t3)">Calm</th></tr></thead>
+    <tbody>
+      <tr><td style="text-align:left;padding:6px 8px;color:var(--t2)">Guidance</td><td style="color:var(--gold)">Haptic</td><td style="color:var(--t3)">Screen</td></tr>
+      <tr><td style="text-align:left;padding:6px 8px;color:var(--t2)">Biometrics</td><td style="color:var(--gold)">HR + HRV</td><td style="color:var(--t3)">None</td></tr>
+      <tr><td style="text-align:left;padding:6px 8px;color:var(--t2)">Price</td><td style="color:var(--gold)">€14,99</td><td style="color:var(--t3)">€69,99/yr</td></tr>
+    </tbody>
+  </table>
+
+  <a href="#emailCapture" class="btn btn-gold" style="margin-top:34px;display:inline-block">Get notified at launch</a>
 </div>
 
-<div class="breathe-space"></div>
-
-<!-- ═══ 8. PRICING ═══ -->
-<div class="sect sect-warm rv" id="pricing" style="padding-bottom:34px">
-  <p class="label rv" style="text-align:center;color:var(--gold)">Pricing</p>
-  <h2 class="rv" style="text-align:center;font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Your Watch becomes<br><em>a breath coach.</em></h2>
-  <p class="rv" style="text-align:center;margin-top:8px;font-size:14px;color:var(--t2)">€14,99 · permanent upgrade of your €900 device.</p>
-
-  <div style="max-width:400px;margin:34px auto 0;text-align:center">
-    <div style="font-size:clamp(48px,8vw,68px);font-weight:200;color:var(--gold-bright);letter-spacing:-.03em">€14,99</div>
-    <ul style="list-style:none;padding:0;margin:21px auto 0;max-width:300px;text-align:left;font-size:13px;color:var(--t2);line-height:2.2">
-      <li style="border-bottom:1px solid rgba(178,148,76,.06);padding:2px 0">16 techniques + build your own</li>
-      <li style="border-bottom:1px solid rgba(178,148,76,.06);padding:2px 0">Haptic guidance — eyes closed</li>
-      <li style="border-bottom:1px solid rgba(178,148,76,.06);padding:2px 0">Live HR + breath sync on your wrist</li>
-      <li style="border-bottom:1px solid rgba(178,148,76,.06);padding:2px 0">Apple Music · Siri · Complications · Health</li>
-      <li style="border-bottom:1px solid rgba(178,148,76,.06);padding:2px 0">iPhone companion with full analysis</li>
-      <li style="padding:2px 0">Breathing Wiki with science behind every preset</li>
-    </ul>
-    <table style="margin:34px auto 0;border-collapse:collapse;width:100%;font-size:12px;text-align:center">
-      <thead><tr><th style="padding:8px;color:var(--t3)"></th><th style="padding:8px;color:var(--gold-bright);font-weight:600">CARLON</th><th style="padding:8px;color:var(--t3)">Calm / Headspace</th></tr></thead>
-      <tbody>
-        <tr><td style="text-align:left;padding:6px 8px;color:var(--t2)">Guidance</td><td style="padding:6px;color:var(--gold)">Haptic</td><td style="padding:6px;color:var(--t3)">Screen</td></tr>
-        <tr><td style="text-align:left;padding:6px 8px;color:var(--t2)">Biometrics</td><td style="padding:6px;color:var(--gold)">HR + HRV</td><td style="padding:6px;color:var(--t3)">None</td></tr>
-        <tr><td style="text-align:left;padding:6px 8px;color:var(--t2)">Price</td><td style="padding:6px;color:var(--gold)">€14,99</td><td style="padding:6px;color:var(--t3)">€69,99/yr</td></tr>
-        <tr><td style="text-align:left;padding:6px 8px;color:var(--t2)">Watch-native</td><td style="padding:6px;color:var(--gold)">Built for Watch</td><td style="padding:6px;color:var(--t3)">iPhone port</td></tr>
-      </tbody>
-    </table>
-    <a href="#emailCapture" class="btn btn-gold" onclick="if(window.goatcounter)goatcounter.count({path:'cta-pricing-signup',event:true})" style="margin-top:34px;display:inline-block">Notify me at launch</a>
+<!-- ═══ 7. FAQ ═══ -->
+<div id="faq" style="padding:89px 21px 34px;max-width:610px;margin:0 auto">
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need an Apple Watch?</div><div class="faq-a">Yes — CARLON is Watch-first. Series 4+ with watchOS 11. iPhone provides history and insights.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this only for Wim Hof people?</div><div class="faq-a">No. 11 of 16 techniques are for everyday use — sleep, stress, focus. Tummo is for the pros.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">No subscription — really?</div><div class="faq-a">€14,99. One time. Everything included. No recurring charges.</div></div>
   </div>
 </div>
 
-<div class="breathe-space"></div>
-
-<!-- ═══ 9. FAQ ═══ -->
-<div class="sect rv" id="faq" style="padding-bottom:34px">
-  <p class="label">Questions</p>
-  <h2 style="font-size:26px;font-weight:300;letter-spacing:-.02em;margin-top:8px">Frequently <em>asked.</em></h2>
-  <div class="faq-list" style="margin-top:34px">
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need an Apple Watch?</div><div class="faq-a">Yes — CARLON is Watch-first. Haptic guidance, Double Tap, and wrist-based biometrics all require it. iPhone provides history, insights, and Breath Composer. Series 4+ with watchOS 11.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there really no subscription?</div><div class="faq-a">€14,99, one-time. All 16 techniques, custom creation, haptic guidance, live biometrics, and Breath Composer. No recurring charges.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this only for Wim Hof people?</div><div class="faq-a">No — Tummo is one of 16 techniques. 11 are for everyday use: Coherence for HRV training, Box for focus, 4-7-8 for sleep, Gentle for beginners. Tummo is for the pros.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I'm new to breathwork?</div><div class="faq-a">Start with "Gentle" — it's designed for first-timers. The Breathing Wiki explains every technique in plain language. No experience needed.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this a medical device?</div><div class="faq-a">No. Non-regulated wellness app. Not intended to diagnose, treat, or prevent any disease. Consult a physician before starting breathwork with cardiovascular or neurological conditions.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What makes it different from Calm or Headspace?</div><div class="faq-a">CARLON guides through haptics, not screens. Eyes closed. Plus real biometrics (HR, HRV, breath sync) — not just a timer. And no subscription.</div></div>
-  </div>
-</div>
-
-<!-- Email Capture -->
-<div class="sect rv" style="text-align:center;padding-bottom:34px">
-  <h2 style="font-size:21px;font-weight:300">Get notified at launch.</h2>
-  <form class="email-box rv" id="emailCapture" onsubmit="return handleEmailSubmit(event)" style="margin-top:21px">
-    <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+<!-- Email -->
+<div style="padding:34px 21px 89px;text-align:center">
+  <form class="email-box" id="emailCapture" onsubmit="return handleEmailSubmit(event)">
+    <input type="email" name="email" placeholder="your@email.com" required aria-label="Email">
     <button type="submit">Notify me</button>
   </form>
-  <p style="margin-top:8px;font-size:10px;color:var(--t3);opacity:.4">No spam. One email when CARLON launches.</p>
-  <div style="margin-top:13px"><a href="mailto:jan@vitalkultur.com" class="btn btn-ghost rv">jan@vitalkultur.com</a></div>
+  <p style="margin-top:8px;font-size:10px;color:var(--t3);opacity:.4">One email when CARLON launches. No spam.</p>
 </div>
 
 <!-- Sticky Mobile CTA -->
-<div class="sticky-cta"><a href="#emailCapture" onclick="if(window.goatcounter)goatcounter.count({path:'cta-sticky-signup',event:true})">Get notified at launch →</a></div>
+<div class="sticky-cta"><a href="#emailCapture">Get notified at launch →</a></div>
 
-<!-- Gallery JS -->
+<!-- JS: nur 2 Galerien -->
 <script>
-function initGal(sel){const s=document.querySelector(sel);if(!s)return;const vp=s.querySelector('.gal-vp'),slides=[...s.querySelectorAll('.gal-slide')],prev=s.querySelector('.gal-prev'),next=s.querySelector('.gal-next'),meta=s.querySelector('.gal-meta');let a=0;const up=i=>{a=i;slides.forEach((s,j)=>s.classList.toggle('is-active',j===i));if(meta)meta.textContent=`${i+1} / ${slides.length}`};const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.5)up(slides.indexOf(e.target))})},{root:vp,threshold:[.5]});slides.forEach(s=>io.observe(s));if(prev)prev.onclick=()=>{const i=Math.max(0,a-1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})};if(next)next.onclick=()=>{const i=Math.min(slides.length-1,a+1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})};vp.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();prev?.click()}if(e.key==='ArrowRight'){e.preventDefault();next?.click()}});const si=parseInt(s.dataset.start||'0');up(si);setTimeout(()=>slides[si]?.scrollIntoView({inline:'center',block:'nearest'}),100)}
-initGal('#gal-nav');initGal('#gal-tech');initGal('#gal-data');initGal('#gal-tummo');initGal('#gal-wiki');
+function initGal(sel){const s=document.querySelector(sel);if(!s)return;const vp=s.querySelector('.gal-vp'),slides=[...s.querySelectorAll('.gal-slide')],prev=s.querySelector('.gal-prev'),next=s.querySelector('.gal-next'),meta=s.querySelector('.gal-meta');let a=0;const up=i=>{a=i;slides.forEach((s,j)=>s.classList.toggle('is-active',j===i));if(meta)meta.textContent=`${i+1} / ${slides.length}`};const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.5)up(slides.indexOf(e.target))})},{root:vp,threshold:[.5]});slides.forEach(s=>io.observe(s));if(prev)prev.onclick=()=>{const i=Math.max(0,a-1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})};if(next)next.onclick=()=>{const i=Math.min(slides.length-1,a+1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})};vp.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();prev?.click()}if(e.key==='ArrowRight'){e.preventDefault();next?.click()}});up(0);setTimeout(()=>slides[0]?.scrollIntoView({inline:'center',block:'nearest'}),100)}
+initGal('#gal-tummo');initGal('#gal-nav');initGal('#gal-data');
 </script>
 
-<!-- ═══ 15. FOOTER ═══ -->
-<footer>
-  <img src="vitalkultur-logo.png" alt="Vitalkultur — Body Soul Food" class="logo" loading="lazy">
-  <p class="claim">Body · Soul · Food</p>
-  <nav>
-    <a href="/privacy.html">Privacy Policy</a>
-    <a href="/terms.html">Terms of Use</a>
-    <a href="/support.html">Support</a>
-    <a href="mailto:jan@vitalkultur.com">Contact</a>
-    <a href="https://instagram.com/vitalkultur.de" target="_blank" rel="noopener">Instagram</a>
-    <a href="/impressum.html">Impressum</a>
-  </nav>
-  <p>&copy; 2026 Vitalkultur · Jan Rohwedder</p>
-  <p class="disclaimer">CARLON is a wellness product, not a medical device. It is not intended to diagnose, treat, cure, or prevent any disease. This product is not a substitute for professional medical advice, diagnosis, or treatment. Consult a physician before beginning any breathing practice if you have cardiovascular, respiratory, or neurological conditions.</p>
-</footer>
-
-<audio id="ambientAudio0" src="world-peace-in-us.mp3" preload="none"></audio>
-<audio id="ambientAudio1" src="beyond-the-sun.mp3" preload="none"></audio>
-
-
-</div><!-- /page -->
-
-<script>
-// Scroll Reveal
-const obs=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('v')})},{threshold:.05,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv').forEach(e=>obs.observe(e));
-const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-// ═══ SOLFEGGIO FREQUENCY STRIP ═══
-(function(){
   const strip=document.getElementById('freqStrip');
   if(!strip)return;
   const freqs=[
