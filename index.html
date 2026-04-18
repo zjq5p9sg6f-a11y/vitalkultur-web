@@ -1218,7 +1218,7 @@ function initGal(sel){
   if(prev)prev.onclick=()=>{const i=Math.max(0,a-1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})};
   if(next)next.onclick=()=>{const i=Math.min(slides.length-1,a+1);slides[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})};
   vp.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();prev?.click()}if(e.key==='ArrowRight'){e.preventDefault();next?.click()}});
-  const si=parseInt(s.dataset.start||'0');up(si);setTimeout(()=>slides[si]?.scrollIntoView({inline:'center',block:'nearest'}),100);
+  const si=parseInt(s.dataset.start||'0');up(si);if(vp&&slides[si]){vp.scrollLeft=slides[si].offsetLeft-vp.offsetWidth/2+slides[si].offsetWidth/2;}
 }
 initGal('#gal-nav');initGal('#gal-deep');initGal('#gal-bio');initGal('#gal-science');
 </script>
