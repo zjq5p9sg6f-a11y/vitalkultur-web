@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /index-old.html
+Disallow: /index-pre-10of10-backup.html
+Disallow: /index-pre-rewrite-backup.html
+
+Sitemap: https://vitalkultur.com/sitemap.xml
