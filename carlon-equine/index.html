@@ -699,6 +699,173 @@ nav {
 }
 
 /* ============================================================
+   SCIENTIFIC FACT CARDS — ersetzt die alte schmale specs-row.
+   Gibt jedem Capability-Claim Erklärung + Mikro-Detail.
+   ============================================================ */
+.fact-cards {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  max-width: 1100px;
+  margin: var(--s-7) auto 0;
+  padding: 0 24px;
+  position: relative;
+  z-index: 5;
+}
+.fact-card {
+  background: rgba(6, 16, 26, 0.55);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 18px 18px 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.22s, background 0.22s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 130px;
+}
+.fact-card:hover {
+  border-color: var(--cyan-deep);
+  background: rgba(0, 240, 208, 0.04);
+}
+.fact-card .fc-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.fact-card .fc-value {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--cyan);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-shadow: 0 0 18px var(--cyan-glow-3);
+}
+.fact-card .fc-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.fact-card .fc-text {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.fact-card .fc-detail {
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  color: var(--cyan-deep);
+  opacity: 0.85;
+}
+
+/* ============================================================
+   WHY-HRV — Storyline-Section vor Beta-Card
+   Ursache→Indikator→Lösung in 3 Spalten
+   ============================================================ */
+.why-hrv {
+  position: relative;
+  z-index: 5;
+  margin: 96px auto 0;
+  max-width: 1100px;
+  padding: 0 24px;
+}
+.why-hrv-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.why-hrv-title {
+  font-size: clamp(26px, 3.6vw, 40px);
+  font-weight: 200;
+  letter-spacing: -0.018em;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--text-primary);
+  margin: 0 auto 40px;
+  max-width: 720px;
+}
+.why-hrv-title em {
+  font-style: normal;
+  background: linear-gradient(120deg, var(--cyan) 0%, #00a89a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.why-hrv-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.why-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.22s, background 0.22s;
+}
+.why-card:hover {
+  border-color: rgba(0,212,193,0.30);
+  background: rgba(255,255,255,0.04);
+}
+.why-card .step {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 500;
+}
+.why-card .step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: rgba(0,212,193,0.10);
+  border: 1px solid var(--cyan-deep);
+  font-size: 11px;
+  color: var(--cyan);
+}
+.why-card h3 {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin: 0;
+}
+.why-card p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+.why-card .cite {
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  color: var(--cyan-deep);
+}
+
+/* ============================================================
    BETA-RECRUITMENT — Strip (oben im Empty-State) + Card (mittig)
    ============================================================ */
 .beta-strip {
@@ -885,6 +1052,18 @@ nav {
     width: 100%;
     justify-content: center;
   }
+  .fact-cards { margin-top: var(--s-5); padding: 0 14px; gap: 12px;
+                grid-template-columns: 1fr 1fr; }
+  .fact-card { padding: 14px 14px 12px; min-height: 110px; gap: 6px; }
+  .fact-card .fc-value { font-size: 18px; }
+  .fact-card .fc-text { font-size: 11px; }
+  .fact-card .fc-detail { font-size: 8px; letter-spacing: 0.08em; }
+  .why-hrv { margin-top: 64px; padding: 0 14px; }
+  .why-hrv-title { margin-bottom: 28px; }
+  .why-hrv-grid { gap: 14px; }
+  .why-card { padding: 22px 20px; gap: 10px; }
+  .why-card h3 { font-size: 16px; }
+  .why-card p { font-size: 13px; }
 }
 
 /* ============================================================
@@ -3737,12 +3916,101 @@ footer .links a:hover { color: var(--cyan); }
     </button>
   </div>
 
-  <div class="specs-row">
-    <div class="spec"><div class="v">25</div><div class="k" data-i18n="empty.spec_metrics" data-en="Metrics" data-de="Metriken">Metrics</div></div>
-    <div class="spec"><div class="v">10</div><div class="k">Charts</div></div>
-    <div class="spec"><div class="v">1000Hz</div><div class="k" data-i18n="empty.spec_sample" data-en="H10 Sample" data-de="H10 Sample">H10 Sample</div></div>
-    <div class="spec"><div class="v">0 KB</div><div class="k">Upload</div></div>
-    <div class="spec"><div class="v">SHA-256</div><div class="k" data-i18n="empty.spec_integrity" data-en="Integrity" data-de="Integrität">Integrity</div></div>
+  <!-- ============================================================
+       SCIENTIFIC FACT CARDS — ersetzt schmale Specs-Row.
+       Jeder Capability-Claim mit Mikro-Erklärung + Detail-Zeile.
+       Wandelt Buzzwords ("1000 Hz · 25 Metriken") in Glaubwürdigkeit.
+       ============================================================ -->
+  <div class="fact-cards">
+    <div class="fact-card">
+      <div class="fc-head">
+        <span class="fc-value">1000 Hz</span>
+        <span class="fc-label" data-en="Sampling" data-de="Sampling">Sampling</span>
+      </div>
+      <div class="fc-text"
+           data-en="Polar H10 — der einzige Consumer-Chest-Strap mit ECG-grade R-Peak-Sampling, peer-reviewed gegen 12-Lead-EKG."
+           data-de="Polar H10 — der einzige Consumer-Brustgurt mit EKG-grade R-Peak-Sampling, peer-reviewed gegen 12-Kanal-EKG.">Polar H10 — der einzige Consumer-Brustgurt mit EKG-grade R-Peak-Sampling, peer-reviewed gegen 12-Kanal-EKG.</div>
+      <div class="fc-detail" data-en="Gilgen-Ammann 2019 · Schaffarczyk 2022" data-de="Gilgen-Ammann 2019 · Schaffarczyk 2022">Gilgen-Ammann 2019 · Schaffarczyk 2022</div>
+    </div>
+    <div class="fact-card">
+      <div class="fc-head">
+        <span class="fc-value">25</span>
+        <span class="fc-label" data-en="Metrics" data-de="Metriken">Metrics</span>
+      </div>
+      <div class="fc-text"
+           data-en="Time-Domain (RMSSD, SDNN, pNN50, TI), Frequency (LF/HF · Welch + Lomb), Nonlinear (DFA, Symbolic, SampEn), Equine-spezifisch (vagale AV-Blocks)."
+           data-de="Zeit-Domain (RMSSD, SDNN, pNN50, TI), Frequenz (LF/HF · Welch + Lomb), Nichtlinear (DFA, Symbolic, SampEn), Equine-spezifisch (vagale AV-Blocks).">Zeit-Domain, Frequenz, Nichtlinear, Equine-spezifisch.</div>
+      <div class="fc-detail" data-en="Task Force 1996 · Visser 2002 · Stucke 2015" data-de="Task Force 1996 · Visser 2002 · Stucke 2015">Task Force 1996 · Visser 2002 · Stucke 2015</div>
+    </div>
+    <div class="fact-card">
+      <div class="fc-head">
+        <span class="fc-value">24 h+</span>
+        <span class="fc-label" data-en="Offline" data-de="Offline">Offline</span>
+      </div>
+      <div class="fc-text"
+           data-en="Polar H10 zeichnet on-strap auf — kein iPhone in Reichweite nötig. Langzeit-Pasture, Übernacht-Stall, Transport-Stress. Sync später per Ein-Klick."
+           data-de="Polar H10 zeichnet am Gurt auf — kein iPhone in Reichweite nötig. Langzeit-Weide, Übernacht-Stall, Transport-Stress. Sync später per Ein-Klick.">Polar H10 zeichnet am Gurt auf — kein iPhone in Reichweite nötig. Sync später per Ein-Klick.</div>
+      <div class="fc-detail" data-en="PSFTP-Protocol · multi-day capable" data-de="PSFTP-Protokoll · Mehrtages-fähig">PSFTP-Protokoll · Mehrtages-fähig</div>
+    </div>
+    <div class="fact-card">
+      <div class="fc-head">
+        <span class="fc-value">0 KB</span>
+        <span class="fc-label" data-en="Upload" data-de="Upload">Upload</span>
+      </div>
+      <div class="fc-text"
+           data-en="Alle Roh-Daten und Auswertungen bleiben auf deinem Gerät. Kein Account, kein Cloud-Default, kein Telemetrie-Phone-Home."
+           data-de="Alle Roh-Daten und Auswertungen bleiben auf deinem Gerät. Kein Account, kein Cloud-Default, kein Telemetrie-Phone-Home.">Alle Roh-Daten und Auswertungen bleiben auf deinem Gerät. Kein Account, kein Cloud-Default.</div>
+      <div class="fc-detail" data-en="DSGVO Art. 25 Privacy-by-Design" data-de="DSGVO Art. 25 Privacy-by-Design">DSGVO Art. 25 Privacy-by-Design</div>
+    </div>
+    <div class="fact-card">
+      <div class="fc-head">
+        <span class="fc-value">SHA-256</span>
+        <span class="fc-label" data-en="Integrity" data-de="Integrität">Integrity</span>
+      </div>
+      <div class="fc-text"
+           data-en="Jeder JSON-Export trägt Integritäts-Hash + W3C-PROV-Erzeugungs-Kette. Reviewer-grade Reproducibility, defensible gegen jedes Audit."
+           data-de="Jeder JSON-Export trägt Integritäts-Hash + W3C-PROV-Erzeugungs-Kette. Reviewer-grade Reproducibility, audit-fest.">Jeder JSON-Export mit Hash + Provenance-Chain — audit-fest.</div>
+      <div class="fc-detail" data-en="W3C PROV-O · FAIR · Open-Schema" data-de="W3C PROV-O · FAIR · Open-Schema">W3C PROV-O · FAIR · Open-Schema</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       WHY-HRV — Storyline: warum Vets HRV bei Pferden brauchen.
+       Belastung-sichtbar-zu-spät → HRV als Frühindikator → Carlon
+       macht's praktikabel. Beantwortet die "warum überhaupt?"-Frage
+       die direkt zur Demo führt.
+       ============================================================ -->
+  <div class="why-hrv">
+    <div class="why-hrv-eyebrow"
+         data-en="Why HRV matters in horses"
+         data-de="Warum HRV beim Pferd zählt">Warum HRV beim Pferd zählt</div>
+    <h2 class="why-hrv-title"
+        data-en="Belastung und Erholung werden oft <em>zu spät</em> sichtbar."
+        data-de="Belastung und Erholung werden oft <em>zu spät</em> sichtbar.">Belastung und Erholung werden oft <em>zu spät</em> sichtbar.</h2>
+    <div class="why-hrv-grid">
+      <div class="why-card">
+        <div class="step"><span class="step-num">1</span><span data-en="Problem" data-de="Problem">Problem</span></div>
+        <h3 data-en="Klinische Untersuchung erfasst nur den Messpunkt."
+            data-de="Klinische Untersuchung erfasst nur den Messpunkt.">Klinische Untersuchung erfasst nur den Messpunkt.</h3>
+        <p data-en="Überbelastung, schleichender Stress, beginnende Regenerations-Defizite zeigen sich häufig erst, wenn sie systemisch werden — verspätet, teuer, manchmal irreversibel."
+           data-de="Überbelastung, schleichender Stress, beginnende Regenerations-Defizite zeigen sich häufig erst, wenn sie systemisch werden — verspätet, teuer, manchmal irreversibel.">Überbelastung, schleichender Stress, beginnende Regenerations-Defizite zeigen sich häufig erst, wenn sie systemisch werden — verspätet, teuer, manchmal irreversibel.</p>
+      </div>
+      <div class="why-card">
+        <div class="step"><span class="step-num">2</span><span data-en="Indicator" data-de="Indikator">Indikator</span></div>
+        <h3 data-en="HRV reagiert auf autonome Veränderungen früh."
+            data-de="HRV reagiert auf autonome Veränderungen früh.">HRV reagiert auf autonome Veränderungen früh.</h3>
+        <p data-en="Die Herzraten-Variabilität spiegelt vagalen Tonus, sympathische Aktivierung und Erholungs-Status — oft Stunden bis Tage bevor klinische Symptome auftreten. Bei Pferden peer-reviewed seit den 2000ern."
+           data-de="Die Herzraten-Variabilität spiegelt vagalen Tonus, sympathische Aktivierung und Erholungs-Status — oft Stunden bis Tage bevor klinische Symptome auftreten. Bei Pferden peer-reviewed seit den 2000ern.">Die Herzraten-Variabilität spiegelt vagalen Tonus, sympathische Aktivierung und Erholungs-Status — oft Stunden bis Tage bevor klinische Symptome auftreten. Bei Pferden peer-reviewed seit den 2000ern.</p>
+        <div class="cite" data-en="Visser 2002 · Stucke 2015 · Younes 2017" data-de="Visser 2002 · Stucke 2015 · Younes 2017">Visser 2002 · Stucke 2015 · Younes 2017</div>
+      </div>
+      <div class="why-card">
+        <div class="step"><span class="step-num">3</span><span data-en="Solution" data-de="Lösung">Lösung</span></div>
+        <h3 data-en="CARLON macht den Mess-Workflow alltagstauglich."
+            data-de="CARLON macht den Mess-Workflow alltagstauglich.">CARLON macht den Mess-Workflow alltagstauglich.</h3>
+        <p data-en="Polar H10 anlegen, iPhone-App starten oder am Gurt aufzeichnen, Auswertung im Browser ansehen — 5 min Ruhe oder 24 h Langzeit. Tierarzt sieht klinische Sprache, Halter sieht laienverständliche Sprache."
+           data-de="Polar H10 anlegen, iPhone-App starten oder am Gurt aufzeichnen, Auswertung im Browser ansehen — 5 min Ruhe oder 24 h Langzeit. Tierarzt sieht klinische Sprache, Halter sieht laienverständliche Sprache.">Polar H10 anlegen, iPhone-App starten oder am Gurt aufzeichnen, Auswertung im Browser ansehen — 5 min Ruhe oder 24 h Langzeit. Tierarzt sieht klinische Sprache, Halter sieht laienverständliche Sprache.</p>
+      </div>
+    </div>
   </div>
 
   <!-- ============================================================
