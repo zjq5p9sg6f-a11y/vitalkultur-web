@@ -5389,6 +5389,9 @@ const HRV_GLOSSARY_KEYS = {
 };
 // Fallback to RMSSD if some additional missing keys — graceful when extending.
 // Extra tooltip i18n keys added inline (kept here to keep dictionary tidy at top).
+// HOTFIX: defensive init in case main CARLON_I18N hasn't been declared yet
+// (script-order dependency — extending tooltips runs BEFORE the dict-init line).
+window.CARLON_I18N = window.CARLON_I18N || {};
 Object.assign(window.CARLON_I18N, {
   'tt.RMSSD':  { en: 'Root Mean Square of Successive Differences\nShort-term vagal tone.\nEquine rest: 60-180 ms (Visser 2002)\nHuman rest: 20-60 ms (TF 1996)',
                  de: 'Root Mean Square of Successive Differences\nKurzfristiger Vagus-Tonus.\nEquine Ruhe: 60-180 ms (Visser 2002)\nHuman Ruhe: 20-60 ms (TF 1996)' },
@@ -7436,7 +7439,10 @@ document.getElementById('homeBtn').addEventListener('click', backToHome);
 // =========================================================
 // Comprehensive translation dictionary. Used by t() for JS-rendered
 // strings AND applyLang() for static HTML via data-en/data-de attributes.
-window.CARLON_I18N = {
+// HOTFIX: Object.assign statt direkter Zuweisung, damit früher hinzugefügte
+// Tooltip-Keys (line ~5395) erhalten bleiben statt überschrieben zu werden.
+window.CARLON_I18N = window.CARLON_I18N || {};
+Object.assign(window.CARLON_I18N, {
   // Nav + general
   'nav.print': { en: 'Print', de: 'Drucken' },
   'nav.pro':   { en: 'Get Pro', de: 'Pro Holen' },
@@ -7667,7 +7673,7 @@ window.CARLON_I18N = {
     en: 'Normal-to-Normal interval — RR after excluding ectopic beats.\nCorrect input for all HRV metrics.',
     de: 'Normal-to-Normal-Intervall — RR nach Ausschluss von ektopischen Schlägen.\nFür alle HRV-Metriken die korrekte Eingangsgröße.'
   },
-};
+});
 
 window.CARLON_LANG = (function() {
   const stored = localStorage.getItem('carlon.viewer.lang');
