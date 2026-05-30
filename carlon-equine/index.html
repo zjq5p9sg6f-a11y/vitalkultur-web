@@ -6114,8 +6114,8 @@ function renderTachogram(data, opts = {}) {
     const cy = y(b.rrMs).toFixed(1);
     // Aura (large blurred halo)
     h += `<circle cx="${cx}" cy="${cy}" r="12" fill="${color}" opacity="0.18" filter="url(#strongGlow)"/>`;
-    // Main dot
-    h += `<circle class="${cls}" cx="${cx}" cy="${cy}" r="4.5" stroke="rgba(255,255,255,0.6)" stroke-width="0.8"/>`;
+    // Main dot — data-beat-index ermöglicht Cross-Highlighting nach Poincaré
+    h += `<circle class="${cls}" data-beat-index="${i}" cx="${cx}" cy="${cy}" r="4.5" stroke="rgba(255,255,255,0.6)" stroke-width="0.8" style="cursor:crosshair"/>`;
     // Tiny vertical tick down to axis (anchor)
     h += `<line x1="${cx}" y1="${cy}" x2="${cx}" y2="${pad.t + innerH}" stroke="${color}" stroke-width="0.6" stroke-dasharray="1 2" opacity="0.5"/>`;
   }
@@ -6133,6 +6133,21 @@ function renderTachogram(data, opts = {}) {
   `;
 
   svg.innerHTML = h;
+
+  // Cross-Highlight-Listener: AVB- + Ektopen-Marker triggern Poincaré-Highlight
+  // (Comet 15/10 #1). Tooltips zeigen die mathematische Beziehung physisch.
+  svg.querySelectorAll('.dot-avb, .dot-ectopic').forEach(dotEl => {
+    dotEl.addEventListener('mouseenter', () => {
+      const idx = parseInt(dotEl.getAttribute('data-beat-index'), 10);
+      const label = dotEl.classList.contains('dot-avb') ? 'AVB' : 'ECTOPIC';
+      if (typeof setBeatHighlight === 'function' && rrData && !isNaN(idx)) {
+        setBeatHighlight(idx, rrData, label);
+      }
+    });
+    dotEl.addEventListener('mouseleave', () => {
+      if (typeof setBeatHighlight === 'function') setBeatHighlight(null);
+    });
+  });
 }
 
 // Poincaré interactive state
@@ -6308,7 +6323,74 @@ function renderPoincare(data, opts = {}) {
       <text class="label-mono"   y="54" style="font-size:11px">${pairs.length} normale Beats</text>
     </g>
   `;
+  // Cross-Highlight-Layer: bleibt leer bis ein Beat im Tachogramm gehovert wird.
+  // dann zeichnet updatePoincareHighlight() einen Outlier-Marker an die
+  // (RR_n, RR_n+1)-Position des gehoverten Beats.
+  h += `<g id="poinca-highlight-layer"></g>`;
   svg.innerHTML = h;
+
+  // Transforms persistieren für externen Highlight-Updater
+  poincaState.transforms = { x, y, padL: pad.l, padT: pad.t, innerW, innerH };
+  // Falls bereits ein Highlight aktiv ist (z.B. nach Daten-Reload), neu zeichnen
+  updatePoincareHighlight();
+}
+
+// =========================================================
+// CROSS-HIGHLIGHTING — Tachogramm ↔ Poincaré (Comet 15/10 #1)
+// Hover auf AVB/Ektopen-Marker im Tachogramm → derselbe Beat
+// leuchtet im Poincaré-Plot als roter/orangener Outlier auf.
+// "Du verstehst die Mathematik physisch" (Comet).
+// =========================================================
+window.crossHighlight = window.crossHighlight || { rrN: null, rrN1: null, label: null };
+
+function setBeatHighlight(idx, rrData, label) {
+  if (idx == null || !rrData || idx < 1 || !rrData[idx]) {
+    window.crossHighlight = { rrN: null, rrN1: null, label: null };
+  } else {
+    window.crossHighlight = {
+      rrN: rrData[idx - 1]?.rrMs,
+      rrN1: rrData[idx]?.rrMs,
+      label: label || rrData[idx].label || 'beat',
+      beatIndex: idx
+    };
+  }
+  updatePoincareHighlight();
+}
+
+function updatePoincareHighlight() {
+  const layer = document.getElementById('poinca-highlight-layer');
+  if (!layer) return;
+  layer.innerHTML = '';
+  const { rrN, rrN1, label, beatIndex } = window.crossHighlight || {};
+  if (rrN == null || rrN1 == null) return;
+  const t = poincaState.transforms;
+  if (!t) return;
+  // Color match Tachogramm-Marker
+  const color = label === 'AVB' ? 'var(--equine)' : 'var(--amber)';
+  const cx = t.x(rrN);
+  const cy = t.y(rrN1);
+  // Clamp to visible area (sonst out-of-bound rendering)
+  if (cx < t.padL - 30 || cx > t.padL + t.innerW + 30 ||
+      cy < t.padT - 30 || cy > t.padT + t.innerH + 30) return;
+  // Pulsing halo + crisp ring + cross-hair
+  layer.innerHTML = `
+    <circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="22" fill="${color}" opacity="0.18">
+      <animate attributeName="r" values="18;26;18" dur="1.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.28;0.10;0.28" dur="1.4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="9" fill="none" stroke="${color}" stroke-width="2.2" filter="drop-shadow(0 0 8px ${color})"/>
+    <circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="2.5" fill="${color}"/>
+    <line x1="${(cx-18).toFixed(1)}" y1="${cy.toFixed(1)}" x2="${(cx-11).toFixed(1)}" y2="${cy.toFixed(1)}" stroke="${color}" stroke-width="1.5"/>
+    <line x1="${(cx+11).toFixed(1)}" y1="${cy.toFixed(1)}" x2="${(cx+18).toFixed(1)}" y2="${cy.toFixed(1)}" stroke="${color}" stroke-width="1.5"/>
+    <line x1="${cx.toFixed(1)}" y1="${(cy-18).toFixed(1)}" x2="${cx.toFixed(1)}" y2="${(cy-11).toFixed(1)}" stroke="${color}" stroke-width="1.5"/>
+    <line x1="${cx.toFixed(1)}" y1="${(cy+11).toFixed(1)}" x2="${cx.toFixed(1)}" y2="${(cy+18).toFixed(1)}" stroke="${color}" stroke-width="1.5"/>
+    <text x="${(cx + 24).toFixed(1)}" y="${(cy - 8).toFixed(1)}" fill="${color}" style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.04em">
+      Beat #${beatIndex} · ${label}
+    </text>
+    <text x="${(cx + 24).toFixed(1)}" y="${(cy + 6).toFixed(1)}" fill="var(--text-secondary)" style="font-family:var(--font-mono);font-size:9.5px;letter-spacing:0.04em">
+      RR<tspan baseline-shift="sub" font-size="7px">n</tspan> ${rrN.toFixed(0)} ms · RR<tspan baseline-shift="sub" font-size="7px">n+1</tspan> ${rrN1.toFixed(0)} ms
+    </text>
+  `;
 }
 
 function renderPSD(data) {
