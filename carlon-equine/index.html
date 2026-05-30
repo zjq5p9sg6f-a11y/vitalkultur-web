@@ -822,6 +822,90 @@ nav {
 .method-transparency .mt-footer strong { color: #d4a574; font-weight: 600; }
 
 /* ============================================================
+   HOLLYWOOD-LOADER — terminal-style "Decoding"-Theater bei jedem
+   loadDemo/loadFile. 100-200 ms Rechenzeit zelebriert die lokale
+   Compute-Power. Skip wenn prefers-reduced-motion.
+   ============================================================ */
+.hollywood-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 6, 10, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.22s ease-out;
+}
+.hollywood-loader.active { display: flex; opacity: 1; }
+.hollywood-loader.fading { opacity: 0; }
+.hl-window {
+  width: min(560px, 92vw);
+  background: #06101a;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 60px var(--cyan-glow-3);
+  overflow: hidden;
+  font-family: var(--font-mono);
+}
+.hl-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.025);
+  border-bottom: 1px solid var(--border-faint);
+}
+.hl-header .hl-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+}
+.hl-header .hl-dot:nth-child(1) { background: #ff5f57; }
+.hl-header .hl-dot:nth-child(2) { background: #febc2e; }
+.hl-header .hl-dot:nth-child(3) { background: #28c840; }
+.hl-header .hl-title {
+  margin-left: 8px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.hl-body {
+  padding: 20px 22px;
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  min-height: 280px;
+}
+.hl-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+}
+.hl-line.in { opacity: 1; transform: none; }
+.hl-line .arrow { color: var(--cyan); flex-shrink: 0; }
+.hl-line .label { flex: 1; color: var(--text-primary); }
+.hl-line .status {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.hl-line .status.running { color: var(--cyan); border: 1px solid var(--cyan-deep); animation: hlPulse 0.6s ease-in-out infinite; }
+.hl-line .status.ok      { color: var(--good); border: 1px solid var(--good); background: rgba(34, 197, 94, 0.08); }
+@keyframes hlPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ============================================================
    LIVE-DEMO-PREVIEW — der Proof-Shot.
    Vet aus Cold-Outreach sieht in 3 Sekunden was hinten rauskommt
    (Real-Screenshot statt Marketing-Text). Wichtigste Sektion auf
@@ -4035,6 +4119,19 @@ footer .links a:hover { color: var(--cyan); }
 </style>
 </head>
 <body>
+
+<!-- Hollywood-Loader Overlay (display:none default, JS aktiviert).
+     Zelebriert die ~150ms Compute-Zeit bei jedem Demo/File-Load:
+     Lipponen-Tarvainen, Welch-PSD, DFA, Bootstrap, Cross-Val. -->
+<div id="hollywoodLoader" class="hollywood-loader" aria-hidden="true">
+  <div class="hl-window">
+    <div class="hl-header">
+      <span class="hl-dot"></span><span class="hl-dot"></span><span class="hl-dot"></span>
+      <span class="hl-title">CARLON · Heart Science Engine</span>
+    </div>
+    <div class="hl-body" id="hollywoodLines"></div>
+  </div>
+</div>
 
 <div class="bg-atmosphere"></div>
 <div class="bg-flower"></div>
@@ -7388,7 +7485,7 @@ function loadFile(file) {
           : `Schema "${schemaName || 'unknown'}" not officially supported. Attempting to render anyway — missing fields will be hidden.`;
         if (!confirm(msg + '\n\n' + ((window.CARLON_LANG === 'de') ? 'Trotzdem laden?' : 'Load anyway?'))) return;
       }
-      render(data);
+      showHollywoodLoader(() => render(data));
     } catch (err) {
       const prefix = (window.CARLON_LANG === 'de') ? 'JSON-Parse-Fehler' : 'JSON parse error';
       alert(prefix + ': ' + err.message);
@@ -8391,7 +8488,71 @@ document.getElementById('liveSaveBtn').addEventListener('click', () => {
   downloadLiveSession(buildLiveDataSnapshot());
 });
 
-function loadDemo() { render(buildDemoData()); }
+// =========================================================
+// Hollywood-Loader — terminal-style "Decoding"-Theater bei jedem
+// Daten-Load. Macht die ~150ms Rechenzeit (Lipponen-Tarvainen,
+// Welch-PSD, DFA, Bootstrap, Cross-Val) sichtbar.
+// Skip bei prefers-reduced-motion (Accessibility).
+// =========================================================
+function showHollywoodLoader(onDone) {
+  const overlay = document.getElementById('hollywoodLoader');
+  const linesEl = document.getElementById('hollywoodLines');
+  if (!overlay || !linesEl) { onDone && onDone(); return; }
+  // Accessibility: respect reduced-motion preference
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) { onDone && onDone(); return; }
+
+  const _isDE = window.CARLON_LANG === 'de';
+  const lines = [
+    { label: _isDE ? 'RR-Intervalle parsen'                              : 'Parsing R-R intervals',                             delay: 70 },
+    { label: _isDE ? 'Artefakt-Filter · Lipponen-Tarvainen 2019'         : 'Artefact filter · Lipponen-Tarvainen 2019',         delay: 110 },
+    { label: _isDE ? 'Zeit-Domain · RMSSD · SDNN · pNN50'                : 'Time-domain · RMSSD · SDNN · pNN50',                 delay: 80 },
+    { label: _isDE ? 'Welch-PSD · 4 Hz cubic-spline-resampling'          : 'Welch-PSD · 4 Hz cubic-spline-resampling',          delay: 120 },
+    { label: _isDE ? 'DFA-α₁ · Detrended Fluctuation Analysis'           : 'DFA-α₁ · Detrended Fluctuation Analysis',           delay: 100 },
+    { label: _isDE ? 'Bootstrap-CI · Politis-Romano (n=1000)'            : 'Bootstrap-CI · Politis-Romano (n=1000)',            delay: 130 },
+    { label: _isDE ? 'Cross-Validation · Welch ↔ Lomb-Scargle'           : 'Cross-validation · Welch ↔ Lomb-Scargle',           delay: 90 },
+    { label: _isDE ? 'UI rendern'                                         : 'Rendering UI',                                       delay: 60 }
+  ];
+
+  linesEl.innerHTML = '';
+  overlay.classList.remove('fading');
+  overlay.classList.add('active');
+
+  let i = 0;
+  function nextLine() {
+    if (i >= lines.length) {
+      // Fade out + done
+      setTimeout(() => {
+        overlay.classList.add('fading');
+        setTimeout(() => {
+          overlay.classList.remove('active', 'fading');
+          onDone && onDone();
+        }, 220);
+      }, 140);
+      return;
+    }
+    const L = lines[i];
+    const row = document.createElement('div');
+    row.className = 'hl-line';
+    row.innerHTML = `<span class="arrow">&gt;</span><span class="label">${L.label}</span><span class="status running">...</span>`;
+    linesEl.appendChild(row);
+    // Animate in
+    requestAnimationFrame(() => row.classList.add('in'));
+    // After delay, mark as OK and proceed
+    setTimeout(() => {
+      const s = row.querySelector('.status');
+      if (s) { s.classList.remove('running'); s.classList.add('ok'); s.textContent = '[OK]'; }
+      i++;
+      nextLine();
+    }, L.delay);
+  }
+  nextLine();
+}
+
+function loadDemo() {
+  // Hollywood-Loader: zelebriert die Compute-Zeit. Render läuft am Ende.
+  showHollywoodLoader(() => render(buildDemoData()));
+}
 document.getElementById('loadDemoBtn').addEventListener('click', loadDemo);
 document.getElementById('loadDemoBtn2').addEventListener('click', loadDemo);
 // Demo-Preview-Section CTA: lädt Demo + scrollt zum Top, damit Vet direkt in
