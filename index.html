@@ -220,8 +220,11 @@
     .product-card:hover::before { opacity: 0.7; }
 
     .product-card.breathwork {
-      --accent: var(--gold); --accent-soft: var(--gold-soft); --accent-glow-color: var(--gold-glow);
-      --accent-glow: radial-gradient(70% 90% at 50% -10%, rgba(212,165,116,0.12), transparent 70%);
+      /* CARLON-CI: Brand-Cyan #00d4c1 für alle CARLON-Sub-Produkte
+         (Breathwork + Equine). Gold war alte Variante — jetzt konsistent
+         mit iOS-App-Icon, Watch-Face, Print-Reports und Equine-Viewer. */
+      --accent: var(--cyan); --accent-soft: var(--cyan-soft); --accent-glow-color: var(--cyan-glow);
+      --accent-glow: radial-gradient(70% 90% at 50% -10%, rgba(0,212,193,0.12), transparent 70%);
     }
     .product-card.equine {
       --accent: var(--cyan); --accent-soft: var(--cyan-soft); --accent-glow-color: var(--cyan-glow);
@@ -450,10 +453,10 @@
       <span data-en="Research-grade" data-de="Forschungs-Grade">Research-grade</span><span class="dot"></span>
       <span data-en="Local-first" data-de="Bleibt auf dem Gerät">Local-first</span>
     </div>
-    <h1 data-en="Tools for the things that <em>actually move us.</em>"
-        data-de="Werkzeuge für die Dinge, die uns <em>wirklich bewegen.</em>">Tools for the things that <em>actually move us.</em></h1>
-    <p data-en="Research-grade wellness apps for heart, breath and movement. Built independently for owners, athletes, veterinarians and researchers who want answers — not promises."
-       data-de="Forschungs-grade Wellness-Apps für Herz, Atem und Bewegung. Unabhängig gebaut für Halter, Sportler, Tierärzte und Forscher, die Antworten wollen — keine Versprechen.">Research-grade wellness apps for heart, breath and movement. Built independently for owners, athletes, veterinarians and researchers who want answers — not promises.</p>
+    <h1 data-en="Peer-reviewed science. <em>Made tangible.</em>"
+        data-de="Peer-reviewte Wissenschaft. <em>Greifbar gemacht.</em>">Peer-reviewed science. <em>Made tangible.</em></h1>
+    <p data-en="Apps for heart, breath and equine HRV — built so the underlying research is something you can feel, decide on, and act on. Not another dashboard. Not another wellness gimmick. Independent, local-first, honest with every number."
+       data-de="Apps für Herz, Atem und equine HRV — so gebaut, dass die dahinterliegende Forschung etwas wird, das du fühlen, entscheiden und handeln kannst. Kein weiteres Dashboard. Kein weiteres Wellness-Gimmick. Unabhängig, lokal-first, ehrlich bei jeder Zahl.">Apps for heart, breath and equine HRV — built so the underlying research is something you can feel, decide on, and act on. Not another dashboard. Not another wellness gimmick. Independent, local-first, honest with every number.</p>
   </section>
 
   <section class="products-section">
@@ -463,7 +466,9 @@
       <a class="product-card breathwork" href="/breathwork/">
         <div class="product-head">
           <div class="product-mark" aria-hidden="true">
-            <img src="/assets/breathwork-mark-224.png" alt="" width="56" height="56">
+            <!-- Echtes iOS-App-Icon (Flower-of-Life-Wordmark in CARLON-Cyan)
+                 statt des alten Gold-Marks. Konsistent mit der App im Store. -->
+            <img src="/assets/breathwork-app-icon-224.png" alt="" width="56" height="56" style="border-radius:12px;">
           </div>
           <span class="product-accent-dot"></span>
         </div>
@@ -564,9 +569,9 @@
   </section>
 
   <section class="about-strip">
-    <div class="label" data-en="The work behind it" data-de="Die Arbeit dahinter">The work behind it</div>
-    <h2 data-en="One philosophy across everything we build: <em>show the science, name the limits, stay honest with every number.</em>"
-        data-de="Eine Philosophie hinter allem was wir bauen: <em>die Wissenschaft zeigen, die Grenzen nennen, bei jeder Zahl ehrlich bleiben.</em>">One philosophy across everything we build: <em>show the science, name the limits, stay honest with every number.</em></h2>
+    <div class="label" data-en="The philosophy" data-de="Die Philosophie">The philosophy</div>
+    <h2 data-en="We don't just show the science — we make it <em>tangible.</em> A vibration at your wrist instead of a chart. A horse's autonomic state in one sentence instead of ten metrics. Peer-reviewed depth, translated into something you can feel, decide on, act on."
+        data-de="Wir zeigen die Wissenschaft nicht nur — wir machen sie <em>greifbar.</em> Eine Vibration am Handgelenk statt eines Diagramms. Den autonomen Zustand eines Pferdes in einem Satz statt zehn Metriken. Peer-reviewte Tiefe, übersetzt in etwas, das du fühlen, entscheiden, handeln kannst.">We don't just show the science — we make it <em>tangible.</em> A vibration at your wrist instead of a chart. A horse's autonomic state in one sentence instead of ten metrics. Peer-reviewed depth, translated into something you can feel, decide on, act on.</h2>
   </section>
 
 </main>
