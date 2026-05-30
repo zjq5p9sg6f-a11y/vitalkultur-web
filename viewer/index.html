@@ -1675,7 +1675,7 @@ svg.chart .peak-label {
    ============================================================ */
 
 /* Cover-Page nur im Print sichtbar */
-.print-cover, .print-section-header, .print-footer { display: none; }
+.print-cover, .print-section-header, .print-footer, .print-methodology { display: none; }
 
 @media print {
   /* @page mit running footer — CARLON-Brand + Seitenzahl auf jeder Seite.
@@ -2049,6 +2049,84 @@ svg.chart .peak-label {
     gap: 3mm !important;
     margin-bottom: 4mm !important;
   }
+
+  /* ------------------------------------------------------------
+     Methodology + Citations — letzte Seite des Vet-Reports.
+     Hochwertig wirkende Print-only Sektion mit Algorithmus-Stack
+     und Studien-Zitaten. Page-break-before erzwingt eigene Seite.
+     ------------------------------------------------------------ */
+  .print-methodology {
+    display: block !important;
+    page-break-before: always;
+    color: #111;
+    padding: 0;
+  }
+  .print-methodology .pm-head {
+    border-bottom: 2px solid #009688;
+    padding-bottom: 4mm;
+    margin-bottom: 6mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .print-methodology .pm-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 8.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #009688;
+    font-weight: 600;
+  }
+  .print-methodology h2 {
+    font-size: 18pt;
+    margin: 0;
+    color: #111;
+    font-weight: 600;
+  }
+  .print-methodology .pm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8mm 10mm;
+    margin-bottom: 8mm;
+  }
+  .print-methodology .pm-block {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .print-methodology .pm-block h3 {
+    font-size: 10.5pt;
+    color: #009688;
+    margin: 0 0 2.5mm 0;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    font-weight: 600;
+  }
+  .print-methodology .pm-block ul {
+    margin: 0;
+    padding-left: 4mm;
+    font-size: 9pt;
+    line-height: 1.55;
+    color: #222;
+  }
+  .print-methodology .pm-block li { margin-bottom: 1.4mm; }
+  .print-methodology .pm-block li strong { color: #111; }
+  .print-methodology .pm-cite {
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    color: #555;
+  }
+  .print-methodology .pm-disclaimer {
+    margin-top: 4mm;
+    border-top: 1px solid #ccc;
+    padding-top: 4mm;
+    font-size: 8.5pt;
+    color: #333;
+    line-height: 1.5;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .print-methodology .pm-disclaimer strong { color: #b00; }
 }
 
 /* AV-Block detail panel */
@@ -3915,6 +3993,86 @@ footer .links a:hover { color: var(--cyan); }
       <div class="body" id="interpretation"></div>
     </div>
 
+    <!-- Print-only: Methodology + Citations final page (15/10 polish).
+         Wirkt im PDF wie das Anhang-Kapitel eines Forschungs-Reports —
+         Algorithmen + Zitate + Disclaimer auf eigener Seite. -->
+    <div class="print-methodology" aria-hidden="true">
+      <div class="pm-head">
+        <div>
+          <div class="pm-eyebrow" data-en="Appendix · Methodology" data-de="Anhang · Methoden">Appendix · Methodology</div>
+          <h2 data-en="Algorithms &amp; Scientific References" data-de="Algorithmen &amp; Wissenschaftliche Referenzen">Algorithms &amp; Scientific References</h2>
+        </div>
+        <div class="pm-eyebrow">CARLON · v1.7.6</div>
+      </div>
+
+      <div class="pm-grid">
+        <div class="pm-block">
+          <h3 data-en="Beat detection &amp; classification" data-de="Beat-Erkennung &amp; Klassifikation">Beat detection &amp; classification</h3>
+          <ul>
+            <li><strong>Lipponen-Tarvainen (2019)</strong> — adaptive RR-correction, ectopic-detection. <span class="pm-cite">J Med Eng Technol 43:173-181</span></li>
+            <li><strong>Sliding-median + cubic-spline</strong> artifact interpolation (Kubios-style)</li>
+            <li><strong>Vagal AV-block detection</strong> — RR ≥1.8× moving-median, equine-physiological. <span class="pm-cite">Reef 1998 · Vet Clin Equine 14:21-43</span></li>
+          </ul>
+        </div>
+
+        <div class="pm-block">
+          <h3 data-en="Time-domain HRV" data-de="Time-Domain HRV">Time-domain HRV</h3>
+          <ul>
+            <li><strong>RMSSD, SDNN, pNN50, NN50</strong> — Task Force standards. <span class="pm-cite">Task Force 1996 · Circulation 93:1043-1065</span></li>
+            <li><strong>Triangular Index (TI)</strong> + RR-histogram bin 7.8125 ms</li>
+            <li><strong>Bootstrap-CI</strong> (n=1000) for all primary metrics</li>
+          </ul>
+        </div>
+
+        <div class="pm-block">
+          <h3 data-en="Frequency-domain &amp; nonlinear" data-de="Frequenz-Domain &amp; Nichtlinear">Frequency-domain &amp; nonlinear</h3>
+          <ul>
+            <li><strong>Welch-PSD</strong> · 4 Hz cubic-spline-resampling · Hann-window</li>
+            <li><strong>Equine PSD bands</strong> VLF 0–0.01 / LF 0.01–0.07 / HF 0.07–0.6 Hz. <span class="pm-cite">Visser 2002 · Equine Vet J 34:280-288</span></li>
+            <li><strong>DFA-α₁</strong> Detrended Fluctuation Analysis (Peng 1995)</li>
+            <li><strong>Multi-Scale Entropy</strong>, Symbolic Dynamics (Porta 2007), Sample Entropy</li>
+          </ul>
+        </div>
+
+        <div class="pm-block">
+          <h3 data-en="Veterinary indicator markers" data-de="Tiermedizinische Indikator-Marker">Veterinary indicator markers</h3>
+          <ul>
+            <li><strong>Acute colic marker</strong> — RMSSD-drop + HR-rise. <span class="pm-cite">Younes 2017 · Equine Vet J 49:212-217</span></li>
+            <li><strong>Respiratory marker</strong> — HF-power (indirect, not diagnostic). <span class="pm-cite">Gehlen 2020 · BMC Vet Res 16:127</span></li>
+            <li><strong>AFib hint</strong> — RMSSD &gt; 302 ms threshold. <span class="pm-cite">Mitchell 2018 · J Vet Intern Med 32:1232-1240</span></li>
+            <li><strong>Disease-risk cutoffs</strong> — SD1 &lt; 30, sEA-RF. <span class="pm-cite">Vitale 2020 · Nyerges-Bohák 2025</span></li>
+            <li><strong>DFA equine zones</strong> &lt;0.5 / 0.5-0.75 / 0.75-1.15 / 1.15-1.5 / &gt;1.5. <span class="pm-cite">Stucke 2015 · Physiol Behav 138:95-105</span></li>
+          </ul>
+        </div>
+
+        <div class="pm-block">
+          <h3 data-en="Data provenance &amp; integrity" data-de="Daten-Provenance &amp; Integrität">Data provenance &amp; integrity</h3>
+          <ul>
+            <li><strong>W3C PROV-O</strong> compliant — every value carries origin agent/activity</li>
+            <li><strong>SHA-256 hash</strong> over canonical JSON for reproducibility</li>
+            <li><strong>Cross-validation</strong> — primary metrics verified against secondary method</li>
+            <li><strong>Schema versioning</strong> — carlon_equine_v1 · open-source</li>
+          </ul>
+        </div>
+
+        <div class="pm-block">
+          <h3 data-en="What this report is &amp; is not" data-de="Was dieser Report ist &amp; nicht ist">What this report is &amp; is not</h3>
+          <ul>
+            <li data-en="<strong>Is:</strong> automated computation of peer-reviewed HRV markers from an RR-interval recording" data-de="<strong>Ist:</strong> automatisierte Berechnung peer-reviewter HRV-Marker aus einer RR-Intervall-Aufnahme"><strong>Is:</strong> automated computation of peer-reviewed HRV markers from an RR-interval recording</li>
+            <li data-en="<strong>Is:</strong> a structured handoff document for the treating veterinarian" data-de="<strong>Ist:</strong> ein strukturiertes Übergabe-Dokument für die behandelnde Tierärztin / den Tierarzt"><strong>Is:</strong> a structured handoff document for the treating veterinarian</li>
+            <li data-en="<strong>Is not:</strong> a diagnosis or replacement for clinical assessment" data-de="<strong>Ist nicht:</strong> eine Diagnose oder Ersatz für klinische Beurteilung"><strong>Is not:</strong> a diagnosis or replacement for clinical assessment</li>
+            <li data-en="<strong>Is not:</strong> an MDR/FDA-cleared medical device" data-de="<strong>Ist nicht:</strong> ein MDR/FDA-zertifiziertes Medizinprodukt"><strong>Is not:</strong> an MDR/FDA-cleared medical device</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pm-disclaimer"
+           data-en="<strong>⚠ Clinical decisions are the veterinarian's responsibility.</strong> CARLON EQUINE provides automated marker computation from validated peer-reviewed studies. Final diagnostic interpretation, differential consideration and therapeutic decisions belong exclusively to the licensed treating veterinarian. This report is not a medical device under MDR/FDA jurisdiction."
+           data-de="<strong>⚠ Klinische Entscheidungen liegen in tierärztlicher Verantwortung.</strong> CARLON EQUINE liefert automatisierte Marker-Berechnungen aus validierten peer-reviewten Studien. Die finale diagnostische Einordnung, Differenzial-Erwägung und Therapie-Entscheidung obliegt ausschließlich der approbierten behandelnden Tierärztin / dem Tierarzt. Dieser Report ist kein Medizinprodukt nach MDR/FDA-Zuständigkeit.">
+        <strong>⚠ Clinical decisions are the veterinarian's responsibility.</strong> CARLON EQUINE provides automated marker computation from validated peer-reviewed studies. Final diagnostic interpretation, differential consideration and therapeutic decisions belong exclusively to the licensed treating veterinarian. This report is not a medical device under MDR/FDA jurisdiction.
+      </div>
+    </div>
+
     <div class="pro-cta">
       <div class="pro-cta-inner">
         <div class="eyebrow" data-en="Pro Tools for Your Own Recordings" data-de="Pro-Tools für Eigene Aufnahmen">Pro Tools for Your Own Recordings</div>
@@ -4415,17 +4573,19 @@ function render(data) {
 
   // Hero
   setText('sessionId', `SESSION · ${(sess.id || '').split('-')[0].toUpperCase()} · ${(data.schema?.version || '').toUpperCase()}`);
-  setText('heroName', s.nameAtTime || 'Anonymes Pferd');
+  setText('heroName', s.nameAtTime || t('subject.anonymous'));
   const date = new Date(sess.startedAt);
-  const dateStr = date.toLocaleString('de-DE', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  const _locale = window.CARLON_LANG === 'de' ? 'de-DE' : 'en-US';
+  const dateStr = date.toLocaleString(_locale, { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
   const durMin = Math.floor((sess.durationSec || 0) / 60);
   const durSec = Math.round((sess.durationSec || 0) % 60);
   // Hero-Meta in 2 Gruppen: Session-Daten + Subject-Daten
   const sessionMeta = `<span>${dateStr.toUpperCase()}</span><span class="dot">·</span>
     <span>${durMin}:${String(durSec).padStart(2,'0')} MIN</span><span class="dot">·</span>
     <span>${sess.beatCount || 0} BEATS</span>`;
+  const _yrUnit = window.CARLON_LANG === 'de' ? 'J.' : 'YR';
   const subjectMeta = [
-    s.ageYears ? `${s.ageYears} J.` : null,
+    s.ageYears ? `${s.ageYears} ${_yrUnit}` : null,
     s.weightKg ? `${s.weightKg} KG` : null,
     s.heightCm ? `${s.heightCm} CM` : null,
     data.device?.model ? data.device.model.toUpperCase() : null
@@ -4612,16 +4772,16 @@ function render(data) {
     const items = [
       // Akute Colic: Younes 2017 (Equine Vet J) + Stewart 2014 Reviews zeigen
       // RMSSD-Reduktion + Tachykardie als HRV-Marker bei akutem Colic.
-      { key: 'acuteColic',        name: 'Akute Colic',          src: 'Younes 2017 · RMSSD-Drop · HR↑',
-        thresholdDesc: 'RMSSD <25ms · HR-Anstieg >20% Baseline' },
+      { key: 'acuteColic',        name: t('ind.name.acuteColic'),        src: 'Younes 2017 · RMSSD-Drop · HR↑',
+        thresholdDesc: 'RMSSD <25 ms · HR Δ >20% baseline' },
       // Umbenannt von "Asthma-Screen" (klinisch nicht aus HRV ableitbar) auf
       // "Respiratorischer Marker" mit Disclaimer. Equine Asthma wird klinisch
       // diagnostiziert (BAL-Zytologie, Histamin-Bronchoprovokation), nicht via HRV.
-      { key: 'respiratoryMarker', name: 'Respiratorischer Marker', src: 'Gehlen 2020 · HF-Power · indirekt',
-        thresholdDesc: 'HF-Power-Status · KEIN Asthma-Diagnose-Tool' },
+      { key: 'respiratoryMarker', name: t('ind.name.respiratoryMarker'), src: 'Gehlen 2020 · HF-Power · indirect',
+        thresholdDesc: 'HF-Power status · NOT an asthma diagnostic' },
       // Mitchell 2018 (Equine AFib EKG-Studie): RMSSD > 302ms hochpredictiv
-      { key: 'afibHint',          name: 'AFib-Hinweis',         src: 'Mitchell 2018 · RMSSD >302ms',
-        thresholdDesc: 'RMSSD >302ms · Symbolic 2ULV >50%' }
+      { key: 'afibHint',          name: t('ind.name.afibHint'),          src: 'Mitchell 2018 · RMSSD >302 ms',
+        thresholdDesc: 'RMSSD >302 ms · Symbolic 2ULV >50%' }
     ];
     const td_ind = data.metrics?.timeDomain || {};
     const sd_ind = data.metrics?.symbolicDynamics || {};
@@ -7347,6 +7507,21 @@ document.getElementById('loadDemoBtn').addEventListener('click', loadDemo);
 document.getElementById('loadDemoBtn2').addEventListener('click', loadDemo);
 document.getElementById('getProBtn').addEventListener('click', () => window.open('https://vitalkultur.com/carlon-equine', '_blank'));
 document.getElementById('printBtn').addEventListener('click', () => {
+  // Pre-flight: ohne Daten kein sinnvoller Druck — bilingualer Hinweis
+  // + Demo-Auto-Load als Fallback (sonst startet User mit leerer Vorlage).
+  if (!window._lastRenderedData) {
+    const isDE = (window.CARLON_LANG || 'en') === 'de';
+    const msg = isDE
+      ? 'Noch keine Aufnahme geladen. Möchtest du jetzt die Demo-Daten laden, um den Druck-Export zu testen?'
+      : 'No recording loaded yet. Would you like to load the demo data now to preview the print export?';
+    if (confirm(msg)) {
+      loadDemo();
+      // render→preparePrintCover läuft synchron; trotzdem 1 Frame warten,
+      // damit die DOM-Updates committet sind, bevor das Print-Dialog öffnet.
+      setTimeout(() => { preparePrintCover(); window.print(); }, 80);
+    }
+    return;
+  }
   // Print-Cover dynamisch vor Print-Open befüllen (aktuelle Daten)
   preparePrintCover();
   window.print();
@@ -7362,19 +7537,29 @@ function preparePrintCover() {
   const q  = lastData.quality || {};
   const setEl = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
 
-  setEl('printCoverName', s.nameAtTime || 'Anonymes Pferd');
-  const ageKg = [s.ageYears ? `${s.ageYears} J.` : null, s.weightKg ? `${s.weightKg} kg` : null, s.heightCm ? `${s.heightCm} cm` : null, s.species].filter(Boolean).join(' · ');
+  const _lang   = window.CARLON_LANG || 'en';
+  const _isDE   = _lang === 'de';
+  const _locale = _isDE ? 'de-DE' : 'en-US';
+
+  setEl('printCoverName', s.nameAtTime || t('subject.anonymous'));
+  const _yr = _isDE ? 'J.' : 'yr';
+  const ageKg = [s.ageYears ? `${s.ageYears} ${_yr}` : null, s.weightKg ? `${s.weightKg} kg` : null, s.heightCm ? `${s.heightCm} cm` : null, s.species].filter(Boolean).join(' · ');
   setEl('printCoverSubject', ageKg || '—');
 
   const date = sess.startedAt ? new Date(sess.startedAt) : new Date();
-  setEl('printCoverDate', date.toLocaleString('de-DE', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }) + ' Uhr');
+  // Time-suffix: DE = " Uhr", EN = nichts (en-US 12-h-format trägt AM/PM selbst).
+  const _dateStr = date.toLocaleString(_locale, { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  setEl('printCoverDate', _dateStr + (_isDE ? ' Uhr' : ''));
   const durMin = Math.floor((sess.durationSec || 0) / 60);
   const durSec = Math.round((sess.durationSec || 0) % 60);
-  setEl('printCoverDuration', `${durMin}:${String(durSec).padStart(2,'0')} min · ${sess.beatCount || 0} Beats`);
+  const _beatsLbl = _isDE ? 'Beats' : 'beats';
+  setEl('printCoverDuration', `${durMin}:${String(durSec).padStart(2,'0')} min · ${sess.beatCount || 0} ${_beatsLbl}`);
   setEl('printCoverDevice', (lastData.device?.model || 'Polar H10') + ' · ' + (lastData.device?.samplingHz || 1000) + ' Hz');
   setEl('printCoverSessionId', (sess.id || '—').split('-')[0]);
   const qPct = 100 - (q.artifactRatePct || 0);
-  setEl('printCoverQuality', `${qPct.toFixed(1)} % · ${q.normalCount || 0} normal · ${q.ectopicBeatCount || 0} ektop · ${lastData.metrics?.equineSpecific?.avBlockCount || 0} AVB`);
+  const _normalLbl = _isDE ? 'normal' : 'normal';
+  const _ectopicLbl = _isDE ? 'ektop' : 'ectopic';
+  setEl('printCoverQuality', `${qPct.toFixed(1)} % · ${q.normalCount || 0} ${_normalLbl} · ${q.ectopicBeatCount || 0} ${_ectopicLbl} · ${lastData.metrics?.equineSpecific?.avBlockCount || 0} AVB`);
   setEl('printCoverSchema', `${lastData.schema?.name || 'carlon_equine_v1'} · ${lastData.schema?.version || '—'}`);
 
   const fmt2 = (v, d=1) => (v === null || v === undefined || isNaN(v)) ? '—' : Number(v).toFixed(d);
@@ -7386,9 +7571,9 @@ function preparePrintCover() {
   // Indikator-Liste statt Auto-Befund (regulatorisch: kein Diagnose-Output)
   const ind = lastData.clinicalIndicators || {};
   const indItems = [
-    { key: 'acuteColic',        name: 'Akute Colic',           cite: 'Younes 2017 · RMSSD-Drop · HR↑' },
-    { key: 'respiratoryMarker', name: 'Respiratorischer Marker', cite: 'Gehlen 2020 · HF-Power (indirekt)' },
-    { key: 'afibHint',     name: 'AFib-Hinweis',     cite: 'Mitchell 2018 · RMSSD-Schwelle' }
+    { key: 'acuteColic',        name: t('ind.name.acuteColic'),         cite: 'Younes 2017 · RMSSD-Drop · HR↑' },
+    { key: 'respiratoryMarker', name: t('ind.name.respiratoryMarker'),  cite: 'Gehlen 2020 · HF-Power (indirect)' },
+    { key: 'afibHint',          name: t('ind.name.afibHint'),           cite: 'Mitchell 2018 · RMSSD threshold' }
   ];
   const avbCount = lastData.metrics?.equineSpecific?.avBlockCount || 0;
   let indHtml = '<ul>';
@@ -7400,12 +7585,12 @@ function preparePrintCover() {
     indHtml += `<li><span class="ind-flag ${flag}"></span><strong>${i.name}:</strong> ${flagText} <span class="ind-cite">(${i.cite})</span>${hint ? ` — ${hint}` : ''}</li>`;
   }
   if (avbCount > 0) {
-    indHtml += `<li><span class="ind-flag amber"></span><strong>Vagale AV-Blocks:</strong> ${avbCount} detektiert <span class="ind-cite">(Reef 1998 · physiologisch beim Pferd in Ruhe)</span></li>`;
+    indHtml += `<li><span class="ind-flag amber"></span><strong>${t('ind.name.vagalAvBlocks')}:</strong> ${avbCount} ${t('ind.vagalAvBlocks.detected')} <span class="ind-cite">(${t('ind.vagalAvBlocks.cite')})</span></li>`;
   }
   indHtml += '</ul>';
   const indEl = document.getElementById('printCoverIndicators');
   if (indEl) indEl.innerHTML = indHtml;
-  setEl('printCoverGenerated', new Date().toLocaleString('de-DE'));
+  setEl('printCoverGenerated', new Date().toLocaleString(_locale));
 }
 
 // Prep bei page-load + bei load des hashes (für --print-to-pdf headless)
@@ -7587,6 +7772,16 @@ Object.assign(window.CARLON_I18N, {
   'ind.no_hint_long':  { en: 'no indication detected',     de: 'kein Hinweis erkannt' },
   'ind.observation_long': { en: 'observation recommended', de: 'Beobachtung empfohlen' },
   'ind.flag_long':     { en: 'marker elevated',           de: 'Marker erhöht' },
+  // Indicator display names — used in main UI grid + print-cover indicator list.
+  'ind.name.acuteColic':        { en: 'Acute Colic',          de: 'Akute Colic' },
+  'ind.name.respiratoryMarker': { en: 'Respiratory Marker',   de: 'Respiratorischer Marker' },
+  'ind.name.afibHint':          { en: 'AFib Hint',            de: 'AFib-Hinweis' },
+  'ind.name.vagalAvBlocks':     { en: 'Vagal AV-Blocks',      de: 'Vagale AV-Blocks' },
+  'ind.vagalAvBlocks.detected': { en: 'detected',             de: 'detektiert' },
+  'ind.vagalAvBlocks.cite':     { en: 'Reef 1998 · physiological at rest in horses',
+                                  de: 'Reef 1998 · physiologisch beim Pferd in Ruhe' },
+  // Subject placeholder for missing horse name.
+  'subject.anonymous':          { en: 'Anonymous Horse',      de: 'Anonymes Pferd' },
 
   // Stationarity
   'stat.stationary':   { en: 'STATIONARY',  de: 'STATIONÄR' },
