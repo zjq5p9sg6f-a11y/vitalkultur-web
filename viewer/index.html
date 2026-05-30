@@ -1724,7 +1724,11 @@ svg.chart .peak-label {
   .bg-atmosphere, .bg-flower, .bg-scanlines, .bg-vignette,
   nav, footer, .pro-cta, #empty, .live-banner, .chart-modal,
   .chart-controls, .drop-zone, .nav-actions, .hero-rays,
-  .chart-tooltip, .chart-crosshair { display: none !important; }
+  .chart-tooltip, .chart-crosshair,
+  /* 2026-05-30 15/10-Print-Polish: kein Marketing/Tool im Vet-Report.
+     AI-Handoff-Panel (copy-buttons + JSON-wall), Floating-TOC,
+     Landing-Blocks (Audience+Science+Disclaimer) gehören nicht in den PDF. */
+  .ai-handoff-panel, .floating-toc, .landing-blocks { display: none !important; }
   main, .content-wrap { padding: 0 !important; max-width: 100% !important; }
 
   /* Cover Page — natürliche Höhe + break-after avoid double-page-bug */
@@ -7428,6 +7432,10 @@ function backToHome() {
   document.getElementById('empty').classList.remove('hidden');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (location.hash) history.replaceState(null, '', location.pathname);
+  // Floating-TOC mit ausblenden — die Inhalts-Navigation gehört zur
+  // Daten-Ansicht, nicht zur Landing-Page.
+  const toc = document.getElementById('floatingToc');
+  if (toc) toc.classList.remove('visible');
 }
 document.getElementById('homeBtn').addEventListener('click', backToHome);
 
