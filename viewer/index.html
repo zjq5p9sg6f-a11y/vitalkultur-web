@@ -7220,7 +7220,8 @@ function backToHome() {
 }
 document.getElementById('homeBtn').addEventListener('click', backToHome);
 
-if (location.hash === '#demo') loadDemo();
+// NOTE: #demo auto-load wird ans Script-Ende verschoben (NACH i18n-Init),
+// weil loadDemo→render→getHrvTip→t() auf window.CARLON_I18N angewiesen ist.
 
 // =========================================================
 // i18n — language toggle (EN/DE), persistent via localStorage
@@ -7507,6 +7508,12 @@ if (_langBtn) {
     localStorage.setItem('carlon.viewer.lang', window.CARLON_LANG);
     applyLang();
   });
+}
+
+// Auto-load Demo wenn URL #demo hat — MUSS am Ende stehen,
+// damit window.CARLON_I18N (für t() in render→getHrvTip) initialisiert ist.
+if (location.hash === '#demo') {
+  try { loadDemo(); } catch(e) { console.warn('Demo-load fehlgeschlagen:', e); }
 }
 </script>
 </body>

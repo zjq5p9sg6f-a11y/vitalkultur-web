@@ -100,11 +100,14 @@
       text-decoration: none; color: var(--text);
     }
     .brand-wordmark img {
-      height: 26px; width: auto;
-      opacity: 0.92;
+      height: 42px; width: auto;
+      opacity: 0.95;
       transition: opacity 200ms;
     }
     .brand-wordmark:hover img { opacity: 1; }
+    @media (max-width: 460px) {
+      .brand-wordmark img { height: 34px; }
+    }
     .brand-tagline-mini {
       font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
       color: var(--text-faint); font-weight: 400;
@@ -372,7 +375,7 @@
       .foot-grid { grid-template-columns: 1fr; gap: 36px; }
     }
     .foot-brand-col img {
-      height: 22px; opacity: 0.85;
+      height: 36px; opacity: 0.9;
       margin-bottom: 16px; display: block;
     }
     .foot-brand-col p {
@@ -444,13 +447,13 @@
     <div class="hero-glow"></div>
     <div class="eyebrow">
       <span data-en="Independent" data-de="Unabhängig">Independent</span><span class="dot"></span>
-      <span data-en="Germany" data-de="Deutschland">Germany</span><span class="dot"></span>
-      <span data-en="Since 2024" data-de="Seit 2024">Since 2024</span>
+      <span data-en="Research-grade" data-de="Forschungs-Grade">Research-grade</span><span class="dot"></span>
+      <span data-en="Local-first" data-de="Lokal-first">Local-first</span>
     </div>
     <h1 data-en="Tools for the things that <em>actually move us.</em>"
         data-de="Werkzeuge für die Dinge, die uns <em>wirklich bewegen.</em>">Tools for the things that <em>actually move us.</em></h1>
-    <p data-en="Research-grade wellness apps for heart, breath and movement. Built independently in Germany for owners, athletes, veterinarians and researchers who want answers — not promises."
-       data-de="Forschungs-grade Wellness-Apps für Herz, Atem und Bewegung. Unabhängig gebaut in Deutschland für Halter, Sportler, Tierärzte und Forscher, die Antworten wollen — keine Versprechen.">Research-grade wellness apps for heart, breath and movement. Built independently in Germany for owners, athletes, veterinarians and researchers who want answers — not promises.</p>
+    <p data-en="Research-grade wellness apps for heart, breath and movement. Built independently for owners, athletes, veterinarians and researchers who want answers — not promises."
+       data-de="Forschungs-grade Wellness-Apps für Herz, Atem und Bewegung. Unabhängig gebaut für Halter, Sportler, Tierärzte und Forscher, die Antworten wollen — keine Versprechen.">Research-grade wellness apps for heart, breath and movement. Built independently for owners, athletes, veterinarians and researchers who want answers — not promises.</p>
   </section>
 
   <section class="products-section">
@@ -543,10 +546,6 @@
 
   <section class="trust-strip">
     <div class="trust-item">
-      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
-      <span data-en="Made in Germany" data-de="Made in Germany">Made in Germany</span>
-    </div>
-    <div class="trust-item">
       <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 L4 6 v6 c0 5 3.5 9 8 10 4.5 -1 8 -5 8 -10 V6z"/></svg>
       <span data-en="GDPR · Local-first" data-de="DSGVO · Lokal-first">GDPR · Local-first</span>
     </div>
@@ -576,8 +575,8 @@
   <div class="foot-grid">
     <div class="foot-brand-col">
       <img src="/assets/vitalkultur-wordmark.png" alt="Vitalkultur" width="120">
-      <p data-en="Independent developer of research-grade wellness apps. Built in Germany since 2024."
-         data-de="Unabhängiger Entwickler von Forschungs-grade Wellness-Apps. Gebaut in Deutschland seit 2024.">Independent developer of research-grade wellness apps. Built in Germany since 2024.</p>
+      <p data-en="Independent developer of research-grade wellness apps."
+         data-de="Unabhängiger Entwickler von Forschungs-grade Wellness-Apps.">Independent developer of research-grade wellness apps.</p>
     </div>
     <div class="foot-links-col">
       <div class="foot-link-group">
@@ -597,8 +596,7 @@
     </div>
   </div>
   <div class="foot-meta">
-    <span>© 2024–2026 Jan Rohwedder · <a href="mailto:jan@vitalkultur.com">jan@vitalkultur.com</a></span>
-    <span data-en="Made in Germany" data-de="Made in Germany">Made in Germany</span>
+    <span>© Jan Rohwedder · <a href="mailto:jan@vitalkultur.com">jan@vitalkultur.com</a></span>
   </div>
 </footer>
 
