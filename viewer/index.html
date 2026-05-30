@@ -252,10 +252,14 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: var(--s-4);
+  /* justify-content: center bewusst weg — sonst werden Landing-Blocks
+     unter den specs-row vom Viewport geclippt. Stattdessen padding-top
+     für initiales Hero-Centering, dann normaler Flow. */
+  justify-content: flex-start;
+  padding: clamp(80px, 12vh, 140px) var(--s-4) var(--s-7);
   position: relative;
-  overflow: hidden;
+  /* overflow:hidden raus — Landing-Content muss scrollbar sein.
+     body hat schon overflow-x:hidden für Glow-Effekte. */
 }
 #empty.dragging .drop-zone {
   border-color: var(--cyan);
