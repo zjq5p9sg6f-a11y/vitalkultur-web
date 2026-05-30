@@ -652,8 +652,11 @@ nav {
   color: var(--text-primary);
 }
 .aud-card p {
-  font-size: 14px; color: var(--text-secondary);
-  line-height: 1.55;
+  /* Comet-Audit 2026-05-30: Body-Text in Zielgruppen-Boxen war auf Mobile
+     etwas schwer lesbar. Etwas heller + erhöhte line-height. */
+  font-size: 14.5px;
+  color: #a8b8c0;
+  line-height: 1.65;
 }
 
 /* Science grid */
@@ -4539,12 +4542,7 @@ footer .links a:hover { color: var(--cyan); }
       </div>
     </div>
 
-    <!-- Print Section Header: Visualizations -->
-    <div class="print-section-header">
-      <div class="num" data-en="Section 1" data-de="Sektion 1">Section 1</div>
-      <h2 class="title" data-en="Time- and Frequency-Domain" data-de="Zeit- und Frequenz-Domain">Time- and Frequency-Domain</h2>
-    </div>
-
+    <!-- Hero (auf Screen sichtbar, im Print versteckt da Cover bereits Subject hat) -->
     <div class="hero-card">
       <div class="subject">
         <div class="session-id" id="sessionId">SESSION · —</div>
@@ -4559,8 +4557,11 @@ footer .links a:hover { color: var(--cyan); }
       </div>
     </div>
 
+    <!-- Executive Summary kommt VOR allen anderen Sektionen — TL;DR-Konvention
+         (PDF-Audit 2026-05-30: vorher rendete Section 1 vor Section 0 in der PDF).
+         Kein "Section X"-Label mehr — Executive Summary ist die Zusammenfassung,
+         nicht eine nummerierte Sektion. Sektion-Nummerierung beginnt unten bei 1. -->
     <div class="print-section-header print-section-summary">
-      <div class="num" data-en="Section 0" data-de="Sektion 0">Section 0</div>
       <h2 class="title" data-en="Executive Summary" data-de="Executive Summary">Executive Summary</h2>
     </div>
 
@@ -4577,6 +4578,14 @@ footer .links a:hover { color: var(--cyan); }
         </div>
       </div>
       <div class="summary-body" id="summaryBody"></div>
+    </div>
+
+    <!-- Section 1 — Time- and Frequency-Domain (renumbered: vorher Section 1 stand,
+         war aber visuell unter Section 0; Executive Summary ist jetzt label-los,
+         Section 1 ist die erste nummerierte Sektion mit Charts/Metriken) -->
+    <div class="print-section-header">
+      <div class="num" data-en="Section 1" data-de="Sektion 1">Section 1</div>
+      <h2 class="title" data-en="Time- and Frequency-Domain" data-de="Zeit- und Frequenz-Domain">Time- and Frequency-Domain</h2>
     </div>
 
     <div class="big-metrics" id="bigMetrics"></div>
@@ -5477,7 +5486,7 @@ function render(data) {
   const intentRaw = (sess.intent || 'session').toLowerCase();
   const showIntent = !(eq.motionContext && (intentRaw === eq.motionContext || (intentRaw === 'screening' && eq.motionContext)));
   const intentHTML = (showIntent ? `<span class="tag">▸ ${(sess.intent || 'session').toUpperCase()}</span>` : '')
-    + (s.species ? `<span class="tag tag-equine">${s.species.toUpperCase()}</span>` : '')
+    + (s.species ? `<span class="tag tag-equine">${(s.species.toLowerCase()==='horse' && window.CARLON_LANG==='de' ? 'PFERD' : s.species.toUpperCase())}</span>` : '')
     + (motionLabel ? `<span class="tag" style="background:rgba(63,224,164,0.12);border-color:var(--good);color:var(--good)">${motionLabel}</span>` : '');
   document.getElementById('heroIntent').innerHTML = intentHTML;
 
@@ -8434,7 +8443,9 @@ function preparePrintCover() {
 
   setEl('printCoverName', s.nameAtTime || t('subject.anonymous'));
   const _yr = _isDE ? 'J.' : 'yr';
-  const ageKg = [s.ageYears ? `${s.ageYears} ${_yr}` : null, s.weightKg ? `${s.weightKg} kg` : null, s.heightCm ? `${s.heightCm} cm` : null, s.species].filter(Boolean).join(' · ');
+  // species i18n: in DE-Locale "horse" → "Pferd" (Vet-Audit: PDF zeigte "horse" als hardcoded EN-Wort in DE-Cover-Subjectline).
+  const _speciesLbl = s.species ? (s.species.toLowerCase()==='horse' && _isDE ? 'Pferd' : s.species) : null;
+  const ageKg = [s.ageYears ? `${s.ageYears} ${_yr}` : null, s.weightKg ? `${s.weightKg} kg` : null, s.heightCm ? `${s.heightCm} cm` : null, _speciesLbl].filter(Boolean).join(' · ');
   setEl('printCoverSubject', ageKg || '—');
 
   const date = sess.startedAt ? new Date(sess.startedAt) : new Date();
