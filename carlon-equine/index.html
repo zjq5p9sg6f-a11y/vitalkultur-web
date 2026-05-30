@@ -766,6 +766,59 @@ nav {
 }
 
 /* ============================================================
+   METHOD-TRANSPARENCY — Vet-Audit-Antwort.
+   Macht Cutoffs, Equine-Ranges + Regulatorik-Status explizit
+   (Comet-Vet-Audit 2026-05-30: "Quellenliste sieht gut aus, aber
+   Methoden-Cutoffs nicht transparent → Vet-Skepsis").
+   ============================================================ */
+.method-transparency {
+  position: relative;
+  z-index: 5;
+  max-width: 1100px;
+  margin: 24px auto 0;
+  padding: 18px clamp(20px, 3vw, 28px);
+  background: linear-gradient(135deg, rgba(212,165,116,0.05) 0%, rgba(6,16,26,0.4) 100%);
+  border: 1px solid rgba(212,165,116,0.22);
+  border-radius: 14px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.method-transparency .mt-head {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #d4a574;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.method-transparency .mt-grid {
+  display: grid;
+  gap: 12px 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.method-transparency .mt-item strong {
+  color: var(--text-primary);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 2px;
+}
+.method-transparency .mt-cite {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #d4a574;
+  letter-spacing: 0.08em;
+}
+.method-transparency .mt-footer {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(212,165,116,0.20);
+  font-size: 11.5px;
+}
+.method-transparency .mt-footer strong { color: #d4a574; font-weight: 600; }
+
+/* ============================================================
    WHY-HRV — Storyline-Section vor Beta-Card
    Ursache→Indikator→Lösung in 3 Spalten
    ============================================================ */
@@ -1058,6 +1111,8 @@ nav {
   .fact-card .fc-value { font-size: 18px; }
   .fact-card .fc-text { font-size: 11px; }
   .fact-card .fc-detail { font-size: 8px; letter-spacing: 0.08em; }
+  .method-transparency { margin: 16px 14px 0; padding: 14px 16px; font-size: 11.5px; }
+  .method-transparency .mt-grid { gap: 10px 16px; }
   .why-hrv { margin-top: 64px; padding: 0 14px; }
   .why-hrv-title { margin-bottom: 28px; }
   .why-hrv-grid { gap: 14px; }
@@ -3823,7 +3878,11 @@ footer .links a:hover { color: var(--cyan); }
         <span class="sub">Heart Science</span>
       </div>
     </div>
-    <div class="nav-status">
+    <!-- Beta-Phase: "System Operational" wirkte als Tech-Theater (Vet-Audit:
+         "was wäre wenn da SYSTEM DOWN stünde, soll ich dann nicht testen?").
+         display:none — Status-Signal ergibt nur Sinn wenn echte Health-Probe
+         läuft. Re-Enable nach Backend-Integration. -->
+    <div class="nav-status" style="display:none">
       <span class="status-dot"></span>
       <span data-en="System Operational" data-de="System Operativ">System Operational</span>
     </div>
@@ -3832,7 +3891,10 @@ footer .links a:hover { color: var(--cyan); }
         <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
         <span data-i18n="nav.demo" data-en="Demo" data-de="Demo">Demo</span>
       </button>
-      <button class="btn btn-ghost" id="loadFileBtn" data-i18n="nav.openjson" data-en="Open JSON" data-de="JSON Öffnen">Open JSON</button>
+      <!-- "Open JSON" Header-Button in Beta-Phase versteckt (Vet-Audit: wirkt
+           als Tech-Bro-Signal "du bist nicht die Zielgruppe"). Die Drop-Zone
+           im Empty-State übernimmt File-Loading mit warmer Sprache. -->
+      <button class="btn btn-ghost" id="loadFileBtn" data-i18n="nav.openjson" data-en="Open JSON" data-de="JSON Öffnen" style="display:none">Open JSON</button>
       <button class="btn btn-ghost" id="liveConnectNavBtn" style="color:var(--cyan);border-color:var(--cyan-deep);display:inline-flex;align-items:center;gap:6px;">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="filter:drop-shadow(0 0 4px var(--cyan-glow-1))"><path d="M13 2L4.09 12.97a1 1 0 0 0 .76 1.65H11l-2 7.38 8.91-10.97a1 1 0 0 0-.76-1.65H13z"/></svg>
         <span data-i18n="nav.liveh10" data-en="Live H10" data-de="Live H10">Live H10</span>
@@ -3878,8 +3940,8 @@ footer .links a:hover { color: var(--cyan); }
   </div>
 
   <div class="usp-claim" data-i18n="empty.claim"
-       data-en='We decode your horse&apos;s health.<br><span class="usp-claim-sub">Heartbeat by heartbeat.</span>'
-       data-de='Wir decodieren die Gesundheit deines Pferdes.<br><span class="usp-claim-sub">Herzschlag für Herzschlag.</span>'>We decode your horse's health.<br><span class="usp-claim-sub">Heartbeat by heartbeat.</span></div>
+       data-en='RR intervals, autonomic balance, vagal tone.<br><span class="usp-claim-sub">Made visible — for vets, owners, research.</span>'
+       data-de='RR-Intervalle, autonome Balance, vagaler Tonus.<br><span class="usp-claim-sub">Sichtbar gemacht — für Tierärzte, Halter, Forschung.</span>'>RR intervals, autonomic balance, vagal tone.<br><span class="usp-claim-sub">Made visible — for vets, owners, research.</span></div>
   <div class="usp-pills">
     <div class="usp-pill"><b>1000 Hz</b><span data-i18n="empty.pill1" data-en="Polar H10 · ECG-grade" data-de="Polar H10 · EKG-grade">Polar H10 · ECG-grade</span></div>
     <div class="usp-pill"><b data-i18n="empty.pill2_n" data-en="25 metrics" data-de="25 Metriken">25 metrics</b><span data-i18n="empty.pill2" data-en="Research-grade export" data-de="Forschungs-grade Export">Research-grade export</span></div>
@@ -3972,6 +4034,50 @@ footer .links a:hover { color: var(--cyan); }
            data-de="Jeder JSON-Export trägt Integritäts-Hash + W3C-PROV-Erzeugungs-Kette. Reviewer-grade Reproducibility, audit-fest.">Jeder JSON-Export mit Hash + Provenance-Chain — audit-fest.</div>
       <div class="fc-detail" data-en="W3C PROV-O · FAIR · Open-Schema" data-de="W3C PROV-O · FAIR · Open-Schema">W3C PROV-O · FAIR · Open-Schema</div>
     </div>
+  </div>
+
+  <!-- ============================================================
+       METHOD-TRANSPARENCY — Vet-Audit-Antwort.
+       Macht equine-spezifische Cutoffs explizit (damit Vet nicht denkt
+       "die haben Human-Werte 1:1 übernommen") + Regulatorik-Status
+       sichtbar oben statt unten im Footer.
+       ============================================================ -->
+  <div class="method-transparency">
+    <div class="mt-head"
+         data-en="Method transparency · equine-specific"
+         data-de="Methoden-Transparenz · equine-spezifisch">Method transparency · equine-specific</div>
+    <div class="mt-grid">
+      <div class="mt-item">
+        <strong data-en="PSD bands (equine)" data-de="PSD-Bänder (equine)">PSD bands (equine)</strong>
+        <span data-en="VLF 0–0.01 · LF 0.01–0.07 · HF 0.07–0.6 Hz — angepasst an niedrigere Ruhe-HF und Atemfrequenz des Pferdes (nicht Human-TF-1996)."
+              data-de="VLF 0–0.01 · LF 0.01–0.07 · HF 0.07–0.6 Hz — angepasst an niedrigere Ruhe-HF und Atemfrequenz des Pferdes (nicht Human-TF-1996).">VLF 0–0.01 · LF 0.01–0.07 · HF 0.07–0.6 Hz — angepasst an niedrigere Ruhe-HF und Atemfrequenz des Pferdes (nicht Human-TF-1996).</span>
+        <span class="mt-cite">Visser 2002 · Equine Vet J 34:280-288</span>
+      </div>
+      <div class="mt-item">
+        <strong data-en="RMSSD reference range (equine, at rest)"
+                data-de="RMSSD-Referenzbereich (equine, in Ruhe)">RMSSD reference range (equine, at rest)</strong>
+        <span data-en="80–250 ms typisch für Warmblut/Sportpferd in Ruhe — Human-Cutoffs (20–60 ms) sind nicht übertragbar."
+              data-de="80–250 ms typisch für Warmblut/Sportpferd in Ruhe — Human-Cutoffs (20–60 ms) sind nicht übertragbar.">80–250 ms typisch für Warmblut/Sportpferd in Ruhe — Human-Cutoffs (20–60 ms) sind nicht übertragbar.</span>
+        <span class="mt-cite">Stucke 2015 · Physiol Behav 138:95-105</span>
+      </div>
+      <div class="mt-item">
+        <strong data-en="AV-block classification"
+                data-de="AV-Block-Klassifikation">AV-block classification</strong>
+        <span data-en="Detektiert werden Mobitz-Typ-I-Pausen (2°-AV-Block) — beim ruhenden Pferd physiologisch (vagaler Reflex), verschwinden bei Belastung. Keine Detektion höhergradiger Blocks."
+              data-de="Detektiert werden Mobitz-Typ-I-Pausen (2°-AV-Block) — beim ruhenden Pferd physiologisch (vagaler Reflex), verschwinden bei Belastung. Keine Detektion höhergradiger Blocks.">Detektiert werden Mobitz-Typ-I-Pausen (2°-AV-Block) — beim ruhenden Pferd physiologisch (vagaler Reflex), verschwinden bei Belastung. Keine Detektion höhergradiger Blocks.</span>
+        <span class="mt-cite">Reef 1998 · Vet Clin Equine 14:21-43</span>
+      </div>
+      <div class="mt-item">
+        <strong data-en="AFib screening · RR-only"
+                data-de="AFib-Screening · RR-only">AFib screening · RR-only</strong>
+        <span data-en="Polar H10 liefert RR-Intervalle, keine P-Wellen. Screening erfolgt über extreme RR-Irregularität (RMSSD > 302 ms Schwelle). Kein Ersatz für 12-Kanal-EKG bei Verdacht."
+              data-de="Polar H10 liefert RR-Intervalle, keine P-Wellen. Screening erfolgt über extreme RR-Irregularität (RMSSD > 302 ms Schwelle). Kein Ersatz für 12-Kanal-EKG bei Verdacht.">Polar H10 liefert RR-Intervalle, keine P-Wellen. Screening erfolgt über extreme RR-Irregularität (RMSSD > 302 ms Schwelle). Kein Ersatz für 12-Kanal-EKG bei Verdacht.</span>
+        <span class="mt-cite">Mitchell 2018 · J Vet Intern Med 32:1232-1240</span>
+      </div>
+    </div>
+    <div class="mt-footer"
+         data-en="<strong>⚠ Regulatorik:</strong> CARLON Equine ist ein Forschungs- und Beobachtungs-Werkzeug, <strong>kein Medizinprodukt</strong> unter MDR oder FDA. Alle on-screen Flags sind Screening-Indikatoren, die eine tierärztliche Folge-Konsultation erfordern — niemals Diagnosen."
+         data-de="<strong>⚠ Regulatorik:</strong> CARLON Equine ist ein Forschungs- und Beobachtungs-Werkzeug, <strong>kein Medizinprodukt</strong> unter MDR oder FDA. Alle on-screen Flags sind Screening-Indikatoren, die eine tierärztliche Folge-Konsultation erfordern — niemals Diagnosen."><strong>⚠ Regulatorik:</strong> CARLON Equine ist ein Forschungs- und Beobachtungs-Werkzeug, <strong>kein Medizinprodukt</strong> unter MDR oder FDA. Alle on-screen Flags sind Screening-Indikatoren, die eine tierärztliche Folge-Konsultation erfordern — niemals Diagnosen.</div>
   </div>
 
   <!-- ============================================================
