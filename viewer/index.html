@@ -3471,7 +3471,9 @@ footer .links a:hover { color: var(--cyan); }
       </button>
       <button class="btn btn-ghost" id="printBtn" title="Print report / save as PDF (Cmd+P)" data-i18n="nav.print" data-en="Print" data-de="Drucken" style="display:none">Print</button>
       <button class="btn btn-ghost" id="langToggleBtn" title="Switch language" style="font-family:var(--font-mono);letter-spacing:1px;min-width:54px;">EN | DE</button>
-      <button class="btn btn-primary" id="getProBtn" data-i18n="nav.pro" data-en="Get Pro" data-de="Pro Holen">Get Pro</button>
+      <!-- Beta-Phase: Pro-CTA + Pricing erst nach Tierklinik/Halter-Feedback finalisieren.
+           Button bleibt im DOM, ist nur unsichtbar — schneller Re-Enable nach Pricing-Entscheid. -->
+      <button class="btn btn-primary" id="getProBtn" data-i18n="nav.pro" data-en="Get Pro" data-de="Pro Holen" style="display:none">Get Pro</button>
     </div>
   </div>
 </nav>
@@ -4073,7 +4075,10 @@ footer .links a:hover { color: var(--cyan); }
       </div>
     </div>
 
-    <div class="pro-cta">
+    <!-- Beta-Phase: Pricing-Tier-Box deaktiviert. Nach Feedback aus
+         Tierklinik-Tests + Halter-Tests final konzipieren (Personae,
+         Preise, Tier-Auswahl). Bis dahin: Markup bleibt als Vorlage. -->
+    <div class="pro-cta" style="display:none">
       <div class="pro-cta-inner">
         <div class="eyebrow" data-en="Pro Tools for Your Own Recordings" data-de="Pro-Tools für Eigene Aufnahmen">Pro Tools for Your Own Recordings</div>
         <div class="title" data-en="Use CARLON EQUINE <strong>Heart Science</strong> yourself." data-de="CARLON EQUINE <strong>Heart Science</strong> selber nutzen.">Use CARLON EQUINE <strong>Heart Science</strong> yourself.</div>
