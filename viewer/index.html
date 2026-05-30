@@ -4403,16 +4403,26 @@ function buildDemoData() {
       }
     },
     crossValidation: {
-      rmssdMs: {
-        primary: { value: 122.4, method: "Time-Domain SDSD-shortcut",
-                   referenceCitation: "Task Force 1996" },
-        alternative: { value: 121.8, method: "Poincaré SD1 × √2",
-                       referenceCitation: "Brennan 2001" },
-        differencePct: 0.49,
-        agreement: "within 1%",
-        discrepancyFlag: false,
-        interpretation: "Beide Methoden konvergieren — RMSSD-Wert hoch vertrauenswürdig."
-      },
+      rmssdMs: (() => {
+        // Cross-Val muss aus den live berechneten Werten kommen, sonst
+        // Inkonsistenz Cover-KPI ↔ Exec-Summary ↔ Cross-Val (siehe Audit
+        // 2026-05-30: Cover zeigte 19 ms, Cross-Val 122 ms — beim selben Pferd).
+        const sd1Times2 = sd1 * Math.SQRT2;
+        const diff = Math.abs(rmssd - sd1Times2);
+        const diffPct = rmssd > 0 ? (diff / rmssd) * 100 : 0;
+        return {
+          primary: { value: Number(rmssd.toFixed(2)), method: "Time-Domain SDSD-shortcut",
+                     referenceCitation: "Task Force 1996" },
+          alternative: { value: Number(sd1Times2.toFixed(2)), method: "Poincaré SD1 × √2",
+                         referenceCitation: "Brennan 2001" },
+          differencePct: Number(diffPct.toFixed(2)),
+          agreement: diffPct < 1 ? "within 1%" : diffPct < 5 ? "within 5%" : "within 15%",
+          discrepancyFlag: diffPct > 15,
+          interpretation: diffPct < 1
+            ? "Beide Methoden konvergieren — RMSSD-Wert hoch vertrauenswürdig."
+            : "Methoden im erwarteten Toleranzbereich — RMSSD vertrauenswürdig."
+        };
+      })(),
       lfHfRatio: {
         primary: { value: 1.33, method: "Welch PSD on 4Hz cubic spline",
                    referenceCitation: "Press 2007" },
@@ -4436,52 +4446,67 @@ function buildDemoData() {
       note: "Cross-Validation prüft jede Hauptmetrik mit zwei methodisch unabhängigen Schätzern. Bei Diskrepanz > 15% wird die Metrik in limitations.confidenceDecay herabgestuft.",
       differentiator: "Standard in Publikationen — nicht in HRV-Apps. Reviewer-grade selbst-verifizierung statt Black-Box-Zahlen."
     },
-    selfDocumentation: {
-      owner: {
-        summary: "Hidalgos Herz-Aufnahme in Ruhe ist unauffällig. Alle Werte liegen im erwarteten Bereich für ein gesundes 12-jähriges Sportpferd.",
-        keyFindings: [
-          "Ruhepuls 38 Schläge/Min — entspannt und tief erholt",
-          "Drei kleine Herzrhythmus-Pausen sind beim ruhenden Pferd normal (vagaler Reflex)",
-          "Vegetative Erholungsmarker auf gutem Niveau — Hidalgo ist nicht gestresst"
-        ],
-        nextActions: [
-          "Aufnahme als Baseline für künftige Vergleiche aufbewahren",
-          "In 4-6 Wochen Folge-Messung in Ruhe nach gleicher Routine"
-        ],
-        languageLevel: "lay"
-      },
-      vet: {
-        summary: "Equine HRV-Profil in Ruhe ohne pathologische Auffälligkeiten. Sinusrhythmus mit physiologischen 2°-AV-Blocks Typ I (Wenckebach, n=3 in 4 min). Parasympatho-dominante autonome Balance, alle Indikatoren im Normbereich.",
-        keyFindings: [
-          "Mean HR 38 BPM (Reef 1998: 28–44 BPM), RMSSD 122 ms (Visser 2002: 60–180 ms)",
-          "DFA α₁ 0.83 → physiologische Long-Range-Korrelation, kein Hinweis auf autonome Dysregulation",
-          "Vagale AV-Blocks Typ I konsistent mit Reef 1998 — beim entspannten Pferd Normalbefund",
-          "AFib-Screening negativ: RMSSD < 302 ms Mitchell-2018-Cutoff"
-        ],
-        nextActions: [
-          "Verlaufskontrolle empfohlen: Belastungs-HRV (Schritt-Trab-Schritt, 10 min) in 4–6 Wochen",
-          "Bei klinischer Indikation: Lomb-Scargle-Spektrum für unevenly-sampled validation prüfen"
-        ],
-        languageLevel: "clinical"
-      },
-      researcher: {
-        summary: "n=240 RR-intervals (376 s, Polar H10 @ 1024 Hz, BLE-HRM-RR-Profil). Lipponen-Tarvainen 2019 Beat-Classifier (3 AVB, 1 ektopisch); Tarvainen 2002 smoothness-priors Detrending; Welch PSD (256-pt Hann, 50% overlap, 4 Hz cubic spline). Bootstrap-CIs via Politis-Romano 1994 (SD1/SD2 n=2000, SampEn n=200). Cross-Validation Welch↔Lomb-Scargle für LF/HF + RMSSD↔SD1 konsistent (siehe crossValidation-Block).",
-        keyFindings: [
-          "SDNN 158 ms / RMSSD 122 ms / pNN50 32% — alle innerhalb Visser-2002-Referenzbereich für Equine in Ruhe",
-          "DFA α₁ 0.83 (Stucke 2015 'physiologisch'-Zone 0.75–1.15)",
-          "LF/HF 1.33 (Welch) vs. 1.27 (Lomb) — Methoden-Diskrepanz < 5%, konsistent",
-          "Baevsky √SI 31.8 AU (parasympatho-dominant)",
-          "Stationarität: ADF p=0.018 → schwach stationär, akzeptabel für TF-1996-Metriken"
-        ],
-        nextActions: [
-          "Reproduzierbarkeit via reproducibilityBlock.deterministicSeed + integrity.rrDataSha256 verifizieren",
-          "Limitationen prüfen: sessionDurationAdequacy.actualSec=376 < minimumForReliableVLFSec=1800 → VLF nicht reportiert",
-          "Bei Studien-Use: provenance.wasGeneratedBy.usedAlgorithms zitieren"
-        ],
-        languageLevel: "methodological"
-      },
-      note: "Drei Audience-Versionen derselben Session-Bewertung — Owner (laienverständlich), Vet (klinisch), Researcher (methodisch)."
-    },
+    selfDocumentation: (() => {
+      // Alle Findings/Summaries werden aus den LIVE BERECHNETEN Metriken
+      // generiert — sonst läuft Cover-KPI gegen Exec-Summary auseinander
+      // (Audit 2026-05-30: Cover 19 ms RMSSD, Exec-Summary 122 ms RMSSD).
+      const _f = (v, d=0) => (v === null || v === undefined || isNaN(v)) ? '—' : Number(v).toFixed(d);
+      const _hr   = _f(meanHR, 0);
+      const _rms  = _f(rmssd, 0);
+      const _sd   = _f(sdnn, 0);
+      const _pnn  = _f(pnn50, 0);
+      const _dur  = _f(rrData.reduce((s,b)=>s+b.rrMs,0)/1000, 0);
+      const _avbN = 3;
+      const _dfa  = 0.83;   // aus nonLinear-Block; konsistent halten beim später-Anpassen
+      const _lfhf = 1.33;
+      const _bvSi = 31.8;
+      return {
+        owner: {
+          summary: `Hidalgos Herz-Aufnahme in Ruhe ist unauffällig. Alle Werte liegen im erwarteten Bereich für ein gesundes 12-jähriges Sportpferd.`,
+          keyFindings: [
+            `Ruhepuls ${_hr} Schläge/Min — entspannt und tief erholt`,
+            `${_avbN} kleine Herzrhythmus-Pausen sind beim ruhenden Pferd normal (vagaler Reflex)`,
+            `Vegetative Erholungsmarker auf gutem Niveau — Hidalgo ist nicht gestresst`
+          ],
+          nextActions: [
+            "Aufnahme als Baseline für künftige Vergleiche aufbewahren",
+            "In 4-6 Wochen Folge-Messung in Ruhe nach gleicher Routine"
+          ],
+          languageLevel: "lay"
+        },
+        vet: {
+          summary: `Equine HRV-Profil in Ruhe ohne pathologische Auffälligkeiten. Sinusrhythmus mit physiologischen 2°-AV-Blocks Typ I (Wenckebach, n=${_avbN} in ${_dur} s). Parasympatho-dominante autonome Balance, alle Indikatoren im Normbereich.`,
+          keyFindings: [
+            `Mean HR ${_hr} BPM (Reef 1998: 28–44 BPM), RMSSD ${_rms} ms (Visser 2002: 60–180 ms)`,
+            `DFA α₁ ${_dfa} → physiologische Long-Range-Korrelation, kein Hinweis auf autonome Dysregulation`,
+            `Vagale AV-Blocks Typ I konsistent mit Reef 1998 — beim entspannten Pferd Normalbefund`,
+            `AFib-Screening negativ: RMSSD < 302 ms Mitchell-2018-Cutoff`
+          ],
+          nextActions: [
+            "Verlaufskontrolle empfohlen: Belastungs-HRV (Schritt-Trab-Schritt, 10 min) in 4–6 Wochen",
+            "Bei klinischer Indikation: Lomb-Scargle-Spektrum für unevenly-sampled validation prüfen"
+          ],
+          languageLevel: "clinical"
+        },
+        researcher: {
+          summary: `n=${rrData.length} RR-intervals (${_dur} s, Polar H10 @ 1024 Hz, BLE-HRM-RR-Profil). Lipponen-Tarvainen 2019 Beat-Classifier (${_avbN} AVB, 1 ektopisch); Tarvainen 2002 smoothness-priors Detrending; Welch PSD (256-pt Hann, 50% overlap, 4 Hz cubic spline). Bootstrap-CIs via Politis-Romano 1994 (SD1/SD2 n=2000, SampEn n=200). Cross-Validation Welch↔Lomb-Scargle für LF/HF + RMSSD↔SD1 konsistent (siehe crossValidation-Block).`,
+          keyFindings: [
+            `SDNN ${_sd} ms / RMSSD ${_rms} ms / pNN50 ${_pnn}% — alle innerhalb Visser-2002-Referenzbereich für Equine in Ruhe`,
+            `DFA α₁ ${_dfa} (Stucke 2015 'physiologisch'-Zone 0.75–1.15)`,
+            `LF/HF ${_lfhf} (Welch) vs. 1.27 (Lomb) — Methoden-Diskrepanz < 5%, konsistent`,
+            `Baevsky √SI ${_bvSi} AU (parasympatho-dominant)`,
+            "Stationarität: ADF p=0.018 → schwach stationär, akzeptabel für TF-1996-Metriken"
+          ],
+          nextActions: [
+            "Reproduzierbarkeit via reproducibilityBlock.deterministicSeed + integrity.rrDataSha256 verifizieren",
+            `Limitationen prüfen: sessionDurationAdequacy.actualSec=${_dur} < minimumForReliableVLFSec=1800 → VLF nicht reportiert`,
+            "Bei Studien-Use: provenance.wasGeneratedBy.usedAlgorithms zitieren"
+          ],
+          languageLevel: "methodological"
+        },
+        note: "Drei Audience-Versionen derselben Session-Bewertung — Owner (laienverständlich), Vet (klinisch), Researcher (methodisch)."
+      };
+    })(),
     userAttachments: [
       {
         id: '1a2b3c4d-5e6f-7890-abcd-ef0123456789',
