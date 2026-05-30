@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <title>RR Logger Pro — Lab-grade RR-Interval Logger · Polar H10 · iPhone</title>
+  <meta name="description" content="RR Logger Pro turns iPhone + Polar H10 into a lab-grade RR-interval logger. 30-hour offline recording, multi-device batch workflows, Kubios-ready exports. Built for HRV researchers, sleep labs and biohackers.">
+  <meta property="og:title" content="RR Logger Pro — Lab-grade RR-Interval Logger">
+  <meta property="og:description" content="Polar H10 → iPhone → Kubios-ready RR exports. Multi-device. 30h offline. For HRV researchers.">
+  <meta property="og:image" content="https://vitalkultur.com/app-icon.png">
+  <link rel="icon" href="/app-icon.png">
+  <link rel="apple-touch-icon" href="/app-icon.png">
+  <link rel="canonical" href="https://vitalkultur.com/rrloggerpro/">
+  <meta property="og:url" content="https://vitalkultur.com/rrloggerpro/">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "RR Logger Pro",
+    "operatingSystem": "iOS 17+",
+    "applicationCategory": "HealthApplication",
+    "audience": {"@type": "Audience", "audienceType": "HRV researchers, sleep labs, biohackers"},
+    "description": "Lab-grade RR-interval logger for Polar H10 chest straps. 30-hour offline recording, multi-device batch trigger/sync, Kubios-ready export (TXT/JSON/CSV).",
+    "creator": {"@type": "Organization", "name": "Vitalkultur", "url": "https://vitalkultur.com"}
+  }
+  </script>
+  <script data-goatcounter="https://vitalkultur.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <style>
+    @font-face {
+      font-family: 'Jost';
+      font-style: normal; font-weight: 100 900; font-display: swap;
+      src: url('/fonts/jost-variable.ttf') format('truetype');
+    }
+    :root {
+      --bg-void: #050505;
+      --bg-near: #0a0a0a;
+      --bg-card: rgba(255,255,255,0.025);
+      --bg-card-hover: rgba(255,255,255,0.045);
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.16);
+      --text: #f4f4f4;
+      --text-soft: rgba(244,244,244,0.78);
+      --text-dim: rgba(244,244,244,0.50);
+      --text-faint: rgba(244,244,244,0.32);
+      --teal: #2a8a7e;
+      --teal-bright: #3fb8a7;
+      --teal-soft: rgba(63,184,167,0.35);
+      --teal-glow: rgba(63,184,167,0.18);
+      --maxw: 1140px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Jost', system-ui, -apple-system, sans-serif;
+      background: var(--bg-void); color: var(--text);
+      font-weight: 300; line-height: 1.55; min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(60% 70% at 50% -10%, rgba(63,184,167,0.08) 0%, transparent 60%),
+        radial-gradient(40% 50% at 100% 100%, rgba(42,138,126,0.05) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    main, header, footer { position: relative; z-index: 1; }
+
+    .topnav {
+      max-width: var(--maxw); margin: 0 auto;
+      padding: 26px 28px 0;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px;
+    }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .breadcrumb a { color: var(--text-soft); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--text); }
+    .breadcrumb .sep { color: var(--text-faint); }
+    .breadcrumb .current { color: var(--teal-bright); font-weight: 500; }
+    .topnav-right { display: flex; gap: 8px; align-items: center; }
+    .lang-toggle {
+      background: transparent; border: 1px solid var(--border-strong);
+      color: var(--text-soft); font-family: ui-monospace, monospace;
+      font-size: 11px; letter-spacing: 0.12em;
+      padding: 7px 12px; border-radius: 8px; cursor: pointer;
+      transition: background 200ms, color 200ms;
+    }
+    .lang-toggle:hover { background: var(--bg-card-hover); color: var(--text); }
+    .lang-toggle .active { color: var(--teal-bright); font-weight: 500; }
+
+    .hero {
+      max-width: var(--maxw); margin: 70px auto 56px;
+      padding: 0 28px; text-align: center;
+    }
+    .hero .eyebrow {
+      font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--teal-bright); font-weight: 500; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 200; line-height: 1.05; letter-spacing: -0.025em;
+      margin-bottom: 26px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(120deg, var(--teal-bright) 0%, var(--teal) 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p {
+      font-size: clamp(17px, 2vw, 21px);
+      color: var(--text-soft); max-width: 660px; margin: 0 auto;
+    }
+
+    /* Lab specs hero — strip of key numbers */
+    .lab-specs {
+      max-width: var(--maxw); margin: 32px auto 0;
+      padding: 0 28px;
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .lab-spec {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 20px;
+      text-align: center;
+    }
+    .lab-spec .v {
+      font-size: 32px; font-weight: 200; color: var(--teal-bright);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .lab-spec .k {
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .section {
+      max-width: var(--maxw); margin: 80px auto 0;
+      padding: 0 28px;
+    }
+    .section-label {
+      font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--teal-bright); font-weight: 500; margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px); font-weight: 300;
+      letter-spacing: -0.015em; line-height: 1.15;
+      max-width: 720px; margin-bottom: 12px;
+    }
+    .section-title em { font-style: normal; color: var(--teal-bright); }
+    .section-sub {
+      font-size: 16px; color: var(--text-soft); max-width: 640px;
+      margin-bottom: 32px;
+    }
+
+    .features-grid {
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .feat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 20px;
+    }
+    .feat-card .feat-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(63,184,167,0.12);
+      display: grid; place-items: center;
+      margin-bottom: 14px;
+      font-size: 18px;
+    }
+    .feat-card .feat-title { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+    .feat-card .feat-desc { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+    /* Export-format showcase */
+    .export-grid {
+      display: grid; gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 8px;
+    }
+    .export-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px 24px;
+    }
+    .export-card .ext {
+      font-family: ui-monospace, monospace;
+      font-size: 11px; letter-spacing: 0.12em;
+      color: var(--teal-bright);
+      padding: 3px 9px; border-radius: 6px;
+      background: rgba(63,184,167,0.10);
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .export-card h4 { font-size: 17px; font-weight: 500; margin-bottom: 6px; }
+    .export-card p { font-size: 13px; color: var(--text-soft); line-height: 1.55; margin-bottom: 12px; }
+    .export-card .tag {
+      display: inline-block;
+      font-size: 11px; color: var(--text-faint);
+      letter-spacing: 0.06em;
+    }
+
+    /* Audience pills */
+    .audience-grid {
+      display: grid; gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .aud-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 18px;
+    }
+    .aud-card .who {
+      font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--teal-bright); margin-bottom: 6px; font-weight: 500;
+    }
+    .aud-card h4 { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+    .aud-card p { font-size: 13px; color: var(--text-soft); line-height: 1.5; }
+
+    /* Disclaimer */
+    .disclaimer-block {
+      background: rgba(63,184,167,0.05);
+      border: 1px solid rgba(63,184,167,0.20);
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-top: 28px;
+      font-size: 13px; color: var(--text-soft);
+      line-height: 1.6;
+    }
+    .disclaimer-block strong { color: var(--teal-bright); font-weight: 500; }
+
+    /* CTA strip */
+    .cta-strip {
+      max-width: var(--maxw); margin: 80px auto 0;
+      padding: 0 28px; text-align: center;
+    }
+    .cta-strip h2 {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 300;
+      letter-spacing: -0.015em; margin-bottom: 14px;
+    }
+    .cta-strip h2 em { font-style: normal; color: var(--teal-bright); }
+    .cta-strip p {
+      font-size: 16px; color: var(--text-soft);
+      max-width: 540px; margin: 0 auto 28px;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--teal-bright); color: #0a2a26;
+      padding: 16px 26px; border-radius: 14px;
+      font-size: 15px; font-weight: 600; letter-spacing: 0.02em;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(63,184,167,0.30);
+      transition: transform 180ms, box-shadow 180ms;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 38px rgba(63,184,167,0.45);
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--teal-bright); text-decoration: none;
+      font-size: 13px; letter-spacing: 0.04em;
+      padding: 14px 0;
+    }
+    .btn-secondary:hover { color: var(--text); }
+    .cta-strip-actions {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* Footer */
+    footer {
+      max-width: var(--maxw); margin: 80px auto 0;
+      padding: 50px 28px;
+      border-top: 1px solid var(--border);
+    }
+    .foot-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 32px;
+    }
+    .foot-brand { font-size: 12px; color: var(--text-soft); letter-spacing: 0.18em; text-transform: uppercase; }
+    .foot-brand small {
+      display: block; font-size: 11px; color: var(--text-faint);
+      letter-spacing: 0.04em; text-transform: none; font-weight: 300;
+      margin-top: 6px;
+    }
+    .foot-links { display: flex; gap: 22px; flex-wrap: wrap; font-size: 12px; }
+    .foot-links a { color: var(--text-dim); text-decoration: none; transition: color 180ms; }
+    .foot-links a:hover { color: var(--text); }
+    .foot-meta { margin-top: 28px; font-size: 11px; color: var(--text-faint); letter-spacing: 0.04em; }
+  </style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="breadcrumb">
+    <a href="/">Vitalkultur</a>
+    <span class="sep">/</span>
+    <span class="current">RR Logger Pro</span>
+  </div>
+  <div class="topnav-right">
+    <button class="lang-toggle" id="langToggle" title="Switch language">
+      <span data-lang-en class="active">EN</span> <span style="opacity:.4">|</span> <span data-lang-de>DE</span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="eyebrow"
+         data-en="Lab grade · Polar H10 · Kubios-ready"
+         data-de="Labor-Grade · Polar H10 · Kubios-ready">Lab grade · Polar H10 · Kubios-ready</div>
+    <h1 data-en="Every heartbeat, <em>logged honestly.</em>"
+        data-de="Jeder Herzschlag, <em>ehrlich geloggt.</em>">Every heartbeat, <em>logged honestly.</em></h1>
+    <p data-en="iPhone + Polar H10 = a lab-grade RR-interval logger. 30-hour offline recording on the chest strap. Multi-device batch workflows. Kubios-ready exports — atomic writes, integrity hashes, zero silent data loss."
+       data-de="iPhone + Polar H10 = ein Labor-grade RR-Intervall-Logger. 30-Stunden-Offline-Aufnahme am Brustgurt. Multi-Device-Batch-Workflows. Kubios-ready Exporte — atomare Writes, Integritäts-Hashes, null stiller Datenverlust.">iPhone + Polar H10 = a lab-grade RR-interval logger. 30-hour offline recording on the chest strap. Multi-device batch workflows. Kubios-ready exports — atomic writes, integrity hashes, zero silent data loss.</p>
+  </section>
+
+  <div class="lab-specs">
+    <div class="lab-spec">
+      <div class="v">30 h</div>
+      <div class="k" data-en="Offline recording" data-de="Offline-Aufnahme">Offline recording</div>
+    </div>
+    <div class="lab-spec">
+      <div class="v">10+</div>
+      <div class="k" data-en="H10 devices" data-de="H10-Geräte">H10 devices</div>
+    </div>
+    <div class="lab-spec">
+      <div class="v">1024 Hz</div>
+      <div class="k" data-en="H10 RR sample" data-de="H10 RR-Sample">H10 RR sample</div>
+    </div>
+    <div class="lab-spec">
+      <div class="v">0 KB</div>
+      <div class="k" data-en="Cloud upload" data-de="Cloud-Upload">Cloud upload</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-label" data-en="What it does" data-de="Was sie macht">What it does</div>
+    <h2 class="section-title"
+        data-en="A research-instrument <em>without the lab budget.</em>"
+        data-de="Ein Forschungs-Instrument <em>ohne Labor-Budget.</em>">A research-instrument <em>without the lab budget.</em></h2>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon">⏱</div>
+        <div class="feat-title" data-en="30-hour offline recording" data-de="30-Stunden-Offline-Aufnahme">30-hour offline recording</div>
+        <div class="feat-desc" data-en="Trigger on the H10. Disconnect the iPhone. Walk away. Sync later via PSFTP."
+                               data-de="Trigger am H10. iPhone trennen. Weggehen. Später per PSFTP syncen.">Trigger on the H10. Disconnect the iPhone. Walk away. Sync later via PSFTP.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⌗</div>
+        <div class="feat-title" data-en="Multi-device batch" data-de="Multi-Device-Batch">Multi-device batch</div>
+        <div class="feat-desc" data-en="5–10+ H10s in a roster. Batch-trigger, batch-sync, stop-all from one iPhone."
+                               data-de="5–10+ H10s in einem Roster. Batch-Trigger, Batch-Sync, Stop-All von einem iPhone aus.">5–10+ H10s in a roster. Batch-trigger, batch-sync, stop-all from one iPhone.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">↻</div>
+        <div class="feat-title" data-en="Live RR-stream" data-de="Live RR-Stream">Live RR-stream</div>
+        <div class="feat-desc" data-en="Real-time tachogram + Poincaré, RR-stale watchdog, force-reconnect on signal drop."
+                               data-de="Echtzeit-Tachogramm + Poincaré, RR-Stale-Watchdog, Force-Reconnect bei Signalverlust.">Real-time tachogram + Poincaré, RR-stale watchdog, force-reconnect on signal drop.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🛡</div>
+        <div class="feat-title" data-en="Hard-stop guardrails" data-de="Hard-Stop-Guardrails">Hard-stop guardrails</div>
+        <div class="feat-desc" data-en="Battery, disk, thermal — automatic refuse-to-start when conditions risk data loss."
+                               data-de="Batterie, Disk, Thermal — automatischer Verweigern-zu-Starten wenn Bedingungen Datenverlust riskieren.">Battery, disk, thermal — automatic refuse-to-start when conditions risk data loss.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📄</div>
+        <div class="feat-title" data-en="Atomic exports" data-de="Atomare Exporte">Atomic exports</div>
+        <div class="feat-desc" data-en="Write-to-temp-then-rename. SHA-256 integrity hash. Never half-written files."
+                               data-de="Write-to-temp-dann-rename. SHA-256 Integritäts-Hash. Nie halb geschriebene Dateien.">Write-to-temp-then-rename. SHA-256 integrity hash. Never half-written files.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">☁</div>
+        <div class="feat-title" data-en="iCloud backup option" data-de="iCloud-Backup-Option">iCloud backup option</div>
+        <div class="feat-desc" data-en="Opt-in iCloud Drive backup. Recordings outlive the iPhone."
+                               data-de="Opt-in iCloud Drive Backup. Aufnahmen überleben das iPhone.">Opt-in iCloud Drive backup. Recordings outlive the iPhone.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label" data-en="Export formats" data-de="Export-Formate">Export formats</div>
+    <h2 class="section-title"
+        data-en="Drops cleanly into <em>your analysis pipeline.</em>"
+        data-de="Passt sauber in <em>deine Analyse-Pipeline.</em>">Drops cleanly into <em>your analysis pipeline.</em></h2>
+    <div class="export-grid">
+      <div class="export-card">
+        <span class="ext">.txt</span>
+        <h4>Kubios HRV</h4>
+        <p data-en="One RR-interval per line in milliseconds. Direct drop-in for Kubios HRV Premium and the open-source variant."
+           data-de="Ein RR-Intervall pro Zeile in Millisekunden. Direkter Drop-In für Kubios HRV Premium und die Open-Source-Variante.">One RR-interval per line in milliseconds. Direct drop-in for Kubios HRV Premium and the open-source variant.</p>
+        <span class="tag" data-en="Forensic-ready" data-de="Forensik-tauglich">Forensic-ready</span>
+      </div>
+      <div class="export-card">
+        <span class="ext">.json</span>
+        <h4>open_hrv_json_v2</h4>
+        <p data-en="Full RR-array + recording metadata + provenance + SHA-256. Renders directly in our browser viewer."
+           data-de="Vollständiges RR-Array + Aufnahme-Metadaten + Provenance + SHA-256. Rendert direkt im Browser-Viewer.">Full RR-array + recording metadata + provenance + SHA-256. Renders directly in our browser viewer.</p>
+        <span class="tag" data-en="Web-viewer compatible" data-de="Web-Viewer-kompatibel">Web-viewer compatible</span>
+      </div>
+      <div class="export-card">
+        <span class="ext">.csv</span>
+        <h4 data-en="Beat-list CSV" data-de="Beat-Liste CSV">Beat-list CSV</h4>
+        <p data-en="Per-beat row with index, timestamp, RR-ms and beat-class (N / AV-Block / Long / Short / Ectopic). For R / Python pipelines."
+           data-de="Pro-Beat-Zeile mit Index, Timestamp, RR-ms und Beat-Klasse (N / AV-Block / Long / Short / Ektopisch). Für R / Python Pipelines.">Per-beat row with index, timestamp, RR-ms and beat-class (N / AV-Block / Long / Short / Ectopic). For R / Python pipelines.</p>
+        <span class="tag" data-en="Python / R friendly" data-de="Python / R freundlich">Python / R friendly</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label" data-en="Built for" data-de="Gebaut für">Built for</div>
+    <h2 class="section-title"
+        data-en="Anyone who needs <em>clean RR data.</em>"
+        data-de="Jeder, der <em>saubere RR-Daten</em> braucht.">Anyone who needs <em>clean RR data.</em></h2>
+    <div class="audience-grid">
+      <div class="aud-card">
+        <div class="who" data-en="HRV researchers" data-de="HRV-Forscher">HRV researchers</div>
+        <h4 data-en="Field studies" data-de="Feldstudien">Field studies</h4>
+        <p data-en="Replace lab-bound recording rigs with iPhone-based mobile setup. Same RR-source (Polar H10), defensible exports."
+           data-de="Labor-gebundene Recording-Rigs durch iPhone-basiertes Mobile-Setup ersetzen. Gleiche RR-Quelle (Polar H10), audit-feste Exporte.">Replace lab-bound recording rigs with iPhone-based mobile setup. Same RR-source (Polar H10), defensible exports.</p>
+      </div>
+      <div class="aud-card">
+        <div class="who" data-en="Sleep labs" data-de="Schlaflabore">Sleep labs</div>
+        <h4 data-en="Overnight HRV tracking" data-de="Nächtliches HRV-Tracking">Overnight HRV tracking</h4>
+        <p data-en="One 8-hour H10 recording sits comfortably in the 30-hour budget. Sync in the morning over PSFTP."
+           data-de="Eine 8-Stunden-H10-Aufnahme passt locker ins 30-Stunden-Budget. Morgens per PSFTP syncen.">One 8-hour H10 recording sits comfortably in the 30-hour budget. Sync in the morning over PSFTP.</p>
+      </div>
+      <div class="aud-card">
+        <div class="who" data-en="Biohackers" data-de="Biohacker">Biohackers</div>
+        <h4 data-en="Personal baseline" data-de="Persönliche Baseline">Personal baseline</h4>
+        <p data-en="Track RMSSD, DFA-α₁ and recovery markers across protocols. Export clean to your own dashboard."
+           data-de="Tracke RMSSD, DFA-α₁ und Recovery-Marker über Protokolle hinweg. Sauber exportieren in dein eigenes Dashboard.">Track RMSSD, DFA-α₁ and recovery markers across protocols. Export clean to your own dashboard.</p>
+      </div>
+      <div class="aud-card">
+        <div class="who" data-en="Citizen scientists" data-de="Citizen-Scientists">Citizen scientists</div>
+        <h4 data-en="Open data contribution" data-de="Open-Data-Beitrag">Open data contribution</h4>
+        <p data-en="Contribute to community datasets in open_hrv_json_v2 format. Reproducible, schema-validated."
+           data-de="Trage zu Community-Datasets im open_hrv_json_v2 Format bei. Reproduzierbar, schema-validiert.">Contribute to community datasets in open_hrv_json_v2 format. Reproducible, schema-validated.</p>
+      </div>
+    </div>
+    <div class="disclaimer-block">
+      <strong data-en="Positioning:" data-de="Positionierung:">Positioning:</strong>
+      <span data-en=" RR Logger Pro is a research and wellness tool. It is not a medical device under MDR or FDA. RR-intervals from the Polar H10 chest strap are processed for research and personal analysis purposes only."
+            data-de=" RR Logger Pro ist ein Forschungs- und Wellness-Werkzeug. Es ist kein Medizinprodukt unter MDR oder FDA. RR-Intervalle vom Polar H10 Brustgurt werden ausschließlich für Forschungs- und persönliche Analyse-Zwecke verarbeitet."> RR Logger Pro is a research and wellness tool. It is not a medical device under MDR or FDA. RR-intervals from the Polar H10 chest strap are processed for research and personal analysis purposes only.</span>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <h2 data-en="Coming to the App Store <em>shortly.</em>"
+        data-de="Kommt <em>in Kürze</em> in den App Store.">Coming to the App Store <em>shortly.</em></h2>
+    <p data-en="Until then: drop us a note if you want early access or want to be notified at launch. The browser viewer at /viewer accepts RR Logger Pro JSON exports today."
+       data-de="Bis dahin: schreib uns für Early-Access oder Launch-Benachrichtigung. Der Browser-Viewer unter /viewer akzeptiert RR-Logger-Pro JSON-Exporte schon heute.">Until then: drop us a note if you want early access or want to be notified at launch. The browser viewer at /viewer accepts RR Logger Pro JSON exports today.</p>
+    <div class="cta-strip-actions">
+      <a class="btn-primary" href="mailto:jan@vitalkultur.com?subject=RR Logger Pro — early access">
+        <span data-en="Request early access" data-de="Early-Access anfragen">Request early access</span>
+        <span>→</span>
+      </a>
+      <a class="btn-secondary" href="/viewer/">
+        <span data-en="Open browser viewer" data-de="Browser-Viewer öffnen">Open browser viewer</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-row">
+    <div class="foot-brand">
+      <a href="/" style="color:inherit;text-decoration:none;">Vitalkultur</a>
+      <small data-en="Part of the Vitalkultur app family" data-de="Teil der Vitalkultur-App-Familie">Part of the Vitalkultur app family</small>
+    </div>
+    <div class="foot-links">
+      <a href="/">Vitalkultur</a>
+      <a href="/breathwork/">Breathwork</a>
+      <a href="/equine/">CARLON Equine</a>
+      <a href="/viewer/" data-en="Viewer" data-de="Viewer">Viewer</a>
+      <a href="/privacy.html" data-en="Privacy" data-de="Datenschutz">Privacy</a>
+      <a href="/support.html" data-en="Support" data-de="Support">Support</a>
+      <a href="/impressum.html">Impressum</a>
+    </div>
+  </div>
+  <div class="foot-meta">© 2024–2026 Jan Rohwedder · jan@vitalkultur.com</div>
+</footer>
+
+<script>
+  (function() {
+    function detectLang() {
+      const stored = localStorage.getItem('vk.lang');
+      if (stored === 'en' || stored === 'de') return stored;
+      return (navigator.language || 'en').toLowerCase().startsWith('de') ? 'de' : 'en';
+    }
+    let lang = detectLang();
+    function applyLang() {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const txt = el.getAttribute('data-' + lang);
+        if (txt != null) el.innerHTML = txt;
+      });
+      document.querySelectorAll('[data-lang-en]').forEach(el => el.classList.toggle('active', lang === 'en'));
+      document.querySelectorAll('[data-lang-de]').forEach(el => el.classList.toggle('active', lang === 'de'));
+    }
+    document.getElementById('langToggle').addEventListener('click', () => {
+      lang = (lang === 'en') ? 'de' : 'en';
+      localStorage.setItem('vk.lang', lang);
+      applyLang();
+    });
+    applyLang();
+  })();
+</script>
+
+</body>
+</html>
