@@ -11,7 +11,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://vitalkultur.com/equine/</loc>
+    <loc>https://vitalkultur.com/viewer/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -19,11 +19,6 @@
     <loc>https://vitalkultur.com/rrloggerpro/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://vitalkultur.com/viewer/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://vitalkultur.com/privacy.html</loc>

@@ -572,6 +572,129 @@ nav {
 }
 
 /* ============================================================
+   LANDING BLOCKS — Marketing-Content im Empty-State
+   (For-whom · Science · Disclaimer · CTA)
+   ============================================================ */
+.landing-blocks {
+  position: relative;
+  z-index: 5;
+  margin: 96px auto 0;
+  max-width: 1100px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+.landing-block { display: flex; flex-direction: column; gap: 24px; }
+.landing-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 500;
+  text-align: center;
+}
+.landing-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 200;
+  letter-spacing: -0.018em;
+  line-height: 1.15;
+  color: var(--text-primary);
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.landing-title em {
+  font-style: normal;
+  background: linear-gradient(120deg, var(--cyan) 0%, var(--cyan-2, #00a89a) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.landing-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 660px;
+  margin: -8px auto 0;
+  line-height: 1.6;
+}
+
+/* Audience grid */
+.audience-grid {
+  display: grid; gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.aud-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 24px 22px;
+  transition: border-color 220ms, background 220ms, transform 220ms;
+}
+.aud-card:hover {
+  border-color: var(--cyan-glow-2, rgba(0,212,193,0.35));
+  background: rgba(255,255,255,0.045);
+  transform: translateY(-2px);
+}
+.aud-card .who {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 8px; font-weight: 500;
+}
+.aud-card h4 {
+  font-size: 18px; font-weight: 400; margin-bottom: 10px;
+  color: var(--text-primary);
+}
+.aud-card p {
+  font-size: 14px; color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Science grid */
+.science-grid {
+  display: grid; gap: 10px 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 8px;
+  padding: 28px clamp(24px, 4vw, 40px);
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+}
+.science-cite {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.science-cite .cite-name {
+  color: var(--cyan);
+  font-weight: 500;
+}
+
+/* Disclaimer */
+.landing-disclaimer {
+  background: rgba(212,165,116,0.05);
+  border: 1px solid rgba(212,165,116,0.22);
+  border-radius: 14px;
+  padding: 22px 24px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.landing-disclaimer strong {
+  color: #d4a574;
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .landing-blocks { margin-top: 64px; gap: 56px; padding: 0 18px; }
+  .science-grid { padding: 22px 18px; }
+}
+
+/* ============================================================
    CONTENT — SESSION VIEW
    ============================================================ */
 #content { display: none; }
@@ -3336,6 +3459,87 @@ footer .links a:hover { color: var(--cyan); }
     <div class="spec"><div class="v">0 KB</div><div class="k">Upload</div></div>
     <div class="spec"><div class="v">SHA-256</div><div class="k" data-i18n="empty.spec_integrity" data-en="Integrity" data-de="Integrität">Integrity</div></div>
   </div>
+
+  <!-- ============================================================
+       LANDING CONTENT — embedded into the empty-state hero so that
+       /viewer/ functions both as the analysis tool AND as the
+       CARLON Equine product page (CI-konsistent, single canonical URL).
+       ============================================================ -->
+
+  <div class="landing-blocks">
+
+    <!-- For-whom -->
+    <div class="landing-block">
+      <div class="landing-label"
+           data-en="Built for"
+           data-de="Gebaut für">Built for</div>
+      <h2 class="landing-title"
+          data-en="For people who want <em>answers, not promises.</em>"
+          data-de="Für Menschen, die <em>Antworten wollen, keine Versprechen.</em>">For people who want <em>answers, not promises.</em></h2>
+      <div class="audience-grid">
+        <div class="aud-card">
+          <div class="who" data-en="Veterinarians" data-de="Tierärzte">Veterinarians</div>
+          <h4 data-en="Reproducible cardiology workups" data-de="Reproduzierbare Kardiologie-Workups">Reproducible cardiology workups</h4>
+          <p data-en="Every JSON export carries a SHA-256 integrity hash and a W3C-PROV provenance chain. Defensible against any audit."
+             data-de="Jeder JSON-Export trägt einen SHA-256-Integritäts-Hash und eine W3C-PROV-Provenance-Kette. Audit-fest.">Every JSON export carries a SHA-256 integrity hash and a W3C-PROV provenance chain. Defensible against any audit.</p>
+        </div>
+        <div class="aud-card">
+          <div class="who" data-en="Researchers" data-de="Forscher">Researchers</div>
+          <h4 data-en="Field-grade multi-horse studies" data-de="Feldstudien mit vielen Pferden">Field-grade multi-horse studies</h4>
+          <p data-en="Roster + batch-trigger + batch-sync for 5–10+ horses simultaneously. Welfare, cold exposure, training load."
+             data-de="Roster + Batch-Trigger + Batch-Sync für 5–10+ Pferde gleichzeitig. Welfare, Kälte-Exposition, Trainingsbelastung.">Roster + batch-trigger + batch-sync for 5–10+ horses simultaneously. Welfare, cold exposure, training load.</p>
+        </div>
+        <div class="aud-card">
+          <div class="who" data-en="Sport-horse trainers" data-de="Sportpferde-Trainer">Sport-horse trainers</div>
+          <h4 data-en="Autonomic recovery tracking" data-de="Autonome Erholung tracken">Autonomic recovery tracking</h4>
+          <p data-en="Compare RMSSD, DFA-α₁ and Baevsky Stress Index across sessions. Know when your horse is ready for the next load."
+             data-de="Vergleiche RMSSD, DFA-α₁ und Baevsky Stress-Index über Sessions hinweg. Wisse, wann dein Pferd für die nächste Belastung bereit ist.">Compare RMSSD, DFA-α₁ and Baevsky Stress Index across sessions. Know when your horse is ready for the next load.</p>
+        </div>
+        <div class="aud-card">
+          <div class="who" data-en="Engaged owners" data-de="Engagierte Halter">Engaged owners</div>
+          <h4 data-en="Share with your vet" data-de="Mit dem Tierarzt teilen">Share with your vet</h4>
+          <p data-en="Record on iPhone, get a one-tap referral PDF, send it to your vet. They open this browser viewer, see everything."
+             data-de="Mit iPhone aufnehmen, mit einem Tap einen Referral-PDF generieren, an deinen Tierarzt senden. Er öffnet diesen Browser-Viewer, sieht alles.">Record on iPhone, get a one-tap referral PDF, send it to your vet. They open this browser viewer, see everything.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Science foundation -->
+    <div class="landing-block">
+      <div class="landing-label"
+           data-en="Scientific foundation"
+           data-de="Wissenschaftliche Basis">Scientific foundation</div>
+      <h2 class="landing-title"
+          data-en="64+ peer-reviewed sources. <em>Every metric, every cutoff.</em>"
+          data-de="64+ peer-reviewed Quellen. <em>Jede Metrik, jeder Cutoff.</em>">64+ peer-reviewed sources. <em>Every metric, every cutoff.</em></h2>
+      <p class="landing-sub"
+         data-en="No black-box algorithms. Every number traces back to a published study, equine-specific where it matters."
+         data-de="Keine Black-Box-Algorithmen. Jede Zahl zurückführbar auf eine publizierte Studie, equine-spezifisch wo es darauf ankommt.">No black-box algorithms. Every number traces back to a published study, equine-specific where it matters.</p>
+      <div class="science-grid">
+        <div class="science-cite"><span class="cite-name">Task Force 1996</span> · <span data-en="time- and frequency-domain HRV standards" data-de="time- und frequency-domain HRV-Standards">time- and frequency-domain HRV standards</span></div>
+        <div class="science-cite"><span class="cite-name">Lipponen-Tarvainen 2019</span> · <span data-en="beat classifier + smoothness-priors detrending" data-de="Beat-Klassifikator + Smoothness-Priors-Detrending">beat classifier + smoothness-priors detrending</span></div>
+        <div class="science-cite"><span class="cite-name">Visser 2002</span> · <span data-en="equine HRV power-spectrum bands" data-de="equine HRV-Power-Spectrum-Bänder">equine HRV power-spectrum bands</span></div>
+        <div class="science-cite"><span class="cite-name">Reef 1998</span> · <span data-en="vagal AV-blocks physiological in resting horses" data-de="vagale AV-Blocks physiologisch beim Pferd in Ruhe">vagal AV-blocks physiological in resting horses</span></div>
+        <div class="science-cite"><span class="cite-name">Mitchell 2018</span> · <span data-en="equine AFib screening cutoffs" data-de="equine AFib-Screening-Cutoffs">equine AFib screening cutoffs</span></div>
+        <div class="science-cite"><span class="cite-name">Stucke 2015</span> · <span data-en="equine DFA-α₁ training zones" data-de="equine DFA-α₁ Trainings-Zonen">equine DFA-α₁ training zones</span></div>
+        <div class="science-cite"><span class="cite-name">Brennan 2001</span> · <span data-en="Poincaré SD1/SD2" data-de="Poincaré SD1/SD2">Poincaré SD1/SD2</span></div>
+        <div class="science-cite"><span class="cite-name">Peng 1995</span> · DFA scaling</div>
+        <div class="science-cite"><span class="cite-name">Costa 2002</span> · Multi-Scale Entropy</div>
+        <div class="science-cite"><span class="cite-name">Porta 2001</span> · Symbolic Dynamics</div>
+        <div class="science-cite"><span class="cite-name">Baevsky 1984</span> · <span data-en="autonomic stress index" data-de="autonomer Stress-Index">autonomic stress index</span></div>
+        <div class="science-cite"><span class="cite-name">Gehlen 2020</span> · <span data-en="welfare HRV markers" data-de="Welfare-HRV-Marker">welfare HRV markers</span></div>
+      </div>
+    </div>
+
+    <!-- Positioning disclaimer -->
+    <div class="landing-disclaimer"
+         data-en="<strong>Positioning:</strong> CARLON Equine is a research and observation tool. It is not a medical device under MDR or FDA. All on-screen flags are screening indicators requiring veterinarian follow-up — never diagnoses."
+         data-de="<strong>Positionierung:</strong> CARLON Equine ist ein Forschungs- und Beobachtungs-Werkzeug. Es ist kein Medizinprodukt unter MDR oder FDA. Alle Bildschirm-Flags sind Screening-Indikatoren, die eine Tierarzt-Konsultation erfordern — niemals Diagnosen.">
+      <strong>Positioning:</strong> CARLON Equine is a research and observation tool. It is not a medical device under MDR or FDA. All on-screen flags are screening indicators requiring veterinarian follow-up — never diagnoses.
+    </div>
+
+  </div>
+
 </section>
 
 <!-- ============================================================
