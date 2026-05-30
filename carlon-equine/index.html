@@ -2788,9 +2788,18 @@ svg.chart .peak-label {
   .avb-summary { color: #111 !important; }
   .avb-count { color: #c89060 !important; filter: none !important; font-size: 32pt !important; }
   .avb-count-label { color: #c89060 !important; }
+  /* PDF-Audit 2026-05-30: avb-summary-text + avb-rate-unit waren inline-
+     gestylt mit var(--text-secondary)/var(--text-dim) — auf weiß unsichtbar.
+     Jetzt als Klasse mit explizitem print-Override. */
+  .avb-summary-text { color: #333 !important; }
+  .avb-summary-text strong { color: #c89060 !important; }
+  .avb-rate { color: #333 !important; }
+  .avb-rate strong { color: #111 !important; }
+  .avb-rate-unit { color: #666 !important; }
   .avb-entry { background: #fdfaf6 !important; border-color: #d4b896 !important; color: #111 !important; }
   .avb-entry .idx { color: #c89060 !important; }
   .avb-entry .t { color: #111 !important; }
+  .avb-entry .rr { color: #444 !important; }
 
   /* Repro */
   .repro-fair-chip { background: #f0f9f8 !important; color: #009688 !important; border-color: #b2dfdb !important; }
@@ -2930,6 +2939,19 @@ svg.chart .peak-label {
   letter-spacing: 0.04em;
 }
 .avb-rate strong { color: var(--text-primary); font-size: 22px; font-weight: 300; }
+.avb-rate-unit { color: var(--text-dim); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+.avb-summary-text {
+  /* PDF-Audit-Fix 2026-05-30: vorher waren diese Styles inline mit
+     color: var(--text-secondary) / var(--cyan) — im Print-CSS unsichtbar
+     auf weiß. Jetzt eigene Klasse mit explizitem print-override unten. */
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+.avb-summary-text strong { color: var(--cyan); font-weight: 600; }
 .avb-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -3473,7 +3495,16 @@ svg.chart .peak-label {
   .provenance-panel { background: #fff !important; border-color: #c9a3ff !important; break-inside: avoid; }
   .prov-card, .crossval-row, .crossval-method { background: #fafaff !important; border-color: #d0c0e8 !important; }
   .prov-kv .v, .crossval-method-value, .crossval-metric { color: #111 !important; }
+  .prov-kv .k { color: #6633aa !important; }
   .prov-section-label, .prov-card-title, .crossval-vs { color: #6633aa !important; }
+  /* PDF-Audit 2026-05-30: prov-algo-name + -version + -param waren auf
+     screen-Farben (text-primary/tertiary/violett-mit-rgba-bg) — auf weiß
+     unsichtbar. Algorithm-Namen ("Lipponen-Tarvainen Beat-Classifier",
+     "Welch PSD" etc.) zeigten nur Jahre. Jetzt explizite Dark-Overrides. */
+  .prov-algo { background: #f6f0ff !important; border-color: #c9a3ff !important; }
+  .prov-algo-name { color: #111 !important; font-weight: 600 !important; }
+  .prov-algo-version { color: #6633aa !important; }
+  .prov-algo-param { background: #ede0ff !important; color: #6633aa !important; }
   .crossval-differentiator { background: #f6f0ff !important; color: #111 !important; }
 }
 
@@ -5809,13 +5840,13 @@ function render(data) {
             <div class="avb-count">${count}</div>
             <div class="avb-count-label">AV-BLOCKS</div>
           </div>
-          <div style="text-align:center;font-family:var(--font-mono);font-size:13px;color:var(--text-secondary);line-height:1.6;letter-spacing:0.04em;">
-            Vagal vermittelte 2°-AV-Blocks Typ I sind beim entspannten Pferd <strong style="color:var(--cyan)">physiologisch unauffällig</strong>.<br>
-            Frequenz und Verteilung indizieren <strong style="color:var(--cyan)">parasympathische Aktivität</strong>.
+          <div class="avb-summary-text">
+            Vagal vermittelte 2°-AV-Blocks Typ I sind beim entspannten Pferd <strong>physiologisch unauffällig</strong>.<br>
+            Frequenz und Verteilung indizieren <strong>parasympathische Aktivität</strong>.
           </div>
           <div class="avb-rate">
             <strong>${ratePer10Min}</strong><br>
-            <span style="color:var(--text-dim);font-size:11px;letter-spacing:0.18em;text-transform:uppercase">/ 10 MIN</span>
+            <span class="avb-rate-unit">/ 10 MIN</span>
           </div>
         </div>
         <div class="avb-grid">`;
@@ -8585,9 +8616,13 @@ function showHollywoodLoader(onDone) {
   const overlay = document.getElementById('hollywoodLoader');
   const linesEl = document.getElementById('hollywoodLines');
   if (!overlay || !linesEl) { onDone && onDone(); return; }
-  // Accessibility: respect reduced-motion preference
+  // Skip in: (a) reduced-motion (a11y), (b) headless Chrome (PDF-Generation,
+  // sonst leerer PDF weil Print vor Render-Complete capturt), (c) während
+  // Print-Media-Query aktiv. Theater nur für echte interaktive Sessions.
   const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) { onDone && onDone(); return; }
+  const headless = /HeadlessChrome/i.test(navigator.userAgent);
+  const printing = window.matchMedia && window.matchMedia('print').matches;
+  if (reduced || headless || printing) { onDone && onDone(); return; }
 
   const _isDE = window.CARLON_LANG === 'de';
   const lines = [
