@@ -699,6 +699,195 @@ nav {
 }
 
 /* ============================================================
+   BETA-RECRUITMENT — Strip (oben im Empty-State) + Card (mittig)
+   ============================================================ */
+.beta-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 0 auto 36px;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, rgba(0,212,193,0.08) 0%, rgba(0,212,193,0.02) 100%);
+  border: 1px solid rgba(0,212,193,0.30);
+  border-radius: 999px;
+  max-width: 720px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 5;
+}
+.beta-strip .dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--cyan-glow-2);
+  animation: betaPulse 2.4s ease-in-out infinite;
+}
+@keyframes betaPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
+}
+.beta-strip strong { color: var(--cyan); font-weight: 600; }
+.beta-strip a {
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(0,212,193,0.5);
+  transition: border-color 0.2s;
+}
+.beta-strip a:hover { border-bottom-color: var(--cyan); }
+
+.beta-recruit {
+  position: relative;
+  z-index: 5;
+  margin: 80px auto 0;
+  max-width: 920px;
+  padding: 0 24px;
+}
+.beta-recruit-card {
+  background: linear-gradient(135deg, rgba(0,212,193,0.07) 0%, rgba(6,16,26,0.55) 100%);
+  border: 1px solid rgba(0,212,193,0.30);
+  border-radius: 20px;
+  padding: 44px clamp(24px, 4vw, 52px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.beta-recruit .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 14px;
+}
+.beta-recruit h2 {
+  font-size: clamp(24px, 3.4vw, 38px);
+  font-weight: 200;
+  letter-spacing: -0.018em;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--text-primary);
+  margin: 0 auto 30px;
+  max-width: 660px;
+}
+.beta-recruit h2 em {
+  font-style: normal;
+  background: linear-gradient(120deg, var(--cyan) 0%, #00a89a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.beta-bullets {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-bottom: 34px;
+}
+.beta-bullet { display: flex; flex-direction: column; gap: 6px; }
+.beta-bullet .b-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 500;
+}
+.beta-bullet .b-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.beta-recruit-cta {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 18px;
+}
+.beta-recruit-cta a {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 26px;
+  background: var(--cyan);
+  color: var(--bg-void);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 28px var(--cyan-glow-3);
+  min-height: 44px;  /* iOS-Touch-Target */
+  box-sizing: border-box;
+}
+.beta-recruit-cta a:hover {
+  background: var(--cyan-strong);
+  transform: translateY(-1px);
+  box-shadow: 0 0 44px var(--cyan-glow-2);
+}
+.beta-recruit-cta .signed {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ============================================================
+   iPhone-Polish (≤540px) — Empty-State Mobile-Layout-Fixes
+   Wurde im Live-Test sichtbar dass clamp() Hero zu groß war, USP-Pills
+   überfüllt und Drop-Zone-Hint-Text umgebrochen wirkte.
+   ============================================================ */
+@media (max-width: 540px) {
+  #empty {
+    padding: clamp(40px, 6vh, 80px) 14px var(--s-5);
+    min-height: auto;
+  }
+  .hero-logo-stage { width: min(380px, 68vw); margin-bottom: 14px; }
+  .hero-headline { margin-bottom: 14px; }
+  .hero-headline .eyebrow { letter-spacing: 0.32em; font-size: 9px; }
+  .hero-headline h1 { letter-spacing: 0.10em; }
+  .hero-headline .brand-tagline { letter-spacing: 0.28em; margin: 6px 0 12px; }
+  .hero-headline .tagline { font-size: 12px; }
+  .usp-claim { margin-bottom: 18px; font-size: clamp(19px, 5.4vw, 24px); }
+  .usp-pills { gap: 8px; }
+  .usp-pill {
+    padding: 9px 12px;
+    min-width: 0;
+    flex: 1 1 calc(50% - 8px);
+    max-width: calc(50% - 8px);
+  }
+  .usp-pill b { font-size: 15px; }
+  .usp-pill span { font-size: 9px; letter-spacing: 0.16em; }
+  .drop-zone { padding: 14px 16px; gap: 12px; }
+  .drop-zone .label { font-size: 13px; }
+  .drop-zone .hint { font-size: 9px; letter-spacing: 0.08em; }
+  .specs-row { gap: 16px; margin-top: var(--s-5); }
+  .spec .v { font-size: 19px; }
+  .spec .k { font-size: 8px; letter-spacing: 0.18em; }
+  .beta-strip {
+    margin: 0 auto 28px;
+    font-size: 10px;
+    padding: 9px 16px;
+    letter-spacing: 0.12em;
+  }
+  .beta-recruit { margin-top: 56px; padding: 0 14px; }
+  .beta-recruit-card { padding: 28px 20px; }
+  .beta-bullets { gap: 16px; }
+  .beta-recruit-cta a {
+    padding: 13px 22px;
+    font-size: 11px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
    CONTENT — SESSION VIEW
    ============================================================ */
 #content { display: none; }
@@ -3488,6 +3677,14 @@ footer .links a:hover { color: var(--cyan); }
 <section id="empty">
   <div class="hero-rays"></div>
 
+  <!-- Beta-Strip: kleiner Status oben, immer sichtbar — Beta-Kontext klar. -->
+  <div class="beta-strip">
+    <span class="dot" aria-hidden="true"></span>
+    <span data-en="Beta · looking for our first <strong>vet &amp; horse-owner</strong> test partners"
+          data-de="Beta · wir suchen die ersten <strong>Tierarzt- &amp; Halter-</strong>Test-Partner">Beta · looking for our first <strong>vet &amp; horse-owner</strong> test partners</span>
+    <a href="#beta-recruit" data-en="Read more →" data-de="Mehr erfahren →">Read more →</a>
+  </div>
+
   <div class="hero-logo-stage">
     <div class="hero-logo-aura"></div>
     <div class="hero-logo"></div>
@@ -3549,9 +3746,65 @@ footer .links a:hover { color: var(--cyan); }
   </div>
 
   <!-- ============================================================
-       LANDING CONTENT — embedded into the empty-state hero so that
-       /viewer/ functions both as the analysis tool AND as the
-       CARLON Equine product page (CI-konsistent, single canonical URL).
+       BETA-RECRUITMENT-CARD — der Hauptgrund, warum jemand auf
+       /carlon-equine/ landet (Magic-Link aus Jans Beta-Outreach).
+       Positioniert nach den Tool-Affordances, damit der Besucher
+       erst sieht "das ist echt", dann eingeladen wird.
+       ============================================================ -->
+  <div class="beta-recruit" id="beta-recruit">
+    <div class="beta-recruit-card">
+      <div class="eyebrow"
+           data-en="Beta · join the first cohort"
+           data-de="Beta · sei in der ersten Test-Gruppe">Beta · join the first cohort</div>
+      <h2 data-en="Help shape the <em>first equine HRV tool</em> built for daily clinical use."
+          data-de="Forme das <em>erste equine HRV-Tool</em> für den klinischen Alltag mit.">
+        Help shape the <em>first equine HRV tool</em> built for daily clinical use.
+      </h2>
+      <div class="beta-bullets">
+        <div class="beta-bullet">
+          <div class="b-label" data-en="Who we're looking for" data-de="Wer wir suchen">Who we're looking for</div>
+          <div class="b-text"
+               data-en="Equine vets, clinics, sport-horse owners — anyone with a Polar H10 (or open to using one) and a handful of horses to record from."
+               data-de="Pferde-Tierärzte, Kliniken, Sport-Pferde-Halter — mit einem Polar H10 (oder offen ihn zu nutzen) und einigen Pferden zum Aufnehmen.">
+            Equine vets, clinics, sport-horse owners — anyone with a Polar H10 (or open to using one) and a handful of horses to record from.
+          </div>
+        </div>
+        <div class="beta-bullet">
+          <div class="b-label" data-en="What you get" data-de="Was du bekommst">What you get</div>
+          <div class="b-text"
+               data-en="Full Pro access during beta. iOS app + this web viewer. Direct line to Jan for every question, bug or feature wish."
+               data-de="Voller Pro-Zugang während der Beta. iOS-App + dieser Web-Viewer. Direkter Draht zu Jan für jede Frage, jeden Bug, jeden Feature-Wunsch.">
+            Full Pro access during beta. iOS app + this web viewer. Direct line to Jan for every question, bug or feature wish.
+          </div>
+        </div>
+        <div class="beta-bullet">
+          <div class="b-label" data-en="What we ask in return" data-de="Was wir uns wünschen">What we ask in return</div>
+          <div class="b-text"
+               data-en="Use it on real horses. One 15-minute feedback call after your first recordings — what worked, what didn't, what's missing."
+               data-de="Nutze es an echten Pferden. Ein 15-min-Feedback-Call nach den ersten Aufnahmen — was hat funktioniert, was nicht, was fehlt.">
+            Use it on real horses. One 15-minute feedback call after your first recordings — what worked, what didn't, what's missing.
+          </div>
+        </div>
+      </div>
+      <div class="beta-recruit-cta">
+        <a href="mailto:jan@vitalkultur.com?subject=CARLON%20Equine%20Beta%20%E2%80%94%20Interesse&amp;body=Hallo%20Jan%2C%0A%0Aich%20w%C3%BCrde%20gerne%20CARLON%20Equine%20im%20Beta%20testen.%0A%0AKurz%20zu%20mir%3A%0A-%20Rolle%3A%20%28Tierarzt%20%2F%20Klinik%20%2F%20Halter%20%2F%20...%29%0A-%20Pferdeanzahl%3A%20%0A-%20Polar%20H10%3A%20%28vorhanden%20%2F%20w%C3%BCrde%20kaufen%29%0A-%20Use-Case%3A%20%0A%0AViele%20Gr%C3%BC%C3%9Fe%2C%0A">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <span data-en="Email Jan to join the beta" data-de="E-Mail an Jan für die Beta">Email Jan to join the beta</span>
+        </a>
+        <span class="signed"
+              data-en="— Jan Rohwedder · Founder"
+              data-de="— Jan Rohwedder · Gründer">— Jan Rohwedder · Founder</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       LANDING CONTENT — embedded into the empty-state so /carlon-equine/
+       functions both as the analysis tool AND as the CARLON Equine
+       product page (CI-konsistent, single canonical URL).
        ============================================================ -->
 
   <div class="landing-blocks">
