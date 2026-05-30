@@ -1378,6 +1378,91 @@ nav {
 }
 
 /* ============================================================
+   LARGE-DISPLAY POLISH (≥1600px / 32"+ Vollbild) — clamp-Caps
+   waren auf 1440-1920px optimiert, auf 4K-Displays wirkten sie
+   gequetscht. Hebe die wichtigsten Text-Caps + leichten Body-Bump.
+   ============================================================ */
+@media (min-width: 1600px) {
+  body { font-size: 17px; }
+
+  /* Hero */
+  .hero-headline h1 { font-size: clamp(76px, 6vw, 104px); }
+  .hero-headline .brand-tagline { font-size: clamp(24px, 2.2vw, 30px); }
+  .hero-headline .tagline { font-size: clamp(16px, 1.5vw, 19px); max-width: 760px; }
+  .hero-headline .eyebrow { font-size: 12px; }
+  .usp-claim { font-size: clamp(36px, 2.8vw, 46px); max-width: 1080px; }
+
+  /* USP Pills */
+  .usp-pill { padding: var(--s-4) var(--s-5); min-width: 170px; }
+  .usp-pill b { font-size: 24px; }
+  .usp-pill span { font-size: 11px; }
+
+  /* Drop-Zone */
+  .drop-zone { max-width: 780px; padding: var(--s-5) var(--s-7); }
+  .drop-zone .label { font-size: 17px; }
+  .drop-zone .hint { font-size: 11px; }
+
+  /* Specs row + Fact cards */
+  .spec .v { font-size: 30px; }
+  .spec .k { font-size: 10px; }
+  .fact-cards { max-width: 1280px; gap: 18px; }
+  .fact-card { padding: 22px 22px 20px; min-height: 150px; }
+  .fact-card .fc-value { font-size: 26px; }
+  .fact-card .fc-text { font-size: 14px; line-height: 1.6; }
+  .fact-card .fc-label { font-size: 10px; }
+  .fact-card .fc-detail { font-size: 10px; }
+
+  /* Method-Transparency */
+  .method-transparency { max-width: 1280px; padding: 22px 32px; font-size: 13.5px; }
+  .method-transparency .mt-head { font-size: 11px; }
+  .method-transparency .mt-footer { font-size: 13px; }
+
+  /* Demo-Preview */
+  .demo-preview { max-width: 1380px; }
+  .demo-preview-title { font-size: clamp(40px, 3.6vw, 52px); max-width: 860px; }
+  .demo-preview-sub { font-size: 16px; max-width: 800px; }
+  .demo-preview-callout { font-size: 14.5px; padding: 16px 20px; }
+  .demo-preview-cta a.primary { padding: 18px 36px; font-size: 14px; }
+
+  /* Why-HRV */
+  .why-hrv { max-width: 1280px; }
+  .why-hrv-title { font-size: clamp(40px, 3.6vw, 52px); max-width: 840px; }
+  .why-card { padding: 30px 28px; }
+  .why-card h3 { font-size: 19px; }
+  .why-card p { font-size: 15px; line-height: 1.65; }
+
+  /* Beta-Recruit */
+  .beta-recruit { max-width: 1080px; }
+  .beta-recruit-card { padding: 52px 60px; }
+  .beta-recruit h2 { font-size: clamp(38px, 3.4vw, 48px); max-width: 780px; }
+  .beta-bullet .b-text { font-size: 15px; line-height: 1.65; }
+  .beta-bullet .b-label { font-size: 11px; }
+  .beta-recruit-cta a { padding: 16px 32px; font-size: 13px; min-height: 52px; }
+
+  /* Beta-Strip */
+  .beta-strip { max-width: 880px; font-size: 12px; padding: 12px 26px; }
+
+  /* Landing-Blocks (Audience + Science) */
+  .landing-blocks { max-width: 1280px; }
+  .landing-title { font-size: clamp(42px, 4vw, 52px); max-width: 880px; }
+  .landing-sub { font-size: 17px; max-width: 760px; }
+  .aud-card { padding: 28px 26px; }
+  .aud-card h4 { font-size: 20px; }
+  .aud-card p { font-size: 15.5px; line-height: 1.7; }
+  .science-cite { font-size: 14px; line-height: 1.75; }
+  .landing-disclaimer { font-size: 14px; max-width: 880px; padding: 26px 30px; }
+}
+
+/* Extra-Polish für 4K+/Ultrawide ≥2000px */
+@media (min-width: 2000px) {
+  body { font-size: 18px; }
+  .hero-headline h1 { font-size: clamp(96px, 5.5vw, 132px); }
+  .usp-claim { font-size: clamp(44px, 2.8vw, 56px); }
+  .fact-cards, .method-transparency, .why-hrv, .landing-blocks { max-width: 1480px; }
+  .demo-preview { max-width: 1560px; }
+}
+
+/* ============================================================
    CONTENT — SESSION VIEW
    ============================================================ */
 #content { display: none; }
