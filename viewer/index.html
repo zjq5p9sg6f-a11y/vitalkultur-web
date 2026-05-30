@@ -3469,7 +3469,7 @@ footer .links a:hover { color: var(--cyan); }
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="filter:drop-shadow(0 0 4px var(--cyan-glow-1))"><path d="M13 2L4.09 12.97a1 1 0 0 0 .76 1.65H11l-2 7.38 8.91-10.97a1 1 0 0 0-.76-1.65H13z"/></svg>
         <span data-i18n="nav.liveh10" data-en="Live H10" data-de="Live H10">Live H10</span>
       </button>
-      <button class="btn btn-ghost" id="printBtn" title="Print report / save as PDF (Cmd+P)" data-i18n="nav.print" data-en="Print" data-de="Drucken">Print</button>
+      <button class="btn btn-ghost" id="printBtn" title="Print report / save as PDF (Cmd+P)" data-i18n="nav.print" data-en="Print" data-de="Drucken" style="display:none">Print</button>
       <button class="btn btn-ghost" id="langToggleBtn" title="Switch language" style="font-family:var(--font-mono);letter-spacing:1px;min-width:54px;">EN | DE</button>
       <button class="btn btn-primary" id="getProBtn" data-i18n="nav.pro" data-en="Get Pro" data-de="Pro Holen">Get Pro</button>
     </div>
@@ -7607,6 +7607,9 @@ window.render = function(data) {
   window._lastRenderedData = data;
   _origRender(data);
   preparePrintCover();
+  // Print-Button gehört zur Daten-Ansicht, nicht zur Landing-Page.
+  const _pb = document.getElementById('printBtn');
+  if (_pb) _pb.style.display = '';
 };
 // Auch bei beforeprint event (für Cmd+P + headless --print-to-pdf)
 window.addEventListener('beforeprint', preparePrintCover);
@@ -7617,10 +7620,12 @@ function backToHome() {
   document.getElementById('empty').classList.remove('hidden');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (location.hash) history.replaceState(null, '', location.pathname);
-  // Floating-TOC mit ausblenden — die Inhalts-Navigation gehört zur
-  // Daten-Ansicht, nicht zur Landing-Page.
+  // Floating-TOC + Print-Button gehören beide zur Daten-Ansicht,
+  // nicht zur Landing-Page.
   const toc = document.getElementById('floatingToc');
   if (toc) toc.classList.remove('visible');
+  const printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.style.display = 'none';
 }
 document.getElementById('homeBtn').addEventListener('click', backToHome);
 
