@@ -118,7 +118,10 @@
       background: transparent; border: 1px solid var(--border-strong);
       color: var(--text-soft); font-family: ui-monospace, monospace;
       font-size: 11px; letter-spacing: 0.12em;
-      padding: 8px 14px; border-radius: 9px; cursor: pointer;
+      /* Touch-target ≥44px — Apple HIG */
+      padding: 14px 16px; border-radius: 10px; cursor: pointer;
+      min-height: 44px; min-width: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
       transition: background 200ms, color 200ms, border-color 200ms;
     }
     .lang-toggle:hover { background: var(--bg-card-hover); color: var(--text); border-color: var(--text-dim); }
@@ -404,10 +407,20 @@
     .foot-meta a { color: var(--text-dim); text-decoration: none; }
     .foot-meta a:hover { color: var(--text); }
 
-    @media (max-width: 700px) {
-      .hero { margin: 60px auto 36px; }
-      .product-card { padding: 28px 24px 24px; min-height: 380px; }
-      .topnav { padding: 22px 24px 0; }
+    @media (max-width: 760px) {
+      .hero { margin: 56px auto 32px; padding: 0 22px; }
+      .products-section { padding: 0 22px; }
+      .trust-strip { padding: 30px 22px; gap: 18px 24px; }
+      .about-strip { padding: 0 22px; }
+      .product-card { padding: 26px 22px 22px; min-height: auto; }
+      .topnav { padding: 22px 22px 0; }
+      footer { padding: 44px 22px 36px; }
+    }
+    @media (max-width: 460px) {
+      .product-card .platform { font-size: 9px; }
+      .trust-item { font-size: 11px; }
+      .trust-strip { justify-content: flex-start; gap: 16px 20px; }
+      .brand-wordmark img { height: 22px; }
     }
   </style>
 </head>

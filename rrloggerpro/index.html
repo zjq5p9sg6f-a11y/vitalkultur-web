@@ -88,7 +88,9 @@
       background: transparent; border: 1px solid var(--border-strong);
       color: var(--text-soft); font-family: ui-monospace, monospace;
       font-size: 11px; letter-spacing: 0.12em;
-      padding: 7px 12px; border-radius: 8px; cursor: pointer;
+      padding: 14px 16px; border-radius: 10px; cursor: pointer;
+      min-height: 44px; min-width: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
       transition: background 200ms, color 200ms;
     }
     .lang-toggle:hover { background: var(--bg-card-hover); color: var(--text); }
@@ -122,7 +124,7 @@
       max-width: var(--maxw); margin: 32px auto 0;
       padding: 0 28px;
       display: grid; gap: 14px;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     }
     .lab-spec {
       background: var(--bg-card);
@@ -298,6 +300,27 @@
     .foot-links a { color: var(--text-dim); text-decoration: none; transition: color 180ms; }
     .foot-links a:hover { color: var(--text); }
     .foot-meta { margin-top: 28px; font-size: 11px; color: var(--text-faint); letter-spacing: 0.04em; }
+
+    /* Mobile breakpoints — sm phones (<=480) and tighter (<=380) */
+    @media (max-width: 760px) {
+      .topnav { padding: 22px 22px 0; }
+      .hero { margin: 56px auto 32px; padding: 0 22px; }
+      .lab-specs { padding: 0 22px; }
+      .section { padding: 0 22px; margin: 64px auto 0; }
+      .cta-strip { padding: 0 22px; margin: 64px auto 0; }
+      footer { padding: 40px 22px 36px; }
+      .cta-strip-actions { flex-direction: column; align-items: stretch; }
+      .cta-strip-actions .btn-primary { justify-content: center; }
+    }
+    @media (max-width: 460px) {
+      .lab-spec { padding: 18px 14px; }
+      .lab-spec .v { font-size: 26px; }
+      .feat-card { padding: 18px 16px; }
+      .export-card { padding: 22px 18px; }
+      .aud-card { padding: 18px 16px; }
+      /* Breadcrumb fits — hide the mark-mini at very narrow */
+      .breadcrumb .current { font-size: 11px; }
+    }
   </style>
 </head>
 <body>

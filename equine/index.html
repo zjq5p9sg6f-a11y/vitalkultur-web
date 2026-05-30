@@ -114,7 +114,9 @@
       background: transparent; border: 1px solid var(--border-strong);
       color: var(--text-soft); font-family: ui-monospace, monospace;
       font-size: 11px; letter-spacing: 0.12em;
-      padding: 8px 14px; border-radius: 9px; cursor: pointer;
+      padding: 14px 16px; border-radius: 10px; cursor: pointer;
+      min-height: 44px; min-width: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
       transition: background 200ms, color 200ms;
     }
     .lang-toggle:hover { background: var(--bg-card-hover); color: var(--text); }
@@ -398,10 +400,24 @@
     .foot-links a:hover { color: var(--text); }
     .foot-meta { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text-faint); letter-spacing: 0.04em; }
 
-    @media (max-width: 700px) {
+    @media (max-width: 760px) {
+      .topnav { padding: 22px 22px 0; }
+      .hero { margin: 56px auto 28px; padding: 0 22px; }
+      .vet-hero, .section, .cta-strip { padding: 0 22px; }
+      .section { margin: 64px auto 0; }
+      .cta-strip { margin: 70px auto 0; }
       .vet-card { padding: 30px 24px; gap: 24px; }
       .vet-card-actions { width: 100%; }
       .btn-primary { width: 100%; justify-content: center; }
+      .viewer-block { padding: 28px 22px; gap: 24px; }
+      footer { padding: 40px 22px 36px; }
+      .cta-strip-actions { flex-direction: column; align-items: stretch; }
+    }
+    @media (max-width: 460px) {
+      .hero-mark-stage { width: 108px; height: 108px; margin-bottom: 22px; }
+      .aud-card, .feat-card { padding: 18px 16px; }
+      .breadcrumb .current { font-size: 11px; }
+      .breadcrumb a img { height: 18px; }
     }
   </style>
 </head>
