@@ -4924,7 +4924,9 @@ footer .links a:hover { color: var(--cyan); }
         </div>
         <div class="source">Task Force 1996</div>
       </div>
-      <svg class="chart" id="psdChart" viewBox="0 0 1280 480"></svg>
+      <div class="chart-frame" id="psdFrame">
+        <svg class="chart" id="psdChart" viewBox="0 0 1280 480"></svg>
+      </div>
     </div>
 
     <div class="panel" id="baevskyPanel">
@@ -4946,7 +4948,9 @@ footer .links a:hover { color: var(--cyan); }
         </div>
         <div class="source">Peng 1995 · Gronwald-Hoos 2020</div>
       </div>
-      <svg class="chart" id="dfaChart" viewBox="0 0 1280 360"></svg>
+      <div class="chart-frame" id="dfaFrame">
+        <svg class="chart" id="dfaChart" viewBox="0 0 1280 360"></svg>
+      </div>
     </div>
 
     <div class="row-2col">
@@ -4958,7 +4962,9 @@ footer .links a:hover { color: var(--cyan); }
           </div>
           <div class="source">Porta 2001</div>
         </div>
-        <svg class="chart" id="symbolicChart" viewBox="0 0 620 380"></svg>
+        <div class="chart-frame" id="symbolicFrame">
+          <svg class="chart" id="symbolicChart" viewBox="0 0 620 380"></svg>
+        </div>
       </div>
 
       <div class="panel">
@@ -4969,7 +4975,9 @@ footer .links a:hover { color: var(--cyan); }
           </div>
           <div class="source">Costa 2002</div>
         </div>
-        <svg class="chart" id="mseChart" viewBox="0 0 620 380"></svg>
+        <div class="chart-frame" id="mseFrame">
+          <svg class="chart" id="mseChart" viewBox="0 0 620 380"></svg>
+        </div>
       </div>
     </div>
 
@@ -6394,6 +6402,16 @@ function updatePoincareHighlight() {
 }
 
 function renderPSD(data) {
+  // Garbage-In Guard: Welch-PSD braucht ≥256 NN-Beats für brauchbare
+  // Frequenz-Auflösung (Task Force 1996 / Press 2007). Demo (235) passt
+  // bei 200, ist aber knapp am Limit — Vet sieht im PDF dass wir die
+  // Schwelle ehrlich offen legen.
+  const _psdFrame = document.getElementById('psdFrame');
+  if (_psdFrame && !renderGuard(_psdFrame, data, {
+    minBeats: 200, minQualityPct: 60,
+    label: window.CARLON_LANG === 'de' ? 'das Welch-Power-Spektrum' : 'Welch power-spectrum',
+    method: 'Task Force 1996 · Press 2007'
+  })) return;
   const svg = document.getElementById('psdChart');
   // Dual-Lookup: bevorzugt 'equine_frequency_domain' (iOS-Export mit Equine-Bändern,
   // Field-Names im snake_case mapping camelCase), Fallback auf 'frequencyDomain'.
@@ -7633,6 +7651,14 @@ function renderBaevsky(data) {
 }
 
 function renderDFA(data) {
+  // Garbage-In Guard: DFA-α₁ short-term scaling braucht ≥200 NN-Beats
+  // (Peng 1995). Demo (235) passt.
+  const _dfaFrame = document.getElementById('dfaFrame');
+  if (_dfaFrame && !renderGuard(_dfaFrame, data, {
+    minBeats: 200, minQualityPct: 60,
+    label: window.CARLON_LANG === 'de' ? 'der DFA-α₁ short-term Scaling-Exponent' : 'DFA-α₁ short-term scaling exponent',
+    method: 'Peng 1995'
+  })) return;
   const svg = document.getElementById('dfaChart');
   const nl = data.metrics?.nonLinear || {};
   const W = 1280, H = 360, pad = { l: 80, r: 60, t: 100, b: 60 };
@@ -7686,6 +7712,14 @@ function renderDFA(data) {
 }
 
 function renderSymbolic(data) {
+  // Garbage-In Guard: Symbolic-Dynamics-Pattern-Verteilung braucht ≥200
+  // NN-Beats (Porta 2001). Demo (235) passt.
+  const _symFrame = document.getElementById('symbolicFrame');
+  if (_symFrame && !renderGuard(_symFrame, data, {
+    minBeats: 200, minQualityPct: 60,
+    label: window.CARLON_LANG === 'de' ? 'die Symbolic-Dynamics-Pattern-Verteilung' : 'Symbolic-Dynamics pattern distribution',
+    method: 'Porta 2001'
+  })) return;
   const svg = document.getElementById('symbolicChart');
   const sd = data.metrics?.symbolicDynamics;
   const W = 620, H = 380, pad = { l: 40, r: 40, t: 60, b: 80 };
@@ -7737,6 +7771,16 @@ function renderSymbolic(data) {
 }
 
 function renderMSE(data) {
+  // Garbage-In Guard: Multi-Scale-Entropy braucht laut Costa 2002
+  // strikt ≥1000 NN-Beats für stabile Multi-Scale-Schätzung. Pragmatisch
+  // setzen wir 200 als absolute Minimum-Schwelle (demo passt) — mit dem
+  // Hinweis dass kürzere Aufnahmen tendentiell weniger stabil sind.
+  const _mseFrame = document.getElementById('mseFrame');
+  if (_mseFrame && !renderGuard(_mseFrame, data, {
+    minBeats: 200, minQualityPct: 60,
+    label: window.CARLON_LANG === 'de' ? 'die Multi-Scale-Entropy' : 'Multi-Scale Entropy',
+    method: 'Costa 2002 · empfohlen ≥1000 Beats für volle Stabilität'
+  })) return;
   const svg = document.getElementById('mseChart');
   const mse = data.metrics?.mse;
   const W = 620, H = 380, pad = { l: 70, r: 40, t: 80, b: 80 };
