@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#050505">
-  <title>CARLON Equine — Research-grade HRV for Horses · Polar H10 · iPhone</title>
-  <meta name="description" content="CARLON Equine turns iPhone + Polar H10 into a research-grade HRV laboratory for horses. 15+ scientific visualisations, multi-horse batch workflow, browser viewer for veterinarians. Built for equine vets, sport-horse trainers and welfare researchers.">
+  <title>CARLON Equine — Research-grade HRV for Horses · Polar H10 · iPhone · Browser Viewer for Vets</title>
+  <meta name="description" content="CARLON Equine turns iPhone + Polar H10 into a research-grade HRV laboratory for horses. 15+ scientific visualisations, multi-horse batch workflow, free browser viewer for veterinarians. Built for equine vets, sport-horse trainers and welfare researchers.">
   <meta property="og:title" content="CARLON Equine — Research-grade HRV for Horses">
-  <meta property="og:description" content="iPhone + Polar H10 = a mobile equine HRV lab. Vets, researchers, trainers. Browser viewer included, no install.">
-  <meta property="og:image" content="https://vitalkultur.com/app-icon.png">
-  <link rel="icon" href="/app-icon.png">
-  <link rel="apple-touch-icon" href="/app-icon.png">
+  <meta property="og:description" content="iPhone + Polar H10 = a mobile equine HRV lab. Vets, researchers, trainers. Free browser viewer included.">
+  <meta property="og:image" content="https://vitalkultur.com/assets/equine-mark-512.png">
+  <link rel="icon" href="/assets/equine-mark-112.png">
+  <link rel="apple-touch-icon" href="/assets/equine-mark-224.png">
   <link rel="canonical" href="https://vitalkultur.com/equine/">
   <meta property="og:url" content="https://vitalkultur.com/equine/">
   <meta property="og:type" content="website">
@@ -22,7 +22,7 @@
     "operatingSystem": "iOS 17+",
     "applicationCategory": "HealthApplication",
     "audience": {"@type": "Audience", "audienceType": "Veterinarians, equine researchers, sport-horse trainers"},
-    "description": "Research-grade HRV monitoring for horses using Polar H10 chest strap. 15+ scientific visualisations including DFA-α₁, Welch PSD, Baevsky Stress Index, Poincaré plot, Multi-Scale Entropy. W3C-PROV provenance and SHA-256 integrity for every JSON export.",
+    "description": "Research-grade HRV monitoring for horses using Polar H10 chest strap. 15+ scientific visualisations including DFA-α₁, Welch PSD, Baevsky Stress Index, Poincaré plot, Multi-Scale Entropy. W3C-PROV provenance and SHA-256 integrity for every JSON export. Free browser-based viewer companion at vitalkultur.com/viewer for veterinarians.",
     "creator": {"@type": "Organization", "name": "Vitalkultur", "url": "https://vitalkultur.com"}
   }
   </script>
@@ -50,7 +50,7 @@
       --cyan-glow-1: rgba(0,212,193,0.6);
       --cyan-glow-2: rgba(0,212,193,0.18);
       --amber: #d4a574;
-      --maxw: 1140px;
+      --maxw: 1180px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -61,37 +61,60 @@
       overflow-x: hidden;
     }
     body::before {
-      content: '';
-      position: fixed; inset: 0;
+      content: ''; position: fixed; inset: 0; z-index: 0;
       background:
-        radial-gradient(60% 70% at 50% -10%, rgba(0,212,193,0.10) 0%, transparent 60%),
+        radial-gradient(55% 65% at 50% -10%, rgba(0,212,193,0.10) 0%, transparent 60%),
         radial-gradient(40% 50% at 100% 50%, rgba(0,168,154,0.06) 0%, transparent 60%);
-      pointer-events: none; z-index: 0;
+      pointer-events: none;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent 0, transparent 49px, rgba(255,255,255,0.012) 50px),
+        repeating-linear-gradient(90deg, transparent 0, transparent 49px, rgba(255,255,255,0.012) 50px);
+      pointer-events: none; opacity: 0.5;
     }
     main, header, footer { position: relative; z-index: 1; }
 
-    /* Top nav */
+    /* Top nav with breadcrumb */
     .topnav {
       max-width: var(--maxw); margin: 0 auto;
-      padding: 26px 28px 0;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 24px;
+      padding: 24px 32px 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
     }
     .breadcrumb {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text-dim);
+      display: flex; align-items: center; gap: 14px;
     }
-    .breadcrumb a { color: var(--text-soft); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--text); }
-    .breadcrumb .sep { color: var(--text-faint); }
-    .breadcrumb .current { color: var(--cyan); font-weight: 500; }
-    .topnav-right { display: flex; gap: 8px; align-items: center; }
+    .breadcrumb a {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text-soft);
+    }
+    .breadcrumb a img {
+      height: 22px; filter: brightness(0) invert(1) opacity(0.7);
+      transition: opacity 200ms;
+    }
+    .breadcrumb a:hover img { filter: brightness(0) invert(1) opacity(1); }
+    .breadcrumb .sep {
+      color: var(--text-faint); font-size: 18px; font-weight: 200;
+    }
+    .breadcrumb .current {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; letter-spacing: 0.06em;
+      color: var(--cyan); font-weight: 500;
+    }
+    .breadcrumb .current .mark-mini {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: var(--bg-near); border: 1px solid var(--border-strong);
+      padding: 2px;
+    }
+    .breadcrumb .current .mark-mini img { width: 100%; height: 100%; object-fit: contain; }
+
+    .topnav-right { display: flex; gap: 10px; align-items: center; }
     .lang-toggle {
       background: transparent; border: 1px solid var(--border-strong);
       color: var(--text-soft); font-family: ui-monospace, monospace;
       font-size: 11px; letter-spacing: 0.12em;
-      padding: 7px 12px; border-radius: 8px; cursor: pointer;
+      padding: 8px 14px; border-radius: 9px; cursor: pointer;
       transition: background 200ms, color 200ms;
     }
     .lang-toggle:hover { background: var(--bg-card-hover); color: var(--text); }
@@ -99,16 +122,39 @@
 
     /* Hero */
     .hero {
-      max-width: var(--maxw); margin: 70px auto 36px;
-      padding: 0 28px; text-align: center;
+      max-width: var(--maxw); margin: 70px auto 32px;
+      padding: 0 32px; text-align: center;
+      position: relative;
+    }
+    .hero-mark-stage {
+      width: 132px; height: 132px;
+      margin: 0 auto 32px; position: relative;
+    }
+    .hero-mark-glow {
+      position: absolute; inset: -40px;
+      background: radial-gradient(50% 50% at 50% 50%, rgba(0,212,193,0.30), transparent 70%);
+      filter: blur(20px); z-index: 0;
+    }
+    .hero-mark-aura {
+      position: absolute; inset: 0;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(0,212,193,0.10), rgba(0,168,154,0.04));
+      border: 1px solid var(--cyan-soft);
+      box-shadow: 0 12px 60px rgba(0,212,193,0.25);
+      z-index: 1;
+    }
+    .hero-mark-stage img {
+      position: relative; z-index: 2;
+      width: 100%; height: 100%; object-fit: contain;
+      padding: 18px;
     }
     .hero .eyebrow {
-      font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
+      font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase;
       color: var(--cyan); font-weight: 500; margin-bottom: 24px;
     }
     .hero h1 {
-      font-size: clamp(40px, 7vw, 76px);
-      font-weight: 200; line-height: 1.05; letter-spacing: -0.025em;
+      font-size: clamp(44px, 8vw, 80px);
+      font-weight: 200; line-height: 1.02; letter-spacing: -0.03em;
       color: var(--text); margin-bottom: 26px;
     }
     .hero h1 em {
@@ -121,49 +167,51 @@
       color: var(--text-soft); max-width: 680px; margin: 0 auto;
     }
 
-    /* Vet Hero — the "open in browser" CTA */
-    .vet-hero {
-      max-width: var(--maxw); margin: 32px auto 0;
-      padding: 0 28px;
-    }
+    /* Vet Hero Card */
+    .vet-hero { max-width: var(--maxw); margin: 40px auto 0; padding: 0 32px; }
     .vet-card {
-      background: linear-gradient(135deg, rgba(0,212,193,0.08), rgba(0,168,154,0.02));
+      background: linear-gradient(135deg, rgba(0,212,193,0.10), rgba(0,168,154,0.02));
       border: 1px solid var(--cyan-soft);
-      border-radius: 22px;
-      padding: 38px clamp(28px, 5vw, 60px);
-      display: flex; gap: 32px; align-items: center; flex-wrap: wrap;
+      border-radius: 24px;
+      padding: 44px clamp(28px, 5vw, 60px);
+      display: flex; gap: 36px; align-items: center; flex-wrap: wrap;
       position: relative; overflow: hidden;
     }
     .vet-card::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(80% 100% at 0% 0%, rgba(0,212,193,0.15), transparent 60%);
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(80% 100% at 0% 0%, rgba(0,212,193,0.18), transparent 60%),
+        radial-gradient(60% 80% at 100% 100%, rgba(0,168,154,0.10), transparent 60%);
       pointer-events: none;
     }
     .vet-card-text { flex: 1 1 380px; position: relative; z-index: 1; }
     .vet-card-text .label {
+      display: inline-flex; align-items: center; gap: 8px;
       font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
-      color: var(--cyan); font-weight: 600; margin-bottom: 12px;
+      color: var(--cyan); font-weight: 600; margin-bottom: 14px;
+    }
+    .vet-card-text .label::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--cyan); box-shadow: 0 0 10px var(--cyan-glow-1);
     }
     .vet-card-text h2 {
-      font-size: clamp(24px, 3.5vw, 34px); font-weight: 300;
-      letter-spacing: -0.015em; line-height: 1.2;
-      margin-bottom: 12px;
+      font-size: clamp(26px, 4vw, 38px); font-weight: 300;
+      letter-spacing: -0.015em; line-height: 1.18;
+      margin-bottom: 14px;
     }
     .vet-card-text h2 strong { font-weight: 500; color: var(--cyan); }
     .vet-card-text p {
       font-size: 15px; color: var(--text-soft); line-height: 1.6;
-      margin-bottom: 18px;
     }
     .vet-card-actions {
       flex: 0 0 auto; position: relative; z-index: 1;
-      display: flex; flex-direction: column; gap: 10px;
+      display: flex; flex-direction: column; gap: 12px;
       align-items: flex-start;
     }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 10px;
       background: var(--cyan); color: #062626;
-      padding: 16px 26px; border-radius: 14px;
+      padding: 17px 28px; border-radius: 14px;
       font-size: 15px; font-weight: 600; letter-spacing: 0.02em;
       text-decoration: none;
       box-shadow: 0 8px 30px rgba(0,212,193,0.30);
@@ -172,7 +220,7 @@
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 38px rgba(0,212,193,0.45);
+      box-shadow: 0 12px 40px rgba(0,212,193,0.50);
     }
     .btn-primary .arrow { transition: transform 180ms; }
     .btn-primary:hover .arrow { transform: translate(3px, 0); }
@@ -181,13 +229,15 @@
       color: var(--cyan); text-decoration: none;
       font-size: 13px; letter-spacing: 0.04em;
       padding: 8px 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 200ms;
     }
-    .btn-secondary:hover { color: var(--text); }
+    .btn-secondary:hover { border-color: var(--cyan); }
 
-    /* Section header */
+    /* Sections */
     .section {
-      max-width: var(--maxw); margin: 80px auto 0;
-      padding: 0 28px;
+      max-width: var(--maxw); margin: 90px auto 0;
+      padding: 0 32px;
     }
     .section-label {
       font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase;
@@ -195,134 +245,161 @@
       margin-bottom: 14px;
     }
     .section-title {
-      font-size: clamp(28px, 4vw, 42px); font-weight: 300;
-      letter-spacing: -0.015em; line-height: 1.15;
-      max-width: 720px;
-      margin-bottom: 12px;
+      font-size: clamp(28px, 4.5vw, 44px); font-weight: 300;
+      letter-spacing: -0.018em; line-height: 1.12;
+      max-width: 740px; margin-bottom: 14px;
     }
-    .section-title em {
-      font-style: normal; color: var(--cyan);
-    }
+    .section-title em { font-style: normal; color: var(--cyan); }
     .section-sub {
-      font-size: 16px; color: var(--text-soft); max-width: 640px;
-      margin-bottom: 32px;
+      font-size: 16px; color: var(--text-soft); max-width: 660px;
+      margin-bottom: 36px; line-height: 1.6;
     }
 
-    /* Audience grid */
     .audience-grid {
       display: grid; gap: 18px;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
     .aud-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px 22px;
-      transition: border-color 200ms, background 200ms;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px 22px;
+      transition: border-color 200ms, background 200ms, transform 200ms;
     }
-    .aud-card:hover { border-color: var(--cyan-soft); background: var(--bg-card-hover); }
+    .aud-card:hover {
+      border-color: var(--cyan-soft); background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
     .aud-card .who {
       font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase;
-      color: var(--cyan); margin-bottom: 6px; font-weight: 500;
+      color: var(--cyan); margin-bottom: 8px; font-weight: 500;
     }
     .aud-card h4 { font-size: 18px; font-weight: 400; margin-bottom: 10px; }
     .aud-card p { font-size: 14px; color: var(--text-soft); line-height: 1.55; }
 
-    /* Feature grid (with metric pills) */
     .features-grid {
       display: grid; gap: 14px;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     }
     .feat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 22px 20px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px 22px;
+      transition: border-color 200ms;
     }
+    .feat-card:hover { border-color: var(--cyan-soft); }
     .feat-card .feat-icon {
-      width: 38px; height: 38px; border-radius: 10px;
+      width: 40px; height: 40px; border-radius: 11px;
       background: rgba(0,212,193,0.12);
       display: grid; place-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       font-size: 18px;
     }
-    .feat-card .feat-title {
-      font-size: 15px; font-weight: 500; margin-bottom: 6px;
-    }
-    .feat-card .feat-desc {
-      font-size: 13px; color: var(--text-dim); line-height: 1.5;
-    }
+    .feat-card .feat-title { font-size: 15px; font-weight: 500; margin-bottom: 6px; letter-spacing: -0.005em; }
+    .feat-card .feat-desc { font-size: 13px; color: var(--text-dim); line-height: 1.55; }
 
-    /* Science block */
+    /* Browser viewer dedicated section */
+    .viewer-block {
+      margin-top: 22px;
+      background: linear-gradient(135deg, rgba(0,212,193,0.06), rgba(0,168,154,0.015));
+      border: 1px solid var(--cyan-soft);
+      border-radius: 22px;
+      padding: 36px clamp(28px, 5vw, 48px);
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 36px; align-items: center;
+    }
+    @media (max-width: 720px) {
+      .viewer-block { grid-template-columns: 1fr; }
+    }
+    .viewer-block h3 { font-size: 24px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 10px; }
+    .viewer-block h3 strong { font-weight: 500; color: var(--cyan); }
+    .viewer-block p { font-size: 14px; color: var(--text-soft); line-height: 1.65; margin-bottom: 18px; }
+    .viewer-block ul { list-style: none; padding: 0; margin-bottom: 0; }
+    .viewer-block ul li {
+      font-size: 13px; color: var(--text-soft);
+      padding: 5px 0 5px 22px; position: relative;
+    }
+    .viewer-block ul li::before {
+      content: '✓'; position: absolute; left: 0;
+      color: var(--cyan); font-weight: 600;
+    }
+    .viewer-block .viewer-cta {
+      background: var(--bg-near); border: 1px solid var(--border-strong);
+      border-radius: 14px; padding: 24px 20px;
+      text-align: center;
+    }
+    .viewer-block .viewer-cta .url-mock {
+      font-family: ui-monospace, monospace;
+      font-size: 11px; color: var(--text-dim);
+      letter-spacing: 0.04em;
+      padding: 6px 0 18px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 18px;
+    }
+    .viewer-block .viewer-cta .url-mock .path { color: var(--cyan); }
+
     .science-block {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 32px clamp(24px, 4vw, 44px);
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px clamp(24px, 4vw, 44px);
       margin-top: 22px;
     }
     .science-block .ref-list {
-      columns: 2; column-gap: 32px;
-      font-size: 13px; color: var(--text-soft); line-height: 1.7;
+      columns: 2; column-gap: 36px;
+      font-size: 13px; color: var(--text-soft); line-height: 1.8;
     }
     @media (max-width: 640px) {
       .science-block .ref-list { columns: 1; }
     }
     .science-block .ref-list .name { color: var(--cyan); font-weight: 500; }
 
-    /* Disclaimer block */
     .disclaimer-block {
       background: rgba(212,165,116,0.05);
-      border: 1px solid rgba(212,165,116,0.20);
-      border-radius: 14px;
-      padding: 20px 22px;
-      margin-top: 28px;
-      font-size: 13px; color: var(--text-soft);
-      line-height: 1.6;
+      border: 1px solid rgba(212,165,116,0.22);
+      border-radius: 14px; padding: 22px 24px;
+      margin-top: 30px;
+      font-size: 13px; color: var(--text-soft); line-height: 1.65;
     }
     .disclaimer-block strong { color: var(--amber); font-weight: 500; }
 
     /* CTA strip */
     .cta-strip {
-      max-width: var(--maxw); margin: 80px auto 0;
-      padding: 0 28px; text-align: center;
+      max-width: var(--maxw); margin: 100px auto 0;
+      padding: 0 32px; text-align: center;
     }
     .cta-strip h2 {
-      font-size: clamp(28px, 4vw, 40px); font-weight: 300;
-      letter-spacing: -0.015em; margin-bottom: 14px;
+      font-size: clamp(30px, 5vw, 46px); font-weight: 200;
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 16px;
     }
-    .cta-strip h2 em { font-style: normal; color: var(--cyan); }
+    .cta-strip h2 em { font-style: normal; color: var(--cyan); font-weight: 300; }
     .cta-strip p {
       font-size: 16px; color: var(--text-soft);
-      max-width: 540px; margin: 0 auto 28px;
+      max-width: 560px; margin: 0 auto 32px;
     }
     .cta-strip-actions {
-      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      align-items: center;
     }
 
     /* Footer */
     footer {
-      max-width: var(--maxw); margin: 80px auto 0;
-      padding: 50px 28px;
+      max-width: var(--maxw); margin: 90px auto 0;
+      padding: 50px 32px 40px;
       border-top: 1px solid var(--border);
     }
     .foot-row {
       display: flex; justify-content: space-between; align-items: flex-start;
       flex-wrap: wrap; gap: 32px;
     }
-    .foot-brand { font-size: 12px; color: var(--text-soft); letter-spacing: 0.18em; text-transform: uppercase; }
+    .foot-brand img { height: 20px; filter: brightness(0) invert(1) opacity(0.8); margin-bottom: 10px; }
     .foot-brand small {
-      display: block; font-size: 11px; color: var(--text-faint);
-      letter-spacing: 0.04em; text-transform: none; font-weight: 300;
-      margin-top: 6px;
+      display: block; font-size: 12px; color: var(--text-dim);
+      letter-spacing: 0.04em; font-weight: 300;
     }
-    .foot-links { display: flex; gap: 22px; flex-wrap: wrap; font-size: 12px; }
+    .foot-links { display: flex; gap: 22px; flex-wrap: wrap; font-size: 13px; align-items: center; }
     .foot-links a { color: var(--text-dim); text-decoration: none; transition: color 180ms; }
     .foot-links a:hover { color: var(--text); }
-    .foot-meta { margin-top: 28px; font-size: 11px; color: var(--text-faint); letter-spacing: 0.04em; }
+    .foot-meta { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text-faint); letter-spacing: 0.04em; }
 
     @media (max-width: 700px) {
-      .vet-card { padding: 28px 24px; }
+      .vet-card { padding: 30px 24px; gap: 24px; }
       .vet-card-actions { width: 100%; }
       .btn-primary { width: 100%; justify-content: center; }
     }
@@ -332,9 +409,14 @@
 
 <header class="topnav">
   <div class="breadcrumb">
-    <a href="/">Vitalkultur</a>
+    <a href="/" aria-label="Vitalkultur home">
+      <img src="/assets/vitalkultur-wordmark.png" alt="Vitalkultur" width="100">
+    </a>
     <span class="sep">/</span>
-    <span class="current">CARLON Equine</span>
+    <span class="current">
+      <span class="mark-mini"><img src="/assets/equine-mark-112.png" alt="" width="22" height="22"></span>
+      CARLON Equine
+    </span>
   </div>
   <div class="topnav-right">
     <button class="lang-toggle" id="langToggle" title="Switch language">
@@ -346,24 +428,28 @@
 <main>
 
   <section class="hero">
+    <div class="hero-mark-stage">
+      <div class="hero-mark-glow"></div>
+      <div class="hero-mark-aura"></div>
+      <img src="/assets/equine-mark-512.png" alt="CARLON Equine" width="132" height="132">
+    </div>
     <div class="eyebrow"
          data-en="Research grade · Polar H10 · Equine cardiology"
          data-de="Forschungs-Grade · Polar H10 · Equine Kardiologie">Research grade · Polar H10 · Equine cardiology</div>
     <h1 data-en="The horse's heart, <em>fully decoded.</em>"
         data-de="Das Pferdeherz, <em>vollständig dekodiert.</em>">The horse's heart, <em>fully decoded.</em></h1>
-    <p data-en="iPhone + Polar H10 = a mobile equine HRV laboratory. Fifteen scientific visualisations. Multi-horse batch workflows. Browser viewer for veterinarians."
-       data-de="iPhone + Polar H10 = ein mobiles equines HRV-Labor. Fünfzehn wissenschaftliche Visualisierungen. Multi-Pferd-Batch-Workflows. Browser-Viewer für Tierärzte.">iPhone + Polar H10 = a mobile equine HRV laboratory. Fifteen scientific visualisations. Multi-horse batch workflows. Browser viewer for veterinarians.</p>
+    <p data-en="iPhone + Polar H10 = a mobile equine HRV laboratory. Fifteen scientific visualisations. Multi-horse batch workflows. A free browser viewer for veterinarians — included."
+       data-de="iPhone + Polar H10 = ein mobiles equines HRV-Labor. Fünfzehn wissenschaftliche Visualisierungen. Multi-Pferd-Batch-Workflows. Kostenloser Browser-Viewer für Tierärzte — inklusive.">iPhone + Polar H10 = a mobile equine HRV laboratory. Fifteen scientific visualisations. Multi-horse batch workflows. A free browser viewer for veterinarians — included.</p>
   </section>
 
-  <!-- THE Vet-CTA: prominent direct-access to /viewer/#demo -->
   <section class="vet-hero">
     <div class="vet-card">
       <div class="vet-card-text">
         <div class="label" data-en="For veterinarians" data-de="Für Tierärzte">For veterinarians</div>
-        <h2 data-en="Try the <strong>analysis viewer</strong> in your browser. No install."
-            data-de="Teste den <strong>Analyse-Viewer</strong> im Browser. Kein Install.">Try the <strong>analysis viewer</strong> in your browser. No install.</h2>
-        <p data-en="See exactly what your clients send you when they share a CARLON Equine recording: Tachogram, Poincaré, Welch PSD, DFA-α₁, Baevsky, Multi-Scale Entropy, AV-block detection. Open with a click. Drop a session. Get the analysis."
-           data-de="Sieh exakt, was deine Halter dir schicken, wenn sie eine CARLON-Equine-Aufnahme teilen: Tachogramm, Poincaré, Welch PSD, DFA-α₁, Baevsky, Multi-Scale Entropy, AV-Block-Erkennung. Mit einem Klick öffnen. Session droppen. Auswertung sehen.">See exactly what your clients send you when they share a CARLON Equine recording: Tachogram, Poincaré, Welch PSD, DFA-α₁, Baevsky, Multi-Scale Entropy, AV-block detection. Open with a click. Drop a session. Get the analysis.</p>
+        <h2 data-en="Open the <strong>analysis viewer</strong> in your browser. No install."
+            data-de="Öffne den <strong>Analyse-Viewer</strong> im Browser. Kein Install.">Open the <strong>analysis viewer</strong> in your browser. No install.</h2>
+        <p data-en="See exactly what your clients send you when they share a CARLON Equine recording: Tachogram, Poincaré, Welch PSD, DFA-α₁, Baevsky, Multi-Scale Entropy, AV-block detection. One click. Drop a session. Get the analysis."
+           data-de="Sieh exakt, was deine Halter dir schicken, wenn sie eine CARLON-Equine-Aufnahme teilen: Tachogramm, Poincaré, Welch PSD, DFA-α₁, Baevsky, Multi-Scale Entropy, AV-Block-Erkennung. Ein Klick. Session droppen. Auswertung sehen.">See exactly what your clients send you when they share a CARLON Equine recording: Tachogram, Poincaré, Welch PSD, DFA-α₁, Baevsky, Multi-Scale Entropy, AV-block detection. One click. Drop a session. Get the analysis.</p>
       </div>
       <div class="vet-card-actions">
         <a class="btn-primary" href="/viewer/#demo">
@@ -392,8 +478,8 @@
       <div class="aud-card">
         <div class="who" data-en="Researchers" data-de="Forscher">Researchers</div>
         <h4 data-en="Field-grade multi-horse studies" data-de="Feldstudien mit vielen Pferden">Field-grade multi-horse studies</h4>
-        <p data-en="Roster + batch-trigger + batch-sync workflows for 5–10+ horses simultaneously. Welfare, cold-exposure, training-load."
-           data-de="Roster + Batch-Trigger + Batch-Sync-Workflows für 5–10+ Pferde gleichzeitig. Welfare, Kälte-Exposition, Trainingsbelastung.">Roster + batch-trigger + batch-sync workflows for 5–10+ horses simultaneously. Welfare, cold-exposure, training-load.</p>
+        <p data-en="Roster + batch-trigger + batch-sync workflows for 5–10+ horses simultaneously. Welfare, cold exposure, training load."
+           data-de="Roster + Batch-Trigger + Batch-Sync-Workflows für 5–10+ Pferde gleichzeitig. Welfare, Kälte-Exposition, Trainingsbelastung.">Roster + batch-trigger + batch-sync workflows for 5–10+ horses simultaneously. Welfare, cold exposure, training load.</p>
       </div>
       <div class="aud-card">
         <div class="who" data-en="Sport-horse trainers" data-de="Sportpferde-Trainer">Sport-horse trainers</div>
@@ -404,8 +490,8 @@
       <div class="aud-card">
         <div class="who" data-en="Engaged owners" data-de="Engagierte Halter">Engaged owners</div>
         <h4 data-en="Share with your vet" data-de="Mit dem Tierarzt teilen">Share with your vet</h4>
-        <p data-en="Record, get a one-tap referral PDF, send it to your veterinarian. Vet opens the browser viewer, sees everything."
-           data-de="Aufnehmen, mit einem Tap einen Referral-PDF generieren, an deinen Tierarzt senden. Tierarzt öffnet den Browser-Viewer, sieht alles.">Record, get a one-tap referral PDF, send it to your veterinarian. Vet opens the browser viewer, sees everything.</p>
+        <p data-en="Record on your iPhone, get a one-tap referral PDF, send it to your vet. They open the browser viewer, see everything."
+           data-de="Mit dem iPhone aufnehmen, mit einem Tap einen Referral-PDF generieren, an deinen Tierarzt senden. Er öffnet den Browser-Viewer, sieht alles.">Record on your iPhone, get a one-tap referral PDF, send it to your vet. They open the browser viewer, see everything.</p>
       </div>
     </div>
   </section>
@@ -436,7 +522,7 @@
       </div>
       <div class="feat-card">
         <div class="feat-icon">⚙</div>
-        <div class="feat-title" data-en="7-stage equine filter pipeline" data-de="7-Stage Equine-Filter-Pipeline">7-stage equine filter pipeline</div>
+        <div class="feat-title" data-en="7-stage equine filter" data-de="7-Stage Equine-Filter">7-stage equine filter</div>
         <div class="feat-desc" data-en="Lipponen-Tarvainen beat classifier with vagal AV-block detection (Reef 1998)."
                                data-de="Lipponen-Tarvainen Beat-Klassifikator mit vagaler AV-Block-Erkennung (Reef 1998).">Lipponen-Tarvainen beat classifier with vagal AV-block detection (Reef 1998).</div>
       </div>
@@ -456,10 +542,48 @@
   </section>
 
   <section class="section">
+    <div class="section-label" data-en="Companion tool" data-de="Companion-Tool">Companion tool</div>
+    <h2 class="section-title"
+        data-en="The vet-grade analysis viewer. <em>Built into the brand.</em>"
+        data-de="Der Tierarzt-grade Analyse-Viewer. <em>Teil der Marke.</em>">The vet-grade analysis viewer. <em>Built into the brand.</em></h2>
+    <p class="section-sub"
+       data-en="Every CARLON Equine recording ships with a browser-based viewer for the receiving veterinarian. No install, no account, no upload. The viewer runs entirely client-side — your data never leaves your device."
+       data-de="Jede CARLON-Equine-Aufnahme kommt mit einem browserbasierten Viewer für den empfangenden Tierarzt. Kein Install, kein Account, kein Upload. Der Viewer läuft komplett client-seitig — deine Daten verlassen dein Gerät nie.">Every CARLON Equine recording ships with a browser-based viewer for the receiving veterinarian. No install, no account, no upload. The viewer runs entirely client-side — your data never leaves your device.</p>
+    <div class="viewer-block">
+      <div>
+        <h3 data-en="CARLON Equine <strong>Web Viewer</strong>"
+            data-de="CARLON Equine <strong>Web-Viewer</strong>">CARLON Equine <strong>Web Viewer</strong></h3>
+        <p data-en="The same analysis engine that runs inside the iPhone app, packaged as a single-file web tool. EN/DE bilingual. Renders any CARLON Equine or open_hrv_json export. Drag & drop, paste link, or load demo."
+           data-de="Die gleiche Analyse-Engine wie in der iPhone-App, gepackt als Single-File-Web-Tool. EN/DE-zweisprachig. Rendert jeden CARLON-Equine- oder open_hrv_json-Export. Drag & Drop, Link einfügen, oder Demo laden.">The same analysis engine that runs inside the iPhone app, packaged as a single-file web tool. EN/DE bilingual. Renders any CARLON Equine or open_hrv_json export. Drag & drop, paste link, or load demo.</p>
+        <ul>
+          <li data-en="All 15+ visualisations: Tachogram, Poincaré, PSD, DFA, MSE, Symbolic"
+              data-de="Alle 15+ Visualisierungen: Tachogramm, Poincaré, PSD, DFA, MSE, Symbolic">All 15+ visualisations: Tachogram, Poincaré, PSD, DFA, MSE, Symbolic</li>
+          <li data-en="Executive Summary in 3 audience tones (Owner · Vet · Researcher)"
+              data-de="Executive Summary in 3 Audience-Tönen (Halter · Tierarzt · Forscher)">Executive Summary in 3 audience tones (Owner · Vet · Researcher)</li>
+          <li data-en="Limitations panel — knows when NOT to trust the numbers"
+              data-de="Limitations-Panel — weiß, wann den Zahlen NICHT zu trauen ist">Limitations panel — knows when NOT to trust the numbers</li>
+          <li data-en="Print-ready PDF report with all citations"
+              data-de="Druckfertiger PDF-Bericht mit allen Citationen">Print-ready PDF report with all citations</li>
+        </ul>
+      </div>
+      <div class="viewer-cta">
+        <div class="url-mock">vitalkultur.com<span class="path">/viewer</span></div>
+        <a class="btn-primary" href="/viewer/#demo" style="width:100%;justify-content:center;">
+          <span data-en="Try viewer" data-de="Viewer testen">Try viewer</span>
+          <span class="arrow">→</span>
+        </a>
+        <div style="margin-top:14px;font-size:11px;color:var(--text-faint);letter-spacing:0.04em">
+          <span data-en="Free · No account · Local" data-de="Kostenlos · Kein Account · Lokal">Free · No account · Local</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="section-label" data-en="Scientific foundation" data-de="Wissenschaftliche Basis">Scientific foundation</div>
     <h2 class="section-title"
-        data-en="64+ peer-reviewed primary sources. <em>Every metric, every cutoff.</em>"
-        data-de="64+ peer-reviewed Primärquellen. <em>Jede Metrik, jeder Cutoff.</em>">64+ peer-reviewed primary sources. <em>Every metric, every cutoff.</em></h2>
+        data-en="64+ peer-reviewed sources. <em>Every metric, every cutoff.</em>"
+        data-de="64+ peer-reviewed Quellen. <em>Jede Metrik, jeder Cutoff.</em>">64+ peer-reviewed sources. <em>Every metric, every cutoff.</em></h2>
     <p class="section-sub"
        data-en="No black-box algorithms. Every number traces back to a published study, equine-specific where it matters."
        data-de="Keine Black-Box-Algorithmen. Jede Zahl zurückführbar auf eine publizierte Studie, equine-spezifisch wo es darauf ankommt.">No black-box algorithms. Every number traces back to a published study, equine-specific where it matters.</p>
@@ -491,8 +615,8 @@
   <section class="cta-strip">
     <h2 data-en="Ready when you are."
         data-de="Bereit, wann du es bist.">Ready when you are.</h2>
-    <p data-en="App Store launch is imminent. Until then: try the browser viewer right now — it's the same analysis engine, running entirely in your browser, with a demo session preloaded."
-       data-de="App-Store-Launch steht kurz bevor. Bis dahin: probiere den Browser-Viewer jetzt — es ist die gleiche Analyse-Engine, läuft komplett im Browser, mit Demo-Session voreingestellt.">App Store launch is imminent. Until then: try the browser viewer right now — it's the same analysis engine, running entirely in your browser, with a demo session preloaded.</p>
+    <p data-en="App Store launch is imminent. Until then: try the browser viewer right now — same analysis engine, runs entirely in your browser, with a demo session preloaded."
+       data-de="App-Store-Launch steht kurz bevor. Bis dahin: probiere den Browser-Viewer jetzt — gleiche Analyse-Engine, läuft komplett im Browser, mit Demo-Session voreingestellt.">App Store launch is imminent. Until then: try the browser viewer right now — same analysis engine, runs entirely in your browser, with a demo session preloaded.</p>
     <div class="cta-strip-actions">
       <a class="btn-primary" href="/viewer/#demo">
         <span data-en="Open viewer with demo" data-de="Viewer mit Demo öffnen">Open viewer with demo</span>
@@ -509,14 +633,14 @@
 <footer>
   <div class="foot-row">
     <div class="foot-brand">
-      <a href="/" style="color:inherit;text-decoration:none;">Vitalkultur</a>
+      <a href="/" aria-label="Vitalkultur"><img src="/assets/vitalkultur-wordmark.png" alt="Vitalkultur" width="100"></a>
       <small data-en="Part of the Vitalkultur app family" data-de="Teil der Vitalkultur-App-Familie">Part of the Vitalkultur app family</small>
     </div>
     <div class="foot-links">
       <a href="/">Vitalkultur</a>
       <a href="/breathwork/">Breathwork</a>
       <a href="/rrloggerpro/">RR Logger Pro</a>
-      <a href="/viewer/" data-en="Viewer" data-de="Viewer">Viewer</a>
+      <a href="/viewer/" data-en="Web Viewer" data-de="Web-Viewer">Web Viewer</a>
       <a href="/privacy.html" data-en="Privacy" data-de="Datenschutz">Privacy</a>
       <a href="/support.html" data-en="Support" data-de="Support">Support</a>
       <a href="/impressum.html">Impressum</a>
