@@ -822,6 +822,74 @@ nav {
 .method-transparency .mt-footer strong { color: #d4a574; font-weight: 600; }
 
 /* ============================================================
+   GARBAGE-IN-STATE — render-aborted overlay für Charts.
+   15/10 Magic Moment #2: Software weigert sich, auf unzureichenden
+   Daten Fantasie-Zahlen zu rendern. Klinische Integrität sichtbar.
+   ============================================================ */
+.chart-aborted-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px 32px;
+  min-height: 320px;
+  background: linear-gradient(135deg, rgba(220, 100, 60, 0.06) 0%, rgba(6, 16, 26, 0.4) 100%);
+  border: 1px dashed rgba(220, 100, 60, 0.40);
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  text-align: center;
+}
+.chart-aborted-stamp {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #e07a4f;
+  font-weight: 600;
+  padding: 6px 16px;
+  border: 1px solid rgba(220, 100, 60, 0.55);
+  border-radius: 999px;
+  background: rgba(220, 100, 60, 0.08);
+}
+.chart-aborted-reason {
+  font-size: 14px;
+  color: var(--text-primary);
+  max-width: 480px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+.chart-aborted-reason strong { color: #e07a4f; font-weight: 600; }
+.chart-aborted-method {
+  font-size: 11px;
+  color: var(--text-secondary);
+  max-width: 520px;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  font-style: italic;
+}
+.chart-aborted-causes {
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px dotted rgba(255,255,255,0.08);
+  max-width: 540px;
+}
+@media print {
+  .chart-aborted-overlay {
+    background: #fff8f4 !important;
+    border-color: #c89060 !important;
+    color: #111 !important;
+  }
+  .chart-aborted-stamp { color: #b85a30 !important; border-color: #c89060 !important; background: #fff !important; }
+  .chart-aborted-reason { color: #111 !important; }
+  .chart-aborted-reason strong { color: #b85a30 !important; }
+  .chart-aborted-method, .chart-aborted-causes { color: #555 !important; }
+}
+
+/* ============================================================
    HOLLYWOOD-LOADER — terminal-style "Decoding"-Theater bei jedem
    loadDemo/loadFile. 100-200 ms Rechenzeit zelebriert die lokale
    Compute-Power. Skip wenn prefers-reduced-motion.
@@ -6070,10 +6138,69 @@ function renderTachogram(data, opts = {}) {
 // Poincaré interactive state
 const poincaState = { data: null, xMin: 0, xMax: 0, yMin: 0, yMax: 0, fullMin: 0, fullMax: 0 };
 
+// =========================================================
+// Garbage-In-State: renderGuard prüft Daten-Mindestanforderungen
+// für statistisch valide Chart-Renders. Bei Unzureichend: Chart-SVG
+// wird durch [RENDERING ABORTED]-Overlay ersetzt. Klinische Integrität
+// statt Pseudo-Ergebnissen auf Müll-Daten.
+//
+// Schwellen orientieren sich an wiss. Literatur:
+// - Poincaré SD1/SD2: ~200 NN-Beats für stabile Ellipsen-Fit (Brennan 2001)
+// - Welch PSD: ~256 NN-Beats für brauchbare Frequenz-Auflösung
+// - DFA-α₁: ~200 NN-Beats für short-term scaling
+// - MSE: 1000+ NN-Beats laut Costa 2002, hier conservative 200
+// - Quality: <40% Artefakt-Rate = strukturell broken signal
+// =========================================================
+function renderGuard(frameEl, data, opts) {
+  if (!frameEl) return true;
+  const { minBeats = 100, minQualityPct = 40, label = 'analysis', method = '' } = opts;
+  const validBeats = data?.quality?.normalCount ?? 0;
+  const qualityPct = 100 - (data?.quality?.artifactRatePct ?? 0);
+
+  // Bestehender Overlay raus (falls vorheriger Render abortet hat)
+  const oldOverlay = frameEl.querySelector('.chart-aborted-overlay');
+  if (oldOverlay) oldOverlay.remove();
+
+  const failures = [];
+  if (validBeats < minBeats) failures.push(`only <strong>${validBeats}</strong> valid normal beats (need ≥ ${minBeats})`);
+  if (qualityPct < minQualityPct) failures.push(`signal quality <strong>${qualityPct.toFixed(1)}%</strong> (need ≥ ${minQualityPct}%)`);
+
+  if (failures.length === 0) {
+    // Pass: SVG sichtbar lassen, alle bestehenden chart-children visible
+    frameEl.querySelectorAll('svg.chart, .chart-controls, .chart-crosshair').forEach(el => el.style.display = '');
+    return true;
+  }
+
+  // Fail: SVG + Controls verstecken, Overlay einsetzen
+  frameEl.querySelectorAll('svg.chart, .chart-controls, .chart-crosshair').forEach(el => el.style.display = 'none');
+  const _isDE = window.CARLON_LANG === 'de';
+  const overlay = document.createElement('div');
+  overlay.className = 'chart-aborted-overlay';
+  overlay.innerHTML = `
+    <div class="chart-aborted-stamp">[ ${_isDE ? 'RENDERING ABGEBROCHEN' : 'RENDERING ABORTED'} ]</div>
+    <div class="chart-aborted-reason">
+      ${_isDE ? `Für ${label} ist die Daten-Grundlage nicht ausreichend: ${failures.join(' · ')}.`
+              : `${label.charAt(0).toUpperCase() + label.slice(1)} requires more data than this recording provides: ${failures.join(' · ')}.`}
+    </div>
+    ${method ? `<div class="chart-aborted-method">${_isDE ? 'Methode:' : 'Method:'} ${method} — ${_isDE ? 'eine Berechnung auf zu wenigen Beats würde irreführende Werte produzieren.' : 'computing on insufficient data would produce misleading numbers.'}</div>` : ''}
+    <div class="chart-aborted-causes">${_isDE ? 'Mögliche Ursachen: Gurt verrutscht · BLE-Interferenz · Bewegungs-Artefakte · zu kurze Aufnahme' : 'Possible causes: belt slipped · BLE interference · motion artefacts · recording too short'}</div>
+  `;
+  frameEl.appendChild(overlay);
+  return false;
+}
+
 function renderPoincare(data, opts = {}) {
   const svgId = opts.svgId || 'poincareChart';
   const svg = document.getElementById(svgId);
   if (!svg) return;
+  // Garbage-In Guard: Brennan 2001 SD1/SD2-Ellipse braucht ≥200 valide NN-Beats
+  // für statistisch belastbare Geometrie. Unter 200 wäre die Ellipse Zufall.
+  const frame = document.getElementById('poincareFrame');
+  if (frame && !renderGuard(frame, data, {
+    minBeats: 200, minQualityPct: 60,
+    label: window.CARLON_LANG === 'de' ? 'die Poincaré-SD1/SD2-Ellipse' : 'Poincaré SD1/SD2 ellipse fit',
+    method: 'Brennan 2001'
+  })) return;
   if (data && data !== poincaState.data) {
     poincaState.data = data;
     const rrAll = (data.rrData || []).filter(b => b.label === 'N').map(b => b.rrMs);
