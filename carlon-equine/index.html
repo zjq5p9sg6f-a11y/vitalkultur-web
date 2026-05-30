@@ -819,6 +819,167 @@ nav {
 .method-transparency .mt-footer strong { color: #d4a574; font-weight: 600; }
 
 /* ============================================================
+   LIVE-DEMO-PREVIEW — der Proof-Shot.
+   Vet aus Cold-Outreach sieht in 3 Sekunden was hinten rauskommt
+   (Real-Screenshot statt Marketing-Text). Wichtigste Sektion auf
+   der Cold-Outreach-Landing.
+   ============================================================ */
+.demo-preview {
+  position: relative;
+  z-index: 5;
+  max-width: 1200px;
+  margin: 96px auto 0;
+  padding: 0 24px;
+}
+.demo-preview-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.demo-preview-title {
+  font-size: clamp(26px, 3.6vw, 40px);
+  font-weight: 200;
+  letter-spacing: -0.018em;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--text-primary);
+  margin: 0 auto 12px;
+  max-width: 720px;
+}
+.demo-preview-title em {
+  font-style: normal;
+  background: linear-gradient(120deg, var(--cyan) 0%, #00a89a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.demo-preview-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 36px;
+  line-height: 1.6;
+}
+.demo-preview-frame {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0,212,193,0.30);
+  background: rgba(6,16,26,0.55);
+  box-shadow:
+    0 24px 80px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.04) inset,
+    0 0 60px rgba(0,212,193,0.10);
+  margin-bottom: 28px;
+}
+.demo-preview-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 75%, rgba(6,16,26,0.85) 100%);
+  z-index: 2;
+}
+.demo-preview-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 720px;
+  object-fit: cover;
+  object-position: top center;
+}
+.demo-preview-frame .frame-overlay {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.demo-preview-frame .frame-overlay .badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  background: rgba(0,0,0,0.55);
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.demo-preview-callouts {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-bottom: 28px;
+}
+.demo-preview-callout {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+}
+.demo-preview-callout strong {
+  color: var(--cyan);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 2px;
+}
+.demo-preview-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.demo-preview-cta a.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: var(--cyan);
+  color: var(--bg-void);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 36px var(--cyan-glow-3);
+  min-height: 48px;
+  box-sizing: border-box;
+}
+.demo-preview-cta a.primary:hover {
+  background: var(--cyan-strong);
+  transform: translateY(-1px);
+  box-shadow: 0 0 56px var(--cyan-glow-2);
+}
+.demo-preview-cta .note {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ============================================================
    WHY-HRV — Storyline-Section vor Beta-Card
    Ursache→Indikator→Lösung in 3 Spalten
    ============================================================ */
@@ -1113,6 +1274,14 @@ nav {
   .fact-card .fc-detail { font-size: 8px; letter-spacing: 0.08em; }
   .method-transparency { margin: 16px 14px 0; padding: 14px 16px; font-size: 11.5px; }
   .method-transparency .mt-grid { gap: 10px 16px; }
+  .demo-preview { margin-top: 64px; padding: 0 14px; }
+  .demo-preview-frame img { max-height: 480px; }
+  .demo-preview-frame .frame-overlay { bottom: 12px; gap: 8px; }
+  .demo-preview-frame .frame-overlay .badge { font-size: 8px; padding: 5px 10px; }
+  .demo-preview-callouts { gap: 10px; }
+  .demo-preview-callout { font-size: 12px; padding: 12px 14px; }
+  .demo-preview-cta a.primary { padding: 14px 24px; font-size: 12px; width: 100%; justify-content: center; }
+  .demo-preview-cta .note { width: 100%; text-align: center; }
   .why-hrv { margin-top: 64px; padding: 0 14px; }
   .why-hrv-title { margin-bottom: 28px; }
   .why-hrv-grid { gap: 14px; }
@@ -4078,6 +4247,60 @@ footer .links a:hover { color: var(--cyan); }
     <div class="mt-footer"
          data-en="<strong>⚠ Regulatorik:</strong> CARLON Equine ist ein Forschungs- und Beobachtungs-Werkzeug, <strong>kein Medizinprodukt</strong> unter MDR oder FDA. Alle on-screen Flags sind Screening-Indikatoren, die eine tierärztliche Folge-Konsultation erfordern — niemals Diagnosen."
          data-de="<strong>⚠ Regulatorik:</strong> CARLON Equine ist ein Forschungs- und Beobachtungs-Werkzeug, <strong>kein Medizinprodukt</strong> unter MDR oder FDA. Alle on-screen Flags sind Screening-Indikatoren, die eine tierärztliche Folge-Konsultation erfordern — niemals Diagnosen."><strong>⚠ Regulatorik:</strong> CARLON Equine ist ein Forschungs- und Beobachtungs-Werkzeug, <strong>kein Medizinprodukt</strong> unter MDR oder FDA. Alle on-screen Flags sind Screening-Indikatoren, die eine tierärztliche Folge-Konsultation erfordern — niemals Diagnosen.</div>
+  </div>
+
+  <!-- ============================================================
+       LIVE-DEMO-PREVIEW — der Proof-Shot. Cold-Outreach-Vet sieht
+       in 3 Sek wie tief die Analyse geht (Real-Render der Demo-Daten,
+       keine Marketing-Mockups). Big CTA → öffnet interaktive Demo.
+       ============================================================ -->
+  <div class="demo-preview" id="demo-preview">
+    <div class="demo-preview-eyebrow"
+         data-en="Live demo · what comes out"
+         data-de="Live-Demo · was hinten rauskommt">Live-Demo · was hinten rauskommt</div>
+    <h2 class="demo-preview-title"
+        data-en="Lege eine Aufnahme rein — <em>sieh die Tiefe.</em>"
+        data-de="Lege eine Aufnahme rein — <em>sieh die Tiefe.</em>">Lege eine Aufnahme rein — <em>sieh die Tiefe.</em></h2>
+    <p class="demo-preview-sub"
+       data-en="Hier ist die Demo-Auswertung von Hidalgo (12 J., Warmblut, 6:28 min Ruhe-EKG via Polar H10). Kein Login, kein Upload — die echten Charts und Metriken, die auch dein Klinik-Team sehen würde."
+       data-de="Hier ist die Demo-Auswertung von Hidalgo (12 J., Warmblut, 6:28 min Ruhe-EKG via Polar H10). Kein Login, kein Upload — die echten Charts und Metriken, die auch dein Klinik-Team sehen würde.">Hier ist die Demo-Auswertung von Hidalgo (12 J., Warmblut, 6:28 min Ruhe-EKG via Polar H10). Kein Login, kein Upload — die echten Charts und Metriken, die auch dein Klinik-Team sehen würde.</p>
+
+    <div class="demo-preview-frame">
+      <img src="assets/preview/demo-preview.jpg"
+           alt="CARLON Equine Demo — Hidalgo · Ruhe-EKG mit Executive Summary, KPI-Tafel, Tachogramm mit vagale AV-Blocks, Poincaré-Plot mit SD1/SD2, Power-Spectral-Density Welch"
+           width="1600" height="3000" loading="lazy">
+      <div class="frame-overlay">
+        <span class="badge" data-en="DEMO DATA" data-de="DEMO-DATEN">DEMO-DATEN</span>
+        <span class="badge" data-en="HIDALGO · REST · 6:28 MIN" data-de="HIDALGO · RUHE · 6:28 MIN">HIDALGO · RUHE · 6:28 MIN</span>
+        <span class="badge" data-en="POLAR H10 · 1000 HZ" data-de="POLAR H10 · 1000 HZ">POLAR H10 · 1000 HZ</span>
+      </div>
+    </div>
+
+    <div class="demo-preview-callouts">
+      <div class="demo-preview-callout">
+        <strong data-en="Executive Summary · 3 perspectives" data-de="Executive Summary · 3 Perspektiven">Executive Summary · 3 Perspektiven</strong>
+        <span data-en="Toggle zwischen Halter-/Tierarzt-/Forschungs-Sprache mit einem Klick."
+              data-de="Toggle zwischen Halter-/Tierarzt-/Forschungs-Sprache mit einem Klick.">Toggle zwischen Halter-/Tierarzt-/Forschungs-Sprache mit einem Klick.</span>
+      </div>
+      <div class="demo-preview-callout">
+        <strong data-en="Tachogramm mit AV-Block-Markern" data-de="Tachogramm mit AV-Block-Markern">Tachogramm mit AV-Block-Markern</strong>
+        <span data-en="Beat-für-Beat RR-Verlauf, vagale 2°-AV-Blocks (Mobitz I) automatisch flagged nach Reef 1998."
+              data-de="Beat-für-Beat RR-Verlauf, vagale 2°-AV-Blocks (Mobitz I) automatisch flagged nach Reef 1998.">Beat-für-Beat RR-Verlauf, vagale 2°-AV-Blocks (Mobitz I) automatisch flagged nach Reef 1998.</span>
+      </div>
+      <div class="demo-preview-callout">
+        <strong data-en="Poincaré + Power-Spektrum" data-de="Poincaré + Power-Spektrum">Poincaré + Power-Spektrum</strong>
+        <span data-en="SD1/SD2-Ellipse · Welch-PSD mit equine VLF/LF/HF-Bändern · LF/HF-Ratio mit Cross-Validation (Welch vs Lomb-Scargle)."
+              data-de="SD1/SD2-Ellipse · Welch-PSD mit equine VLF/LF/HF-Bändern · LF/HF-Ratio mit Cross-Validation (Welch vs Lomb-Scargle).">SD1/SD2-Ellipse · Welch-PSD mit equine VLF/LF/HF-Bändern · LF/HF-Ratio mit Cross-Validation (Welch vs Lomb-Scargle).</span>
+      </div>
+    </div>
+
+    <div class="demo-preview-cta">
+      <a class="primary" href="#demo" id="openDemoCta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+        <span data-en="Open the full interactive demo" data-de="Volle interaktive Demo öffnen">Volle interaktive Demo öffnen</span>
+      </a>
+      <span class="note" data-en="Loads in your browser · no signup" data-de="Lädt im Browser · kein Login">Lädt im Browser · kein Login</span>
+    </div>
   </div>
 
   <!-- ============================================================
@@ -8162,6 +8385,17 @@ document.getElementById('liveSaveBtn').addEventListener('click', () => {
 function loadDemo() { render(buildDemoData()); }
 document.getElementById('loadDemoBtn').addEventListener('click', loadDemo);
 document.getElementById('loadDemoBtn2').addEventListener('click', loadDemo);
+// Demo-Preview-Section CTA: lädt Demo + scrollt zum Top, damit Vet direkt in
+// die Daten-Ansicht reinguckt statt zur Landing-Page-Spitze.
+const _openDemoCta = document.getElementById('openDemoCta');
+if (_openDemoCta) {
+  _openDemoCta.addEventListener('click', (e) => {
+    e.preventDefault();
+    loadDemo();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (location.hash !== '#demo') history.replaceState(null, '', location.pathname + '#demo');
+  });
+}
 document.getElementById('getProBtn').addEventListener('click', () => window.open('https://vitalkultur.com/carlon-equine', '_blank'));
 document.getElementById('printBtn').addEventListener('click', () => {
   // Pre-flight: ohne Daten kein sinnvoller Druck — bilingualer Hinweis
